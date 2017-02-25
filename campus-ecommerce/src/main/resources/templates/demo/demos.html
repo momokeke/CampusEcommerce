@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>HelloWorld</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>username</th>
+        <th>address</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="demo : ${demos}">
+        <td th:text="${demo.id}" >这里会被换掉哦</td>
+        <td th:text="${demo.username}"></td>
+        <td th:text="${demo.address}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
