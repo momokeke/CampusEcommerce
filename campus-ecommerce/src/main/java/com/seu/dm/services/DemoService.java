@@ -10,19 +10,10 @@ import java.util.List;
 /**
  * Created by Greeting on 2017/2/25.
  */
-@Service
-public class DemoService {
 
-    @Autowired
-    private DemoMapper demoMapper;
-
-    public List<DemoEntity> getDemos(){
-        List<DemoEntity> demos = demoMapper.getDemos();
-        return demos;
-    }
-
-    public DemoEntity getDemo(Integer id){
-        DemoEntity demo = demoMapper.getDemoById(id);
-        return demo;
-    }
+public interface DemoService {
+    List<DemoEntity> getDemos();
+    DemoEntity getDemo(Integer id);
+    void testAspect();
+    void showPage();
 }

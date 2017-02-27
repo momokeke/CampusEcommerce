@@ -28,8 +28,10 @@ public class DemoController {
      */
     @RequestMapping(value="/helloworld")
     public String helloWorld(){
+        demoService.testAspect();
         return "demo/helloworld";
     }
+
 
     /**
      * Example for returing Object in Json
@@ -62,8 +64,9 @@ public class DemoController {
      * @return
      */
     @RequestMapping(value="/demo")
-    public String getDemoById(@RequestParam(value="id",required=true) Integer id){
+    public String getDemoById(@RequestParam(value="id",required=true) Integer id,Model model){
         DemoEntity demo = demoService.getDemo(id);
+        model.addAttribute("demo",demo);
         return "demo/demo";
     }
 
