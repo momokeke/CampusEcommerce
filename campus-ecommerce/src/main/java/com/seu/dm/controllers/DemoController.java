@@ -76,7 +76,7 @@ public class DemoController {
      * @param model
      * @return
      */
-    @RequestMapping(value="/demo/{id}")
+    @RequestMapping(value={"/demo/{id}","/demo.html/{id}"})
     public String getRestfulDemoById(@PathVariable Integer id,Model model){
         DemoEntity demo = demoService.getDemo(id);
         model.addAttribute("demo",demo);
