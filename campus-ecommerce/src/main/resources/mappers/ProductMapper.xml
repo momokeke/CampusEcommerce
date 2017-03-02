@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.seu.dm.mappers.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.seu.dm.entities.Product">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="seller_id" jdbcType="INTEGER" property="sellerId" />
+    <result column="year" jdbcType="VARCHAR" property="year" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="keywords" jdbcType="VARCHAR" property="keywords" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="modify_admin_id" jdbcType="INTEGER" property="modifyAdminId" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+  </resultMap>
+    <resultMap id="ResultMapWithBLOBs" type="com.seu.dm.entities.Product" extends="BaseResultMap" >
+        <result column="description" property="description" jdbcType="LONGVARCHAR" />
+    </resultMap>
+  <sql id="Base_Column_List">
+    id, name, price, category, seller_id, year, sex, keywords, add_time, modify_admin_id, 
+    modify_time
+  </sql>
+  <sql id="Blob_Column_List">
+    description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from product
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="getProductsByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+        SELECT * FROM product
+        where name LIKE concat('%',#{s},'%')
+    </select>
+    <select id="getMaleCount">
+        SELECT COUNT * FROM product
+        where sex = '女';
+    </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from product
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.seu.dm.entities.Product">
+    insert into product(id, name, price,
+    category, seller_id, year,
+    sex, keywords, add_time,
+    modify_admin_id, modify_time, description
+    ) values(#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL},
+    #{category,jdbcType=VARCHAR}, #{sellerId,jdbcType=INTEGER}, #{year,jdbcType=VARCHAR},
+    #{sex,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP},
+    #{modifyAdminId,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP}, #{description,jdbcType=LONGVARCHAR}
+)
+  </insert>
+  <insert id="insertSelective" parameterType="com.seu.dm.entities.Product">
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="category != null">
+        category,
+      </if>
+      <if test="sellerId != null">
+        seller_id,
+      </if>
+      <if test="year != null">
+        year,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="keywords != null">
+        keywords,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="modifyAdminId != null">
+        modify_admin_id,
+      </if>
+      <if test="modifyTime != null">
+        modify_time,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerId != null">
+        #{sellerId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null">
+        #{year,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null">
+        #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifyAdminId != null">
+        #{modifyAdminId,jdbcType=INTEGER},
+      </if>
+      <if test="modifyTime != null">
+        #{modifyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.seu.dm.entities.Product" >
+        update product
+        <set >
+            <if test="name != null" >
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null" >
+                price = #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="category != null" >
+                category = #{category,jdbcType=VARCHAR},
+            </if>
+            <if test="sellerId != null" >
+                seller_id = #{sellerId,jdbcType=INTEGER},
+            </if>
+            <if test="year != null" >
+                year = #{year,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null" >
+                sex = #{sex,jdbcType=VARCHAR},
+            </if>
+            <if test="keywords != null" >
+                keywords = #{keywords,jdbcType=VARCHAR},
+            </if>
+            <if test="addTime != null" >
+                add_time = #{addTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyAdminId != null" >
+                modify_admin_id = #{modifyAdminId,jdbcType=INTEGER},
+            </if>
+            <if test="modifyTime != null" >
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="description != null" >
+                description = #{description,jdbcType=LONGVARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.seu.dm.entities.Product" >
+        update product
+        set name = #{name,jdbcType=VARCHAR},
+        price = #{price,jdbcType=DECIMAL},
+        category = #{category,jdbcType=VARCHAR},
+        seller_id = #{sellerId,jdbcType=INTEGER},
+        year = #{year,jdbcType=VARCHAR},
+        sex = #{sex,jdbcType=VARCHAR},
+        keywords = #{keywords,jdbcType=VARCHAR},
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+        modify_admin_id = #{modifyAdminId,jdbcType=INTEGER},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+        description = #{description,jdbcType=LONGVARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.seu.dm.entities.Product" >
+        update product
+        set name = #{name,jdbcType=VARCHAR},
+        price = #{price,jdbcType=DECIMAL},
+        category = #{category,jdbcType=VARCHAR},
+        seller_id = #{sellerId,jdbcType=INTEGER},
+        year = #{year,jdbcType=VARCHAR},
+        sex = #{sex,jdbcType=VARCHAR},
+        keywords = #{keywords,jdbcType=VARCHAR},
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+        modify_admin_id = #{modifyAdminId,jdbcType=INTEGER},
+        modify_time = #{modifyTime,jdbcType=TIMESTAMP}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
