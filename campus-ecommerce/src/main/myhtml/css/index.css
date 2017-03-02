@@ -1,0 +1,56 @@
+
+
+.category ul{
+    border: 1px solid #EEEEEE;
+}
+
+.category ul li{
+    border-top: 1px solid #EEEEEE;
+    height:50px;
+    line-height: 50px;
+    text-align: center;
+    font-size:12px;
+}
+
+.category ul li span{
+    font-size:12px;
+}
+
+.category ul li span a{
+    color:#999999;
+    margin-left:10px;
+}
+
+.status{
+    border: 1px solid #EEEEEE;
+    height:280px;
+    display: none;
+}
+
+.status .qr-code{
+    width:140px;
+    height:140px;
+
+}
+
+.status .show{
+    display: block;
+}
+
+
+.index-products{
+
+}
+
+.index-products img{
+    margin-top:10px;
+    width:160px;
+    height:130px;
+}
+
+.products-show{
+    background-color:black;
+}
+
+
+

@@ -1,0 +1,128 @@
+/* For Common begin */
+.font-small{
+    font-size:12px;
+}
+
+.font-middle{
+    font-size:20px;
+}
+
+.font-big{
+    font-size:30px;
+}
+
+.font-white{
+    color:white;
+}
+
+.float-right{
+    float:right;
+}
+
+.font-bold{
+    font-weight: bold;
+}
+
+.font-red{
+    color:red;
+}
+
+.font-grey{
+    color:grey;
+}
+
+.border-one{
+    border:1px solid #eeeeee;
+}
+
+.line-one{
+    margin-top:10px;
+    height:100px;
+}
+
+.line-two{
+    margin-top:10px;
+    height:200px;
+}
+
+.line-three{
+    margin-top:10px;
+    height:300px;
+}
+
+.mt-10{
+    margin-top:10px;
+}
+
+.mt-5{
+    margin-top:5px;
+}
+
+.mb-5{
+    margin-bottom:5px;
+}
+
+.mb-10{
+    margin-bottom:10px;
+}
+
+.mt-20{
+    margin-top:20px;
+}
+
+
+/*
+.txt-center{
+    text-align: center;
+}
+*/
+/*For Common end*/
+
+/*Website top begin*/
+
+.top{
+    line-height:30px;
+    height:30px;
+    background-color:#efefef;
+}
+
+.top a:hover{
+    text-decoration: none;
+}
+
+.top a{
+
+}
+
+.banner{
+    background: #DDF0ED;
+    height: 100px;
+    line-height:100px;
+}
+
+.logo{
+    font-size:60px;
+}
+
+.banner a{
+    margin-right:60px;
+}
+
+.banner a:hover{
+    text-decoration: none;
+}
+
+.banner .active{
+    border-bottom: 4px solid #000000;
+}
+
+.banner .search{
+    width:300px;
+}
+
+.footer-info{
+    height:270px;
+    background-color: #DDF0ED;
+}
+
+/* Website Top end*/

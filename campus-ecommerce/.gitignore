@@ -27,5 +27,5 @@ nbdist/
 src/main/resources/application.properties
 
 ### for html   ###
-!src/main/html/bootstrap/dist
-src/main/html/bootstrap/js/tests
+!src/main/myhtml/bootstrap/dist
+src/main/myhtml/bootstrap/js/tests
