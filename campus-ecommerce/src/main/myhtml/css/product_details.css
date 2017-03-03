@@ -1,0 +1,35 @@
+.checkbox{
+  height: 34px;
+  border-radius: 0.5em;
+}
+.portraiture{
+  margin-right:-30px;
+}
+.presentation{
+  margin-top: 40px;
+}
+.priceone{
+  font-size:20px;;
+  text-decoration: line-through;
+  color: #6B6464;
+}
+.price{
+  background-color: #DDF0ED;
+}
+.pricetwo{
+  font-size: x-large;
+  color: #AA0000;
+}
+.picture{
+   border-collapse: separate;
+   border-spacing: 10px;
+}
+.mt-8{
+  margin-top: 8px;
+}
+.mt-30{
+  margin-top: 30px;
+}
+.ml-10{
+  margin-left: 10px;
+}

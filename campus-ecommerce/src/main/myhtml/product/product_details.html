@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>商品详情页</title>
+
+    <!-- Bootstrap -->
+    <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="../css/product_details.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet">
+    <link href="../css/index.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../js/common/html5shiv.min.js"></script>
+    <script src="../js/common/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row top font-small">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            当前学校：东南大学
+            <div class="float-right">
+                <a href="#">登录</a>
+                <a href="#">注册</a>
+                <a href="#">我的订单</a>
+            </div>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+    </div>
+    <div class="row banner">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div class="row">
+                <div class="col-md-3 logo">DaMi</div>
+                <div class="col-md-5 font-bold">
+                    <a class="active" href="#">首页</a>
+                    <a href="#">二手</a>
+                    <a href="#">促销</a>
+                    <a href="#">秒杀</a>
+                </div>
+                <div class="col-md-4">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <input type="email" class="form-control search" id="exampleInputEmail3" placeholder="关键字">
+                        </div>
+                        <button type="submit" class="btn btn-default">搜索</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="page-header">
+            <h1>店铺名称<small>社团名称</small></h1>
+        </div>
+    </div>
+    <div class="row">
+        <ul class="nav nav-pills">
+            <li class="active"><a href="#">本店商品分类</a></li>
+            <li><a href="#">油画</a></li>
+            <li><a href="#">水墨画</a></li>
+            <li><a href="#">水彩画</a></li>
+            <li><a href="#">铅笔画</a></li>
+            <li><a href="#">钢笔画</a></li>
+            <li><a href="#">素描</a></li>
+            <li><a href="#">镶嵌画</a></li>
+        </ul>
+    </div>
+    <div class="presentation row">
+        <div class="col-md-5 col-md-offset-1">
+            <img src="../img/portraiture.jpg" width="400px" height="400px"/>
+        </div>
+        <div class="col-md-6">
+            <div class="row"> <h2 class="col-md-12">赵丽颖肖像画素描画绘画社团颖宝</h2></div>
+            <div class="price mt-30">
+                <div class="row"><div class="col-md-10 col-md-offset-2"><span class="priceone">价格：95</span></div></div>
+                <div class="pricetwo row"><div class="col-md-10 col-md-offset-2"><span>达米价:90</span></div></div>
+            </div>
+        <div class="price">
+            <div class="row mt-30 " >
+               <span class="col-md-11 col-md-offset-1" >所属校区：东南大学</span>
+            </div>
+            <div class="row mt-30 " >
+                <span class="col-md-11 col-md-offset-1" >联系方式:130629023**</span>
+            </div>
+            <div class="row mt-30">
+                <div class="col-md-2 col-md-offset-1  text-danger mt-8">数量</div>
+                <div class="col-md-9"><input type="text" class="form-control" value="1" style="width: 60px"></div>
+            </div>
+        </div>
+            <div class="row mt-40 ml-10" >
+                <button class="btn btn-danger">加入购物车</button>
+                <button class="btn btn-danger">购买</button>
+            </div>
+        </div>
+    </div>
+    <ul id="myTab" class="nav nav-tabs mt-150">
+        <li class="active"><a href="#good_details" data-toggle="tab">商品详情</a></li>
+        <li><a href="#comments" data-toggle="tab">评价</a></li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="good_details">
+            <p>学的不仅是技术，更是梦想。</p>
+            <div class="row" >
+                <div class="sexi col-md-6 col-md-offset-1 " ><img src="../img/portraiture.jpg" width="400px" height="400px"/><br/>色系1</div>
+                <div class="col-md-5 " ><img src="../img/portraiture1.jpg" width="400px" height="400px"/><br/>色系2</div>
+
+            </div>
+            <div class="row" >
+                <div class="col-md-6 col-md-offset-1 " ><img src="../img/portraiture2.jpg" width="400px" height="400px"/><br/>色系2</div>
+                <div class="col-md-5 " ><img src="../img/portraiture3.jpg" width="400px" height="400px"/><br/>色系3</div>
+            </div>
+            <div class="row" >
+                <div class="col-md-6 col-md-offset-1 " ><img src="../img/portraiture4.jpg" width="400px" height="400px"/><br/>色系4</div>
+                <div class="col-md-5 " ><img src="../img/portraiture5.jpg" width="400px" height="400px"/><br/>色系5</div>
+            </div>
+            <div class="row" >
+                <div class="col-md-6 col-md-offset-1 " ><img src="../img/portraiture6.jpg" width="400px" height="400px"/><br/>色系6</div>
+                <div class="col-md-5 " ><img src="../img/portraiture7.jpg" width="400px" height="400px"/><br/>色系7</div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="comments">
+            <dl class="dl-horizontal">
+                <dt>刘*明</dt>
+                <dd>画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买</dd>
+                <dt>张*敏</dt>
+                <dd>画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。</dd>
+            </dl>
+            <div class="row">
+                <div class="col-md-12" style="text-align: center ">
+                    <ul class="pagination">
+                        <li><a href="#">&laquo;</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">&raquo;</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-20">
+    <div class="row">
+        <div class="col-md-12 footer-info">
+            <div class="col-md-2 col-md-offset-3 mt-40 "><img src="../img/logo_buttom_1.jpg"/></div>
+            <div class="col-md-3 mt-40 "><img src="../img/logo_buttom_2.jpg " /><br/><span class="font-grey" >一家专门做校园文化产品的网站</span></div>
+            <div class="col-md-4 mt-60"><img class="qr-code"  src="../img/qr_code.png "/><br/><div class="mt-20 ">扫码有惊喜哦</div></div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row mt-20 font-small">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div id="footer">
+                <div class="footerNav text-center">
+                    <a href="#">关于我们</a> |
+                    <a href="#">服务条款</a> |
+                    <a href="#">免责声明</a> |
+                    <a href="#">网站地图</a> |
+                    <a href="#">联系我们</a>
+                </div>
+                <div class="copyRight text-center">
+                    Copyright DaMi
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="../js/common/jquery-3.1.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
