@@ -33,6 +33,9 @@
 
 .border-one{
     border:1px solid #eeeeee;
+    opacity: 1;
+    width: 380px;
+    border-radius: 0.4em;
 }
 
 .line-one{
@@ -61,11 +64,15 @@
 .mb-5{
     margin-bottom:5px;
 }
-
+.mb-200{
+    margin-bottom: 200px;
+}
 .mb-10{
     margin-bottom:10px;
 }
-
+.mt-60{
+    margin-top: 60px;
+}
 .mt-20{
     margin-top:20px;
 }
@@ -76,6 +83,7 @@
 .ml-5{
     margin-left: 5px;
 }
+
 
 /*
 .txt-center{
