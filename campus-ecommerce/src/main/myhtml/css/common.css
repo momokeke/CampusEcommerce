@@ -76,12 +76,24 @@
 .mt-20{
     margin-top:20px;
 }
-
+.mt-150{
+    margin-top: 150px;
+}
 .mr-5{
     margin-right: 5px;;
 }
 .ml-5{
     margin-left: 5px;
+}
+.mt-40{
+    margin-top: 30px;
+}
+.mt-120{
+    margin-top: 120px;
+}
+
+.mt-60{
+    margin-top: 60px;
 }
 
 
@@ -127,7 +139,9 @@
 }
 
 .banner .active{
-    border-bottom: 4px solid #000000;
+    border-bottom: 23px solid #f0be48;
+    border-radius: 14px;
+    border-top: 23px solid #f0be48;
 }
 
 .banner .search{
@@ -137,6 +151,11 @@
 .footer-info{
     height:270px;
     background-color: #DDF0ED;
+}
+.qr-code {
+    height: 100px;
+    width: 100px;
+    background-size: cover ;
 }
 
 /* Website Top end*/
