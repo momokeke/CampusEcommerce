@@ -15,71 +15,59 @@
     <!--[if lt IE 9]>
     <script src="../js/common/html5shiv.min.js"></script>
     <script src="../js/common/respond.min.js"></script>
+    <script src="../js/register.js"></script>
     <![endif]-->
+    <script src="../js/register.js"></script>
+    <script src="../js/common/html5shiv.min.js"></script>
+    <script src="../js/common/respond.min.js"></script>
 </head>
 <body>
 <!-- This is the Top for register Begin -->
-<div class="container">
+<div class="container-fluid back_img">
     <div class="row">
-        <div class="col-md-2">
-            <img src="https://secure0.jmstatic.com/static_passport/dist/20170112/images/logo_new_v1.jpg" alt="注册页的logo"/>
+        <div class="col-md-12 text-center mt-60">
+            <span class="reg_logo">达米DaMi欢迎您注册为卖家</span>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-7"><img src="https://secure3.jmstatic.com/static_passport/dist/20170112/images/account/login_sign/loginPic.jpg?1"/></div>
-        <div class="col-md-5 border-one" style="box-shadow: 10px 10px 5px #888888;">
+    <div class="row mt-60 mb-200">
+        <div class="col-md-12 border-one" style="margin-left: 38%">
             <form class="mb-10">
-                <div class="form-group mt-10">
-                    <label for="username">用户名</label>
-                    <input type="email" class="form-control" id="username" placeholder="用户名">
+                <div class="form-group mb-5">
+                    <label for="shop_name">店铺名</label>
+                    <input type="text" class="form-control" id="shop_name"  placeholder="您注册的店铺名" onclick="checksname()"><span></span>
+                </div>
+                <div class="form-group">
+                    <label for="username">社团名</label>
+                    <input type="text" class="form-control" id="username" placeholder="所属社团名" onclick="checkuname()"><span></span>
+                </div>
+                <div class="form-group">
+                    <label for="card">一卡通学号</label>
+                    <input type="text" class="form-control" id="card" placeholder="请输入您的一卡通账号" onclick="checkcard()"><span></span>
                 </div>
                 <div class="form-group">
                     <label for="password">密码</label>
-                    <input type="password" class="form-control" id="password" placeholder="密码">
+                    <input type="password" class="form-control" id="password" placeholder="设置您的登录密码" onclick="checkpass()"><span></span>
                 </div>
                 <div class="form-group">
                     <label for="re_password">重复密码</label>
-                    <input type="password" class="form-control" id="re_password" placeholder="重复密码">
+                    <input type="password" class="form-control" id="re_password" placeholder="请再次输入您的密码" onclick="recheckpass()"><span></span>
                 </div>
                 <div class="form-group">
                     <label for="phone">手机号</label>
-                    <input type="text" class="form-control" id="phone" placeholder="手机号">
+                    <input type="text" class="form-control" id="phone" placeholder="输入您的11位手机号" onclick="checkphone()">
                 </div>
                 <div class="form-group">
-                    <label for="campus">校区</label>
-                    <input type="text" class="form-control" id="campus" placeholder="校区">
+                    <button type="submit" onsubmit="return checkAll()"  class="btn btn-default">注册</button>
                 </div>
-                <div class="form-group">
-                    <label for="student_id">学号</label>
-                    <input type="text" class="form-control" id="student_id" placeholder="学号">
-                </div>
-                <div class="form-group">
-                    <label for="true_name">姓名</label>
-                    <input type="text" class="form-control" id="true_name" placeholder="姓名">
-                </div>
-                <div class="checkbox">
-                    <label>
-                        <input type="checkbox"> Check me out
-                    </label>
-                </div>
-                <button type="submit" class="btn btn-default">注册</button>
             </form>
         </div>
     </div>
 </div>
-<!-- This  is the Top for register End -->
 
 
 
 
 <!--This is the common footer Begin-->
-<div class="container-fluid mt-20">
-    <div class="row">
-        <div class="col-md-12 footer-info">
-        </div>
-    </div>
-</div>
-
 <div class="container">
     <div class="row mt-20 font-small">
         <div class="col-md-2"></div>
@@ -100,6 +88,10 @@
         <div class="col-md-2"></div>
     </div>
 </div>
+
+
+
+
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
