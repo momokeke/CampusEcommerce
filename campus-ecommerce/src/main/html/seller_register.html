@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>卖家注册页面</title>
+    <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+    <link href="css/registercss.css" rel="stylesheet">
+    <link href="css/fnindex.css" rel="stylesheet">
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="js/registerjs.js"></script>
+</head>
+<body>
+<div class="header">
+    <div class="logo">
+        <img src="img/logo1.jpg" alt="" class="logoImg"/>
+        <a href="#"> <img src="img/logo3.png" alt="" width="40px"/></a>
+    </div>
+    <div class="nav">
+        <ul>
+            <li><a href="inedx.html">首页</a></li>
+            <li><a href="#">注册</a></li>
+            <li><a href="#">买家中心</a></li>
+            <li><a href="#">卖家中心</a></li>
+            <li><a href="#">网站客服</a></li>
+        </ul>
+    </div>
+</div>
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-1 column">
+        </div>
+        <div class="col-md-10 column">
+            <div class="welcome">
+                <img src="img/logo3.png" class="top">
+                <span class="top">校园购物打米立即达</span>
+            </div>
+        </div>
+        <div class="col-md-1 column">
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-1 column">
+        </div>
+        <div class="col-md-6 column">
+            <form class="form-horizontal" role="form">
+                <div class="form-group">
+                    <span class="welcomereg">欢迎注册成为达米卖家</span>
+                </div>
+                <div class="form-group">
+                    <label for="inputName3" class="col-sm-4 control-label">店铺名：</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="inputName3" value="您的店铺名" onclick="checksname()"/><span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputClub3" class="col-sm-4 control-label">社团名：</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="inputClub3" value="所属社团" onclick="checkuname()"/><span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword3" class="col-sm-4 control-label">密码：</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control" id="inputPassword3" value="设置您的登录密码" onclick="checkpass()"/><span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputrePassword3" class="col-sm-4 control-label">密码确认：</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control" id="inputrePassword3" value="再次确认您的登录密码" onclick="recheckpass()" /><span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPhone3" class="col-sm-4 control-label">手机号：</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control" id="inputPhone3" value="输入您的手机号" onclick="checkphone()" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-4 col-sm-10">
+                        <button type="submit" class="btn btn-default" onclick="checkAll()">注册成为卖家</button>
+                        <a href="#">微信扫码注册</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4 column image">
+            <div class="carousel slide" id="carousel-789762">
+                <ol class="carousel-indicators">
+                    <li data-slide-to="0" data-target="#carousel-789762">
+                    </li>
+                    <li data-slide-to="1" data-target="#carousel-789762">
+                    </li>
+                    <li data-slide-to="2" data-target="#carousel-789762" class="active">
+                    </li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item">
+                        <img alt="" src="img/guitar.jpg" />
+                        <div class="carousel-caption">
+                            <h4>
+                                焦点图一
+                            </h4>
+                            <p>
+                                焦点图一的描述,焦点图一的描述,焦点图一的描述,焦点图一的描述,焦点图一的描述,
+                            </p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img alt="" src="img/go.jpg" />
+                        <div class="carousel-caption">
+                            <h4>
+                                焦点图二
+                            </h4>
+                            <p>
+                                焦点图二的描述,焦点图二的描述,焦点图二的描述,焦点图二的描述,焦点图二的描述,焦点图二的描述,
+                            </p>
+                        </div>
+                    </div>
+                    <div class="item active">
+                        <img alt="" src="img/yoga.jpg" />
+                        <div class="carousel-caption">
+                            <h4>
+                                焦点图三
+                            </h4>
+                            <p>
+                                焦点图三的描述，焦点图三的描述，焦点图三的描述，焦点图三的描述，焦点图三的描述，
+                            </p>
+                        </div>
+                    </div>
+                </div> <a rel="nofollow" class="left carousel-control" href="#carousel-789762" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a rel="nofollow" class="right carousel-control" href="#carousel-789762" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+            </div>
+        </div>
+        <div class="col-md-1 column">
+        </div>
+    </div>
+    <div class="row clearfix">
+        <div class="col-md-1 column">
+        </div>
+        <div class="col-md-10 column">
+            <div id="footer">
+                <div class="footerNav">
+                    <a rel="nofollow" href="http://www.layoutit.cn">关于我们</a> | <a rel="nofollow" href="http://www.layoutit.cn">服务条款</a> | <a rel="nofollow" href="http://www.layoutit.cn">免责声明</a> | <a rel="nofollow" href="http://www.layoutit.cn">网站地图</a> | <a rel="nofollow" href="http://www.layoutit.cn">联系我们</a>
+                </div>
+                <div class="copyRight">
+                    Copyright ©2010-2014layoutit.cn 版权所有
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-1 column">
+        </div>
+    </div>
+</div>
+</body>
+</html>
