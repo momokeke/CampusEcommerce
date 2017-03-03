@@ -49,8 +49,71 @@
 }
 
 .products-show{
-    background-color:black;
+    background-color: #b0e8f0;
 }
 
+.picture_3d{
+    background-size: 630px  700px;
+    width: 500px;
+    padding: 0 25% 0 25%;
+    height: 500px;
+    /*width: 100%;*/
+}
+ul.detail_3d{
+    /*display: none;*/
+    list-style: none;
+    /*margin: 0 auto;*/
+    width: 400px;
+    height:400px;
+    transition: all 6s;
+    position: relative;
+    transform-style: preserve-3D;
+    top: 0;
+    left: 0px;
+    z-index: 100;
+}
+.detail_3d li{
+    margin:5% auto;
+    width: 500px;
+    height: 500px;
+    color: white;
+    /*line-height: 200px;*/
+    text-align: center;
+    font-size: 40px;
+    /*background-color: #0099cc;*/
+    position: absolute;
+}
+
+ul.detail_3d li:nth-child(1){
+    transform: rotateX(0deg) translateZ(300px);
+    background:url("../img/maobi.jpg") no-repeat center center;
+}
+
+ul.detail_3d li:nth-child(2) {
+    transform: rotateX(-180deg)  translateZ(300px);
+    background:url("../img/shuangjiegun.jpg") no-repeat center center;
+    background-size: 450px;
+}
+
+ul.detail_3d li:nth-child(3) {
+      transform: rotateY(-90deg)  translateZ(300px);
+      background:url("../img/lunhua.jpg") no-repeat center center;
+}
+
+ul.detail_3d li:nth-child(4) {
+    transform: rotateY(90deg)  translateZ(300px);
+    background:url("../img/guitar.jpg") no-repeat center center;
+}
+
+ul.detail_3d:hover{
+    /*transform: rotateX(360deg) rotateY(360deg);*/
+    transform:  rotateY(360deg);
+}
+
+ul.detail_3d li{
+    display: block;
+    width: 400px;
+    height: 400px;
+}
 
 
