@@ -1,6 +1,7 @@
 package com.seu.dm.mappers;
 
 import com.seu.dm.entities.DemoEntity;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -16,4 +17,5 @@ public interface DemoMapper {
 
     @Select("select * from demos where id = #{id}")
     DemoEntity getDemoById(Integer id);
+
 }
