@@ -1,0 +1,29 @@
+.seller_logo{
+    font-family: 楷体;
+    font-size: 50px;
+    font-weight: bold;
+    color:#3d9970;
+}
+.seller_center{
+    font-family: 微软雅黑;
+    font-weight: bold;
+    font-size: 25px;
+}
+ul{
+    list-style: none;
+}
+.seller_shop{
+    font-size: 12px;
+}
+.form_fade{
+    width: 200px;
+    margin:40px 240px;
+    display: none;
+}
+.border-radius{
+    border-radius: 0.6em;
+}
+.wh{
+    width: 722px;
+    height: 421px;
+}
