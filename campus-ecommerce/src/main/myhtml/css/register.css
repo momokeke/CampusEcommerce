@@ -21,3 +21,8 @@
     font-weight: bold;
     color: #4cae4c;
 }
+.form-border{
+    opacity: 1;
+    width: 380px;
+    border-radius: 0.4em;
+}
