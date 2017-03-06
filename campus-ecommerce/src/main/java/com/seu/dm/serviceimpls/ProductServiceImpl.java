@@ -6,6 +6,8 @@ import com.seu.dm.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
 
 /**
@@ -73,5 +75,15 @@ public class ProductServiceImpl implements ProductService{
     public int updateProduct(Product product) {
         int i =productMapper.updateByPrimaryKey(product);
         return i;
+    }
+
+    @Override
+    public List<Product> findProductsByCategory(String s) {
+        return productMapper.getResultsByCategory(s);
+    }
+
+    @Override
+    public BigDecimal getProductPriceById(Integer id) {
+        return productMapper.getPriceById(id);
     }
 }
