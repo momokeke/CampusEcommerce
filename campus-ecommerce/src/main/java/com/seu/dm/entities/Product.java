@@ -26,6 +26,26 @@ public class Product {
 
     private String description;
 
+    private String category;
+
+    private Integer pictureId;
+
+    public Integer getPictureId() {
+        return pictureId;
+    }
+
+    public void setPictureId(Integer pictureId) {
+        this.pictureId = pictureId;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
     public Integer getId() {
         return id;
     }

@@ -2,6 +2,7 @@ package com.seu.dm.mappers;
 
 import com.seu.dm.entities.Product;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface ProductMapper {
@@ -22,4 +23,8 @@ public interface ProductMapper {
     List<Product> getProductsByName(String s);
 
     int getCountOfResultsByName(String s);
+
+    List<Product> getResultsByCategory(String s);
+
+    BigDecimal getPriceById(Integer id);
 }

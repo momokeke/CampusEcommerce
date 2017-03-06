@@ -2,11 +2,13 @@ package com.seu.dm.controllers;
 
 import com.seu.dm.entities.Product;
 import com.seu.dm.services.ProductService;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -57,7 +59,7 @@ public class ProductController {
      * @param model
      * @return
      */
-    @RequestMapping(value = "/find", method = RequestMethod.GET)
+    @RequestMapping(value = "/findByName", method = RequestMethod.GET)
     public String findProductsByName(@RequestParam(value = "name")String name,Model model){
         List<Product> products = productService.findProductsByName(name);
         for (Product product : products) {
@@ -67,6 +69,34 @@ public class ProductController {
        // System.out.println("ok");
         return "/index";
     }
+
+    /**
+     * 根据标签返回对应的商品列表
+     * @param category
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/findByCategory", method = RequestMethod.GET)
+    public String findProductsByCategory(@RequestParam(value = "category")String category, Model model){
+        List<Product> products = productService.findProductsByCategory(category);
+        model.addAttribute("products",products);
+        return "";
+    }
+
+    /**
+     * 根据ID得到商品对应的价格
+     * @param id
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/getPrice")
+    public String getProductPriceById(@RequestParam(value = "id")Integer id, Model model){
+        BigDecimal price = productService.getProductPriceById(id);
+        System.out.println(price);
+        model.addAttribute("price",price);
+        return "";
+    }
+
 
     /**
      * 根据商品名得到模糊查询的结果数
@@ -127,5 +157,6 @@ public class ProductController {
         System.out.println("update failed");
         return "";
     }
+
 
 }

@@ -36,7 +36,15 @@
   </select>
   <select id="getCountOfResultsByName" parameterType="java.lang.String" resultType="java.lang.Integer">
     select COUNT(*) from product
-    WHERE NAME LIKE concat('%','s','%')
+    WHERE NAME LIKE concat('%',#{s},'%')
+  </select>
+  <select id="getResultsByCategory" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    SELECT * FROM product
+    WHERE category = #{s}
+  </select>
+  <select id="getPriceById" parameterType="java.lang.Integer" resultType="java.math.BigDecimal">
+    SELECT price from product
+    where id = #{id}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from product
