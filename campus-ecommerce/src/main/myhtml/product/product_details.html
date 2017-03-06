@@ -39,7 +39,7 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="row">
-                <div class="col-md-3 logo">DaMi</div>
+                <div class="col-md-3 logo"><img class="logo_wh" src="../img/cute_logo.jpg"/></div>
                 <div class="col-md-5 font-bold">
                     <a class="active" href="#">首页</a>
                     <a href="#">二手</a>
@@ -81,10 +81,10 @@
             <img src="../img/portraiture.jpg" width="400px" height="400px"/>
         </div>
         <div class="col-md-6">
-            <div class="row"> <h2 class="col-md-12">赵丽颖肖像画素描画绘画社团颖宝</h2></div>
+            <div class="row"> <h2 class="col-md-12 text-center">赵丽颖肖像画素描画绘画社团颖宝</h2></div>
             <div class="price mt-30">
-                <div class="row"><div class="col-md-10 col-md-offset-2"><span class="priceone">价格：95</span></div></div>
-                <div class="pricetwo row"><div class="col-md-10 col-md-offset-2"><span>达米价:90</span></div></div>
+                <div class="row"><div class="col-md-11 col-md-offset-1"><span class="priceone">价格：95</span></div></div>
+                <div class="pricetwo row"><div class="col-md-11 col-md-offset-1"><span>达米价:90</span></div></div>
             </div>
         <div class="price">
             <div class="row mt-30 " >
@@ -95,42 +95,109 @@
             </div>
             <div class="row mt-30">
                 <div class="col-md-2 col-md-offset-1  text-danger mt-8">数量</div>
-                <div class="col-md-9"><input type="text" class="form-control" value="1" style="width: 60px"></div>
+                <div class="input-group col-md-2">
+                    <span class="input-group-addon">+</span>
+                    <input type="text" class="form-control text-center" value="1" style="width: 60px">
+                    <span class="input-group-addon">-</span>
+                </div>
             </div>
         </div>
-            <div class="row mt-40 ml-10" >
-                <button class="btn btn-danger">加入购物车</button>
-                <button class="btn btn-danger">购买</button>
+            <div class="row mt-40 ml-10 text-center" >
+                <button class="btn btn-danger col-md-3 mr-5">立即购买</button>
+                <button class="btn btn-danger col-md-3">
+                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                    加入购物车</button>
+                <button type="button" class="btn btn-danger float-right mr-15 ">我的购物车 <span class="badge">21</span></button>
             </div>
         </div>
+    </div>
+    <div class="col-md-offset-1 mt-5 ">
+        <button type="button" class="btn btn-warning">
+            <span class="glyphicon glyphicon-star-empty"></span>加入收藏夹
+        </button>
     </div>
     <ul id="myTab" class="nav nav-tabs mt-150">
         <li class="active"><a href="#good_details" data-toggle="tab">商品详情</a></li>
         <li><a href="#comments" data-toggle="tab">评价</a></li>
     </ul>
     <div id="myTabContent" class="tab-content">
-        <div class="tab-pane fade in active" id="good_details">
-            <p>学的不仅是技术，更是梦想。</p>
+        <div class="tab-pane fade in active font-middle" id="good_details">
+            <span>学的不仅是技术，更是梦想。</span>
             <div class="row" >
-                <div class="sexi col-md-6 col-md-offset-1 " ><img src="../img/portraiture.jpg" width="400px" height="400px"/><br/>色系1</div>
-                <div class="col-md-5 " ><img src="../img/portraiture1.jpg" width="400px" height="400px"/><br/>色系2</div>
-
+                <div class="col-md-5 col-md-offset-1" >
+                    <div class="thumbnail">
+                        <img src="../img/portraiture.jpg" height="300px"  width="300px"  alt="色系1"/>
+                        <div class="caption">
+                            <span>色系1</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 ">
+                    <div class="thumbnail">
+                        <img src="../img/portraiture1.jpg" height="300px" width="300px" alt="色系2"/>
+                        <div class="caption">
+                            <span>色系2</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row" >
-                <div class="col-md-6 col-md-offset-1 " ><img src="../img/portraiture2.jpg" width="400px" height="400px"/><br/>色系2</div>
-                <div class="col-md-5 " ><img src="../img/portraiture3.jpg" width="400px" height="400px"/><br/>色系3</div>
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="thumbnail">
+                        <img src="../img/portraiture2.jpg" height="300px" width="300px" alt="色系3"/>
+                        <div class="caption">
+                            <span>色系3</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 ">
+                    <div class="thumbnail">
+                        <img src="../img/portraiture3.jpg" height="300px" width="300px" alt="色系4"/>
+                        <div class="caption">
+                            <span>色系4</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row" >
-                <div class="col-md-6 col-md-offset-1 " ><img src="../img/portraiture4.jpg" width="400px" height="400px"/><br/>色系4</div>
-                <div class="col-md-5 " ><img src="../img/portraiture5.jpg" width="400px" height="400px"/><br/>色系5</div>
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="thumbnail">
+                        <img src="../img/portraiture4.jpg" height="300px" width="300px" alt="色系5"/>
+                        <div class="caption">
+                            <span>色系5</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 ">
+                    <div class="thumbnail">
+                        <img src="../img/portraiture5.jpg" height="300px" width="300px" alt="色系6"/>
+                        <div class="caption">
+                            <span>色系6</span>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="row" >
-                <div class="col-md-6 col-md-offset-1 " ><img src="../img/portraiture6.jpg" width="400px" height="400px"/><br/>色系6</div>
-                <div class="col-md-5 " ><img src="../img/portraiture7.jpg" width="400px" height="400px"/><br/>色系7</div>
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="thumbnail">
+                        <img src="../img/portraiture6.jpg" height="300px" width="300px" alt="色系7"/>
+                        <div class="caption">
+                            <span>色系7</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 ">
+                    <div class="thumbnail">
+                        <img src="../img/portraiture7.jpg" height="300px" width="300px" alt="色系8"/>
+                        <div class="caption">
+                            <span>色系8</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="tab-pane fade" id="comments">
-            <dl class="dl-horizontal">
+            <dl class="dl-horizontal font-middle">
                 <dt>刘*明</dt>
                 <dd>画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买</dd>
                 <dt>张*敏</dt>

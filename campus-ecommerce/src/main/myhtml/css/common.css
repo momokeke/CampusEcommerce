@@ -175,5 +175,17 @@
     width:100px;
     height:70px;
 }
+.border-right{
+    border-right:1px solid #c8c8c8;
+}
+.bk-white{
+    background-color: white;
+}
+.pb-50{
+    padding-bottom: 50px;
+}
+.font-black{
+    color: black;
+}
 /* Website Top end*/
 
