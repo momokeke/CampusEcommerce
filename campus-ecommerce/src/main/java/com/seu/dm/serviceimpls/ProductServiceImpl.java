@@ -59,7 +59,7 @@ public class ProductServiceImpl implements ProductService{
 
     @Override
     public int getCountOfResultsByName(String s) {
-        int i = productMapper.getCountOfResultsByName('%'+s+'%');
+        int i = productMapper.getCountOfResultsByName(s );
         return i;
     }
 
