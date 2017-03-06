@@ -4,10 +4,12 @@
 
 .product_list_area{
     margin-top:10px;
-    width:660px;
+    width:760px;
     height:130px;
 }
-
+.community_area{
+    width: 350px;
+}
 .product_img{
     width: 120px;
     height: 120px;

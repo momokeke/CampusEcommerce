@@ -11,6 +11,15 @@ function checksname()
         check(oName1, oName1.nextElementSibling, "输入不可为空，请重新输入");
     }
 }
+function checkbname()
+{
+    var oName1 = document.getElementById("name");//获取买家姓名元素，此时为一个集合
+    oName1.value = "";//一旦点击input，文本框中的内容为空
+    //失去焦点，点击下一个文本框时，确认上一个文本框输入是否为空
+    oName1.onblur = function () {
+        check(oName1, oName1.nextElementSibling, "输入不可为空，请重新输入");
+    }
+}
 function checkuname()
 {
     var oName2 = document.getElementById("username");//获取店铺和社团元素，此时为一个集合
@@ -55,6 +64,15 @@ function recheckpass() {
 
     }
 }
+function checkemail(){
+    var x=document.forms["myForm"]["email"].value;
+    var atpos=x.indexOf("@");
+    var dotpos=x.lastIndexOf(".");
+    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length){
+        alert("不是一个有效的 e-mail 地址");
+        return false;
+    }
+}
 function checkphone() {
     var oPhone=document.getElementById("phone");
     oPhone.value="";
@@ -70,6 +88,7 @@ function checkphone() {
         }
     }
 }
+
 function check(node,siblingNode,msg)
 {
     if(!node.value)

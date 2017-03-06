@@ -64,6 +64,9 @@
 .mb-200{
     margin-bottom: 200px;
 }
+.mb-40{
+    margin-bottom: 40px;
+}
 .mb-10{
     margin-bottom:10px;
 }
@@ -72,6 +75,9 @@
 }
 .mt-20{
     margin-top:20px;
+}
+.mt-40{
+    margin-top: 40px;
 }
 .mt-150{
     margin-top: 150px;

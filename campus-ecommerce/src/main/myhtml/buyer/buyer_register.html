@@ -5,11 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Any Other things should follow these 3 meta above -->
-    <title>达米卖家注册</title>
+    <title>达米买家注册</title>
     <!-- Bootstrap -->
     <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet">
     <link href="../css/common.css" rel="stylesheet">
-    <link href="../css/seller_register.css" rel="stylesheet">
+    <link href="../css/buyer_register.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -23,22 +23,23 @@
 </head>
 <body>
 <!-- This is the Top for register Begin -->
-<div class="container-fluid back_img">
-    <div class="row">
-        <div class="col-md-12 text-center mt-60">
-            <span class="reg_logo">达米DaMi欢迎您注册为卖家</span>
+<div class="container-fluid ">
+    <div class="row top_back_color">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-center mt-40 mb-40">
+            <span class="reg_logo font-big font-bold font-white">达米DaMi  欢迎您注册为买家</span>
         </div>
+        <div class="col-md-4"></div>
     </div>
-    <div class="row mt-60 mb-200">
-        <div class="col-md-12 border-one form-border" style="margin-left: 38%">
-            <form class="mb-10">
+</div>
+<div class="container">
+    <div class="row back_img">
+        <div class="col-md-4"></div>
+        <div class="col-md-4  ml-30" style="width: 350px">
+            <form class="mb-10 mt-120 border-one form-border">
                 <div class="form-group mb-5">
-                    <label for="shop_name">店铺名</label>
-                    <input type="text" class="form-control" id="shop_name"  placeholder="您注册的店铺名" onclick="checksname()"><span></span>
-                </div>
-                <div class="form-group">
-                    <label for="username">社团名</label>
-                    <input type="text" class="form-control" id="username" placeholder="所属社团名" onclick="checkuname()"><span></span>
+                    <label for="name">用户名</label>
+                    <input type="text" class="form-control" id="name"  placeholder="您注册的用户名" onclick="checkbname()"><span></span>
                 </div>
                 <div class="form-group">
                     <label for="card">一卡通学号</label>
@@ -53,18 +54,28 @@
                     <input type="password" class="form-control" id="re_password" placeholder="请再次输入您的密码" onclick="recheckpass()"><span></span>
                 </div>
                 <div class="form-group">
+                    <label for="mobile">手机号</label>
+                    <input type="text" class="form-control" id="mobile" placeholder="输入您的11位手机号" onclick="checkphone()">
+                </div>
+                <div class="form-group">
                     <label for="email">邮箱</label>
                     <input type="email" class="form-control" id="email" placeholder="请输入邮箱" onclick="checkemail()"><span></span>
                 </div>
                 <div class="form-group">
-                    <label for="phone">手机号</label>
-                    <input type="text" class="form-control" id="phone" placeholder="输入您的11位手机号" onclick="checkphone()">
+                    <label for="address">学校</label>
+                    <select name="school" id="address" >
+                        <option name="school1">东南大学</option>
+                        <option name="school2">西交利物浦大学</option>
+                        <option name="school3">中科大</option>
+                        <option name="school4">苏州大学</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <button type="submit" onsubmit="return checkAll()"  class="btn btn-default">注册</button>
                 </div>
             </form>
         </div>
+        <div class="col-md-4"></div>
     </div>
 </div>
 
