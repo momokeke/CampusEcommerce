@@ -1,0 +1,23 @@
+.calender{
+
+}
+
+.border-calendar{
+    border: 1px solid #6cc680;
+}
+
+.calender_top{
+    background-color: #6cc680;
+    height: 45px;
+}
+.buyer_head_photo{
+    display: block;
+    width: 75px;
+    height: 75px;
+    border-radius: 20px;
+}
+.buyer_like_img{
+    display: block;
+    width: 175px;
+    height: 120px;
+}
