@@ -4,6 +4,7 @@ import com.seu.dm.entities.Product;
 
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -19,9 +20,13 @@ public interface ProductService {
 
     List<Product> findProductsByName(String s);
 
+    List<Product> findProductsByCategory(String s);
+
     int getCountOfResultsByName(String s);
 
     int deleteProduct(Integer id);
 
     int updateProduct(Product product);
+
+    BigDecimal getProductPriceById(Integer id);
 }
