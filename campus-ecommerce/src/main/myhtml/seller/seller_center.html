@@ -85,65 +85,99 @@
 
 <!-- this is the common top end -->
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3 border-one border-radius mt-40">
-            <table class="table">
-                <tr class="active">
-                    <td colspan="2"><i class="iconfont">&#xe722;</i>我的店铺</td><br/>
-                </tr>
-                <tr class="success">
-                    <td colspan="2">
-                        <h5><i class="iconfont">&#xe61a;</i>店铺管理</h5>
-                        <span class="seller_shop mr-25"><a href="seller_register.html">店铺注册</a></span>
-                        <span class="seller_shop mr-25 login"><a href="#" class="shop_login">登录店铺</a></span>
-                    </td>
-                </tr>
-                <tr class="warning">
-                    <td colspan="2">
-                        <h5><i class="iconfont">&#xe6db;</i>商品管理</h5>
-                        <span class="seller_shop mr-25"><a href="#">新品上架</a></span>
-                        <span class="seller_shop mr-25"><a href="#">售出商品</a></span>
-                        <span class="seller_shop mr-25"><a href="#">库存商品</a></span>
-                    </td>
-                </tr>
-                <tr class="danger">
-                    <td colspan="2">
-                        <h5><i class="iconfont">&#xe626;</i>交易管理</h5>
-                        <span class="seller_shop mr-15"><a href="#">已签收订单</a></span>
-                        <span class="seller_shop mr-15"><a href="#">未签收订单</a></span>
-                        <span class="seller_shop mr-15"><a href="#">待发货订单</a></span>
-                    </td>
-                </tr>
-                <tr class="info">
-                    <td colspan="2">
-                        <h5><i class="iconfont">&#xe6a3;</i>客服中心</h5>
-                        <span class="seller_shop mr-25"><a href="#">退款管理</a></span>
-                        <span class="seller_shop mr-25"><a href="#">售后服务</a></span>
-                        <span class="seller_shop mr-25"><a href="#">咨询回复</a></span>
-                    </td>
-                </tr>
-            </table>
+
+<div class="container-fluid row">
+    <div class="col-md-2"></div>
+    <div class="col-md-1 border-one border-r6 mt-40">
+        <table class="table">
+            <tr class="active">
+                <td colspan="2"><i class="iconfont">&#xe722;</i>我的店铺</td><br/>
+            </tr>
+            <tr class="success">
+                <td colspan="2">
+                    <h5><i class="iconfont">&#xe61a;</i>店铺管理</h5>
+                    <span class="seller_shop mr-5"><a href="seller_register.html">店铺注册</a></span>
+                    <span class="seller_shop mr-5 login"><a href="#" class="shop_login">登录店铺</a></span>
+                    <span class="seller_shop mr-5 login"><a href="#">修改信息</a></span>
+                </td>
+            </tr>
+            <tr class="warning">
+                <td colspan="2">
+                    <h5><i class="iconfont">&#xe6db;</i>商品管理</h5>
+                    <span class="seller_shop mr-5"><a href="xpsj.html">新品上架</a></span>
+                    <span class="seller_shop mr-5"><a href="#">售出商品</a></span>
+                    <span class="seller_shop mr-5"><a href="ckkc.html">库存商品</a></span>
+                </td>
+            </tr>
+            <tr class="danger">
+                <td colspan="2">
+                    <h5><i class="iconfont">&#xe626;</i>交易管理</h5>
+                    <span class="seller_shop mr-5"><a href="#">已签收订单</a></span>
+                    <span class="seller_shop mr-5"><a href="#">未签收订单</a></span>
+                    <span class="seller_shop mr-5"><a href="#">待发货订单</a></span>
+                </td>
+            </tr>
+            <tr class="info">
+                <td colspan="2">
+                    <h5><i class="iconfont">&#xe6a3;</i>客服中心</h5>
+                    <span class="seller_shop mr-5"><a href="#">退款管理</a></span>
+                    <span class="seller_shop mr-5"><a href="#">售后服务</a></span>
+                    <span class="seller_shop mr-5"><a href="#">咨询回复</a></span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md-6 row border-one border-radius mt-40 ml-30">
+        <div class="mt-20">
+            <a href="#">卖家中心</a>
+            <span>&gt;</span>
+            <a href="#">登录店铺</a>
+            <span>&gt;</span>
+            <span>修改店铺信息</span>
+            <hr/>
         </div>
-        <div class="col-md-9 border-one border-radius mt-40 ml-30 wh">
-            <div class="form_fade border-one border-radius">
-                <form class="mt-40">
-                    <div class="form-group mb-5">
-                        <label for="shop_name">店铺名</label>
-                        <input type="text" class="form-control" id="shop_name"  placeholder="您注册的店铺名">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">密码</label>
-                        <input type="password" class="form-control" id="password" placeholder="设置您的登录密码">
-                    </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-default mr-88 fadeout">登录</button>
-                    </div>
-                </form>
+        <div class="col-md-4">
+            <form action="#" method="post">
+                <div><span class="text-size">卖家姓名:</span><input class="border-two mt-20 ml-5 bg-info" type="text" value=""></div>
+                <div><span class="text-size">社团名称:</span><input class="border-two mt-20 ml-5 bg-success" type="text" value=""></div>
+                <div><span class="text-size">店铺名称:</span><input class="border-two mt-20 ml-5 bg-warning" type="text" value=""></div>
+                <div><span class="text-size">学生学号:</span><input class="border-two mt-20 ml-5 bg-info" type="text" value=""></div>
+                <div><span class="text-size">手机号码:</span><input class="border-two mt-20 ml-5 bg-success" type="text" value=""></div>
+                <div><span class="text-size">登录密码:</span><input class="border-two mt-20 ml-5 bg-warning" type="text" value=""></div>
+                <div><span class="text-size">修改密码:</span><input class="border-two mt-20 ml-5 bg-danger" type="text" value=""></div>
+                <div><input type="button" class=" mt-20 ml-5 btn-success btn-lg" value="提交修改信息"></div>
+            </form>
+        </div>
+        <div class="col-md-6 ml-30">
+
+
+            <!--this is the shop login form begin-->
+            <div class="col-md-3">
+                <div class="form_fade border-one border-r6 mt-40">
+                    <form class="mt-40">
+                        <div class="form-group mb-5">
+                            <label for="shop_name">店铺名</label>
+                            <input type="text" class="form-control" id="shop_name"  placeholder="您注册的店铺名">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">密码</label>
+                            <input type="password" class="form-control" id="password" placeholder="输入您的登录密码">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-default mr-88 fadeout">登录</button>
+                        </div>
+                    </form>
+                </div>
             </div>
+            <!--this is the shop login form end-->
+
+
         </div>
     </div>
+    <div class="col-md-1"></div>
 </div>
+
+
 
 
 <!--This is the common footer Begin-->
@@ -185,7 +219,7 @@
 <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function(){
-        $("a.shop_login").click(function(){
+        $(".shop_login").click(function(){
             $(".form_fade").fadeIn();
 
         });

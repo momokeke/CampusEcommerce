@@ -17,13 +17,25 @@ ul{
 }
 .form_fade{
     width: 200px;
-    margin:40px 240px;
     display: none;
 }
-.border-radius{
+.border-r6{
     border-radius: 0.6em;
 }
-.wh{
-    width: 722px;
-    height: 421px;
+.border-two{
+    border: solid 1px grey;
+    border-radius: 0.2em;
+    border:none;
+    height: 35px;
+}
+.new-pro-img{
+    width: 160px;
+    height: 150px;
+}
+.text-size{
+    font-size: 20px;
+    color: grey;
+}
+.border-3{
+    width: 90px;
 }
