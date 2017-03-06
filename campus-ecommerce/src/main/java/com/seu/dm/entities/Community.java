@@ -5,9 +5,7 @@ public class Community {
 
     private String name;
 
-    private Integer headerId;
-
-    private Integer productId;
+    private String sellerId;
 
     public Integer getId() {
         return id;
@@ -25,19 +23,11 @@ public class Community {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getHeaderId() {
-        return headerId;
+    public String getSellerId() {
+        return sellerId;
     }
 
-    public void setHeaderId(Integer headerId) {
-        this.headerId = headerId;
-    }
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
+    public void setSellerId(String sellerId) {
+        this.sellerId = sellerId == null ? null : sellerId.trim();
     }
 }

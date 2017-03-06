@@ -2,18 +2,16 @@ package com.seu.dm.entities;
 
 import java.util.Date;
 
-public class User {
+public class Buyer {
     private Integer id;
 
     private String name;
 
+    private String password;
+
     private String email;
 
     private Date createTime;
-
-    private String sex;
-
-    private Date birthdate;
 
     private String address;
 
@@ -39,6 +37,14 @@ public class User {
         this.name = name == null ? null : name.trim();
     }
 
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
+    }
+
     public String getEmail() {
         return email;
     }
@@ -53,22 +59,6 @@ public class User {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
-    }
-
-    public Date getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(Date birthdate) {
-        this.birthdate = birthdate;
     }
 
     public String getAddress() {
