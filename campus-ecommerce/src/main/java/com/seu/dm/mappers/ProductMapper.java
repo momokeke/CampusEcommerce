@@ -26,5 +26,5 @@ public interface ProductMapper {
 
     List<Product> getResultsByCategory(String s);
 
-    BigDecimal getPriceById(Integer id);
+    BigDecimal  getPriceById(Integer id);
 }
