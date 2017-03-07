@@ -11,12 +11,21 @@
     font-size:30px;
 }
 
+.font-bigger{
+    font-size: 50px;
+}
 .font-white{
     color:white;
+}
+.font-green{
+    color: #6cc680;
 }
 
 .float-right{
     float:right;
+}
+.float-left{
+    float:left;
 }
 
 .font-bold{
@@ -27,6 +36,9 @@
     color:red;
 }
 
+.font-black{
+    color: #0f0f0f;
+}
 .font-grey{
     color:grey;
 }
@@ -64,6 +76,9 @@
 .mb-200{
     margin-bottom: 200px;
 }
+.mb-40{
+    margin-bottom: 40px;
+}
 .mb-10{
     margin-bottom:10px;
 }
@@ -72,6 +87,9 @@
 }
 .mt-20{
     margin-top:20px;
+}
+.mt-40{
+    margin-top: 40px;
 }
 .mt-150{
     margin-top: 150px;
@@ -99,6 +117,9 @@
 }
 .ml-5{
     margin-left: 5px;
+}
+.ml-10{
+    margin-left: 10px;
 }
 .ml-30{
     margin-left: 30px;
@@ -189,6 +210,18 @@
 .logo_wh{
     width:100px;
     height:70px;
+}
+.border-right{
+    border-right:1px solid #c8c8c8;
+}
+.bk-white{
+    background-color: white;
+}
+.pb-50{
+    padding-bottom: 50px;
+}
+.font-black{
+    color: black;
 }
 /* Website Top end*/
 

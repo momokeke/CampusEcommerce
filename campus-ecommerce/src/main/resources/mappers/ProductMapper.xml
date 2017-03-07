@@ -5,21 +5,19 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="price" jdbcType="DECIMAL" property="price" />
-    <result column="category" jdbcType="VARCHAR" property="category" />
     <result column="seller_id" jdbcType="INTEGER" property="sellerId" />
     <result column="year" jdbcType="VARCHAR" property="year" />
-    <result column="sex" jdbcType="VARCHAR" property="sex" />
     <result column="keywords" jdbcType="VARCHAR" property="keywords" />
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
-    <result column="modify_admin_id" jdbcType="INTEGER" property="modifyAdminId" />
-    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="quantity" jdbcType="INTEGER" property="quantity" />
+    <result column="is_discount" jdbcType="VARCHAR" property="isDiscount" />
+    <result column="discount_price" jdbcType="DECIMAL" property="discountPrice" />
   </resultMap>
-    <resultMap id="ResultMapWithBLOBs" type="com.seu.dm.entities.Product" extends="BaseResultMap" >
-        <result column="description" property="description" jdbcType="LONGVARCHAR" />
-    </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.seu.dm.entities.Product">
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+  </resultMap>
   <sql id="Base_Column_List">
-    id, name, price, category, seller_id, year, sex, keywords, add_time, modify_admin_id, 
-    modify_time
+    id, name, price, seller_id, year, keywords, add_time, quantity, is_discount, discount_price
   </sql>
   <sql id="Blob_Column_List">
     description
@@ -32,28 +30,35 @@
     from product
     where id = #{id,jdbcType=INTEGER}
   </select>
-    <select id="getProductsByName" parameterType="java.lang.String" resultMap="BaseResultMap">
-        SELECT * FROM product
-        where name LIKE concat('%',#{s},'%')
-    </select>
-    <select id="getMaleCount">
-        SELECT COUNT * FROM product
-        where sex = '女';
-    </select>
+  <select id="getProductsByName" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select * from product
+    WHERE NAME LIKE concat('%',#{s},'%');
+  </select>
+  <select id="getCountOfResultsByName" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select COUNT(*) from product
+    WHERE NAME LIKE concat('%',#{s},'%')
+  </select>
+  <select id="getResultsByCategory" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    SELECT * FROM product
+    WHERE category = #{s}
+  </select>
+  <select id="getPriceById" parameterType="java.lang.Integer" resultType="java.math.BigDecimal">
+    SELECT price from product
+    where id = #{id}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from product
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.seu.dm.entities.Product">
-    insert into product(id, name, price,
-    category, seller_id, year,
-    sex, keywords, add_time,
-    modify_admin_id, modify_time, description
-    ) values(#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL},
-    #{category,jdbcType=VARCHAR}, #{sellerId,jdbcType=INTEGER}, #{year,jdbcType=VARCHAR},
-    #{sex,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP},
-    #{modifyAdminId,jdbcType=INTEGER}, #{modifyTime,jdbcType=TIMESTAMP}, #{description,jdbcType=LONGVARCHAR}
-)
+    insert into product (id, name, price, 
+      seller_id, year, keywords, 
+      add_time, quantity, is_discount, 
+      discount_price, description)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{sellerId,jdbcType=INTEGER}, #{year,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, 
+      #{addTime,jdbcType=TIMESTAMP}, #{quantity,jdbcType=INTEGER}, #{isDiscount,jdbcType=VARCHAR}, 
+      #{discountPrice,jdbcType=DECIMAL}, #{description,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.seu.dm.entities.Product">
     insert into product
@@ -67,17 +72,11 @@
       <if test="price != null">
         price,
       </if>
-      <if test="category != null">
-        category,
-      </if>
       <if test="sellerId != null">
         seller_id,
       </if>
       <if test="year != null">
         year,
-      </if>
-      <if test="sex != null">
-        sex,
       </if>
       <if test="keywords != null">
         keywords,
@@ -85,11 +84,14 @@
       <if test="addTime != null">
         add_time,
       </if>
-      <if test="modifyAdminId != null">
-        modify_admin_id,
+      <if test="quantity != null">
+        quantity,
       </if>
-      <if test="modifyTime != null">
-        modify_time,
+      <if test="isDiscount != null">
+        is_discount,
+      </if>
+      <if test="discountPrice != null">
+        discount_price,
       </if>
       <if test="description != null">
         description,
@@ -105,17 +107,11 @@
       <if test="price != null">
         #{price,jdbcType=DECIMAL},
       </if>
-      <if test="category != null">
-        #{category,jdbcType=VARCHAR},
-      </if>
       <if test="sellerId != null">
         #{sellerId,jdbcType=INTEGER},
       </if>
       <if test="year != null">
         #{year,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null">
-        #{sex,jdbcType=VARCHAR},
       </if>
       <if test="keywords != null">
         #{keywords,jdbcType=VARCHAR},
@@ -123,83 +119,81 @@
       <if test="addTime != null">
         #{addTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="modifyAdminId != null">
-        #{modifyAdminId,jdbcType=INTEGER},
+      <if test="quantity != null">
+        #{quantity,jdbcType=INTEGER},
       </if>
-      <if test="modifyTime != null">
-        #{modifyTime,jdbcType=TIMESTAMP},
+      <if test="isDiscount != null">
+        #{isDiscount,jdbcType=VARCHAR},
+      </if>
+      <if test="discountPrice != null">
+        #{discountPrice,jdbcType=DECIMAL},
       </if>
       <if test="description != null">
         #{description,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-    <update id="updateByPrimaryKeySelective" parameterType="com.seu.dm.entities.Product" >
-        update product
-        <set >
-            <if test="name != null" >
-                name = #{name,jdbcType=VARCHAR},
-            </if>
-            <if test="price != null" >
-                price = #{price,jdbcType=DECIMAL},
-            </if>
-            <if test="category != null" >
-                category = #{category,jdbcType=VARCHAR},
-            </if>
-            <if test="sellerId != null" >
-                seller_id = #{sellerId,jdbcType=INTEGER},
-            </if>
-            <if test="year != null" >
-                year = #{year,jdbcType=VARCHAR},
-            </if>
-            <if test="sex != null" >
-                sex = #{sex,jdbcType=VARCHAR},
-            </if>
-            <if test="keywords != null" >
-                keywords = #{keywords,jdbcType=VARCHAR},
-            </if>
-            <if test="addTime != null" >
-                add_time = #{addTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="modifyAdminId != null" >
-                modify_admin_id = #{modifyAdminId,jdbcType=INTEGER},
-            </if>
-            <if test="modifyTime != null" >
-                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
-            </if>
-            <if test="description != null" >
-                description = #{description,jdbcType=LONGVARCHAR},
-            </if>
-        </set>
-        where id = #{id,jdbcType=INTEGER}
-    </update>
-    <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.seu.dm.entities.Product" >
-        update product
-        set name = #{name,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKeySelective" parameterType="com.seu.dm.entities.Product">
+    update product
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
         price = #{price,jdbcType=DECIMAL},
-        category = #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerId != null">
         seller_id = #{sellerId,jdbcType=INTEGER},
+      </if>
+      <if test="year != null">
         year = #{year,jdbcType=VARCHAR},
-        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="keywords != null">
         keywords = #{keywords,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
         add_time = #{addTime,jdbcType=TIMESTAMP},
-        modify_admin_id = #{modifyAdminId,jdbcType=INTEGER},
-        modify_time = #{modifyTime,jdbcType=TIMESTAMP},
-        description = #{description,jdbcType=LONGVARCHAR}
-        where id = #{id,jdbcType=INTEGER}
-    </update>
-    <update id="updateByPrimaryKey" parameterType="com.seu.dm.entities.Product" >
-        update product
-        set name = #{name,jdbcType=VARCHAR},
-        price = #{price,jdbcType=DECIMAL},
-        category = #{category,jdbcType=VARCHAR},
-        seller_id = #{sellerId,jdbcType=INTEGER},
-        year = #{year,jdbcType=VARCHAR},
-        sex = #{sex,jdbcType=VARCHAR},
-        keywords = #{keywords,jdbcType=VARCHAR},
-        add_time = #{addTime,jdbcType=TIMESTAMP},
-        modify_admin_id = #{modifyAdminId,jdbcType=INTEGER},
-        modify_time = #{modifyTime,jdbcType=TIMESTAMP}
-        where id = #{id,jdbcType=INTEGER}
-    </update>
+      </if>
+      <if test="quantity != null">
+        quantity = #{quantity,jdbcType=INTEGER},
+      </if>
+      <if test="isDiscount != null">
+        is_discount = #{isDiscount,jdbcType=VARCHAR},
+      </if>
+      <if test="discountPrice != null">
+        discount_price = #{discountPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.seu.dm.entities.Product">
+    update product
+    set name = #{name,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      seller_id = #{sellerId,jdbcType=INTEGER},
+      year = #{year,jdbcType=VARCHAR},
+      keywords = #{keywords,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      quantity = #{quantity,jdbcType=INTEGER},
+      is_discount = #{isDiscount,jdbcType=VARCHAR},
+      discount_price = #{discountPrice,jdbcType=DECIMAL},
+      description = #{description,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.seu.dm.entities.Product">
+    update product
+    set name = #{name,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      seller_id = #{sellerId,jdbcType=INTEGER},
+      year = #{year,jdbcType=VARCHAR},
+      keywords = #{keywords,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      quantity = #{quantity,jdbcType=INTEGER},
+      is_discount = #{isDiscount,jdbcType=VARCHAR},
+      discount_price = #{discountPrice,jdbcType=DECIMAL}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
 </mapper>

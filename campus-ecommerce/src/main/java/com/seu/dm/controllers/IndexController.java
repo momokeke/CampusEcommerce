@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
  * Created by Greeting on 2017/2/28.
+ * 首页
  */
 @Controller
 public class IndexController {

@@ -1,8 +1,8 @@
 package com.seu.dm.mappers;
 
 import com.seu.dm.entities.Product;
-import org.apache.ibatis.annotations.Insert;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 public interface ProductMapper {
@@ -21,7 +21,10 @@ public interface ProductMapper {
     int updateByPrimaryKey(Product record);
 
     List<Product> getProductsByName(String s);
-    int getCountOfResults(String text);
 
-    int getMaleCount();
+    int getCountOfResultsByName(String s);
+
+    List<Product> getResultsByCategory(String s);
+
+    BigDecimal getPriceById(Integer id);
 }

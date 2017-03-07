@@ -10,23 +10,41 @@ public class Product {
 
     private BigDecimal price;
 
-    private String category;
-
     private Integer sellerId;
 
     private String year;
-
-    private String sex;
 
     private String keywords;
 
     private Date addTime;
 
-    private Integer modifyAdminId;
+    private Integer quantity;
 
-    private Date modifyTime;
+    private String isDiscount;
+
+    private BigDecimal discountPrice;
 
     private String description;
+
+    private String category;
+
+    private Integer pictureId;
+
+    public Integer getPictureId() {
+        return pictureId;
+    }
+
+    public void setPictureId(Integer pictureId) {
+        this.pictureId = pictureId;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
 
     public Integer getId() {
         return id;
@@ -52,14 +70,6 @@ public class Product {
         this.price = price;
     }
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category == null ? null : category.trim();
-    }
-
     public Integer getSellerId() {
         return sellerId;
     }
@@ -74,14 +84,6 @@ public class Product {
 
     public void setYear(String year) {
         this.year = year == null ? null : year.trim();
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex == null ? null : sex.trim();
     }
 
     public String getKeywords() {
@@ -100,20 +102,28 @@ public class Product {
         this.addTime = addTime;
     }
 
-    public Integer getModifyAdminId() {
-        return modifyAdminId;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setModifyAdminId(Integer modifyAdminId) {
-        this.modifyAdminId = modifyAdminId;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
-    public Date getModifyTime() {
-        return modifyTime;
+    public String getIsDiscount() {
+        return isDiscount;
     }
 
-    public void setModifyTime(Date modifyTime) {
-        this.modifyTime = modifyTime;
+    public void setIsDiscount(String isDiscount) {
+        this.isDiscount = isDiscount == null ? null : isDiscount.trim();
+    }
+
+    public BigDecimal getDiscountPrice() {
+        return discountPrice;
+    }
+
+    public void setDiscountPrice(BigDecimal discountPrice) {
+        this.discountPrice = discountPrice;
     }
 
     public String getDescription() {

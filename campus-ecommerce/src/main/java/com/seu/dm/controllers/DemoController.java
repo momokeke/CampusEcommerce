@@ -84,6 +84,9 @@ public class DemoController {
     }
 
 
-
+    @RequestMapping(value = "/aspect")
+    public void testAspect(){
+        demoService.testAspect();
+    }
 
 }

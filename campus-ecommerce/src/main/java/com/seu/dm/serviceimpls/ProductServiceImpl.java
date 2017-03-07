@@ -6,6 +6,8 @@ import com.seu.dm.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.util.DoubleSummaryStatistics;
 import java.util.List;
 
 /**
@@ -16,8 +18,6 @@ public class ProductServiceImpl implements ProductService{
     @Autowired
     private ProductMapper productMapper;
 
-    @Autowired
-    private UserMapper userMapper;
 
     @Override
     public Product findAllProducts() {
@@ -60,20 +60,30 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public Integer getCountOfResults(String s) {
-        Integer i = productMapper.getCountOfResults(s);
+    public int getCountOfResultsByName(String s) {
+        int i = productMapper.getCountOfResultsByName(s );
         return i;
     }
 
     @Override
-    public int getMaleCount() {
-        int i = productMapper.getMaleCount();
+    public int deleteProduct(Integer id) {
+        int i = productMapper.deleteByPrimaryKey(id);
         return i;
     }
 
     @Override
-    public int addUser(User user) {
-        int i = userMapper.insert(user);
+    public int updateProduct(Product product) {
+        int i =productMapper.updateByPrimaryKey(product);
         return i;
+    }
+
+    @Override
+    public List<Product> findProductsByCategory(String s) {
+        return productMapper.getResultsByCategory(s);
+    }
+
+    @Override
+    public BigDecimal getProductPriceById(Integer id) {
+        return productMapper.getPriceById(id);
     }
 }
