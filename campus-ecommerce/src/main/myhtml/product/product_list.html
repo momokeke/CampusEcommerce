@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head >
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- Any Other things should follow these 3 meta above -->
     <title>商品列表页</title>
     <!-- Bootstrap -->
-    <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="../css/common.css" rel="stylesheet">
-    <link href="../css/product_list.css" rel="stylesheet">
+    <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../css/common.css" rel="stylesheet"/>
+    <link href="../css/product_list.css" rel="stylesheet"/>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -40,7 +40,7 @@
             <div class="row">
                 <div class="col-md-3 logo">DaMi</div>
                 <div class="col-md-5 font-bold">
-                    <a class="active" href="#">首页</a>
+                    <a class="active" href="../index.html">首页</a>
                     <a href="#">二手</a>
                     <a href="#">促销</a>
                     <a href="#">秒杀</a>
@@ -48,9 +48,9 @@
                 <div class="col-md-4">
                     <form class="form-inline">
                         <div class="form-group">
-                            <input type="email" class="form-control search" id="exampleInputEmail3" placeholder="关键字">
+                            <input type="email" class="form-control search" name="search" id="exampleInputEmail3" placeholder="关键字">
                         </div>
-                        <button type="submit" class="btn btn-default">搜索</button>
+                        <button type="submit" name="submit" class="btn btn-default">搜索</button>
                     </form>
                 </div>
             </div>
@@ -81,19 +81,21 @@
     <div class="row">
         <div class="col-md-4"> </div>
         <div class="col-md-3">
-            <form action="#" method="post">
-                <a href="#" class="border-one">最新发布</a>
+            <form th:action="@{/product_list.html}" method="post">
+                <a th:href="@{/product_list.html}" class="border-one">最新发布</a>
                 <span class="float-right">
-                    <input type="text" style="height:20px; width: 20px"/>
+                    <input type="text" name="min_price" style="height:20px; width: 20px"/>
                     <span> - </span>
-                    <input type="text" style="height:20px; width: 20px"/>
-                    <input type="submit" class="btn-success" value="价格">
+                    <input type="text" name="max_price" style="height:20px; width: 20px"/>
+                    <input type="submit" name="submit" class="btn-success" value="价格"/>
                 </span>
             </form>
         </div>
         <div class="col-md-5 float-right">
-            <input type="text" placeholder="请输入关键字或商品名">
-            <input type="submit" class="btn-primary" value="搜索">
+            <form th:action="@{/product_list.html}" method="post">
+                <input type="text" name="search" placeholder="请输入关键字或商品名"/>
+                <input type="submit" name="submit" class="btn-primary" value="搜索"/>
+            </form>
         </div>
     </div>
 </div>
