@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <title>商品详情页</title>
 
     <!-- Bootstrap -->
-    <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="../css/product_details.css" rel="stylesheet">
-    <link href="../css/common.css" rel="stylesheet">
-    <link href="../css/index.css" rel="stylesheet">
+    <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/product_details.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/index.css" rel="stylesheet" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
+
+    <![endif]-->
+    <script src="../js/index.js"></script>
+    <script src="../js/common/jquery-3.1.1.min.js"></script>
     <script src="../js/common/html5shiv.min.js"></script>
     <script src="../js/common/respond.min.js"></script>
-    <![endif]-->
 </head>
 <body>
 <div class="container-fluid">
@@ -47,9 +50,9 @@
                     <a href="#">秒杀</a>
                 </div>
                 <div class="col-md-4">
-                    <form class="form-inline">
+                    <form class="form-inline" th:action="@{/product_list.html}">
                         <div class="form-group">
-                            <input type="email" class="form-control search" id="exampleInputEmail3" placeholder="关键字">
+                            <input type="email" name="search" class="form-control search" id="exampleInputEmail3" placeholder="关键字" />
                         </div>
                         <button type="submit" class="btn btn-default">搜索</button>
                     </form>
@@ -81,23 +84,23 @@
             <img src="../img/portraiture.jpg" width="400px" height="400px"/>
         </div>
         <div class="col-md-6">
-            <div class="row"> <h2 class="col-md-12 text-center">赵丽颖肖像画素描画绘画社团颖宝</h2></div>
-            <div class="price mt-30">
-                <div class="row"><div class="col-md-11 col-md-offset-1"><span class="priceone">价格：95</span></div></div>
-                <div class="pricetwo row"><div class="col-md-11 col-md-offset-1"><span>达米价:90</span></div></div>
+            <div class="row"> <h2 class="col-md-12 text-center" th:text="${pruduct.name}">赵丽颖肖像画素描画绘画社团颖宝</h2></div>
+            <div class="price mt-30" >
+                <div class="row"><div class="col-md-11 col-md-offset-1"><span class="priceone">价格：</span><span th:text="${product.discountPrice}" class="priceone">95</span></div></div>
+                <div class="pricetwo row"><div class="col-md-11 col-md-offset-1"><span>达米价:</span><span th:text="*${product.price}">90</span></div></div>
             </div>
         <div class="price">
             <div class="row mt-30 " >
-               <span class="col-md-11 col-md-offset-1" >所属校区：东南大学</span>
+               <span class="col-md-11 col-md-offset-1" >所属校区：<span th:text="${buyer.address}">东南大学</span></span>
             </div>
             <div class="row mt-30 " >
-                <span class="col-md-11 col-md-offset-1" >联系方式:130629023**</span>
+                <span class="col-md-11 col-md-offset-1" >联系方式:<span th:text="${seller.mobile}">130629023**</span></span>
             </div>
             <div class="row mt-30">
                 <div class="col-md-2 col-md-offset-1  text-danger mt-8">数量</div>
                 <div class="input-group col-md-2">
                     <span class="input-group-addon">+</span>
-                    <input type="text" class="form-control text-center" value="1" style="width: 60px">
+                    <input type="text" class="form-control text-center" value="1" style="width: 60px" />
                     <span class="input-group-addon">-</span>
                 </div>
             </div>
@@ -107,7 +110,7 @@
                 <button class="btn btn-danger col-md-3">
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                     加入购物车</button>
-                <button type="button" class="btn btn-danger float-right mr-15 ">我的购物车 <span class="badge">21</span></button>
+                <button type="button" class="btn btn-danger float-right mr-15 ">我的购物车 <span class="badge">3</span></button>
             </div>
         </div>
     </div>
@@ -122,13 +125,13 @@
     </ul>
     <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade in active font-middle" id="good_details">
-            <span>学的不仅是技术，更是梦想。</span>
+            <span th:text="${product.description}">学的不仅是技术，更是梦想。</span>
             <div class="row" >
                 <div class="col-md-5 col-md-offset-1" >
                     <div class="thumbnail">
                         <img src="../img/portraiture.jpg" height="300px"  width="300px"  alt="色系1"/>
                         <div class="caption">
-                            <span>色系1</span>
+                            <span>详情图1</span>
                         </div>
                     </div>
                 </div>
@@ -136,7 +139,7 @@
                     <div class="thumbnail">
                         <img src="../img/portraiture1.jpg" height="300px" width="300px" alt="色系2"/>
                         <div class="caption">
-                            <span>色系2</span>
+                            <span>详情图2</span>
                         </div>
                     </div>
                 </div>
@@ -146,7 +149,7 @@
                     <div class="thumbnail">
                         <img src="../img/portraiture2.jpg" height="300px" width="300px" alt="色系3"/>
                         <div class="caption">
-                            <span>色系3</span>
+                            <span>详情图3</span>
                         </div>
                     </div>
                 </div>
@@ -154,7 +157,7 @@
                     <div class="thumbnail">
                         <img src="../img/portraiture3.jpg" height="300px" width="300px" alt="色系4"/>
                         <div class="caption">
-                            <span>色系4</span>
+                            <span>详情图4</span>
                         </div>
                     </div>
                 </div>
@@ -164,7 +167,7 @@
                     <div class="thumbnail">
                         <img src="../img/portraiture4.jpg" height="300px" width="300px" alt="色系5"/>
                         <div class="caption">
-                            <span>色系5</span>
+                            <span>详情图5</span>
                         </div>
                     </div>
                 </div>
@@ -172,7 +175,7 @@
                     <div class="thumbnail">
                         <img src="../img/portraiture5.jpg" height="300px" width="300px" alt="色系6"/>
                         <div class="caption">
-                            <span>色系6</span>
+                            <span>详情图6</span>
                         </div>
                     </div>
                 </div>
@@ -182,7 +185,7 @@
                     <div class="thumbnail">
                         <img src="../img/portraiture6.jpg" height="300px" width="300px" alt="色系7"/>
                         <div class="caption">
-                            <span>色系7</span>
+                            <span>详情图7</span>
                         </div>
                     </div>
                 </div>
@@ -190,7 +193,7 @@
                     <div class="thumbnail">
                         <img src="../img/portraiture7.jpg" height="300px" width="300px" alt="色系8"/>
                         <div class="caption">
-                            <span>色系8</span>
+                            <span>详情图8</span>
                         </div>
                     </div>
                 </div>
@@ -198,10 +201,8 @@
         </div>
         <div class="tab-pane fade" id="comments">
             <dl class="dl-horizontal font-middle">
-                <dt>刘*明</dt>
-                <dd>画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买</dd>
-                <dt>张*敏</dt>
-                <dd>画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。</dd>
+                <dt th:text="${buyer.name}" id="buyername">刘小明</dt>
+                <dd th:text="${comment.text}">画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。</dd>
             </dl>
             <div class="row">
                 <div class="col-md-12" style="text-align: center ">
