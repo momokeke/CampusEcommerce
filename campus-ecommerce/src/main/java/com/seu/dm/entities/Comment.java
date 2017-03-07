@@ -7,7 +7,19 @@ public class Comment {
 
     private Integer buyerId;
 
+    private Integer orderId;
+
     private String text;
+
+    private Seller seller;
+
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
+    }
 
     public Integer getId() {
         return id;
@@ -31,6 +43,14 @@ public class Comment {
 
     public void setBuyerId(Integer buyerId) {
         this.buyerId = buyerId;
+    }
+
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 
     public String getText() {

@@ -20,31 +20,19 @@ public class Product {
 
     private Integer quantity;
 
-    private String isDiscount;
+    private Boolean isDiscount;
 
     private BigDecimal discountPrice;
-
-    private String description;
 
     private String category;
 
     private Integer pictureId;
 
-    public Integer getPictureId() {
-        return pictureId;
-    }
+    private Boolean isDeleted;
 
-    public void setPictureId(Integer pictureId) {
-        this.pictureId = pictureId;
-    }
+    private Boolean isShelf;
 
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
+    private String description;
 
     public Integer getId() {
         return id;
@@ -110,12 +98,12 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public String getIsDiscount() {
+    public Boolean getIsDiscount() {
         return isDiscount;
     }
 
-    public void setIsDiscount(String isDiscount) {
-        this.isDiscount = isDiscount == null ? null : isDiscount.trim();
+    public void setIsDiscount(Boolean isDiscount) {
+        this.isDiscount = isDiscount;
     }
 
     public BigDecimal getDiscountPrice() {
@@ -124,6 +112,38 @@ public class Product {
 
     public void setDiscountPrice(BigDecimal discountPrice) {
         this.discountPrice = discountPrice;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category == null ? null : category.trim();
+    }
+
+    public Integer getPictureId() {
+        return pictureId;
+    }
+
+    public void setPictureId(Integer pictureId) {
+        this.pictureId = pictureId;
+    }
+
+    public Boolean getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Boolean isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
+    public Boolean getIsShelf() {
+        return isShelf;
+    }
+
+    public void setIsShelf(Boolean isShelf) {
+        this.isShelf = isShelf;
     }
 
     public String getDescription() {

@@ -50,7 +50,7 @@ public class ProductController {
         Product product =productService.findProduct(id);
         model.addAttribute("product",product);
         System.out.println("OK");
-        return "/index";
+        return "/productDetails";
     }
 
     /**
@@ -67,7 +67,7 @@ public class ProductController {
         }
         model.addAttribute("products",products);
        // System.out.println("ok");
-        return "/index";
+        return "/productDetails";
     }
 
     /**
@@ -94,7 +94,7 @@ public class ProductController {
         BigDecimal price = productService.getProductPriceById(id);
         System.out.println(price);
         model.addAttribute("price",price);
-        return "";
+        return "/productDetails";
     }
 
 

@@ -6,7 +6,7 @@ import java.util.Date;
 public class Order {
     private Integer id;
 
-    private Integer oederInfoId;
+    private Integer oederProductId;
 
     private Integer userId;
 
@@ -16,6 +16,14 @@ public class Order {
 
     private BigDecimal totalPrice;
 
+    private Integer shopId;
+
+    private String status;
+
+    private Integer payId;
+
+    private Integer commentId;
+
     public Integer getId() {
         return id;
     }
@@ -24,12 +32,12 @@ public class Order {
         this.id = id;
     }
 
-    public Integer getOederInfoId() {
-        return oederInfoId;
+    public Integer getOederProductId() {
+        return oederProductId;
     }
 
-    public void setOederInfoId(Integer oederInfoId) {
-        this.oederInfoId = oederInfoId;
+    public void setOederProductId(Integer oederProductId) {
+        this.oederProductId = oederProductId;
     }
 
     public Integer getUserId() {
@@ -62,5 +70,37 @@ public class Order {
 
     public void setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public Integer getShopId() {
+        return shopId;
+    }
+
+    public void setShopId(Integer shopId) {
+        this.shopId = shopId;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
+    }
+
+    public Integer getPayId() {
+        return payId;
+    }
+
+    public void setPayId(Integer payId) {
+        this.payId = payId;
+    }
+
+    public Integer getCommentId() {
+        return commentId;
+    }
+
+    public void setCommentId(Integer commentId) {
+        this.commentId = commentId;
     }
 }
