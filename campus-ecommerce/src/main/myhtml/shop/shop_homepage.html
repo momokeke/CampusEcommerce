@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Any Other things should follow these 3 meta above -->
     <title>店铺主页</title>
     <!-- Bootstrap -->
-    <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet">
-    <link href="../css/common.css" rel="stylesheet">
-    <link href="../css/shop_homepage.css" rel="stylesheet">
+    <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/shop_homepage.css" rel="stylesheet" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -40,11 +40,13 @@
          <div class="col-md-3">
              <h3>店铺名称<small>社团名称</small></h3>
          </div>
-         <div class="mt-20 float-right">
-             <input type="text" class="homepage_search" placeholder="请输入宝贝名称"/>
-             <button type="button" class="btn btn-primary">搜本店</button>
-             <button type="button" class="btn btn-primary">搜全网</button>
-         </div>
+         <form th:action="@{/product_list.html}">
+             <div class="mt-20 float-right">
+                 <input type="text" name="search" class="homepage_search" placeholder="请输入宝贝名称"/>
+                 <button type="button" class="btn btn-primary">搜本店</button>
+                 <button type="button" class="btn btn-primary">搜全网</button>
+             </div>
+         </form>
     </div>
 </div>
 <div class="container-fluid"  style="padding: 0px">
