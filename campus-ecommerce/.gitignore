@@ -26,6 +26,9 @@ nbdist/
 ### Our Config ###
 src/main/resources/application.properties
 
-### for html   ###
+### for myhtml   ###
 !src/main/myhtml/bootstrap/dist
 src/main/myhtml/bootstrap/js/tests
+
+### for html     ###
+!src/main/resources/static/bootstrap/dist

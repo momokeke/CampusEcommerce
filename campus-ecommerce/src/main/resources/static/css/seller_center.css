@@ -1,0 +1,40 @@
+.seller_logo{
+    font-family: 楷体;
+    font-size: 50px;
+    font-weight: bold;
+    color:#3d9970;
+}
+.seller_center{
+    font-family: 微软雅黑;
+    font-weight: bold;
+    font-size: 25px;
+}
+ul{
+    list-style: none;
+}
+.seller_shop{
+    font-size: 12px;
+}
+.form_fade{
+    width: 200px;
+    display: none;
+}
+.border-r6{
+    border-radius: 0.6em;
+}
+.border-two{
+    border: solid 1px grey;
+    border-radius: 0.2em;
+    height: 35px;
+}
+.new-pro-img{
+    width: 160px;
+    height: 150px;
+}
+.text-size{
+    font-size: 20px;
+    color: grey;
+}
+.border-3{
+    width: 90px;
+}

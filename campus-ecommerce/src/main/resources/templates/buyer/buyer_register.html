@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- Any Other things should follow these 3 meta above -->
+    <title>达米买家注册</title>
+    <!-- Bootstrap -->
+    <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../css/common.css" rel="stylesheet"/>
+    <link href="../css/buyer_register.css" rel="stylesheet"/>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../js/common/html5shiv.min.js"></script>
+    <script src="../js/common/respond.min.js"></script>
+    <script src="../js/register.js"></script>
+    <![endif]-->
+    <script src="../js/register.js"></script>
+    <script src="../js/common/html5shiv.min.js"></script>
+    <script src="../js/common/respond.min.js"></script>
+</head>
+<body>
+<!-- This is the Top for register Begin -->
+<div class="container-fluid ">
+    <div class="row top_back_color">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-center mt-40 mb-40">
+            <span class="reg_logo font-big font-bold font-white">达米DaMi  欢迎您注册为买家</span>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+<div class="container">
+    <div class="row back_img">
+        <div class="col-md-4"></div>
+        <div class="col-md-4  ml-30" style="width: 350px">
+            <form class="mb-10 mt-120 border-one form-border" th:action="@{/buyer_center.html}" th:object="@{buyer}">
+                <div class="form-group mb-5">
+                    <label for="name">用户名</label>
+                    <input type="text" class="form-control" th:value="${buyer.name}" name="name" id="name"  placeholder="您注册的用户名" onclick="checkbname()"/><span></span>
+                </div>
+                <div class="form-group">
+                    <label for="card">一卡通学号</label>
+                    <input type="text" class="form-control" th:value="${buyer.student_number}" name="student_number" id="card" placeholder="请输入您的一卡通账号" onclick="checkcard()"/><span></span>
+                </div>
+                <div class="form-group">
+                    <label for="password">密码</label>
+                    <input type="password" class="form-control" th:value="${buyer.password}" name="password" id="password" placeholder="设置您的登录密码" onclick="checkpass()"/><span></span>
+                </div>
+                <div class="form-group">
+                    <label for="re_password">重复密码</label>
+                    <input type="password" class="form-control" th:value="${buyer.password}" name="password" id="re_password" placeholder="请再次输入您的密码" onclick="recheckpass()"/><span></span>
+                </div>
+                <div class="form-group">
+                    <label for="mobile">手机号</label>
+                    <input type="text" class="form-control" th:value="${buyer.mobile}" name="mobile" id="mobile" placeholder="输入您的11位手机号" onclick="checkphone()"/>
+                </div>
+                <div class="form-group">
+                    <label for="email">邮箱</label>
+                    <input type="email" class="form-control" th:value="${buyer.email}" name="email" id="email" placeholder="请输入邮箱" onclick="checkemail()"/><span></span>
+                </div>
+                <div class="form-group">
+                    <label for="address">学校</label>
+                    <select name="address" id="address" >
+                        <option name="school1">东南大学</option>
+                        <option name="school2">西交利物浦大学</option>
+                        <option name="school3">中科大</option>
+                        <option name="school4">苏州大学</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" name="submit" onsubmit="return checkAll()"  class="btn btn-default">注册</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+
+
+
+
+<!--This is the common footer Begin-->
+<div class="container">
+    <div class="row mt-20 font-small">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+            <div id="footer">
+                <div class="footerNav text-center">
+                    <a href="#">关于我们</a> |
+                    <a href="#">服务条款</a> |
+                    <a href="#">免责声明</a> |
+                    <a href="#">网站地图</a> |
+                    <a href="#">联系我们</a>
+                </div>
+                <div class="copyRight text-center">
+                    Copyright DaMi
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+
+
+
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../js/common/jquery-3.1.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
+<!--This is the common footer End-->

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Any Other things should follow these 3 meta above -->
+    <title>店铺主页</title>
+    <!-- Bootstrap -->
+    <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/shop_homepage.css" rel="stylesheet" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../js/common/html5shiv.min.js"></script>
+    <script src="../js/common/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<!-- this is the common top begin -->
+<div class="container-fluid ">
+    <div class="row top font-small">
+        <div class="col-md-2 col-sm-2"></div>
+        <div class="col-md-8 col-sm-8">
+            当前学校：东南大学
+            <div class="float-right">
+                <a href="#">登录</a>
+                <a href="#">注册</a>
+                <a href="#">我的订单</a>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-2">
+        </div>
+    </div>
+</div>
+<div class="container">
+     <div class="row">
+        <a href="../index.html"><img class="col-md-3 logo_wh border-right" src="../img/cute_logo.jpg" style="padding: 0"/></a>
+         <div class="col-md-3">
+             <h3>店铺名称<small>社团名称</small></h3>
+         </div>
+         <form th:action="@{/product_list.html}">
+             <div class="mt-20 float-right">
+                 <input type="text" name="search" class="homepage_search" placeholder="请输入宝贝名称"/>
+                 <button type="button" class="btn btn-primary">搜本店</button>
+                 <button type="button" class="btn btn-primary">搜全网</button>
+             </div>
+         </form>
+    </div>
+</div>
+<div class="container-fluid"  style="padding: 0px">
+    <img src="../img/homepage_top.jpg" class="font-info mt-5"/>
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <ul class="nav nav-pills">
+            <li class="active"><a href="#">本店商品分类</a></li>
+            <li><a href="#">油画</a></li>
+            <li><a href="#">水墨画</a></li>
+            <li><a href="#">水彩画</a></li>
+            <li><a href="#">铅笔画</a></li>
+            <li><a href="#">钢笔画</a></li>
+            <li><a href="#">素描</a></li>
+            <li><a href="#">镶嵌画</a></li>
+        </ul>
+    </div>
+</div>
+<div class="container-fluid shop_bki">
+    <div class="container mt-20 border-one bk-white pb-50">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="text-danger text-center"><h2>本店热销商品</h2></div>
+                <div class="carousel slide" id="carousel-1">
+                    <ol class="carousel-indicators">
+                        <li class="active" data-slide-to="0" data-target="#carousel-1">
+                        </li>
+                        <li data-slide-to="1" data-target="#carousel-1">
+                        </li>
+                        <li data-slide-to="2" data-target="#carousel-1">
+                        </li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img alt="" src="../img/homepage_paint1.png" />
+                            <div class="carousel-caption">
+                                <h4>
+                                    植物花卉
+                                </h4>
+                                <p>
+                                    焦点图一的描述,焦点图一的描述,焦点图一的描述,焦点图一的描述,焦点图一的描述,
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img alt="" src="../img/homepage_paint2.png" />
+                            <div class="carousel-caption">
+                                <h4>
+                                    墨染艺术
+                                </h4>
+                                <p>
+                                    焦点图二的描述,焦点图二的描述,焦点图二的描述,焦点图二的描述,焦点图二的描述,焦点图二的描述,
+                                </p>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img alt="" src="../img/homepage_paint3.png" />
+                            <div class="carousel-caption">
+                                <h4>
+                                    植物花卉
+                                </h4>
+                                <p>
+                                    焦点图三的描述，焦点图三的描述，焦点图三的描述，焦点图三的描述，焦点图三的描述，
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <a rel="nofollow" class="left carousel-control" href="#carousel-1" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a rel="nofollow" class="right carousel-control" href="#carousel-1" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container bk-white mt-60">
+        <div class="row mt-40">
+            <div class="col-md-8">
+                <a href="#"><img class="graph1-size" src="../img/good_cla_shuicai.png"/></a>
+                <div class="font-big font-bold cla_font1"><a class="font-white ">水彩画</a></div>
+            </div>
+           <div class="col-md-4">
+               <a img="#"><img class="graph2-size" src="../img/good_cla_youhua.png"/></a>
+               <div class="font-big font-bold cla_font2"><a class="font-white">油画</a></div>
+           </div>
+        </div>
+        <div class="row mt-20 pb-50">
+            <div class="col-md-4">
+                <a img="#"><img class="graph3-size" src="../img/good_cla_shuimohua.jpg" /></a>
+                <div class="font-big font-bold cla_font3"><a class="font-black">水墨画</a></div>
+            </div>
+            <div class="col-md-4">
+                <a img="#"><img class="graph4-size" src="../img/good_cla_sumiao.jpg"/></a>
+                <div class="font-big font-bold cla_font4"><a class="font-black">素描</a></div>
+            </div>
+            <div class="col-md-4">
+                <a img="#"><img class="graph5-size" src="../img/good_cla_xiangqianhua.jpg"/></a>
+                <div class="font-big font-bold cla_font5"><a class="font-black">镶嵌画</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!--This is the common footer Begin-->
+<div class="container-fluid mt-60">
+    <div class="row">
+        <div class="col-md-12 footer-info">
+            <div class="col-md-2 col-md-offset-3 mt-40 "><img src="../img/logo_button_1.jpg"/></div>
+            <div class="col-md-3 mt-40 "><img src="../img/logo_button_2.jpg " /><br/><span class="font-grey" >一家专门做校园文化产品的网站</span></div>
+            <div class="col-md-4 mt-60"><img class="qr-code"  src="../img/qr_code.png "/><br/><div class="mt-20 ">扫码有惊喜哦</div></div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row mt-20 font-small">
+        <div class="col-md-2 col-sm-2"></div>
+        <div class="col-md-8 col-sm-8">
+            <div id="footer">
+                <div class="footerNav text-center">
+                    <a href="#">关于我们</a> |
+                    <a href="#">服务条款</a> |
+                    <a href="#">免责声明</a> |
+                    <a href="#">网站地图</a> |
+                    <a href="#">联系我们</a>
+                </div>
+                <div class="copyRight text-center">
+                    Copyright DaMi
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../js/common/jquery-3.1.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
+<!--

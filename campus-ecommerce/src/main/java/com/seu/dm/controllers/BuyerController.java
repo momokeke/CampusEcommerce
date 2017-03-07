@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * Created by 张老师 on 2017/3/3.
  */
+
 @Controller
 public class BuyerController {
     @Autowired
