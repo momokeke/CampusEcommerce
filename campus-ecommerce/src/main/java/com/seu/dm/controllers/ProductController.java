@@ -1,9 +1,6 @@
 package com.seu.dm.controllers;
 
-import com.seu.dm.entities.DemoEntity;
 import com.seu.dm.entities.Product;
-import com.seu.dm.entities.User;
-import com.seu.dm.services.DemoService;
 import com.seu.dm.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

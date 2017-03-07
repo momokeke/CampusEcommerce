@@ -1,9 +1,7 @@
 package com.seu.dm.serviceimpls;
 
 import com.seu.dm.entities.Product;
-import com.seu.dm.entities.User;
 import com.seu.dm.mappers.ProductMapper;
-import com.seu.dm.mappers.UserMapper;
 import com.seu.dm.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

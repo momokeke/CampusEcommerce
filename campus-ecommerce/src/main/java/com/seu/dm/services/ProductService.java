@@ -1,8 +1,6 @@
 package com.seu.dm.services;
 
 import com.seu.dm.entities.Product;
-import com.seu.dm.entities.User;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
