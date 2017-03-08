@@ -32,3 +32,4 @@ src/main/myhtml/bootstrap/js/tests
 
 ### for html     ###
 !src/main/resources/static/bootstrap/dist
+!src/main/resources/static/admin/dist
