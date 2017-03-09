@@ -3,6 +3,7 @@ package com.seu.dm.controllers.campusadmin;
 import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.dto.UserBaseDTO;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
@@ -16,7 +17,8 @@ import javax.servlet.http.HttpSession;
 public class IndexController {
     @RequestMapping(value="/")
     @CampusAdminPermission
-    public String index(HttpSession httpSession){
+    public String index(HttpSession httpSession,Model model){
+
         return "/admin/index";
     }
 
