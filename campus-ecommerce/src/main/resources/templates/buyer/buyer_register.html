@@ -7,19 +7,19 @@
     <!-- Any Other things should follow these 3 meta above -->
     <title>达米买家注册</title>
     <!-- Bootstrap -->
-    <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
-    <link href="../css/common.css" rel="stylesheet"/>
-    <link href="../css/buyer_register.css" rel="stylesheet"/>
+    <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/css/common.css" rel="stylesheet"/>
+    <link href="/css/buyer_register.css" rel="stylesheet"/>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="../js/common/html5shiv.min.js"></script>
-    <script src="../js/common/respond.min.js"></script>
-    <script src="../js/register.js"></script>
+    <script src="/js/common/html5shiv.min.js"></script>
+    <script src="/js/common/respond.min.js"></script>
+    <script src="/js/register.js"></script>
     <![endif]-->
-    <script src="../js/register.js"></script>
-    <script src="../js/common/html5shiv.min.js"></script>
-    <script src="../js/common/respond.min.js"></script>
+    <script src="/js/register.js"></script>
+    <script src="/js/common/html5shiv.min.js"></script>
+    <script src="/js/common/respond.min.js"></script>
 </head>
 <body>
 <!-- This is the Top for register Begin -->
@@ -36,7 +36,7 @@
     <div class="row back_img">
         <div class="col-md-4"></div>
         <div class="col-md-4  ml-30" style="width: 350px">
-            <form class="mb-10 mt-120 border-one form-border" th:action="@{/buyer_center.html}" th:object="@{buyer}">
+            <form class="mb-10 mt-120 border-one form-border" th:action="@{/buyer_center}" th:object="@{buyer}">
                 <div class="form-group mb-5">
                     <label for="name">用户名</label>
                     <input type="text" class="form-control" th:value="${buyer.name}" name="name" id="name"  placeholder="您注册的用户名" onclick="checkbname()"/><span></span>
