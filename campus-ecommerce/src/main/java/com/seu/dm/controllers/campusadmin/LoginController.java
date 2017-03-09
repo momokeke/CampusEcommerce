@@ -1,4 +1,4 @@
-package com.seu.dm.controllers.admin.campusadmin;
+package com.seu.dm.controllers.campusadmin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +7,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Created by Greeting on 2017/3/9.
+ * 处理校区管理员登录
  */
 @Controller("/campusadmin/login")
 @RequestMapping(value="/campusadmin/login")

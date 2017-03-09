@@ -1,4 +1,4 @@
-package com.seu.dm.controllers.admin.campusadmin;
+package com.seu.dm.controllers.campusadmin;
 
 import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.dto.UserBaseDTO;
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Created by Greeting on 2017/3/8.
+ * 校区管理员首页
  */
 @Controller("/campusadmin")
 @RequestMapping(value="/campusadmin")

@@ -1,4 +1,4 @@
-package com.seu.dm.controllers.admin.superadmin;
+package com.seu.dm.controllers.superadmin;
 
 import com.seu.dm.annotations.permissions.SuperAdminPermission;
 import com.seu.dm.dto.UserBaseDTO;
@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  * Created by Greeting on 2017/3/9.
+ * 超级管理员首页
  */
 @Controller("/superadmin")
 @RequestMapping(value="/superadmin")
