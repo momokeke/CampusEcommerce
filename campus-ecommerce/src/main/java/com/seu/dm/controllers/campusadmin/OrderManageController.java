@@ -14,6 +14,6 @@ public class OrderManageController {
     @RequestMapping("/")
     @CampusAdminPermission
     public String index(){
-        return "admin/campusadmin/homepage/order";
+        return "admin/campusadmin/order/manage";
     }
 }
