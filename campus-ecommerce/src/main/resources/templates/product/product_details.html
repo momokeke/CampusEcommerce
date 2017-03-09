@@ -8,19 +8,19 @@
     <title>商品详情页</title>
 
     <!-- Bootstrap -->
-    <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-    <link href="../css/product_details.css" rel="stylesheet" />
-    <link href="../css/common.css" rel="stylesheet" />
-    <link href="../css/index.css" rel="stylesheet" />
+    <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/product_details.css" rel="stylesheet" />
+    <link href="/css/common.css" rel="stylesheet" />
+    <link href="/css/index.css" rel="stylesheet" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
 
     <![endif]-->
-    <script src="../js/index.js"></script>
-    <script src="../js/common/jquery-3.1.1.min.js"></script>
-    <script src="../js/common/html5shiv.min.js"></script>
-    <script src="../js/common/respond.min.js"></script>
+    <script src="/js/index.js"></script>
+    <script src="/js/common/jquery-3.1.1.min.js"></script>
+    <script src="/js/common/html5shiv.min.js"></script>
+    <script src="/js/common/respond.min.js"></script>
 </head>
 <body>
 <div class="container-fluid">
@@ -29,9 +29,11 @@
         <div class="col-md-8">
             当前学校：东南大学
             <div class="float-right">
-                <a href="#">登录</a>
-                <a href="#">注册</a>
-                <a href="#">我的订单</a>
+                <a href="../buyer/buyer_login.html">买家登录</a>
+                &nbsp;&nbsp;&nbsp;<a href="../seller/seller_center.html">卖家登录</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;<a href="../buyer/buyer_register.html">买家注册</a>
+                &nbsp;&nbsp;&nbsp;<a href="../seller/seller_register.html">卖家注册</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;<a href="../buyer/buyer_login.html">我的订单</a>
             </div>
         </div>
         <div class="col-md-2">
@@ -42,7 +44,7 @@
         <div class="col-md-2"></div>
         <div class="col-md-8">
             <div class="row">
-                <div class="col-md-3 logo"><img class="logo_wh" src="../img/cute_logo.jpg"/></div>
+                <div class="col-md-3 logo"><img class="logo_wh" src="/img/cute_logo.jpg"/></div>
                 <div class="col-md-5 font-bold">
                     <a class="active" href="#">首页</a>
                     <a href="#">二手</a>
@@ -81,7 +83,7 @@
     </div>
     <div class="presentation row">
         <div class="col-md-5 col-md-offset-1">
-            <img src="../img/portraiture.jpg" width="400px" height="400px"/>
+            <img src="/img/portraiture.jpg" width="400px" height="400px"/>
         </div>
         <div class="col-md-6">
             <div class="row"> <h2 class="col-md-12 text-center" th:text="${pruduct.name}">赵丽颖肖像画素描画绘画社团颖宝</h2></div>
@@ -129,7 +131,7 @@
             <div class="row" >
                 <div class="col-md-5 col-md-offset-1" >
                     <div class="thumbnail">
-                        <img src="../img/portraiture.jpg" height="300px"  width="300px"  alt="色系1"/>
+                        <img src="/img/portraiture.jpg" height="300px"  width="300px"  alt="色系1"/>
                         <div class="caption">
                             <span>详情图1</span>
                         </div>
@@ -137,7 +139,7 @@
                 </div>
                 <div class="col-md-5 ">
                     <div class="thumbnail">
-                        <img src="../img/portraiture1.jpg" height="300px" width="300px" alt="色系2"/>
+                        <img src="/img/portraiture1.jpg" height="300px" width="300px" alt="色系2"/>
                         <div class="caption">
                             <span>详情图2</span>
                         </div>
@@ -147,7 +149,7 @@
             <div class="row" >
                 <div class="col-md-5 col-md-offset-1">
                     <div class="thumbnail">
-                        <img src="../img/portraiture2.jpg" height="300px" width="300px" alt="色系3"/>
+                        <img src="/img/portraiture2.jpg" height="300px" width="300px" alt="色系3"/>
                         <div class="caption">
                             <span>详情图3</span>
                         </div>
@@ -155,7 +157,7 @@
                 </div>
                 <div class="col-md-5 ">
                     <div class="thumbnail">
-                        <img src="../img/portraiture3.jpg" height="300px" width="300px" alt="色系4"/>
+                        <img src="/img/portraiture3.jpg" height="300px" width="300px" alt="色系4"/>
                         <div class="caption">
                             <span>详情图4</span>
                         </div>
@@ -165,7 +167,7 @@
             <div class="row" >
                 <div class="col-md-5 col-md-offset-1">
                     <div class="thumbnail">
-                        <img src="../img/portraiture4.jpg" height="300px" width="300px" alt="色系5"/>
+                        <img src="/img/portraiture4.jpg" height="300px" width="300px" alt="色系5"/>
                         <div class="caption">
                             <span>详情图5</span>
                         </div>
@@ -173,7 +175,7 @@
                 </div>
                 <div class="col-md-5 ">
                     <div class="thumbnail">
-                        <img src="../img/portraiture5.jpg" height="300px" width="300px" alt="色系6"/>
+                        <img src="/img/portraiture5.jpg" height="300px" width="300px" alt="色系6"/>
                         <div class="caption">
                             <span>详情图6</span>
                         </div>
@@ -183,7 +185,7 @@
             <div class="row" >
                 <div class="col-md-5 col-md-offset-1">
                     <div class="thumbnail">
-                        <img src="../img/portraiture6.jpg" height="300px" width="300px" alt="色系7"/>
+                        <img src="/img/portraiture6.jpg" height="300px" width="300px" alt="色系7"/>
                         <div class="caption">
                             <span>详情图7</span>
                         </div>
@@ -191,7 +193,7 @@
                 </div>
                 <div class="col-md-5 ">
                     <div class="thumbnail">
-                        <img src="../img/portraiture7.jpg" height="300px" width="300px" alt="色系8"/>
+                        <img src="/img/portraiture7.jpg" height="300px" width="300px" alt="色系8"/>
                         <div class="caption">
                             <span>详情图8</span>
                         </div>
@@ -224,9 +226,9 @@
 <div class="container-fluid mt-20">
     <div class="row">
         <div class="col-md-12 footer-info">
-            <div class="col-md-2 col-md-offset-3 mt-40 "><img src="../img/logo_button_1.jpg"/></div>
-            <div class="col-md-3 mt-40 "><img src="../img/logo_button_2.jpg " /><br/><span class="font-grey" >一家专门做校园文化产品的网站</span></div>
-            <div class="col-md-4 mt-60"><img class="qr-code"  src="../img/qr_code.png "/><br/><div class="mt-20 ">扫码有惊喜哦</div></div>
+            <div class="col-md-2 col-md-offset-3 mt-40 "><img src="/img/logo_button_1.jpg"/></div>
+            <div class="col-md-3 mt-40 "><img src="/img/logo_button_2.jpg " /><br/><span class="font-grey" >一家专门做校园文化产品的网站</span></div>
+            <div class="col-md-4 mt-60"><img class="qr-code"  src="/img/qr_code.png "/><br/><div class="mt-20 ">扫码有惊喜哦</div></div>
         </div>
     </div>
 </div>
@@ -254,8 +256,8 @@
 
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="../js/common/jquery-3.1.1.min.js"></script>
+    <script src="/js/common/jquery-3.1.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>

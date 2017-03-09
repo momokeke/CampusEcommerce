@@ -7,36 +7,22 @@
     <!-- Any Other things should follow these 3 meta above -->
     <title>店铺主页</title>
     <!-- Bootstrap -->
-    <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
-    <link href="../css/common.css" rel="stylesheet" />
-    <link href="../css/shop_homepage.css" rel="stylesheet" />
+    <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="/css/common.css" rel="stylesheet" />
+    <link href="/css/shop_homepage.css" rel="stylesheet" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="../js/common/html5shiv.min.js"></script>
-    <script src="../js/common/respond.min.js"></script>
+    <script src="/js/common/html5shiv.min.js"></script>
+    <script src="/js/common/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
 <!-- this is the common top begin -->
-<div class="container-fluid ">
-    <div class="row top font-small">
-        <div class="col-md-2 col-sm-2"></div>
-        <div class="col-md-8 col-sm-8">
-            当前学校：东南大学
-            <div class="float-right">
-                <a href="#">登录</a>
-                <a href="#">注册</a>
-                <a href="#">我的订单</a>
-            </div>
-        </div>
-        <div class="col-md-2 col-sm-2">
-        </div>
-    </div>
-</div>
+<div data-th-replace="../common_html/common_head"></div>
 <div class="container">
      <div class="row">
-        <a href="../index.html"><img class="col-md-3 logo_wh border-right" src="../img/cute_logo.jpg" style="padding: 0"/></a>
+        <a href="/index.html"><img class="col-md-3 logo_wh border-right" src="/img/cute_logo.jpg" style="padding: 0"/></a>
          <div class="col-md-3">
              <h3>店铺名称<small>社团名称</small></h3>
          </div>
@@ -50,19 +36,19 @@
     </div>
 </div>
 <div class="container-fluid"  style="padding: 0px">
-    <img src="../img/homepage_top.jpg" class="font-info mt-5"/>
+    <img src="/img/homepage_top.jpg" class="font-info mt-5"/>
 </div>
 <div class="container mt-5">
     <div class="row">
         <ul class="nav nav-pills">
             <li class="active"><a href="#">本店商品分类</a></li>
-            <li><a href="#">油画</a></li>
-            <li><a href="#">水墨画</a></li>
-            <li><a href="#">水彩画</a></li>
-            <li><a href="#">铅笔画</a></li>
-            <li><a href="#">钢笔画</a></li>
-            <li><a href="#">素描</a></li>
-            <li><a href="#">镶嵌画</a></li>
+            <li><a href="shop_product_classification.html">水墨画</a></li>
+            <li><a href="shop_product_classification.html">油画</a></li>
+            <li><a href="shop_product_classification.html">水彩画</a></li>
+            <li><a href="shop_product_classification.html">铅笔画</a></li>
+            <li><a href="shop_product_classification.html">钢笔画</a></li>
+            <li><a href="shop_product_classification.html">素描</a></li>
+            <li><a href="shop_product_classification.html">镶嵌画</a></li>
         </ul>
     </div>
 </div>
@@ -82,7 +68,7 @@
                     </ol>
                     <div class="carousel-inner">
                         <div class="item active">
-                            <img alt="" src="../img/homepage_paint1.png" />
+                            <img alt="" src="/img/homepage_paint1.png" />
                             <div class="carousel-caption">
                                 <h4>
                                     植物花卉
@@ -93,7 +79,7 @@
                             </div>
                         </div>
                         <div class="item">
-                            <img alt="" src="../img/homepage_paint2.png" />
+                            <img alt="" src="/img/homepage_paint2.png" />
                             <div class="carousel-caption">
                                 <h4>
                                     墨染艺术
@@ -104,7 +90,7 @@
                             </div>
                         </div>
                         <div class="item">
-                            <img alt="" src="../img/homepage_paint3.png" />
+                            <img alt="" src="/img/homepage_paint3.png" />
                             <div class="carousel-caption">
                                 <h4>
                                     植物花卉
@@ -123,25 +109,25 @@
     <div class="container bk-white mt-60">
         <div class="row mt-40">
             <div class="col-md-8">
-                <a href="#"><img class="graph1-size" src="../img/good_cla_shuicai.png"/></a>
+                <a href="#"><img class="graph1-size" src="/img/good_cla_shuicai.png"/></a>
                 <div class="font-big font-bold cla_font1"><a class="font-white ">水彩画</a></div>
             </div>
            <div class="col-md-4">
-               <a img="#"><img class="graph2-size" src="../img/good_cla_youhua.png"/></a>
+               <a img="#"><img class="graph2-size" src="/img/good_cla_youhua.png"/></a>
                <div class="font-big font-bold cla_font2"><a class="font-white">油画</a></div>
            </div>
         </div>
         <div class="row mt-20 pb-50">
             <div class="col-md-4">
-                <a img="#"><img class="graph3-size" src="../img/good_cla_shuimohua.jpg" /></a>
+                <a img="#"><img class="graph3-size" src="/img/good_cla_shuimohua.jpg" /></a>
                 <div class="font-big font-bold cla_font3"><a class="font-black">水墨画</a></div>
             </div>
             <div class="col-md-4">
-                <a img="#"><img class="graph4-size" src="../img/good_cla_sumiao.jpg"/></a>
+                <a img="#"><img class="graph4-size" src="/img/good_cla_sumiao.jpg"/></a>
                 <div class="font-big font-bold cla_font4"><a class="font-black">素描</a></div>
             </div>
             <div class="col-md-4">
-                <a img="#"><img class="graph5-size" src="../img/good_cla_xiangqianhua.jpg"/></a>
+                <a img="#"><img class="graph5-size" src="/img/good_cla_xiangqianhua.jpg"/></a>
                 <div class="font-big font-bold cla_font5"><a class="font-black">镶嵌画</a></div>
             </div>
         </div>
@@ -155,9 +141,9 @@
 <div class="container-fluid mt-60">
     <div class="row">
         <div class="col-md-12 footer-info">
-            <div class="col-md-2 col-md-offset-3 mt-40 "><img src="../img/logo_button_1.jpg"/></div>
-            <div class="col-md-3 mt-40 "><img src="../img/logo_button_2.jpg " /><br/><span class="font-grey" >一家专门做校园文化产品的网站</span></div>
-            <div class="col-md-4 mt-60"><img class="qr-code"  src="../img/qr_code.png "/><br/><div class="mt-20 ">扫码有惊喜哦</div></div>
+            <div class="col-md-2 col-md-offset-3 mt-40 "><img src="/img/logo_button_1.jpg"/></div>
+            <div class="col-md-3 mt-40 "><img src="/img/logo_button_2.jpg " /><br/><span class="font-grey" >一家专门做校园文化产品的网站</span></div>
+            <div class="col-md-4 mt-60"><img class="qr-code"  src="/img/qr_code.png "/><br/><div class="mt-20 ">扫码有惊喜哦</div></div>
         </div>
     </div>
 </div>
@@ -185,9 +171,8 @@
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="../js/common/jquery-3.1.1.min.js"></script>
+<script src="/js/common/jquery-3.1.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
-<!--
