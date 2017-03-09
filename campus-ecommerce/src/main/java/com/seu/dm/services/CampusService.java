@@ -13,4 +13,6 @@ public interface CampusService {
     List<Campus> findAllCampuses();
 
     int deleteCampusById(Integer id);
+
+    int updateCampus(Integer id,String name);
 }

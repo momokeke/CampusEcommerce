@@ -6,6 +6,8 @@ import com.seu.dm.services.SchoolAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by 张老师 on 2017/3/3.
  */
@@ -20,7 +22,7 @@ public class SchoolAdminServiceImpl implements SchoolAdminService {
     }
 
     @Override
-    public int deleteAdim(Integer id) {
+    public int deleteSchoolAdmin(Integer id) {
         return schoolAdminMapper.deleteByPrimaryKey(id);
     }
 
@@ -32,5 +34,22 @@ public class SchoolAdminServiceImpl implements SchoolAdminService {
     @Override
     public SchoolAdmin findAdim(Integer id) {
         return schoolAdminMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int addSchoolAdminByNumAndName(Integer id, Integer studentNumber, String name) {
+        SchoolAdmin schoolAdmin = new SchoolAdmin();
+        schoolAdmin.setSchoolId(id);
+        schoolAdmin.setName(name);
+        schoolAdmin.setStudentNumber(studentNumber);
+        int i = schoolAdminMapper.insert(schoolAdmin);
+        return i;
+
+    }
+
+    @Override
+    public List<SchoolAdmin> findAllSchoolAdminsBySchoolId(Integer id) {
+        List<SchoolAdmin> schoolAdmins = schoolAdminMapper.findAllBySchoolId(id);
+        return schoolAdmins;
     }
 }

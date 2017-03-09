@@ -43,7 +43,7 @@
                                 <td th:text="${iterStatus.count}">1</td>
                                 <td class="lh-30" th:text="${campus.name}">东南大学苏州研究院</td>
                                 <td>
-                                    <a href="/superadmin/campusmanage/editcampus" class="btn btn-primary">修改</a>
+                                    <a href="/superadmin/campusmanage/editcampus" th:href="@{'/superadmin/campusmanage/editcampus/'+${campus.id}}" class="btn btn-primary">修改</a>
                                     <a href="#" th:href="@{'/superadmin/campusmanage/deletecampus/'+${campus.id}}" class="btn btn-danger">删除</a>
                                 </td>
                             </tr>

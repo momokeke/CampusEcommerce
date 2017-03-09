@@ -2,6 +2,8 @@ package com.seu.dm.mappers;
 
 import com.seu.dm.entities.SchoolAdmin;
 
+import java.util.List;
+
 public interface SchoolAdminMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface SchoolAdminMapper {
     int updateByPrimaryKeySelective(SchoolAdmin record);
 
     int updateByPrimaryKey(SchoolAdmin record);
+
+    List<SchoolAdmin> findAllBySchoolId(Integer schoolId);
 }

@@ -36,4 +36,13 @@ public class CampusServiceImpl implements CampusService {
     public int deleteCampusById(Integer id) {
         return campusMapper.deleteByPrimaryKey(id);
     }
+
+    @Override
+    public int updateCampus(Integer id, String name) {
+        Campus campus = new Campus();
+        campus.setId(id);
+        campus.setName(name);
+        int i = campusMapper.updateByPrimaryKey(campus);
+        return i;
+    }
 }
