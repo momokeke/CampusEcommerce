@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>达米买家登录页面</title>
+    <!-- Bootstrap CSS -->
+    <link href="../bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/common.css" rel="stylesheet"/>
+    <!-- bootstrap theme -->
+    <link href="../bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet">
+    <!--external css-->
+    <!-- font icon -->
+    <link href="../css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="../css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="../css/buyer_login.css" rel="stylesheet">
+    <link href="../css/style-responsive.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 -->
+    <!--[if lt IE 9]>
+    <script src="../js/common/html5shiv.min.js"></script>
+    <script src="../js/common/respond.min.js"></script>
+    <![endif]-->
+    <script src="../js/common/html5shiv.min.js"></script>
+    <script src="../js/common/respond.min.js"></script>
+</head>
+
+<body class="login-img3-body">
+
+<div class="container">
+
+    <form class="login-form" th:action="@{buyer_center.html}" th:object="${buyer}">
+        <div class="login-wrap">
+            <p class="login-img"><i class="icon_lock_alt"></i></p>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="icon_profile"></i></span>
+                <input type="text" name="name" th:value="${buyer.name}" class="form-control" placeholder="请输入达米账号" autofocus>
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+                <input type="password" name="password" th:value="${buyer.password}" class="form-control" placeholder="请输入密码">
+            </div>
+            <label class="checkbox">
+                <input type="checkbox" class="ml-5" value="remember-me"> 记住我
+                <span class="pull-right"> <a href="#"> 忘记密码?</a></span>
+            </label>
+            <button class="btn btn-primary btn-lg btn-block" type="submit">注 册</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
