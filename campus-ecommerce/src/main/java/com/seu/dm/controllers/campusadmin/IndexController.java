@@ -1,6 +1,6 @@
-package com.seu.dm.controllers.admin.superadmin;
+package com.seu.dm.controllers.campusadmin;
 
-import com.seu.dm.annotations.permissions.SuperAdminPermission;
+import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.dto.UserBaseDTO;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,17 +8,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpSession;
 
 /**
- * Created by Greeting on 2017/3/9.
+ * Created by Greeting on 2017/3/8.
+ * 校区管理员首页
  */
-@Controller
-@RequestMapping(value="/superadmin")
-public class SuperAdminIndexController {
+@Controller("/campusadmin")
+@RequestMapping(value="/campusadmin")
+public class IndexController {
     @RequestMapping(value="/")
-    @SuperAdminPermission
+    @CampusAdminPermission
     public String index(HttpSession httpSession){
         UserBaseDTO userBase = new UserBaseDTO();
-        userBase.setRole("superAdmin");
+        userBase.setRole("schoolAdmin");
         httpSession.setAttribute("userBase",userBase);
         return "/admin/index";
     }
+
 }
