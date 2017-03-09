@@ -24,7 +24,7 @@ public class PermissionsInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler) throws Exception {
 
-        return forTesting(request);
+        return forTestingCampusAdmin(request);
         /*
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         Method method = handlerMethod.getMethod();
@@ -56,6 +56,15 @@ public class PermissionsInterceptor extends HandlerInterceptorAdapter {
         httpSession.setAttribute("userBase",userBase);
         return true;
     }
+
+    private boolean forTestingCampusAdmin(HttpServletRequest request){
+        HttpSession httpSession = request.getSession();
+        UserBaseDTO userBase = new UserBaseDTO();
+        userBase.setRole("campusAdmin");
+        httpSession.setAttribute("userBase",userBase);
+        return true;
+    }
+
 
     private boolean verifySuperAdmin(HttpServletRequest request,HttpServletResponse response){
         //response.sendRedirect("/");

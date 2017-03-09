@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 /**
  * Created by Greeting on 2017/3/9.
  */
-@Controller
+@Controller("/superadmin/statistics")
 @RequestMapping(value="/superadmin/statistics")
-public class SuperAdminStatisticsController {
+public class StatisticsController {
     @RequestMapping(value="/")
     @SuperAdminPermission
     public String index(){
