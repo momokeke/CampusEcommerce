@@ -33,4 +33,6 @@ public class PictureServiceImpl implements PictureService{
     public Picture findPicture(Integer id) {
         return pictureMapper.selectByPrimaryKey(id);
     }
+
+
 }

@@ -2,7 +2,7 @@ package com.seu.dm.entities;
 
 import java.util.Date;
 
-public class Adim {
+public class SchoolAdmin {
     private Integer id;
 
     private String name;

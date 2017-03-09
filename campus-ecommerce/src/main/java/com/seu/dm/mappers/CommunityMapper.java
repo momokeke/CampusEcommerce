@@ -2,6 +2,8 @@ package com.seu.dm.mappers;
 
 import com.seu.dm.entities.Community;
 
+import java.util.List;
+
 public interface CommunityMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,8 @@ public interface CommunityMapper {
     int updateByPrimaryKeySelective(Community record);
 
     int updateByPrimaryKey(Community record);
+
+    List<Community> getAllCommunities();
+
+    Community findCommunityByName(String name);
 }

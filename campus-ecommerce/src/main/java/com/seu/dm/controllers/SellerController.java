@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Created by 张老师 on 2017/3/6.
  */
 @Controller
+@RequestMapping(value = "/seller")
 public class SellerController {
     @Autowired
     private SellerService sellerService;
@@ -100,5 +101,10 @@ public class SellerController {
         int i = sellerService.selectCountOfSellers();
         model.addAttribute("countOfAllSellers",i);
         return "/";
+    }
+
+    @RequestMapping(value = "/shop_homepage")
+    public String test(){
+        return "/shop/shop_homepage";
     }
 }

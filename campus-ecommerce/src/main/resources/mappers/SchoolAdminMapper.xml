@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.seu.dm.mappers.AdimMapper" >
-  <resultMap id="BaseResultMap" type="com.seu.dm.entities.Adim" >
+<mapper namespace="com.seu.dm.mappers.SchoolAdminMapper" >
+  <resultMap id="BaseResultMap" type="com.seu.dm.entities.SchoolAdmin" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
@@ -13,21 +13,21 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from adim
+    from schoolAdmin
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from adim
+    delete from schoolAdmin
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.seu.dm.entities.Adim" >
-    insert into adim (id, name, password, 
+  <insert id="insert" parameterType="com.seu.dm.entities.SchoolAdmin" >
+    insert into schoolAdmin (id, name, password,
       register_time)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{registerTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.seu.dm.entities.Adim" >
-    insert into adim
+  <insert id="insertSelective" parameterType="com.seu.dm.entities.SchoolAdmin" >
+    insert into schoolAdmin
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -57,8 +57,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.seu.dm.entities.Adim" >
-    update adim
+  <update id="updateByPrimaryKeySelective" parameterType="com.seu.dm.entities.SchoolAdmin" >
+    update schoolAdmin
     <set >
       <if test="name != null" >
         name = #{name,jdbcType=VARCHAR},
@@ -72,8 +72,8 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.seu.dm.entities.Adim" >
-    update adim
+  <update id="updateByPrimaryKey" parameterType="com.seu.dm.entities.SchoolAdmin" >
+    update schoolAdmin
     set name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       register_time = #{registerTime,jdbcType=TIMESTAMP}
