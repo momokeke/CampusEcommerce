@@ -14,6 +14,6 @@ public class ShopManageController {
     @RequestMapping("/")
     @CampusAdminPermission
     public String index(){
-        return "";
+        return "admin/campusadmin/shop/manage";
     }
 }

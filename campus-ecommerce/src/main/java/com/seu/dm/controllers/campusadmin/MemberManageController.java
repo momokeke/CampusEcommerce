@@ -14,6 +14,6 @@ public class MemberManageController {
     @RequestMapping("/")
     @CampusAdminPermission
     public String index(){
-        return "";
+        return "admin/campusadmin/member/manage";
     }
 }

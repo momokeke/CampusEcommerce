@@ -14,6 +14,6 @@ public class StatisticsController {
     @RequestMapping("/")
     @CampusAdminPermission
     public String index(){
-        return "";
+        return "admin/campusadmin/statistics/manage";
     }
 }
