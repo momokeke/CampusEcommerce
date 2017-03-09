@@ -17,9 +17,6 @@ public class IndexController {
     @RequestMapping(value="/")
     @SuperAdminPermission
     public String index(HttpSession httpSession){
-        UserBaseDTO userBase = new UserBaseDTO();
-        userBase.setRole("superAdmin");
-        httpSession.setAttribute("userBase",userBase);
         return "/admin/index";
     }
 }
