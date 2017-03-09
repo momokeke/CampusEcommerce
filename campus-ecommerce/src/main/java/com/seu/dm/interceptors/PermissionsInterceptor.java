@@ -24,8 +24,8 @@ public class PermissionsInterceptor extends HandlerInterceptorAdapter {
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler) throws Exception {
 
-
-
+        return forTesting(request);
+        /*
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         Method method = handlerMethod.getMethod();
 
@@ -46,7 +46,7 @@ public class PermissionsInterceptor extends HandlerInterceptorAdapter {
         return forTesting(request);
 
         //return true;
-
+        */
     }
 
     private boolean forTesting(HttpServletRequest request){
