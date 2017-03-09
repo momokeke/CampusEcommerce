@@ -5,6 +5,15 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+
+<div th:each="demo : ${demos}">
+    <div>
+        <span th:text="${demo.id}"></span>
+        <span th:text="${demo.username}"></span>
+        <span th:text="${demo.address}"></span>
+    </div>
+</div>
+
 <table>
     <thead>
     <tr>
