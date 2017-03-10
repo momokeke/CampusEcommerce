@@ -17,6 +17,6 @@ public class IndexController {
     @RequestMapping(value="/")
     @SuperAdminPermission
     public String index(HttpSession httpSession){
-        return "/admin/index";
+        return "admin/index";
     }
 }

@@ -14,6 +14,6 @@ public class StatisticsController {
     @RequestMapping(value="/")
     @SuperAdminPermission
     public String index(){
-        return "/admin/superadmin/statistics";
+        return "admin/superadmin/statistics";
     }
 }

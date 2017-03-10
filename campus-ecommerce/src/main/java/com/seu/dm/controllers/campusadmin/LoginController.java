@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 public class LoginController {
     @RequestMapping(value="/")
     public String login() {
-        return "/admin/login";
+        return "admin/login";
     }
 
     @RequestMapping(value="/dologin")

@@ -65,7 +65,7 @@ public class ProductController {
 //        List<SearchGoodEntity> searchGoodEntities = productService.searchEntitiesByName(name);
 //        model.addAttribute("entities",searchGoodEntities);
         model.addAttribute("entities",products);
-        return "/product/product_list";
+        return "product/product_list";
     }
 
 
@@ -80,7 +80,7 @@ public class ProductController {
         Product product =productService.findProduct(id);
         model.addAttribute("product",product);
         System.out.println("OK");
-        return "/productDetails";
+        return "productDetails";
     }
 
     /**
@@ -97,7 +97,7 @@ public class ProductController {
         }
         model.addAttribute("products",products);
        // System.out.println("ok");
-        return "/productDetails";
+        return "productDetails";
     }
 
     /**
@@ -124,7 +124,7 @@ public class ProductController {
         BigDecimal price = productService.getProductPriceById(id);
         System.out.println(price);
         model.addAttribute("price",price);
-        return "/productDetails";
+        return "productDetails";
     }
 
 
@@ -138,7 +138,7 @@ public class ProductController {
     public String getCounts(@RequestParam(value = "name")String name, Model model){
         int i = productService.getCountOfResultsByName(name);
         System.out.println("find"+i+"messages");
-        return "/demo/helloworld";
+        return "demo/helloworld";
     }
 
 //    @RequestMapping(value = "/male")
@@ -158,7 +158,7 @@ public class ProductController {
     public String addProduct(Product product, Model model){
         int i = productService.addProduct(product);
         model.addAttribute("product",product);
-        return "/seller/new_products";
+        return "seller/new_products";
     }
 
 

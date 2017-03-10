@@ -19,7 +19,7 @@ public class IndexController {
     @CampusAdminPermission
     public String index(HttpSession httpSession,Model model){
 
-        return "/admin/index";
+        return "admin/index";
     }
 
 }

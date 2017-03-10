@@ -66,7 +66,7 @@ public class ShopManageController {
         List<Product> products = productService.findProductsBySellerId(sellerId);
         System.out.println(products.size());
         model.addAttribute("products",products);
-        return "/admin/campusadmin/shop/edit_shop";
+        return "admin/campusadmin/shop/edit_shop";
     }
 
     @RequestMapping("/editshop/updateshopname/{sellerId}")

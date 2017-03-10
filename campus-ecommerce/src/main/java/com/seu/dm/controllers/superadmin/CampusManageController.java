@@ -41,7 +41,7 @@ public class CampusManageController {
     public String index(Model model){
         List<Campus> campuses = campusService.findAllCampuses();
         model.addAttribute("campuses",campuses);
-        return "/admin/superadmin/campus_manage";
+        return "admin/superadmin/campus_manage";
     }
 
     /**
@@ -68,7 +68,7 @@ public class CampusManageController {
         model.addAttribute("campusId",id);
         model.addAttribute("schooladmins",schoolAdmins);
         //System.out.println(schoolAdmins.size());
-        return "/admin/superadmin/campus_edit";
+        return "admin/superadmin/campus_edit";
     }
 
     /**

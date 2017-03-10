@@ -38,7 +38,7 @@ public class SellerController {
     @RequestMapping(value = "/updateSellerInfo",method = RequestMethod.POST)
     public String updateSellerInfo(Seller seller){
         sellerService.updateSeller(seller);
-        return "/modify_message";
+        return "modify_message";
     }
 
     /**
@@ -112,7 +112,7 @@ public class SellerController {
      */
     @RequestMapping(value = "/seller_register")
     public String jumpToSellerRegister(){
-        return "/seller/seller_register";
+        return "seller/seller_register";
     }
 
     /*
@@ -120,12 +120,12 @@ public class SellerController {
      */
     @RequestMapping(value = "/seller_center")
     public String jumpToSellerCenter() {
-        return "/seller/seller_center";
+        return "seller/seller_center";
     }
 
 
     @RequestMapping(value = "/shop_homepage")
     public String test(){
-        return "/shop/shop_homepage";
+        return "shop/shop_homepage";
     }
 }

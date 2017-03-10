@@ -23,7 +23,7 @@ public class CommunityController {
         for (Community community : communities) {
             System.out.println("community: " + community.getName());
         }
-        return "/buyer/shopping_cart";
+        return "buyer/shopping_cart";
     }
 
 }

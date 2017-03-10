@@ -28,7 +28,7 @@ public class BuyerController {
         int i = buyerService.addBuyer(buyer);
         System.out.println("i = "+i);
         if(i == 0) return "/index"; // 如果返回值为0 添加失败
-        return "/demo/helloworld";
+        return "demo/helloworld";
     }
 
     /**
@@ -40,7 +40,7 @@ public class BuyerController {
         Integer id = buyer.getId();
         Buyer buyer1 = buyerService.findBuyer(id);
         System.out.println("ok");
-        return "/index";
+        return "index";
     }
 
     /*

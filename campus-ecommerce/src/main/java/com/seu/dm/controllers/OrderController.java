@@ -27,13 +27,13 @@ public class OrderController {
             System.out.println(s + ": " + productNameAndNum.get(s));
         }
         model.addAttribute("map", productNameAndNum);
-        return "/testOrder";
+        return "testOrder";
     }
 
     @RequestMapping(value = "/findOrder")
     public String findOrderById(@Param(value = "id") Integer id, Model model){
         Order order = orderService.findOrder(id);
         model.addAttribute("order", order);
-        return "/seller/transaction_manage";
+        return "seller/transaction_manage";
     }
 }
