@@ -101,12 +101,25 @@ public class CampusManageController {
         return "redirect:/superadmin/campusmanage/";
     }
 
+    /**
+     * 根据ID删除校区，重定向到超级管理员首页
+     * @param id
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/deletecampus/{id}")
     public String deleteCampus(@PathVariable Integer id,HttpServletRequest request){
         int i = campusService.deleteCampusById(id);
         return "redirect:/superadmin/campusmanage/";
     }
 
+    /**
+     * 为指定校区添加管理员，转至添加管理员页面
+     * @param id
+     * @param request
+     * @param model
+     * @return
+     */
     @RequestMapping(value = "/addschooladmin/{id}")
     public String addSchoolAdmin(@PathVariable Integer id,HttpServletRequest request,Model model){
         model.addAttribute("campusId",id);
@@ -114,6 +127,14 @@ public class CampusManageController {
         return "admin/superadmin/campus_add_schooladmin";
     }
 
+    /**
+     * 由学号和姓名向数据库添加管理员，之后重定向到校区编辑页
+     * @param id
+     * @param studentNumber
+     * @param name
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/addschooladmin/add/{id}")
     public String addSchoolAdminByNumAndName(@PathVariable Integer id,
                                              @RequestParam(value = "schoolAdminId")Integer studentNumber,
@@ -123,6 +144,13 @@ public class CampusManageController {
         return "redirect:/superadmin/campusmanage/editcampus/"+id;
     }
 
+    /**
+     * 根据id删除指定校区的管理员，重定向到校区编辑页面
+     * @param schoolid
+     * @param schooladminid
+     * @param request
+     * @return
+     */
     @RequestMapping("/deleteschooladmin/{schoolid}/{schooladminid}")
     public String deleteSchoolAdmin(@PathVariable Integer schoolid,
                                     @PathVariable Integer schooladminid,HttpServletRequest request){

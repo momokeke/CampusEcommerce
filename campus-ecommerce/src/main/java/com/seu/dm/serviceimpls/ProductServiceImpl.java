@@ -160,4 +160,17 @@ public class ProductServiceImpl implements ProductService{
         //List<Picture> pictures = findPicturesByProductId()
         return goods;
     }
+
+    @Override
+    public List<Product> findProductsBySellerId(Integer selledId) {
+        List<Product> products = productMapper.getProductsBySellerId(selledId);
+        return products;
+    }
+
+    @Override
+    public Integer unshelfProduct(Integer productId) {
+        Product product = productMapper.selectByPrimaryKey(productId);
+        product.setIsShelf(false);
+        return 1 ;
+    }
 }

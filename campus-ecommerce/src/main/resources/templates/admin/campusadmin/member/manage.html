@@ -33,12 +33,24 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>买家</td>
-                                <td>163999</td>
-                                <td>万神殿</td>
-                                <td>188</td>
+                            <tr th:each="member,iterStatus:${buyers}">
+                                <td th:text="${iterStatus.count}">1</td>
+                                <td >买家</td>
+                                <td th:text="${member.studentNumber}">163999</td>
+                                <td th:text="${member.name}">万神殿</td>
+                                <td th:text="${member.mobile}">188</td>
+                                <td>
+                                    <a href="/campusadmin/membermanage/banmember" th:href="@{'/campusadmin/membermanage/banbuyer/'+${schoolAdmin.id}+'/'+${buyer.id}}" class="btn btn-warning">封号</a>
+                                    <a href="/campusadmin/membermanage/unbanmember" th:href="@{'/campusadmin/membermanage/unbanbuyer/'+${schoolAdmin.id}+'/'+${buyer.id}}" class="btn btn-info">解封</a>
+                                    <a href="#" th:href="@{'/campusadmin/membermanage/deletebanbuyer/'+${schoolAdmin.id}+'/'+${buyer.id}}" class="btn btn-danger">删除</a>
+                                </td>
+                            </tr>
+                            <tr th:each="member,iterStatus:${sellers}">
+                                <td th:text="${iterStatus.count}">1</td>
+                                <td >卖家</td>
+                                <td th:text="${seller.studentNumber}">163999</td>
+                                <td th:text="${seller.name}">万神殿</td>
+                                <td th:text="${seller.mobile}">188</td>
                                 <td>
                                     <a href="/campusadmin/membermanage/editmember" class="btn btn-warning">封号</a>
                                     <a href="/campusadmin/membermanage/editmember" class="btn btn-info">解封</a>

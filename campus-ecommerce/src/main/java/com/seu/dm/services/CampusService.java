@@ -15,4 +15,6 @@ public interface CampusService {
     int deleteCampusById(Integer id);
 
     int updateCampus(Integer id,String name);
+
+    Campus findCampus(Integer id);
 }

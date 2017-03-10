@@ -21,6 +21,16 @@ public class Buyer {
 
     private Integer studentNumber;
 
+    private Boolean isBanned;
+
+    public Boolean getBanned() {
+        return isBanned;
+    }
+
+    public void setBanned(Boolean banned) {
+        isBanned = banned;
+    }
+
     public Integer getId() {
         return id;
     }

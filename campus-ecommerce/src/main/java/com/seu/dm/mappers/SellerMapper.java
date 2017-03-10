@@ -2,6 +2,8 @@ package com.seu.dm.mappers;
 
 import com.seu.dm.entities.Seller;
 
+import java.util.List;
+
 public interface SellerMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -20,4 +22,8 @@ public interface SellerMapper {
     int deleteByName(String name);
 
     int selectCountOfAll();
+
+    List<Seller> findAllSellers(Integer campusId);
+
+
 }

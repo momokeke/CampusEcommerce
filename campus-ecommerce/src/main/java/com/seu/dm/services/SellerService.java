@@ -24,4 +24,10 @@ public interface SellerService {
     int deleteSellerByName(String name);
 
     int selectCountOfSellers();
+
+    List<Seller> findAllSellers(Integer campusId);
+
+    int banSeller(Integer id);
+
+    int unBanSeller(Integer id);
 }

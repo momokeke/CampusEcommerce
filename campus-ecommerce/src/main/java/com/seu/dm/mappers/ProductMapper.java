@@ -27,4 +27,6 @@ public interface ProductMapper {
     List<Product> getResultsByCategory(String s);           //通过分类名模糊查找对应商品列表
 
     BigDecimal  getPriceById(Integer id);                   //通过主键得到商品价格
+
+    List<Product> getProductsBySellerId(Integer sellerId);
 }

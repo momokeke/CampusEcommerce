@@ -30,6 +30,9 @@
     from product
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="getProductsBySellerId" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select * from product where seller_id = #{sellerId}
+  </select>
   <select id="getProductsByName" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
     select * from product
     WHERE NAME LIKE concat('%',#{s},'%');

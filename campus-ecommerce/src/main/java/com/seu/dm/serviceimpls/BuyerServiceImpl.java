@@ -6,6 +6,8 @@ import com.seu.dm.services.BuyerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by 张老师 on 2017/3/3.
  */
@@ -38,5 +40,25 @@ public class BuyerServiceImpl implements BuyerService {
     public int updateBuyer(Buyer buyer) {
         int i = buyerMapper.updateByPrimaryKey(buyer);
         return i;
+    }
+
+    @Override
+    public List<Buyer> findBuyersByCampusId(Integer campusId) {
+        List<Buyer> buyers = buyerMapper.findBuyersByCampusId(campusId);
+        return buyers;
+    }
+
+    @Override
+    public int banBuyer(Integer id) {
+        Buyer buyer = buyerMapper.selectByPrimaryKey(id);
+        buyer.setBanned(true);
+        return 1;
+    }
+
+    @Override
+    public int unBanBuyer(Integer id) {
+        Buyer buyer = buyerMapper.selectByPrimaryKey(id);
+        buyer.setBanned(false);
+        return 1;
     }
 }

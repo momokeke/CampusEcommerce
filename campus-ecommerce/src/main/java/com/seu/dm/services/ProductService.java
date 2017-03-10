@@ -31,4 +31,8 @@ public interface ProductService {
     List<SearchGoodEntity> searchEntitiesByName(String name);
 
     List<SearchGoodEntity> serachEntitiesByCategory(String category);
+
+    List<Product> findProductsBySellerId(Integer selledId);
+
+    Integer unshelfProduct(Integer productId);
 }

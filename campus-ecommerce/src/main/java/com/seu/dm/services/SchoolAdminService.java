@@ -14,7 +14,7 @@ public interface SchoolAdminService {
 
     int updateAdim(SchoolAdmin schoolAdmin);
 
-    SchoolAdmin findAdim(Integer id);
+    SchoolAdmin findAdmin(Integer id);
 
     int addSchoolAdminByNumAndName(Integer id,Integer studentNumber,String name);
 
