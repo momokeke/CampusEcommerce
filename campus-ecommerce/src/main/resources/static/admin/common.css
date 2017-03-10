@@ -1,0 +1,23 @@
+.font-red{
+    color:red;
+}
+
+.font-small{
+    font-size:12px;
+}
+
+.lh-30{
+    line-height:30px;
+}
+
+.lh-40{
+    line-height:40px;
+}
+
+td{
+    vertical-align: middle !important;
+}
+
+mb-10{
+    margin-bottom:10px;
+}

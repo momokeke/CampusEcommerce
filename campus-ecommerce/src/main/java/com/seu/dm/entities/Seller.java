@@ -15,6 +15,32 @@ public class Seller {
 
     private Date createTime;
 
+    private String address;
+
+    private String mobile;
+
+    private String studentNumber;
+
+    private Integer campusId;
+
+    private Boolean isBanned;
+
+    public Boolean getBanned() {
+        return isBanned;
+    }
+
+    public void setBanned(Boolean banned) {
+        isBanned = banned;
+    }
+
+    public Integer getCampusId() {
+        return campusId;
+    }
+
+    public void setCampusId(Integer campusId) {
+        this.campusId = campusId;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -61,5 +87,29 @@ public class Seller {
 
     public void setCreateTime(Date createTime) {
         this.createTime = createTime;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile == null ? null : mobile.trim();
+    }
+
+    public String getStudentNumber() {
+        return studentNumber;
+    }
+
+    public void setStudentNumber(String studentNumber) {
+        this.studentNumber = studentNumber == null ? null : studentNumber.trim();
     }
 }

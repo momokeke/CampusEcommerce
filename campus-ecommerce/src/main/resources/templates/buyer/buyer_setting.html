@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- Any Other things should follow these 3 meta above -->
+    <title>买过的店铺</title>
+    <!-- Bootstrap -->
+    <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/css/common.css" rel="stylesheet"/>
+    <link href="/css/buyer_center.css" rel="stylesheet"/>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/js/common/html5shiv.min.js"></script>
+    <script src="/js/common/respond.min.js"></script>
+    <![endif]-->
+    <script src="/js/common/html5shiv.min.js"></script>
+    <script src="/js/common/respond.min.js"></script>
+</head>
+<body>
+<!-- this is the common top begin -->
+<div class="container-fluid">
+    <div data-th-replace="common_html/common_head"></div>
+    <div class="row banner">
+        <div class="col-md-2 col-sm-2"></div>
+        <div class="col-md-8 col-sm-8">
+            <div class="row">
+
+                <div class="col-md-3 logo"><img src="/img/cute_logo.jpg" class="logo_wh"/></div>
+                <div class="col-md-5 font-bold">
+                    <a class="mr-15 glyphicon glyphicon-user" href="buyer_center.html" th:href="@{buyer_center}">买家中心</a>
+                    <a class="mr-15 glyphicon glyphicon-cog" href="buyer_setting.html" th:href="@{buyer_setting}">设置</a>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <input type="text" class="form-control search" id="search" placeholder="请输入商品名\关键词\店铺名\社团名" style="width: 320px"/>
+                        </div>
+                        <button type="submit" class="btn btn-default ">搜索</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- this is the common top end -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-2">
+            <ul class="list-unstyled">
+                <li class="font-red font-middle mt-10">全 部 功 能</li>
+                <li class="mt-10 "><a th:href="@{/buyer/shopping_cart.html}"  href="shopping_cart.html" class="font-black glyphicon glyphicon-shopping-cart"> 我的购物车</a> </li>
+                <li class="mt-10 "><a th:href="@{/buyer/buyer_favorite.html}" href="buyer_favorite.html" class="font-black glyphicon glyphicon-star-empty"> 我的收藏夹</a> </li>
+                <li class="mt-10 "><a th:href="@{/buyer/bought_products.html}" href="bought_products.html" class="font-black glyphicon glyphicon-ok-circle"> 已买到的宝贝</a> </li>
+                <li class="mt-10 "><a th:href="@{/buyer/bought_shops.html}" href="bought_shops.html" class="font-black glyphicon glyphicon-home"> 购买过的店铺</a> </li>
+                <li class="mt-10 "><a th:href="@{/buyer/comment_management.html}" href="comment_management.html" class="font-black glyphicon glyphicon-list-alt"> 评价管理</a> </li>
+                <li class="mt-10 "><a th:href="@{/buyer/foot_print.html}" href="foot_print.html" class="font-black glyphicon glyphicon-time"> 我的足迹</a> </li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <div class="row mt-20">
+                <form role="form" action="" method="post">
+                    <h3 class="text-center mt-10">个人修改信息</h3>
+                    <div class="form-group">
+                        <label for="password">修改密码：</label><input type="password" class="form-control" id="password" />
+                    </div>
+                    <div class="form-group">
+                        <label for="rePassword">重复新密码：</label><input type="password" class="form-control" id="rePassword" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email">修改邮箱：</label><input type="email" class="form-control" id="email"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">手机号：</label><input type="text" class="form-control" id="mobile"/>
+                    </div>
+                    <button type="submit" class="btn btn-default">提交</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--This is the common footer Begin-->
+<div class="navbar-fixed-bottom">
+    <div class="container-fluid mt-20">
+        <div class="row">
+            <div class="col-md-12 footer-info" style="height: 150px;">
+                <div class="col-md-2 col-md-offset-3 mt-40 "><img src="/img/logo_button_1.jpg"/></div>
+                <div class="col-md-3 mt-40 "><img src="/img/logo_button_2.jpg " /><br/><span class="font-grey" >一家专门做校园文化产品的网站</span></div>
+                <div class="col-md-4 mt-60"><img class="qr-code"  src="/img/qr_code.png "/><br/><div class="mt-20 ">扫码有惊喜哦</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row mt-20 font-small">
+            <div class="col-md-2 col-sm-2"></div>
+            <div class="col-md-8 col-sm-8">
+                <div id="footer">
+                    <div class="footerNav text-center">
+                        <a href="#">关于我们</a> |
+                        <a href="#">服务条款</a> |
+                        <a href="#">免责声明</a> |
+                        <a href="#">网站地图</a> |
+                        <a href="#">联系我们</a>
+                    </div>
+                    <div class="copyRight text-center">
+                        Copyright DaMi
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="/js/common/jquery-3.1.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
+<!--This is the common footer End-->

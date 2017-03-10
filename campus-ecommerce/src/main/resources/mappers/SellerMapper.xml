@@ -8,41 +8,38 @@
     <result column="community_id" property="communityId" jdbcType="VARCHAR" />
     <result column="shop_name" property="shopName" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="mobile" property="mobile" jdbcType="VARCHAR" />
+    <result column="student_number" property="studentNumber" jdbcType="VARCHAR" />
+    <result column="campus_id" property="campusId" jdbcType="INTEGER" />
+    <result column="is_banned" property="isBanned" jdbcType="BIT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, password, community_id, shop_name, create_time
+    id, name, password, community_id, shop_name, create_time, address, mobile, student_number, 
+    campus_id, is_banned
   </sql>
-  <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String">
-    SELECT
-    <include refid="Base_Column_List" />
-    FROM seller
-    WHERE name = #{name}
-  </select>
-  <select id="selectCountOfAll" resultType="java.lang.Integer">
-    SELECT COUNT (*)
-    FROM seller
-  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from seller
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="findAllSellers" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from seller where campus_id = #{campusId}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from seller
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByName" parameterType="java.lang.String">
-    DELETE FROM seller
-    WHERE name = #{name}
-  </delete>
   <insert id="insert" parameterType="com.seu.dm.entities.Seller" >
     insert into seller (id, name, password, 
-      community_id, shop_name, create_time
-      )
+      community_id, shop_name, create_time, 
+      address, mobile, student_number, 
+      campus_id, is_banned)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{communityId,jdbcType=VARCHAR}, #{shopName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}
-      )
+      #{communityId,jdbcType=VARCHAR}, #{shopName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{address,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{studentNumber,jdbcType=VARCHAR}, 
+      #{campusId,jdbcType=INTEGER}, #{isBanned,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.seu.dm.entities.Seller" >
     insert into seller
@@ -65,6 +62,21 @@
       <if test="createTime != null" >
         create_time,
       </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="mobile != null" >
+        mobile,
+      </if>
+      <if test="studentNumber != null" >
+        student_number,
+      </if>
+      <if test="campusId != null" >
+        campus_id,
+      </if>
+      <if test="isBanned != null" >
+        is_banned,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -84,6 +96,21 @@
       </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="studentNumber != null" >
+        #{studentNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="campusId != null" >
+        #{campusId,jdbcType=INTEGER},
+      </if>
+      <if test="isBanned != null" >
+        #{isBanned,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -105,6 +132,21 @@
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="studentNumber != null" >
+        student_number = #{studentNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="campusId != null" >
+        campus_id = #{campusId,jdbcType=INTEGER},
+      </if>
+      <if test="isBanned != null" >
+        is_banned = #{isBanned,jdbcType=BIT},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -114,7 +156,12 @@
       password = #{password,jdbcType=VARCHAR},
       community_id = #{communityId,jdbcType=VARCHAR},
       shop_name = #{shopName,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      address = #{address,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      student_number = #{studentNumber,jdbcType=VARCHAR},
+      campus_id = #{campusId,jdbcType=INTEGER},
+      is_banned = #{isBanned,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

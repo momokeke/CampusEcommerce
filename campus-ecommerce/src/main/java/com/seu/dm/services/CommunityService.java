@@ -16,5 +16,9 @@ public interface CommunityService {
 
     Community findCommunity(Integer id);
 
+    List<Community> getAllCommunities();
+
+    Community findCommunityByName(String name);
+
     List<Community> findAllCommunities();
 }

@@ -7,50 +7,37 @@
     <!-- Any Other things should follow these 3 meta above -->
     <title>我的足迹</title>
     <!-- Bootstrap -->
-    <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
-    <link href="../css/common.css" rel="stylesheet"/>
-    <link href="../css/buyer_center.css" rel="stylesheet"/>
+    <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="/css/common.css" rel="stylesheet"/>
+    <link href="/css/buyer_center.css" rel="stylesheet"/>
+    <link href="/css/foot_print.css" rel="stylesheet"/>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="../js/common/html5shiv.min.js"></script>
-    <script src="../js/common/respond.min.js"></script>
+    <script src="/js/common/html5shiv.min.js"></script>
+    <script src="/js/common/respond.min.js"></script>
     <![endif]-->
-    <script src="../js/common/html5shiv.min.js"></script>
-    <script src="../js/common/respond.min.js"></script>
+    <script src="/js/common/html5shiv.min.js"></script>
+    <script src="/js/common/respond.min.js"></script>
 </head>
 <body>
 <!-- this is the common top begin -->
 <div class="container-fluid">
-    <div class="row top font-small">
-        <div class="col-md-2 col-sm-2"></div>
-        <div class="col-md-8 col-sm-8">
-            当前学校：东南大学
-            <div class="float-right">
-                <a href="#">登录</a>
-                <a href="#">注册</a>
-                <a href="#">我的订单</a>
-            </div>
-        </div>
-        <div class="col-md-2 col-sm-2">
-
-        </div>
-    </div>
+    <div data-th-replace="common_html/common_head"></div>
     <div class="row banner">
         <div class="col-md-2 col-sm-2"></div>
         <div class="col-md-8 col-sm-8">
             <div class="row">
 
-                <div class="col-md-3 logo"><img src="../img/cute_logo.jpg" class="logo_wh"/></div>
+                <div class="col-md-3 logo"><img src="/img/cute_logo.jpg" class="logo_wh"/></div>
                 <div class="col-md-5 font-bold">
-                    <a class="mr-15 glyphicon glyphicon-user" th:href="@{buyer_center.html}">买家中心</a>
-                    <a class="mr-15 glyphicon glyphicon-cog" href="#">设置</a>
-                    <a class="mr-15 glyphicon glyphicon-envelope" href="#">消息</a>
+                    <a class="mr-15 glyphicon glyphicon-user" href="buyer_center.html" th:href="@{buyer_center}">买家中心</a>
+                    <a class="mr-15 glyphicon glyphicon-cog" href="#">我的足迹</a>
                 </div>
                 <div class="col-md-4 col-sm-4">
                     <form class="form-inline">
                         <div class="form-group">
-                            <input type="text" class="form-control search" id="search" placeholder="请输入商品名\关键词\店铺名\社团名" style="width: 320px">
+                            <input type="text" class="form-control search" id="search" placeholder="请输入商品名\关键词" style="width: 320px"/>
                         </div>
                         <button type="submit" class="btn btn-default ">搜索</button>
                     </form>
@@ -61,123 +48,120 @@
 </div>
 <!-- this is the common top end -->
 <div class="container">
-    <div class="row">
+    <div class="row mt-20">
+        <div class="col-md-1 font-bold font-middle">
+            <script>
+                var day=new Date();
+                document.write(day.getFullYear(),".",day.getMonth()+1,".",day.getDay())
+            </script>
+        </div>
+        <div class="col-md-11"><hr color="grey" style="height: 3px;"/></div>
+    </div>
+    <div class="row mt-10">
         <div class="col-md-2">
-            <ul class="list-unstyled">
-                <li class="font-red font-middle mt-10">全 部 功 能</li>
-                <li class="mt-10 "><a th:href="@{/shopping_cart.html}" class="font-black glyphicon glyphicon-shopping-cart"> 我的购物车</a> </li>
-                <li class="mt-10 "><a th:href="@{/buyer_favorite.html}" class="font-black glyphicon glyphicon-star-empty"> 我的收藏夹</a> </li>
-                <li class="mt-10 "><a th:href="@{/bought_products.html}" class="font-black glyphicon glyphicon-ok-circle"> 已买到的宝贝</a> </li>
-                <li class="mt-10 "><a th:href="@{/bought_shops.html}" class="font-black glyphicon glyphicon-home"> 购买过的店铺</a> </li>
-                <li class="mt-10 "><a th:href="@{/comment_management.html}" class="font-black glyphicon glyphicon-list-alt"> 评价管理</a> </li>
-                <li class="mt-10 "><a th:href="@{/foot_print.html}" class="font-black glyphicon glyphicon-time"> 我的足迹</a> </li>
-            </ul>
+           <div><img src="#" alt="浏览过的商品" class="foot_print_img"/></div>
+            <div><span>商品名称</span></div>
+            <div>￥<span>商品价格</span></div>
         </div>
-        <div class="col-md-7">
-            <div class="row mt-10 border-one mr-15">
-                <div class="col-md-2">
-                    <img src="../img/photo.jpg" alt="买家头像" class="buyer_head_photo"/>
-                </div>
-                <div class="col-md-4 mt-20">
-                    <span class="ml-5 font-bold font-middle " th:text="${buyer.name}">买家姓名</span>
-                </div>
-                <div class="col-md-3">
-                    <a class="float-right font-bold font-middle font-black mt-20">我的支付</a>
-                </div>
-                <div class="col-md-3">
-                    <a class="float-right font-bold font-middle font-black mt-20">退款</a>
-                </div>
-            </div>
-            <div class="row border-one mr-15">
-                <div class="col-md-3  mt-10 mb-10"><a href="" class="font-black ">待付款</a></div>
-                <div class="col-md-3  mt-10 mb-10"><a href="" class="font-black  ">待发货</a></div>
-                <div class="col-md-3  mt-10 mb-10"><a href="" class="font-black ">待收货</a></div>
-                <div class="col-md-3  mt-10 mb-10"><a href="" class="font-black  ">待评价</a></div>
-            </div>
-
+        <div class="col-md-2">
+            <div><img src="#" alt="浏览过的商品" class="foot_print_img"/></div>
+            <div><span>商品名称</span></div>
+            <div>￥<span>商品价格</span></div>
         </div>
-        <div class="col-md-3">
-            <div class="row calender_top mt-40">
-                <div class="border-calendar text-center mt-10 mb-10">
-                    <div class="glyphicon glyphicon-time mt-5 float-left ml-5"></div>
-                    <span class="font-middle font-white ">我的日历</span>
-                    <div class="glyphicon glyphicon-tag mt-5 float-right mr-5"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="border-calendar text-center ">
-                    <strong class="font-green font-bold font-bigger">
-                        <script language=JavaScript>
-                            today=new Date();
-                            document.write(today.getDate())
-                        </script>
-                    </strong><br/>
-                    <span class="font-green  font-middle">
-                            <script language=JavaScript>
-                                today=new Date();
-                                var weekDay="";
-                                var myWeekDay=today.getDay();
-                                if(myWeekDay==0) weekDay = "星期日";
-                                if(myWeekDay==1) weekDay = "星期一";
-                                if(myWeekDay==2) weekDay = "星期二";
-                                if(myWeekDay==3) weekDay = "星期三";
-                                if(myWeekDay==4) weekDay = "星期四";
-                                if(myWeekDay==5) weekDay = "星期五";
-                                if(myWeekDay==6) weekDay = "星期六";
-                                document.write(weekDay)
-                            </script>
-                        </span><br/><br/>
-                    <span class=" font-green  font-middle">
-                            <script language=JavaScript>
-                                today=new Date();
-                                document.write(today.getFullYear(),".",today.getMonth()+1)
-                            </script>
-                        </span><br/>
-                </div>
-            </div>
+        <div class="col-md-2">
+            <div><img src="#" alt="浏览过的商品" class="foot_print_img"/></div>
+            <div><span>商品名称</span></div>
+            <div>￥<span>商品价格</span></div>
+        </div>
+        <div class="col-md-2">
+            <div><img src="#" alt="浏览过的商品" class="foot_print_img"/></div>
+            <div><span>商品名称</span></div>
+            <div>￥<span>商品价格</span></div>
+        </div>
+        <div class="col-md-2">
+            <div><img src="#" alt="浏览过的商品" class="foot_print_img"/></div>
+            <div><span>商品名称</span></div>
+            <div>￥<span>商品价格</span></div>
+        </div>
+        <div class="col-md-2">
+            <div><img src="#" alt="浏览过的商品" class="foot_print_img"/></div>
+            <div><span>商品名称</span></div>
+            <div>￥<span>商品价格</span></div>
         </div>
     </div>
-
+    <div class="row mt-10">
+        <div class="col-md-2">
+            <div><img src="#" alt="浏览过的商品" class="foot_print_img"/></div>
+            <div><span>商品名称</span></div>
+            <div>￥<span>商品价格</span></div>
+        </div>
+        <div class="col-md-2">
+            <div><img src="#" alt="浏览过的商品" class="foot_print_img"/></div>
+            <div><span>商品名称</span></div>
+            <div>￥<span>商品价格</span></div>
+        </div>
+        <div class="col-md-2">
+            <div><img src="#" alt="浏览过的商品" class="foot_print_img"/></div>
+            <div><span>商品名称</span></div>
+            <div>￥<span>商品价格</span></div>
+        </div>
+        <div class="col-md-2">
+            <div><img src="#" alt="浏览过的商品" class="foot_print_img"/></div>
+            <div><span>商品名称</span></div>
+            <div>￥<span>商品价格</span></div>
+        </div>
+        <div class="col-md-2">
+            <div><img src="#" alt="浏览过的商品" class="foot_print_img"/></div>
+            <div><span>商品名称</span></div>
+            <div>￥<span>商品价格</span></div>
+        </div>
+        <div class="col-md-2">
+            <div><img src="#" alt="浏览过的商品" class="foot_print_img"/></div>
+            <div><span>商品名称</span></div>
+            <div>￥<span>商品价格</span></div>
+        </div>
+    </div>
 </div>
 <!--This is the common footer Begin-->
-<div class="container-fluid mt-20">
-    <div class="row">
-        <div class="col-md-12 footer-info">
-            <div class="col-md-2 col-md-offset-3 mt-40 "><img src="../img/logo_button_1.jpg"/></div>
-            <div class="col-md-3 mt-40 "><img src="../img/logo_button_2.jpg " /><br/><span class="font-grey" >一家专门做校园文化产品的网站</span></div>
-            <div class="col-md-4 mt-60"><img class="qr-code"  src="../img/qr_code.png "/><br/><div class="mt-20 ">扫码有惊喜哦</div></div>
+<div class="navbar-fixed-bottom">
+    <div class="container-fluid mt-20">
+        <div class="row">
+            <div class="col-md-12 footer-info " style="height: 150px">
+                <div class="col-md-2 col-md-offset-3 mt-40 "><img src="/img/logo_button_1.jpg"/></div>
+                <div class="col-md-3 mt-40 "><img src="/img/logo_button_2.jpg " /><br/><span class="font-grey" >一家专门做校园文化产品的网站</span></div>
+                <div class="col-md-4 mt-60"><img class="qr-code"  src="/img/qr_code.png "/><br/><div class="mt-20 ">扫码有惊喜哦</div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row mt-20 font-small">
+            <div class="col-md-2 col-sm-2"></div>
+            <div class="col-md-8 col-sm-8">
+                <div id="footer">
+                    <div class="footerNav text-center">
+                        <a href="#">关于我们</a> |
+                        <a href="#">服务条款</a> |
+                        <a href="#">免责声明</a> |
+                        <a href="#">网站地图</a> |
+                        <a href="#">联系我们</a>
+                    </div>
+                    <div class="copyRight text-center">
+                        Copyright DaMi
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
         </div>
     </div>
 </div>
 
-<div class="container">
-    <div class="row mt-20 font-small">
-        <div class="col-md-2 col-sm-2"></div>
-        <div class="col-md-8 col-sm-8">
-            <div id="footer">
-                <div class="footerNav text-center">
-                    <a href="#">关于我们</a> |
-                    <a href="#">服务条款</a> |
-                    <a href="#">免责声明</a> |
-                    <a href="#">网站地图</a> |
-                    <a href="#">联系我们</a>
-                </div>
-                <div class="copyRight text-center">
-                    Copyright DaMi
-                </div>
-            </div>
-        </div>
-        <div class="col-md-2"></div>
-    </div>
-</div>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="../js/common/jquery-3.1.1.min.js"></script>
+<script src="/js/common/jquery-3.1.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
 <!--This is the common footer End-->
-</body>
-</html>

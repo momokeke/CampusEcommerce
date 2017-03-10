@@ -1,9 +1,11 @@
 package com.seu.dm.services;
 
 import com.seu.dm.entities.Order;
+import com.seu.dm.entities.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -17,4 +19,6 @@ public interface OrderService {
     int updateOrder(Order order);
 
     Order findOrder(Integer id);
+
+    HashMap<String, Integer> findHotProductsFromOrder(Integer n);
 }

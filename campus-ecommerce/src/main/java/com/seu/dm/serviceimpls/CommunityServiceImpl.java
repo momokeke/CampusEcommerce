@@ -37,6 +37,16 @@ public class CommunityServiceImpl implements CommunityService {
     }
 
     @Override
+    public List<Community> getAllCommunities() {
+        List<Community> communities = communityMapper.getAllCommunities();
+        return communities;
+    }
+
+    @Override
+    public Community findCommunityByName(String name) {
+        return communityMapper.findCommunityByName(name);
+    }
+
     public List<Community> findAllCommunities() {
         return communityMapper.findAllCommunities();
     }

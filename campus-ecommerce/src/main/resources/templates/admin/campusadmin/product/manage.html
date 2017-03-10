@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head data-th-replace="admin/common/head"></head>
+<body>
+<!-- Navigation -->
+<th:block data-th-replace="admin/common/navigation"></th:block>
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">校区添加</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <!--Form begin -->
+            <form role="form">
+                <div class="form-group has-success">
+                    <label class="control-label" for="inputSuccess">校区名称</label>
+                    <input type="text" class="form-control" id="inputSuccess"/>
+                </div>
+                <button class="btn btn-success">增加</button>
+            </form>
+            <!--Form end   -->
+            <hr/>
+        </div>
+    </div>
+    <!-- /.row -->
+    <!--page begin-->
+    <nav aria-label="Page navigation">
+        <ul class="pagination">
+            <li>
+                <a href="#" aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li>
+                <a href="#" aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <!--page end -->
+</div>
+<!-- /#page-wrapper -->
+
+<!-- Scripts -->
+<th:block data-th-replace="admin/common/scripts"></th:block>
+</body>
+</html>

@@ -1,6 +1,7 @@
 package com.seu.dm.controllers;
 
 import com.seu.dm.entities.Product;
+import com.seu.dm.entities.SearchGoodEntity;
 import com.seu.dm.services.ProductService;
 import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -15,6 +18,7 @@ import java.util.List;
  * Created by 张老师 on 2017/3/2.
  */
 @Controller
+@RequestMapping(value = "/product")
 public class ProductController {
     @Autowired
     private ProductService productService;
@@ -23,19 +27,42 @@ public class ProductController {
 //    public String addProduct(@RequestBody Product product, Model model){
 //
 //    }
-
-    /**
-     * 找到所有商品  测试用
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "/findAll")
-    public String findAllProducts( Model model){
+//
+//    /**
+//     * 找到所有商品  测试用
+//     * @param model
+//     * @return
+//     */
+//    @RequestMapping(value = "/findAll")
+//    public String findAllProducts( Model model){
 //        Product product = ;
 //        model.addAttribute("product",product);
 //        int i = productService.addProduct(product);
 //        System.out.println(product);
-       return "demo/helloworld";
+//       return "demo/helloworld";
+//    }
+
+//    /**
+//     * 通过商品名称，社团名称，商品种类，价格以及商品图片向数据库中添加记录
+//     * @return
+//     */
+//    @RequestMapping(value = "/addProduct")
+//    public String submitProduct(){
+//        return "";
+//    }
+
+
+    /**
+     * 根据商品名找到相关信息并用特定实体包装传入model
+     * @param name
+     * @param model
+     * @return
+     */
+    @RequestMapping(value = "/searchGood",method = RequestMethod.GET)
+    public String searchEntityByName(@RequestParam(value = "name")String name,Model model){
+        List<SearchGoodEntity> searchGoodEntities = productService.searchEntitiesByName(name);
+        model.addAttribute("entities",searchGoodEntities);
+        return "/product/product_list";
     }
 
 
@@ -125,11 +152,12 @@ public class ProductController {
      * @return
      */
     @RequestMapping(value = "/addProduct")
-    public String addProduct(Product product,Model model){
+    public String addProduct(Product product, Model model){
         int i = productService.addProduct(product);
         model.addAttribute("product",product);
         return "/seller/new_products";
     }
+
 
     /**
      * 根据ID删除指定商品
@@ -143,6 +171,7 @@ public class ProductController {
         if(i == 1) return "/";
         return "/";
     }
+
 
     /**
      * 更新商品信息

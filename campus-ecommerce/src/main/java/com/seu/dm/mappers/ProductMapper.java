@@ -6,25 +6,27 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public interface ProductMapper {
-    int deleteByPrimaryKey(Integer id);
+    int deleteByPrimaryKey(Integer id);                       //根据主键删除记录
 
-    int insert(Product record);
+    int insert(Product record);                              //根据记录添加到数据库
 
     int insertSelective(Product record);
 
-    Product selectByPrimaryKey(Integer id);
+    Product selectByPrimaryKey(Integer id);                  //根据主键查找记录
 
     int updateByPrimaryKeySelective(Product record);
 
     int updateByPrimaryKeyWithBLOBs(Product record);
 
-    int updateByPrimaryKey(Product record);
+    int updateByPrimaryKey(Product record);                  //更新数据库记录
 
-    List<Product> getProductsByName(String s);
+    List<Product> getProductsByName(String s);              //通过商品名模糊查找对应商品列表
 
-    int getCountOfResultsByName(String s);
+    int getCountOfResultsByName(String s);                  //通过商品名模糊查找得到查找结果数量
 
-    List<Product> getResultsByCategory(String s);
+    List<Product> getResultsByCategory(String s);           //通过分类名模糊查找对应商品列表
 
-    BigDecimal  getPriceById(Integer id);
+    BigDecimal  getPriceById(Integer id);                   //通过主键得到商品价格
+
+    List<Product> getProductsBySellerId(Integer sellerId);
 }

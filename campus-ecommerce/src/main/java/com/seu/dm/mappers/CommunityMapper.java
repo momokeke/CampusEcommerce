@@ -17,5 +17,9 @@ public interface CommunityMapper {
 
     int updateByPrimaryKey(Community record);
 
+    List<Community> getAllCommunities();
+
+    Community findCommunityByName(String name);
+
     List<Community> findAllCommunities();
 }

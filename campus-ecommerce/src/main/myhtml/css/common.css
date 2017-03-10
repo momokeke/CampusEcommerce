@@ -109,6 +109,9 @@
 .mr-55{
     margin-right:55px;
 }
+.mr-240{
+    margin-right: 240px;
+}
 .mr-15{
     margin-right: 15px;
 }
@@ -219,6 +222,12 @@
 }
 .bk-white{
     background-color: white;
+}
+.bk-grey{
+    background-color: #e3e3e3;
+}
+.bk-blue{
+    background-color: #c2ebf8;
 }
 .pb-50{
     padding-bottom: 50px;

@@ -1,6 +1,8 @@
 package com.seu.dm.services;
 
 import com.seu.dm.entities.Product;
+import com.seu.dm.entities.SearchGoodEntity;
+
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -9,7 +11,6 @@ import java.util.List;
  */
 
 public interface ProductService {
-    Product findAllProducts();
 
     int addProduct(Product product);
 
@@ -26,4 +27,12 @@ public interface ProductService {
     int updateProduct(Product product);
 
     BigDecimal getProductPriceById(Integer id);
+
+    List<SearchGoodEntity> searchEntitiesByName(String name);
+
+    List<SearchGoodEntity> serachEntitiesByCategory(String category);
+
+    List<Product> findProductsBySellerId(Integer selledId);
+
+    Integer unshelfProduct(Integer productId);
 }

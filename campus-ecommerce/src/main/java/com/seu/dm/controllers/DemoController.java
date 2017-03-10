@@ -2,7 +2,9 @@ package com.seu.dm.controllers;
 
 import com.seu.dm.entities.DemoEntity;
 import com.seu.dm.services.DemoService;
+import jdk.nashorn.internal.ir.RuntimeNode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -10,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -29,10 +34,14 @@ public class DemoController {
     @RequestMapping(value="/helloworld")
     public String helloWorld(){
         demoService.testAspect();
-        return "demo/helloworld";
+
+        return "seller/new_products";
     }
 
-
+    @RequestMapping(value = "/jump")
+    public String jumpTo(){
+        return "buyer/buyer_center";
+    }
     /**
      * Example for returing Object in Json
      * @return
@@ -87,6 +96,32 @@ public class DemoController {
     @RequestMapping(value = "/aspect")
     public void testAspect(){
         demoService.testAspect();
+    }
+
+
+    /**
+     * 进入店铺主页
+     * @return
+     */
+    @RequestMapping(value="/shopHomepage")
+    public String jumpToShopHomepage(){
+        return "shop/shop_homepage";
+    }
+    /**
+     * 进入店铺商品分类页面
+     * @return
+     */
+    @RequestMapping(value="/shopProductCla")
+    public String jumpToShopProductCla(){
+        return "shop/shop_product_classification";
+    }
+    /**
+     * 进入商品详情页面
+     * @return
+     */
+    @RequestMapping(value="/productDetails")
+    public String jumpToProductDetails(){
+        return "product/product_details";
     }
 
     @RequestMapping(value ="/seller")
