@@ -2,12 +2,40 @@ package com.seu.dm.entities;
 
 import java.util.Date;
 
-public class Adim {
+public class SchoolAdmin {
     private Integer id;
 
     private String name;
 
     private String password;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    private Integer studentNumber;
+
+    private Integer schoolId;
+
+    public Integer getStudentNumber() {
+        return studentNumber;
+    }
+
+    public void setStudentNumber(Integer studentNumber) {
+        this.studentNumber = studentNumber;
+    }
+
+    public Integer getSchoolId() {
+        return schoolId;
+    }
+
+    public void setSchoolId(Integer schoolId) {
+        this.schoolId = schoolId;
+    }
 
     private Date registerTime;
 
@@ -25,14 +53,6 @@ public class Adim {
 
     public void setName(String name) {
         this.name = name == null ? null : name.trim();
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
     }
 
     public Date getRegisterTime() {

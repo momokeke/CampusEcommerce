@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.seu.dm.mappers.OrderInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.seu.dm.entities.OrderInfo" >
+<mapper namespace="com.seu.dm.mappers.OrderProductMapper" >
+  <resultMap id="BaseResultMap" type="com.seu.dm.entities.OrderProduct" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="product_id" property="productId" jdbcType="INTEGER" />
     <result column="product_num" property="productNum" jdbcType="INTEGER" />
@@ -12,21 +12,28 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from order_info
+    from order_product
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="findOrderProductByProductId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from order_product where product_id = #{id}
+  </select>
+  <select id="findHotProducts" parameterType="java.lang.Integer" resultType="java.util.HashMap">
+    SELECT product_id,sum(product_num) m from order_product
+    group by product_id order by m desc limit #{n}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from order_info
+    delete from order_product
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.seu.dm.entities.OrderInfo" >
-    insert into order_info (id, product_id, product_num
+  <insert id="insert" parameterType="com.seu.dm.entities.OrderProduct" >
+    insert into order_product (id, product_id, product_num
       )
     values (#{id,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{productNum,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.seu.dm.entities.OrderInfo" >
-    insert into order_info
+  <insert id="insertSelective" parameterType="com.seu.dm.entities.OrderProduct" >
+    insert into order_product
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -50,8 +57,8 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.seu.dm.entities.OrderInfo" >
-    update order_info
+  <update id="updateByPrimaryKeySelective" parameterType="com.seu.dm.entities.OrderProduct" >
+    update order_product
     <set >
       <if test="productId != null" >
         product_id = #{productId,jdbcType=INTEGER},
@@ -62,8 +69,8 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.seu.dm.entities.OrderInfo" >
-    update order_info
+  <update id="updateByPrimaryKey" parameterType="com.seu.dm.entities.OrderProduct" >
+    update order_product
     set product_id = #{productId,jdbcType=INTEGER},
       product_num = #{productNum,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}

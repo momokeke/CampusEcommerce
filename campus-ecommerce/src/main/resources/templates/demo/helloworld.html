@@ -7,11 +7,11 @@
 </head>
 <body>
 hello world
-<form>
-   <input type="text" name="s"/>
-    <span th:text="${product.id}"></span>
-    <span th:text="${product.name}"></span>
-    <span th:text="${product.description}"></span>
+<form action="/addCart" method="post">
+    <input name="productName" type="text"/><br/>
+    <input name="productNumber" type="text"/><br/>
+    <input name="productPrice" type="text"/><br/>
+    <input type="submit" name="x"/>
 </form>
 </body>
 </html>
