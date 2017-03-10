@@ -46,4 +46,8 @@ public class CommunityServiceImpl implements CommunityService {
     public Community findCommunityByName(String name) {
         return communityMapper.findCommunityByName(name);
     }
+
+    public List<Community> findAllCommunities() {
+        return communityMapper.findAllCommunities();
+    }
 }

@@ -27,7 +27,18 @@ ul{
     border-radius: 0.2em;
     height: 35px;
 }
+.border-three{
+    border: solid 1px grey;
+    border-radius: 0.2em;
+    width: 102px;
+    height: 35px;
+}
 .new-pro-img{
+    width: 550px;
+    height: 500px;
+    border:none;
+}
+.sold-pro-img{
     width: 160px;
     height: 150px;
 }
@@ -37,4 +48,18 @@ ul{
 }
 .border-3{
     width: 90px;
+}
+.div_h{
+    height: 537px;
+}
+.btn-float{
+    display: inline;
+    float: left;
+}
+.textarea-wh{
+    width: 170px;
+    height: 60px;
+}
+.input-width{
+    width: 150px;
 }

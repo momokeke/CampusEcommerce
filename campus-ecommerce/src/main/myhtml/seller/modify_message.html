@@ -40,21 +40,7 @@
 <body>
 <!-- this is the common top begin -->
 <div class="container-fluid">
-    <div class="row top font-small">
-        <div class="col-md-2 col-sm-2"></div>
-        <div class="col-md-8 col-sm-8">
-            当前学校：<span>东南大学</span>
-            <div class="float-right">
-                <a href="#">买家登录</a>
-                &nbsp;&nbsp;&nbsp;<a href="#">卖家登录</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;<a href="../buyer/buyer_register.html">买家注册</a>
-                &nbsp;&nbsp;&nbsp;<a href="../seller/seller_register.html">卖家注册</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;<a href="#">我的订单</a>
-            </div>
-        </div>
-        <div class="col-md-2 col-sm-2">
-        </div>
-    </div>
+    <div data-th-replace="common_html/common_head"></div>
     <div class="row banner">
         <div class="col-md-2 col-sm-2"></div>
         <div class="col-md-8 col-sm-8">
@@ -98,7 +84,6 @@
             <tr class="success">
                 <td colspan="2">
                     <h5><i class="iconfont">&#xe61a;</i>店铺管理</h5>
-                    <span class="seller_shop mr-5"><a href="seller_register.html">店铺注册</a></span>
                     <span class="seller_shop mr-5 login"><a href="#" class="shop_login">登录店铺</a></span>
                     <span class="seller_shop mr-5 login"><a href="#">修改信息</a></span>
                 </td>
@@ -106,9 +91,9 @@
             <tr class="warning">
                 <td colspan="2">
                     <h5><i class="iconfont">&#xe6db;</i>商品管理</h5>
-                    <span class="seller_shop mr-5"><a href="xpsj.html">新品上架</a></span>
-                    <span class="seller_shop mr-5"><a href="scsp.html">售出商品</a></span>
-                    <span class="seller_shop mr-5"><a href="ckkc.html">库存商品</a></span>
+                    <span class="seller_shop mr-5"><a href="new_products.html">新品上架</a></span>
+                    <span class="seller_shop mr-5"><a href="sold_goods.html">售出商品</a></span>
+                    <span class="seller_shop mr-5"><a href="stock_goods.html">库存商品</a></span>
                 </td>
             </tr>
             <tr class="danger">

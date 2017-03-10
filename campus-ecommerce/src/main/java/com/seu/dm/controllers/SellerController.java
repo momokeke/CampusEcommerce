@@ -119,8 +119,9 @@ public class SellerController {
     *进入买家中心页面
      */
     @RequestMapping(value = "/seller_center")
-    public String jumpToSellerCenter(){
+    public String jumpToSellerCenter() {
         return "/seller/seller_center";
+    }
 
 
     @RequestMapping(value = "/shop_homepage")

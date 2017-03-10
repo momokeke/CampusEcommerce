@@ -1,29 +1,50 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
-<head data-th-replace="sellercommon/sellerhead"></head>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <!-- Any Other things should follow these 3 meta above -->
+    <title>达米卖家中心</title>
+    <!-- Bootstrap -->
+    <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="../css/common.css" rel="stylesheet"/>
+    <link href="../css/index.css" rel="stylesheet"/>
+    <link href="../css/seller_center.css" rel="stylesheet"/>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../js/common/html5shiv.min.js"></script>
+    <script src="../js/common/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        /* FontIcon begin */
+        @font-face {
+            font-family: 'iconfont';  /* project id 243659 */
+            src: url('//at.alicdn.com/t/font_gltulyiwxlqmpldi.eot');
+            src: url('//at.alicdn.com/t/font_gltulyiwxlqmpldi.eot?#iefix') format('embedded-opentype'),
+            url('//at.alicdn.com/t/font_gltulyiwxlqmpldi.woff') format('woff'),
+            url('//at.alicdn.com/t/font_gltulyiwxlqmpldi.ttf') format('truetype'),
+            url('//at.alicdn.com/t/font_gltulyiwxlqmpldi.svg#iconfont') format('svg');
+        }
+        .iconfont{
+            font-family:"iconfont" !important;
+            font-size:16px;font-style:normal;
+            -webkit-font-smoothing: antialiased;
+            -webkit-text-stroke-width: 0.2px;
+            -moz-osx-font-smoothing: grayscale;}
+
+        /* FontIcon End */
+    </style>
+</head>
 <body>
 <!-- this is the common top begin -->
 <div class="container-fluid">
-    <div class="row top font-small">
-        <div class="col-md-2 col-sm-2"></div>
-        <div class="col-md-8 col-sm-8">
-            当前学校：<span>东南大学</span>
-            <div class="float-right">
-                <a href="#">买家登录</a>
-                &nbsp;&nbsp;&nbsp;<a href="#">卖家登录</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;<a href="../buyer/buyer_register.html">买家注册</a>
-                &nbsp;&nbsp;&nbsp;<a href="../seller/seller_register.html">卖家注册</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;<a href="#">我的订单</a>
-            </div>
-        </div>
-        <div class="col-md-2 col-sm-2">
-        </div>
-    </div>
+    <div data-th-replace="common_html/common_head"></div>
     <div class="row banner">
         <div class="col-md-2 col-sm-2"></div>
         <div class="col-md-8 col-sm-8">
             <div class="row">
-
                 <div class="col-md-2 seller_logo">
                     <img src="../img/cute_logo.jpg" class="logo_wh"/>
                 </div>
@@ -92,57 +113,45 @@
             </tr>
         </table>
     </div>
-    <div class="col-md-6 row border-one border-radius mt-40 ml-30">
+    <div class="col-md-7 row border-one border-radius mt-40 ml-30">
         <div class="mt-20">
             <a href="#">卖家中心</a>
             <span>&gt;</span>
-            <a href="#">登录店铺</a>
+            <a href="#">客服中心</a>
             <span>&gt;</span>
-            <span>修改店铺信息</span>
+            <span>退货订单</span>
             <hr/>
         </div>
         <div class="col-md-4">
             <form action="#" method="post">
-                <div><span class="text-size">卖家姓名:</span><input class="border-two mt-20 ml-5 bg-info" type="text" value=""/></div>
-                <div><span class="text-size">社团名称:</span><input class="border-two mt-20 ml-5 bg-success" type="text" value=""/></div>
-                <div><span class="text-size">店铺名称:</span><input class="border-two mt-20 ml-5 bg-warning" type="text" value=""/></div>
-                <div><span class="text-size">学生学号:</span><input class="border-two mt-20 ml-5 bg-info" type="text" value=""/></div>
-                <div><span class="text-size">手机号码:</span><input class="border-two mt-20 ml-5 bg-success" type="text" value=""/></div>
-                <div><span class="text-size">登录密码:</span><input class="border-two mt-20 ml-5 bg-warning" type="text" value=""/></div>
-                <div><span class="text-size">修改密码:</span><input class="border-two mt-20 ml-5 bg-danger" type="text" value=""/></div>
-                <div><input type="button" class=" mt-20 ml-5 btn-success btn-lg" value="提交修改信息"/></div>
+                <div><span class="text-size">商品名称:</span><input class="border-two mt-20 ml-5" type="text" value=""/></div>
+                <div>
+                    <span class="text-size btn-float mt-20">社团名称:</span>
+                </div>
+                <div class="btn-group border-two mt-20 ml-5">
+                    <button class="btn btn-default" style="width: 145px;">社团名称</button><button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
+                    <ul class="dropdown-menu" th:each="community:${communities}">
+                        <li>
+                            <a rel="nofollow" href="#" th:text="${community.name}">绘画社</a>
+                        </li>
+                    </ul>
+                </div>
+                <div><span class="text-size">商品种类:</span><input class="border-two mt-20 ml-5" type="text" value=""/></div>
+                <div><span class="text-size">商品价格:</span><input class="border-two mt-20 ml-5" type="text" value=""/></div>
+                <div><span class="text-size">商品描述:</span><textarea class="border-two mt-20 ml-5 textarea-wh"></textarea></div>
+                <div><input type="button" class=" mt-25 ml-5 btn-success btn-lg" value="提交商品信息"></div>
             </form>
         </div>
-        <div class="col-md-6 ml-30">
-
-
-            <!--this is the shop login form begin-->
-            <div class="col-md-3">
-                <div class="form_fade border-one border-r6 mt-40">
-                    <form class="mt-40">
-                        <div class="form-group mb-5">
-                            <label for="shop_name">店铺名</label>
-                            <input type="text" class="form-control" id="shop_name"  placeholder="您注册的店铺名"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">密码</label>
-                            <input type="password" class="form-control" id="password" placeholder="输入您的登录密码"/>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-default mr-88 fadeout">登录</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <!--this is the shop login form end-->
-
-
+        <div class="col-md-7">
+            <h3>请选择图片文件：JPG/GIF（建议像素：550px*500px）</h3>
+            <form name="form0" id="form0">
+                <input type="file" name="file0" id="file0" multiple="multiple" /><input type="submit" value="上传图片"/><br/>
+                <img src="../img/new_pro.jpg" id="img0" alt="图片预览" title="图片预览" class="new-pro-img">
+            </form>
         </div>
     </div>
-    <div class="col-md-1"></div>
 </div>
-
-
+</div>
 
 
 <!--This is the common footer Begin-->
@@ -193,6 +202,25 @@
 
         });
     });
+    $("#file0").change(function(){
+        var objUrl = getObjectURL(this.files[0]) ;
+        console.log("objUrl = "+objUrl) ;
+        if (objUrl) {
+            $("#img0").attr("src", objUrl) ;
+        }
+    }) ;
+    //建立一個可存取到該file的url
+    function getObjectURL(file) {
+        var url = null ;
+        if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(file) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file) ;
+        }
+        return url ;
+    }
 </script>
 
 </body>

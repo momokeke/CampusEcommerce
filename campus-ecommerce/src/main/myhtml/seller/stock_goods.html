@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- Any Other things should follow these 3 meta above -->
-    <title>达米卖家中心</title>
+    <title>达米卖家中心-管理库存</title>
     <!-- Bootstrap -->
     <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
     <link href="../css/common.css" rel="stylesheet"/>
@@ -40,7 +40,21 @@
 <body>
 <!-- this is the common top begin -->
 <div class="container-fluid">
-    <div data-th-replace="common_html/common_head"></div>
+    <div class="row top font-small">
+        <div class="col-md-2 col-sm-2"></div>
+        <div class="col-md-8 col-sm-8">
+            当前学校：<span>东南大学</span>
+            <div class="float-right">
+                <a href="#">买家登录</a>
+                &nbsp;&nbsp;&nbsp;<a href="#">卖家登录</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;<a href="../buyer/buyer_register.html">买家注册</a>
+                &nbsp;&nbsp;&nbsp;<a href="../seller/seller_register.html">卖家注册</a>
+                &nbsp;&nbsp;&nbsp;&nbsp;<a href="#">我的订单</a>
+            </div>
+        </div>
+        <div class="col-md-2 col-sm-2">
+        </div>
+    </div>
     <div class="row banner">
         <div class="col-md-2 col-sm-2"></div>
         <div class="col-md-8 col-sm-8">
@@ -83,17 +97,16 @@
             <tr class="success">
                 <td colspan="2">
                     <h5><i class="iconfont">&#xe61a;</i>店铺管理</h5>
-                    <span class="seller_shop mr-5"><a href="seller_register.html">店铺注册</a></span>
                     <span class="seller_shop mr-5 login"><a href="#" class="shop_login">登录店铺</a></span>
-                    <span class="seller_shop mr-5 login"><a href="xgxx.html">修改信息</a></span>
+                    <span class="seller_shop mr-5 login"><a href="modify_message.html">修改信息</a></span>
                 </td>
             </tr>
             <tr class="warning">
                 <td colspan="2">
                     <h5><i class="iconfont">&#xe6db;</i>商品管理</h5>
-                    <span class="seller_shop mr-5"><a href="xpsj.html">新品上架</a></span>
-                    <span class="seller_shop mr-5"><a href="scsp.html">售出商品</a></span>
-                    <span class="seller_shop mr-5"><a href="ckkc.html">库存商品</a></span>
+                    <span class="seller_shop mr-5"><a href="new_products.html">新品上架</a></span>
+                    <span class="seller_shop mr-5"><a href="sold_goods.html">售出商品</a></span>
+                    <span class="seller_shop mr-5"><a href="stock_goods.html">管理库存</a></span>
                 </td>
             </tr>
             <tr class="danger">
@@ -120,56 +133,83 @@
             <span>&gt;</span>
             <a href="#">商品管理</a>
             <span>&gt;</span>
-            <span>新品上架</span>
+            <span>管理库存</span>
             <hr/>
         </div>
-        <div class="col-md-4">
-            <form action="#" method="post">
-                <div><span class="text-size">商品名称:</span><input class="border-two mt-20 ml-5" type="text" value=""/></div>
-                <div><span class="text-size">社团名称:</span><input class="border-two mt-20 ml-5" type="text" value=""/></div>
-                <div><span class="text-size">店铺名称:</span><input class="border-two mt-20 ml-5" type="text" value=""/></div>
-                <div><span class="text-size">商品种类:</span><input class="border-two mt-20 ml-5" type="text" value=""/></div>
-                <div><span class="text-size">商品价格:</span><input class="border-two mt-20 ml-5" type="text" value=""/></div>
-                <div><input type="button" class=" mt-25 ml-5 btn-success btn-lg" value="提交商品信息"></div>
-            </form>
+        <div class="mt-20 ml-80">
+            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/>
+            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/>
+            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/>
+            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/>
         </div>
-        <div class="col-md-7 ml-30">
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <div>
-                <input type="button" class="border-r2 mt-20 ml-5 btn-success btn-lg" value="添加图片"/>
-                <input type="button" class="border-r2 mt-20 ml-30 btn-success btn-lg" value="删除图片"/>
-                <input type="button" class="border-r2 mt-20 ml-30 btn-success btn-lg" value="上传图片"/>
-            </div>
+        <div class="mt-5 ml-80">
+            <span>库存数量：</span><input type="text" class="border-3 mr-20"/>
+            <span>库存数量：</span><input type="text" class="border-3 mr-20"/>
+            <span>库存数量：</span><input type="text" class="border-3 mr-20"/>
+            <span>库存数量：</span><input type="text" class="border-3 mr-20"/>
+        </div>
+        <div class="mt-5 ml-80">
+            <input type="button" value="修改价格" class="mr-15"/><input type="button" value="下架商品" class="mr-20"/>
+            <input type="button" value="修改价格" class="mr-15"/><input type="button" value="下架商品" class="mr-20"/>
+            <input type="button" value="修改价格" class="mr-15"/><input type="button" value="下架商品" class="mr-20"/>
+            <input type="button" value="修改价格" class="mr-15"/><input type="button" value="下架商品" class="mr-20"/>
+        </div>
+        <div class="mt-20 ml-80">
+            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/>
+            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/>
+            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/>
+            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/>
+        </div>
+        <div class="mt-5 ml-80">
+            <span>库存数量：</span><input type="text" class="border-3 mr-20"/>
+            <span>库存数量：</span><input type="text" class="border-3 mr-20"/>
+            <span>库存数量：</span><input type="text" class="border-3 mr-20"/>
+            <span>库存数量：</span><input type="text" class="border-3 mr-20"/>
+        </div>
+        <div class="mt-5 ml-80">
+            <input type="button" value="修改价格" class="mr-15"/><input type="button" value="下架商品" class="mr-20"/>
+            <input type="button" value="修改价格" class="mr-15"/><input type="button" value="下架商品" class="mr-20"/>
+            <input type="button" value="修改价格" class="mr-15"/><input type="button" value="下架商品" class="mr-20"/>
+            <input type="button" value="修改价格" class="mr-15"/><input type="button" value="下架商品" class="mr-20"/>
+        </div>
+        <div class="mt-20 ml-80">
+            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/>
+            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/>
+            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/>
+            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/>
+        </div>
+        <div class="mt-5 ml-80">
+            <span>库存数量：</span><input type="text" class="border-3 mr-20"/>
+            <span>库存数量：</span><input type="text" class="border-3 mr-20"/>
+            <span>库存数量：</span><input type="text" class="border-3 mr-20"/>
+            <span>库存数量：</span><input type="text" class="border-3 mr-20"/>
+        </div>
+        <div class="mt-5 ml-80">
+            <input type="button" value="修改价格" class="mr-15"/><input type="button" value="下架商品" class="mr-20"/>
+            <input type="button" value="修改价格" class="mr-15"/><input type="button" value="下架商品" class="mr-20"/>
+            <input type="button" value="修改价格" class="mr-15"/><input type="button" value="下架商品" class="mr-20"/>
+            <input type="button" value="修改价格" class="mr-15"/><input type="button" value="下架商品" class="mr-20"/>
+        </div>
+        <div class="mt-20 ml-80">
+            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/>
+            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/>
+            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/>
+            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/>
+        </div>
+        <div class="mt-5 ml-80">
+            <span>库存数量：</span><input type="text" class="border-3 mr-20"/>
+            <span>库存数量：</span><input type="text" class="border-3 mr-20"/>
+            <span>库存数量：</span><input type="text" class="border-3 mr-20"/>
+            <span>库存数量：</span><input type="text" class="border-3 mr-20"/>
+        </div>
+        <div class="mt-5 ml-80">
+            <input type="button" value="修改价格" class="mr-15"/><input type="button" value="下架商品" class="mr-20"/>
+            <input type="button" value="修改价格" class="mr-15"/><input type="button" value="下架商品" class="mr-20"/>
+            <input type="button" value="修改价格" class="mr-15"/><input type="button" value="下架商品" class="mr-20"/>
+            <input type="button" value="修改价格" class="mr-15"/><input type="button" value="下架商品" class="mr-20"/>
+        </div>
 
 
-            <div class="col-md-3">
-                <!--this is the shop login form begin-->
-                <div class="form_fade border-one border-r6 mt-40">
-                    <form class="mt-40">
-                        <div class="form-group mb-5">
-                            <label for="shop_name">店铺名</label>
-                            <input type="text" class="form-control" id="shop_name"  placeholder="您注册的店铺名"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">密码</label>
-                            <input type="password" class="form-control" id="password" placeholder="输入您的登录密码"/>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-default mr-88 fadeout">登录</button>
-                        </div>
-                    </form>
-                </div>
-                <!--this is the shop login form end-->
-            </div>
-        </div>
     </div>
     <div class="col-md-1"></div>
 </div>

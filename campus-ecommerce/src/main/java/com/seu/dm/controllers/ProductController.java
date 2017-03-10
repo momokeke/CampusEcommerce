@@ -154,7 +154,8 @@ public class ProductController {
     @RequestMapping(value = "/addProduct")
     public String addProduct(Product product, Model model){
         int i = productService.addProduct(product);
-        return "/demo/helloworld";
+        model.addAttribute("product",product);
+        return "/seller/new_products";
     }
 
 
