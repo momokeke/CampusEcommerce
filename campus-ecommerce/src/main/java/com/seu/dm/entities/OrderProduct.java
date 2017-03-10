@@ -1,6 +1,6 @@
 package com.seu.dm.entities;
 
-public class OrderInfo {
+public class OrderProduct {
     private Integer id;
 
     private Integer productId;
