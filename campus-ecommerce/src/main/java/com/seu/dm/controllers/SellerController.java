@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Created by 张老师 on 2017/3/6.
  */
 @Controller
+
 public class SellerController {
     @Autowired
     private SellerService sellerService;

@@ -128,7 +128,7 @@ public class ProductController {
     public String addProduct(Product product,Model model){
         int i = productService.addProduct(product);
         model.addAttribute("product",product);
-        return "/demo/helloworld";
+        return "/seller/new_products";
     }
 
     /**

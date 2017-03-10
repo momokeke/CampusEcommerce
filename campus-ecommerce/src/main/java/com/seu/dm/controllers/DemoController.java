@@ -89,4 +89,14 @@ public class DemoController {
         demoService.testAspect();
     }
 
+    @RequestMapping(value ="/seller")
+    public  String jumpToSellerCenter(){
+        return "seller/seller_center";
+    }
+
+    @RequestMapping(value ="/seller2")
+    public  String jumpToNewProduct(){
+        return "seller/new_products";
+    }
+
 }

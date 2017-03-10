@@ -15,6 +15,9 @@
     from community
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="findAllCommunities" resultMap="BaseResultMap">
+    select * from community
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from community
     where id = #{id,jdbcType=INTEGER}

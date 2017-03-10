@@ -6,6 +6,8 @@ import com.seu.dm.services.CommunityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * Created by 张老师 on 2017/3/3.
  */
@@ -32,5 +34,10 @@ public class CommunityServiceImpl implements CommunityService {
     @Override
     public Community findCommunity(Integer id) {
         return communityMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Community> findAllCommunities() {
+        return communityMapper.findAllCommunities();
     }
 }

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <!-- Any Other things should follow these 3 meta above -->
-    <title>达米卖家中心</title>
+    <title>达米卖家中心-管理库存</title>
     <!-- Bootstrap -->
     <link href="../bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
     <link href="../css/common.css" rel="stylesheet"/>
@@ -35,6 +35,21 @@
             -moz-osx-font-smoothing: grayscale;}
 
         /* FontIcon End */
+
+        /*body,ul,li{margin: 0;padding: 0;font: 12px normal "宋体", Arial, Helvetica, sans-serif;list-style: none;}*/
+        /*a{text-decoration: none;color: #000;font-size: 14px;}*/
+
+        /*!*#tabbox{ width:600px; overflow:hidden; margin:0 auto;}*!*/
+        /*!*.tab_conbox{border: 1px solid #999;border-top: none;}*!*/
+        /*.tab_con{ display:none;}*/
+
+        /*.tabs{height: 32px;border-bottom:1px solid #999;border-left: 1px solid #999;width: 100%;}*/
+        /*.tabs li{height:31px;line-height:31px;float:left;border:1px solid #999;border-left:none;margin-bottom: -1px;background: #e0e0e0;overflow: hidden;position: relative;}*/
+        /*.tabs li a {display: block;padding: 0 20px;border: 1px solid #fff;outline: none;}*/
+        /*!*.tabs li a:hover {background: #ccc;}*!*/
+        /*!*.tabs .thistab,.tabs .thistab a:hover{background: #fff;border-bottom: 1px solid #fff;}*!*/
+
+        /*!*.tab_con {padding:12px;font-size: 14px; line-height:175%;}*!*/
     </style>
 </head>
 <body>
@@ -95,17 +110,16 @@
             <tr class="success">
                 <td colspan="2">
                     <h5><i class="iconfont">&#xe61a;</i>店铺管理</h5>
-                    <span class="seller_shop mr-5"><a href="seller_register.html">店铺注册</a></span>
                     <span class="seller_shop mr-5 login"><a href="#" class="shop_login">登录店铺</a></span>
-                    <span class="seller_shop mr-5 login"><a href="xgxx.html">修改信息</a></span>
+                    <span class="seller_shop mr-5 login"><a href="modify_message.html">修改信息</a></span>
                 </td>
             </tr>
             <tr class="warning">
                 <td colspan="2">
                     <h5><i class="iconfont">&#xe6db;</i>商品管理</h5>
-                    <span class="seller_shop mr-5"><a href="xpsj.html">新品上架</a></span>
-                    <span class="seller_shop mr-5"><a href="scsp.html">售出商品</a></span>
-                    <span class="seller_shop mr-5"><a href="ckkc.html">库存商品</a></span>
+                    <span class="seller_shop mr-5"><a href="new_products.html">新品上架</a></span>
+                    <span class="seller_shop mr-5"><a href="#">售出商品</a></span>
+                    <span class="seller_shop mr-5"><a href="stock_goods.html">管理库存</a></span>
                 </td>
             </tr>
             <tr class="danger">
@@ -126,61 +140,31 @@
             </tr>
         </table>
     </div>
-    <div class="col-md-6 row border-one border-radius mt-40 ml-30">
+    <div class="col-md-6 row border-one border-radius mt-40 ml-30 div_h">
         <div class="mt-20">
             <a href="#">卖家中心</a>
             <span>&gt;</span>
             <a href="#">商品管理</a>
             <span>&gt;</span>
-            <span>新品上架</span>
+            <span>售出商品</span>
             <hr/>
         </div>
-        <div class="col-md-4">
-            <form action="#" method="post">
-                <div><span class="text-size">商品名称:</span><input class="border-two mt-20 ml-5" type="text" value=""/></div>
-                <div><span class="text-size">社团名称:</span><input class="border-two mt-20 ml-5" type="text" value=""/></div>
-                <div><span class="text-size">店铺名称:</span><input class="border-two mt-20 ml-5" type="text" value=""/></div>
-                <div><span class="text-size">商品种类:</span><input class="border-two mt-20 ml-5" type="text" value=""/></div>
-                <div><span class="text-size">商品价格:</span><input class="border-two mt-20 ml-5" type="text" value=""/></div>
-                <div><input type="button" class=" mt-25 ml-5 btn-success btn-lg" value="提交商品信息"></div>
-            </form>
-        </div>
-        <div class="col-md-7 ml-30">
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <img class="new-pro-img mt-20 mr-5" src="#" alt="新品图片"/>
-            <div>
-                <input type="button" class="border-r2 mt-20 ml-5 btn-success btn-lg" value="添加图片"/>
-                <input type="button" class="border-r2 mt-20 ml-30 btn-success btn-lg" value="删除图片"/>
-                <input type="button" class="border-r2 mt-20 ml-30 btn-success btn-lg" value="上传图片"/>
-            </div>
-
-
-            <div class="col-md-3">
-                <!--this is the shop login form begin-->
-                <div class="form_fade border-one border-r6 mt-40">
-                    <form class="mt-40">
-                        <div class="form-group mb-5">
-                            <label for="shop_name">店铺名</label>
-                            <input type="text" class="form-control" id="shop_name"  placeholder="您注册的店铺名"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">密码</label>
-                            <input type="password" class="form-control" id="password" placeholder="输入您的登录密码"/>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-default mr-88 fadeout">登录</button>
-                        </div>
-                    </form>
+        <div class="mt-120 ml-20">
+            <form action="#" method="get">
+                <div>
+                    <span>订单编号:</span><input name="id" class="mt-20 ml-5" type="text" value="" th:text="${order.id}"/>
+                    <button type="submit" class="mt-5 ml-5 mb-10 btn-primary">搜索订单</button>
                 </div>
-                <!--this is the shop login form end-->
-            </div>
+                <div>
+                    <span>商品编号:</span><input name="productId" class="mt-20 ml-5 mr-55" type="text" value="" th:text="${order.orderProductId}"/>
+                    <span>商品名称:</span><input name="productName" class="mt-20 ml-5 mr-55" type="text" value="" th:text="${order.productName}"/>
+                    <span>买家编号:</span><input name="buyerId" class="mt-20 ml-5" type="text" value="" th:text="${order.userId}"/>
+                </div>
+                <div><span>买家昵称:</span><input name="buyerName" class="mt-20 ml-5 mr-55" type="text" value="" th:text="${order.userName}"/>
+                    <span>成交时间:</span><input  name="createTime" class="mt-20 ml-5 mr-55" type="text" value="" th:text="${order.createTime}"/>
+                    <span>支付金额:</span><input name="totalPrice" class="mt-20 ml-5 mr-55" type="text" value="" th:text="${order.totalPrice}"/>
+                </div>
+            </form>
         </div>
     </div>
     <div class="col-md-1"></div>
@@ -234,6 +218,23 @@
             $(".form_fade").fadeOut();
 
         });
+//        jQuery.jqtab = function(tabtit,tabcon) {
+//            $(tabcon).hide();
+//            $(tabtit+" li:first").addClass("thistab").show();
+//            $(tabcon+":first").show();
+//
+//            $(tabtit+" li").click(function() {
+//                $(tabtit+" li").removeClass("thistab");
+//                $(this).addClass("thistab");
+//                $(tabcon).hide();
+//                var activeTab = $(this).find("a").attr("tab");
+//                $("#"+activeTab).fadeIn();
+//                return false;
+//            });
+//
+//        };
+//        /*调用方法如下：*/
+//        $.jqtab("#tabs",".tab_con");
     });
 </script>
 

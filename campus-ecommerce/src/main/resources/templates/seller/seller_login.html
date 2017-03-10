@@ -11,28 +11,6 @@
 <div class="container-fluid row">
     <lfet data-th-replace="seller/sellercommon/left"></lfet>
     <div class="col-md-6 row border-one border-radius mt-40 ml-30">
-        <div class="mt-20">
-            <a href="#">卖家中心</a>
-            <span>&gt;</span>
-            <a href="#">登录店铺</a>
-            <span>&gt;</span>
-            <span>修改店铺信息</span>
-            <hr/>
-        </div>
-        <div class="col-md-4">
-            <form action="#" method="post">
-                <div><span class="text-size">卖家姓名:</span><input class="border-two mt-20 ml-5 bg-info" type="text" value=""/></div>
-                <div><span class="text-size">社团名称:</span><input class="border-two mt-20 ml-5 bg-success" type="text" value=""/></div>
-                <div><span class="text-size">店铺名称:</span><input class="border-two mt-20 ml-5 bg-warning" type="text" value=""/></div>
-                <div><span class="text-size">学生学号:</span><input class="border-two mt-20 ml-5 bg-info" type="text" value=""/></div>
-                <div><span class="text-size">手机号码:</span><input class="border-two mt-20 ml-5 bg-success" type="text" value=""/></div>
-                <div><span class="text-size">登录密码:</span><input class="border-two mt-20 ml-5 bg-warning" type="text" value=""/></div>
-                <div><span class="text-size">修改密码:</span><input class="border-two mt-20 ml-5 bg-danger" type="text" value=""/></div>
-                <div><input type="button" class=" mt-20 ml-5 btn-success btn-lg" value="提交修改信息"/></div>
-            </form>
-        </div>
-        <div class="col-md-6 ml-30">
-
 
             <!--this is the shop login form begin-->
             <div class="col-md-3">
@@ -63,13 +41,14 @@
 
 
 
+<!--This is the common footer Begin-->
 <bottom data-th-replace="seller/sellercommon/bottom"></bottom>
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/common/jquery-3.1.1.min.js"></script>
+<script src="../js/common/jquery-3.1.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../bootstrap/dist/js/bootstrap.min.js"></script>
 <script>
     $(document).ready(function(){
         $(".shop_login").click(function(){
