@@ -59,9 +59,12 @@ public class ProductController {
      * @return
      */
     @RequestMapping(value = "/searchGood",method = RequestMethod.GET)
-    public String searchEntityByName(@RequestParam(value = "name")String name,Model model){
-        List<SearchGoodEntity> searchGoodEntities = productService.searchEntitiesByName(name);
-        model.addAttribute("entities",searchGoodEntities);
+    public String searchEntityByName(@RequestParam(value = "search")String name,Model model){
+        List<Product> products = productService.findProductsByName(name);
+        System.out.println(products.size());
+//        List<SearchGoodEntity> searchGoodEntities = productService.searchEntitiesByName(name);
+//        model.addAttribute("entities",searchGoodEntities);
+        model.addAttribute("entities",products);
         return "/product/product_list";
     }
 

@@ -114,12 +114,12 @@
                         <img th:src="@{entity.productUrl}" alt="查询结果列表图片" class="product_img mt-5 mb-5"/>
                     </div>
                     <div class="col-md-4">
-                        <a href="product_details.html" th:href="@{/product/product_details(productId=${entity.productId})}"><span th：text="${entity.productName}">商品名称</span></a><br/>
-                        <e>¥ <span class="font-red" th:text="${entity.productPrice}">100</span></e>
-                        <p class="mt-10" th:text="${entity.productDescription}">商品描述</p>
+                        <a href="product_details.html" th:href="@{'/product/product_details/'+${entity.id}}"><span th:text="${entity.name}">商品名称</span></a><br/>
+                        <e>¥ <span class="font-red" th:text="${entity.price}">100</span></e>
+                        <p class="mt-10" th:text="${entity.description}">商品描述</p>
                     </div>
                     <div class="col-md-4">
-                        <a href="../shop/shop_homepage.html" th:href="@{/shop/shop_homepage(sellerId=${entity.sellerId})}" ><span th:text="${entity.sellerName}">卖家</span></a>
+                        <!--<a href="../shop/shop_homepage.html" th:href="@{'/shop/shop_homepage'+${entity.sellerId}}" ><span th:text="${entity.sellerName}">卖家</span></a>-->
                     </div>
                 </div>
         </div>
