@@ -24,22 +24,7 @@
 </head>
 <body>
 <div class="container-fluid">
-    <div class="row top font-small">
-        <div class="col-md-2"></div>
-        <div class="col-md-8">
-            当前学校：东南大学
-            <div class="float-right">
-                <a href="../buyer/buyer_login.html">买家登录</a>
-                &nbsp;&nbsp;&nbsp;<a href="../seller/seller_center.html">卖家登录</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;<a href="../buyer/buyer_register.html">买家注册</a>
-                &nbsp;&nbsp;&nbsp;<a href="../seller/seller_register.html">卖家注册</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;<a href="../buyer/buyer_login.html">我的订单</a>
-            </div>
-        </div>
-        <div class="col-md-2">
-
-        </div>
-    </div>
+    <div data-th-replace="common_html/common_head"></div>
     <div class="row banner">
         <div class="col-md-2"></div>
         <div class="col-md-8">
@@ -72,13 +57,13 @@
     <div class="row">
         <ul class="nav nav-pills">
             <li class="active"><a href="#">本店商品分类</a></li>
-            <li><a href="#">油画</a></li>
-            <li><a href="#">水墨画</a></li>
-            <li><a href="#">水彩画</a></li>
-            <li><a href="#">铅笔画</a></li>
-            <li><a href="#">钢笔画</a></li>
-            <li><a href="#">素描</a></li>
-            <li><a href="#">镶嵌画</a></li>
+            <li><a href="#" th:href="@{'/demo/shopProductCla'}">油画</a></li>
+            <li><a href="#" th:href="@{'/demo/shopProductCla'}">水墨画</a></li>
+            <li><a href="#" th:href="@{'/demo/shopProductCla'}">水彩画</a></li>
+            <li><a href="#" th:href="@{'/demo/shopProductCla'}">铅笔画</a></li>
+            <li><a href="#" th:href="@{'/demo/shopProductCla'}">钢笔画</a></li>
+            <li><a href="#" th:href="@{'/demo/shopProductCla'}">素描</a></li>
+            <li><a href="#" th:href="@{'/demo/shopProductCla'}">镶嵌画</a></li>
         </ul>
     </div>
     <div class="presentation row">
@@ -86,17 +71,17 @@
             <img src="/img/portraiture.jpg" width="400px" height="400px"/>
         </div>
         <div class="col-md-6">
-            <div class="row"> <h2 class="col-md-12 text-center" th:text="${pruduct.name}">赵丽颖肖像画素描画绘画社团颖宝</h2></div>
+            <div class="row"> <h2 class="col-md-12 text-center">赵丽颖肖像画素描画绘画社团颖宝</h2></div>
             <div class="price mt-30" >
-                <div class="row"><div class="col-md-11 col-md-offset-1"><span class="priceone">价格：</span><span th:text="${product.discountPrice}" class="priceone">95</span></div></div>
-                <div class="pricetwo row"><div class="col-md-11 col-md-offset-1"><span>达米价:</span><span th:text="*${product.price}">90</span></div></div>
+                <div class="row"><div class="col-md-11 col-md-offset-1"><span class="priceone">价格：</span><span class="priceone">95</span></div></div>
+                <div class="pricetwo row"><div class="col-md-11 col-md-offset-1"><span>达米价:</span><span>90</span></div></div>
             </div>
         <div class="price">
             <div class="row mt-30 " >
-               <span class="col-md-11 col-md-offset-1" >所属校区：<span th:text="${buyer.address}">东南大学</span></span>
+               <span class="col-md-11 col-md-offset-1" >所属校区：<span >东南大学</span></span>
             </div>
             <div class="row mt-30 " >
-                <span class="col-md-11 col-md-offset-1" >联系方式:<span th:text="${seller.mobile}">130629023**</span></span>
+                <span class="col-md-11 col-md-offset-1" >联系方式:<span >130629023**</span></span>
             </div>
             <div class="row mt-30">
                 <div class="col-md-2 col-md-offset-1  text-danger mt-8">数量</div>
@@ -127,7 +112,7 @@
     </ul>
     <div id="myTabContent" class="tab-content">
         <div class="tab-pane fade in active font-middle" id="good_details">
-            <span th:text="${product.description}">学的不仅是技术，更是梦想。</span>
+            <span>学的不仅是技术，更是梦想。</span>
             <div class="row" >
                 <div class="col-md-5 col-md-offset-1" >
                     <div class="thumbnail">
@@ -203,8 +188,8 @@
         </div>
         <div class="tab-pane fade" id="comments">
             <dl class="dl-horizontal font-middle">
-                <dt th:text="${buyer.name}" id="buyername">刘小明</dt>
-                <dd th:text="${comment.text}">画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。</dd>
+                <dt id="buyername">刘小明</dt>
+                <dd >画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。画工很好，相识度很高，运货速度也不错，就是眼镜有点瑕疵，下次还回来这购买。</dd>
             </dl>
             <div class="row">
                 <div class="col-md-12" style="text-align: center ">
