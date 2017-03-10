@@ -98,6 +98,7 @@ public class DemoController {
         demoService.testAspect();
     }
 
+
     /**
      * 进入店铺主页
      * @return
@@ -122,4 +123,16 @@ public class DemoController {
     public String jumpToProductDetails(){
         return "product/product_details";
     }
+
+    @RequestMapping(value ="/seller")
+    public  String jumpToSellerCenter(){
+        return "seller/seller_center";
+    }
+
+    @RequestMapping(value ="/seller2")
+    public  String jumpToNewProduct(){
+        return "seller/new_products";
+    }
+
+
 }

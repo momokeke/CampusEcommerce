@@ -1,13 +1,10 @@
 package com.seu.dm.controllers;
-
 import com.seu.dm.entities.Community;
 import com.seu.dm.services.CommunityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -15,7 +12,6 @@ import java.util.List;
  */
 @Controller
 public class CommunityController {
-    @Autowired
     private CommunityService communityService;
 
     @RequestMapping(value = "/testCommunity")
