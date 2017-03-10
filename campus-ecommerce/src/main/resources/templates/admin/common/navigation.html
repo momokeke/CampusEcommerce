@@ -1,6 +1,6 @@
 <th:block th:if="${session.userBase.role} eq 'superAdmin'">
-    <nav data-th-replace="admin/common/super_admin_navigation"></nav>
+    <nav data-th-replace="/admin/common/super_admin_navigation"></nav>
 </th:block>
 <th:block th:if="${session.userBase.role} eq 'campusAdmin'">
-    <nav data-th-replace="admin/common/campus_admin_navigation"></nav>
+    <nav data-th-replace="/admin/common/campus_admin_navigation"></nav>
 </th:block>
