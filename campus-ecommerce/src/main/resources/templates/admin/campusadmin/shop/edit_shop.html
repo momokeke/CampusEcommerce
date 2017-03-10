@@ -63,14 +63,14 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr th:each="product,iterStatus: ${prodcuts}">
+                            <tr th:each="product,iterStatus: ${products}">
                                 <td th:text="${iterStatus.count}">1</td>
                                 <td th:text="${product.name}">163888</td>
                                 <td th:text="${product.price}">狗银</td>
                                 <td th:text="${product.description}">狗银</td>
                                 <td>
                                     <a href="#" th:href="@{'/campusadmin/shopmanage/unshelfproduct/'+${seller.id}+'/'+${product.id}}" class="btn btn-danger">下架</a>
-                                    <a href="#" th:href="@{'/campusadmin/shopmanage/deleteprodcut/'+${seller.id}+'/'+${product.id}}" class="btn btn-danger">删除</a>
+                                    <a href="#" th:href="@{'/campusadmin/shopmanage/deleteproduct/'+${seller.id}+'/'+${product.id}}" class="btn btn-danger">删除</a>
                                 </td>
                             </tr>
                             </tbody>

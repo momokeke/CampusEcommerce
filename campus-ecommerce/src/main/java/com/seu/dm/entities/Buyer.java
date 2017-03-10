@@ -21,15 +21,13 @@ public class Buyer {
 
     private Integer studentNumber;
 
+    private Integer favoriteId;
+
+    private Integer orderId;
+
+    private Integer campusId;
+
     private Boolean isBanned;
-
-    public Boolean getBanned() {
-        return isBanned;
-    }
-
-    public void setBanned(Boolean banned) {
-        isBanned = banned;
-    }
 
     public Integer getId() {
         return id;
@@ -101,5 +99,37 @@ public class Buyer {
 
     public void setStudentNumber(Integer studentNumber) {
         this.studentNumber = studentNumber;
+    }
+
+    public Integer getFavoriteId() {
+        return favoriteId;
+    }
+
+    public void setFavoriteId(Integer favoriteId) {
+        this.favoriteId = favoriteId;
+    }
+
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
+    }
+
+    public Integer getCampusId() {
+        return campusId;
+    }
+
+    public void setCampusId(Integer campusId) {
+        this.campusId = campusId;
+    }
+
+    public Boolean getIsBanned() {
+        return isBanned;
+    }
+
+    public void setIsBanned(Boolean isBanned) {
+        this.isBanned = isBanned;
     }
 }

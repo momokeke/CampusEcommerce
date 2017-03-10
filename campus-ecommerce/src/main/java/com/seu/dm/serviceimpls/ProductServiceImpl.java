@@ -171,6 +171,7 @@ public class ProductServiceImpl implements ProductService{
     public Integer unshelfProduct(Integer productId) {
         Product product = productMapper.selectByPrimaryKey(productId);
         product.setIsShelf(false);
+        productMapper.updateByPrimaryKey(product);
         return 1 ;
     }
 }

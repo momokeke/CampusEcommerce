@@ -64,6 +64,7 @@ public class ShopManageController {
         model.addAttribute("seller",seller);
         Integer sellerId = seller.getId();
         List<Product> products = productService.findProductsBySellerId(sellerId);
+        System.out.println(products.size());
         model.addAttribute("products",products);
         return "/admin/campusadmin/shop/edit_shop";
     }
@@ -86,7 +87,7 @@ public class ShopManageController {
         return "redirect:/campusadmin/shopmanage/editshop/"+sellerId;
     }
 
-    @RequestMapping("/deleteProduct/{sellerId}/{productId}")
+    @RequestMapping("/deleteproduct/{sellerId}/{productId}")
     @CampusAdminPermission
     public String deleteProduct(@PathVariable Integer sellerId,@PathVariable Integer productId,
                                 HttpServletRequest request){

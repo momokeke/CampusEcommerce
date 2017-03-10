@@ -51,14 +51,16 @@ public class BuyerServiceImpl implements BuyerService {
     @Override
     public int banBuyer(Integer id) {
         Buyer buyer = buyerMapper.selectByPrimaryKey(id);
-        buyer.setBanned(true);
+        buyer.setIsBanned(true);
+        buyerMapper.updateByPrimaryKey(buyer);
         return 1;
     }
 
     @Override
     public int unBanBuyer(Integer id) {
         Buyer buyer = buyerMapper.selectByPrimaryKey(id);
-        buyer.setBanned(false);
+        buyer.setIsBanned(false);
+        buyerMapper.updateByPrimaryKey(buyer);
         return 1;
     }
 }

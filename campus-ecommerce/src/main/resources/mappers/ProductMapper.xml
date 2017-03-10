@@ -10,14 +10,19 @@
     <result column="keywords" jdbcType="VARCHAR" property="keywords" />
     <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
     <result column="quantity" jdbcType="INTEGER" property="quantity" />
-    <result column="is_discount" jdbcType="VARCHAR" property="isDiscount" />
+    <result column="is_discount" jdbcType="BIT" property="isDiscount" />
     <result column="discount_price" jdbcType="DECIMAL" property="discountPrice" />
+    <result column="category" jdbcType="VARCHAR" property="category" />
+    <result column="picture_id" jdbcType="INTEGER" property="pictureId" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="is_shelf" jdbcType="BIT" property="isShelf" />
   </resultMap>
   <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.seu.dm.entities.Product">
     <result column="description" jdbcType="LONGVARCHAR" property="description" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, price, seller_id, year, keywords, add_time, quantity, is_discount, discount_price
+    id, name, price, seller_id, year, keywords, add_time, quantity, is_discount, discount_price,
+    category, picture_id, is_deleted, is_shelf
   </sql>
   <sql id="Blob_Column_List">
     description
@@ -57,11 +62,13 @@
     insert into product (id, name, price, 
       seller_id, year, keywords, 
       add_time, quantity, is_discount, 
-      discount_price, description)
+      discount_price, category, picture_id,
+      is_deleted, is_shelf, description)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
       #{sellerId,jdbcType=INTEGER}, #{year,jdbcType=VARCHAR}, #{keywords,jdbcType=VARCHAR}, 
       #{addTime,jdbcType=TIMESTAMP}, #{quantity,jdbcType=INTEGER}, #{isDiscount,jdbcType=VARCHAR}, 
-      #{discountPrice,jdbcType=DECIMAL}, #{description,jdbcType=LONGVARCHAR})
+      #{discountPrice,jdbcType=DECIMAL},#{category,jdbcType=VARCHAR}, #{pictureId,jdbcType=INTEGER},
+      #{isDeleted,jdbcType=BIT}, #{isShelf,jdbcType=BIT}, #{description,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.seu.dm.entities.Product">
     insert into product
@@ -95,6 +102,18 @@
       </if>
       <if test="discountPrice != null">
         discount_price,
+      </if>
+      <if test="category != null">
+        category,
+      </if>
+      <if test="pictureId != null">
+        picture_id,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="isShelf != null">
+        is_shelf,
       </if>
       <if test="description != null">
         description,
@@ -166,6 +185,18 @@
       <if test="discountPrice != null">
         discount_price = #{discountPrice,jdbcType=DECIMAL},
       </if>
+      <if test="category != null">
+        #{category,jdbcType=VARCHAR},
+      </if>
+      <if test="pictureId != null">
+        #{pictureId,jdbcType=INTEGER},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="isShelf != null">
+        #{isShelf,jdbcType=BIT},
+      </if>
       <if test="description != null">
         description = #{description,jdbcType=LONGVARCHAR},
       </if>
@@ -183,6 +214,10 @@
       quantity = #{quantity,jdbcType=INTEGER},
       is_discount = #{isDiscount,jdbcType=VARCHAR},
       discount_price = #{discountPrice,jdbcType=DECIMAL},
+      category = #{category,jdbcType=VARCHAR},
+      picture_id = #{pictureId,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      is_shelf = #{isShelf,jdbcType=BIT},
       description = #{description,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -196,7 +231,11 @@
       add_time = #{addTime,jdbcType=TIMESTAMP},
       quantity = #{quantity,jdbcType=INTEGER},
       is_discount = #{isDiscount,jdbcType=VARCHAR},
-      discount_price = #{discountPrice,jdbcType=DECIMAL}
+      discount_price = #{discountPrice,jdbcType=DECIMAL},
+      category = #{category,jdbcType=VARCHAR},
+      picture_id = #{pictureId,jdbcType=INTEGER},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      is_shelf = #{isShelf,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
