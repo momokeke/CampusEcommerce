@@ -39,7 +39,7 @@ public class SellerController {
     @RequestMapping(value = "/updateSellerInfo",method = RequestMethod.POST)
     public String updateSellerInfo(Seller seller){
         sellerService.updateSeller(seller);
-        return "/";
+        return "/modify_message";
     }
 
     /**

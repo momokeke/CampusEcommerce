@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
 <html xmlns:th="http://www.thymeleaf.org">
 <head data-th-replace="seller/sellercommon/sellerhead"></head>
 <body>
@@ -21,34 +20,12 @@
             <hr/>
         </div>
         <div class="col-md-4">
-            <form action="#" method="post">
-                <div><span class="text-size">商品名称:</span><input class="border-two mt-20 ml-5" type="text" value=""/></div>
-                <div>
-                    <span class="text-size btn-float mt-20">社团名称:</span>
-                </div>
-                <div class="btn-group border-two mt-20 ml-5">
-                    <button class="btn btn-default" style="width: 145px;">社团名称</button><button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
-                    <ul class="dropdown-menu" th:each="community:${communities}">
-                        <li>
-                            <a rel="nofollow" href="#" th:text="${community.name}">绘画社</a>
-                        </li>
-                    </ul>
-                </div>
-                <div><span class="text-size">商品种类:</span><input class="border-two mt-20 ml-5" type="text" value=""/></div>
-                <div><span class="text-size">商品价格:</span><input class="border-two mt-20 ml-5" type="text" value=""/></div>
-                <div><span class="text-size">商品描述:</span><textarea class="border-two mt-20 ml-5 textarea-wh"></textarea></div>
-                <div><input type="button" class=" mt-25 ml-5 btn-success btn-lg" value="提交商品信息"></div>
-            </form>
+
         </div>
         <div class="col-md-7">
-            <h3>请选择图片文件：JPG/GIF（建议像素：550px*500px）</h3>
-            <form name="form0" id="form0">
-                <input type="file" name="file0" id="file0" multiple="multiple" /><input type="submit" value="上传图片"/><br/>
-                <img src="../img/new_pro.jpg" id="img0" alt="图片预览" title="图片预览" class="new-pro-img">
-            </form>
+
         </div>
     </div>
-</div>
 </div>
 
 

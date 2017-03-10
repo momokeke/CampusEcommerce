@@ -94,9 +94,29 @@ public class DemoController {
         return "seller/seller_center";
     }
 
-    @RequestMapping(value ="/seller2")
+    @RequestMapping(value ="/new")
     public  String jumpToNewProduct(){
         return "seller/new_products";
+    }
+
+    @RequestMapping(value ="/sold")
+    public  String jumpToSoldGoods(){
+        return "seller/sold_goods";
+    }
+
+    @RequestMapping(value ="/stock")
+    public  String jumpToStockGoods(){
+        return "seller/stock_goods";
+    }
+
+    @RequestMapping(value ="/transaction")
+    public  String jumpToTransaction(){
+        return "seller/transaction_manage";
+    }
+
+    @RequestMapping(value ="/refund")
+    public  String jumpToRefund(){
+        return "seller/refund";
     }
 
 }
