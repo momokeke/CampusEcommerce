@@ -53,7 +53,7 @@
                 <div class="col-md-4 col-sm-4">
                     <form class="form-inline">
                         <div class="form-group">
-                            <input type="text" class="form-control search" id="search" placeholder="请输入商品名\关键词\店铺名\社团名" style="width: 320px">
+                            <input type="text" class="form-control search" id="search" placeholder="请输入商品名\关键词\店铺名\社团名" style="width: 320px" />
                         </div>
                         <button type="submit" class="btn btn-default ">搜索</button>
                     </form>
@@ -68,12 +68,12 @@
         <div class="col-md-2">
             <ul class="list-unstyled">
                 <li class="font-red font-middle mt-10">全 部 功 能</li>
-                <li class="mt-10 "><a th:href="@{/shopping_cart.html}"  href="shopping_cart.html" class="font-black glyphicon glyphicon-shopping-cart"> 我的购物车</a> </li>
-                <li class="mt-10 "><a th:href="@{/buyer_favorite.html}" href="buyer_favorite.html" class="font-black glyphicon glyphicon-star-empty"> 我的收藏夹</a> </li>
-                <li class="mt-10 "><a th:href="@{/bought_products.html}" href="bought_products.html" class="font-black glyphicon glyphicon-ok-circle"> 已买到的宝贝</a> </li>
-                <li class="mt-10 "><a th:href="@{/bought_shops.html}" href="bought_shops.html" class="font-black glyphicon glyphicon-home"> 购买过的店铺</a> </li>
-                <li class="mt-10 "><a th:href="@{/comment_management.html}" href="comment_management.html" class="font-black glyphicon glyphicon-list-alt"> 评价管理</a> </li>
-                <li class="mt-10 "><a th:href="@{/foot_print.html}" href="foot_print.html" class="font-black glyphicon glyphicon-time"> 我的足迹</a> </li>
+                <li class="mt-10 "><a th:href="@{/buyer/shopping_cart}"  href="/buyer/shopping_cart" class="font-black glyphicon glyphicon-shopping-cart"> 我的购物车</a> </li>
+                <li class="mt-10 "><a th:href="@{/buyer/buyer_favorite}" href="/buyer/buyer_favorite" class="font-black glyphicon glyphicon-star-empty"> 我的收藏夹</a> </li>
+                <li class="mt-10 "><a th:href="@{/buyer/bought_products}" href="/buyer/bought_products" class="font-black glyphicon glyphicon-ok-circle"> 已买到的宝贝</a> </li>
+                <li class="mt-10 "><a th:href="@{/buyer/bought_shops}" href="/buyer/bought_shops" class="font-black glyphicon glyphicon-home"> 购买过的店铺</a> </li>
+                <li class="mt-10 "><a th:href="@{/buyer/comment_management}" href="/buyer/comment_management" class="font-black glyphicon glyphicon-list-alt"> 评价管理</a> </li>
+                <li class="mt-10 "><a th:href="@{/buyer/foot_print}" href="/buyer/foot_print" class="font-black glyphicon glyphicon-time"> 我的足迹</a> </li>
             </ul>
         </div>
         <div class="col-md-10">

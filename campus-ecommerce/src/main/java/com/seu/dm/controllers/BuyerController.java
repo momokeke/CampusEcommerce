@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @Controller
+@RequestMapping(value = "/buyer")
 public class BuyerController {
     @Autowired
     private BuyerService buyerService;
@@ -40,6 +41,81 @@ public class BuyerController {
         Buyer buyer1 = buyerService.findBuyer(id);
         System.out.println("ok");
         return "/index";
+    }
+
+    /*
+    *跳转到买家登录
+     */
+    @RequestMapping(value = "/buyer_login")
+    public String jumpToBuyerLogin(){
+        return "buyer/buyer_login";
+    }
+
+    /*
+    *跳转到买家注册
+     */
+    @RequestMapping(value = "/buyer_register")
+    public String jumpToBuyerRegister(){
+        return "buyer/buyer_register";
+    }
+
+    /*
+    *跳到买家中心
+     */
+    @RequestMapping(value = "/buyer_center")
+    public String jumpToBuyerCenter(){
+        return "buyer/buyer_center";
+    }
+
+    /*
+         *跳到买家购物车
+          */
+    @RequestMapping(value = "/shopping_cart")
+    public String jumpToBuyerShoppingCart(){
+        return "buyer/shopping_cart";
+    }
+    /*
+    *跳到买家收藏夹
+     */
+    @RequestMapping(value = "/buyer_favorite")
+    public String jumpToBuyerFavorite(){
+        return "buyer/buyer_favorite";
+    }
+
+    /*
+    *跳到买家已买到的宝贝
+     */
+    @RequestMapping(value = "/bought_products")
+    public String jumpToBoughtProducts(){
+        return "buyer/bought_products";
+    }
+    /*
+      *跳到买家已买过得店铺
+       */
+    @RequestMapping(value = "/bought_shops")
+    public String jumpToBoughtShops(){
+        return "buyer/bought_shops";
+    }
+    /*
+      *跳到买家评价管理页面
+       */
+    @RequestMapping(value = "/comment_management")
+    public String jumpToCommentManagement(){
+        return "buyer/comment_management";
+    }
+    /*
+      *跳到买家我的足迹
+       */
+    @RequestMapping(value = "/foot_print")
+    public String jumpToFootPrint(){
+        return "buyer/foot_print";
+    }
+    /*
+          *跳到买家我的设置
+           */
+    @RequestMapping(value = "/buyer_setting")
+    public String jumpToBuyerSetting(){
+        return "buyer/buyer_setting";
     }
 
 

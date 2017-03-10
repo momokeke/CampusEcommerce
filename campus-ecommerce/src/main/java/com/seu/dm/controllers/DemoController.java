@@ -38,7 +38,10 @@ public class DemoController {
         return "seller/new_products";
     }
 
-
+    @RequestMapping(value = "/jump")
+    public String jumpTo(){
+        return "buyer/buyer_center";
+    }
     /**
      * Example for returing Object in Json
      * @return
