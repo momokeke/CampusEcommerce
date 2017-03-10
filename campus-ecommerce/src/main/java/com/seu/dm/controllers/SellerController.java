@@ -2,7 +2,6 @@ package com.seu.dm.controllers;
 
 import com.seu.dm.entities.Seller;
 import com.seu.dm.services.SellerService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  * Created by 张老师 on 2017/3/6.
  */
 @Controller
+@RequestMapping( value = "/seller")
 public class SellerController {
     @Autowired
     private SellerService sellerService;
@@ -100,5 +100,25 @@ public class SellerController {
         int i = sellerService.selectCountOfSellers();
         model.addAttribute("countOfAllSellers",i);
         return "/";
+    }
+    /**
+     * 进入卖家登录页面
+     */
+
+
+    /*
+    *进入买家注册页面
+     */
+    @RequestMapping(value = "/seller_register")
+    public String jumpToSellerRegister(){
+        return "/seller/seller_register";
+    }
+
+    /*
+    *进入买家中心页面
+     */
+    @RequestMapping(value = "/seller_center")
+    public String jumpToSellerCenter(){
+        return "/seller/seller_center";
     }
 }

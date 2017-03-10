@@ -22,22 +22,7 @@
 <body>
 <!-- this is the common top begin -->
     <div class="container-fluid">
-        <div class="row top font-small">
-            <div class="col-md-2 col-sm-2"></div>
-            <div class="col-md-8 col-sm-8">
-                当前学校：东南大学
-                <div class="float-right">
-                    <a href="buyer/buyer_login.html">买家登录</a>
-                    &nbsp;&nbsp;&nbsp;<a href="seller/seller_center.html">卖家登录</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="buyer/buyer_register.html">买家注册</a>
-                    &nbsp;&nbsp;&nbsp;<a href="seller/seller_register.html">卖家注册</a>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<a href="buyer/buyer_login.html">我的订单</a>
-                </div>
-            </div>
-            <div class="col-md-2 col-sm-2">
-
-            </div>
-        </div>
+        <div data-th-replace="/common_html/common_head"></div>
         <div class="row banner">
             <div class="col-md-2 col-sm-2"></div>
             <div class="col-md-8 col-sm-8">
@@ -52,7 +37,7 @@
                     <div class="col-md-4 col-sm-4">
                         <form class="form-inline">
                             <div class="form-group">
-                                <input type="text" class="form-control search" id="search" placeholder="请输入商品名\关键词\店铺名\社团名" style="width: 320px">
+                                <input type="text" class="form-control search" id="search" placeholder="请输入商品名\关键词\店铺名\社团名" style="width: 320px"/>
                             </div>
                             <button type="submit" class="btn btn-default ">搜索</button>
                         </form>
@@ -67,12 +52,12 @@
             <div class="col-md-2">
                 <ul class="list-unstyled">
                     <li class="font-red font-middle mt-10">全 部 功 能</li>
-                    <li class="mt-10 "><a th:href="@{/shopping_cart.html}"  href="shopping_cart.html" class="font-black glyphicon glyphicon-shopping-cart"> 我的购物车</a> </li>
-                    <li class="mt-10 "><a th:href="@{/buyer_favorite.html}" href="buyer_favorite.html" class="font-black glyphicon glyphicon-star-empty"> 我的收藏夹</a> </li>
-                    <li class="mt-10 "><a th:href="@{/bought_products.html}" href="bought_products.html" class="font-black glyphicon glyphicon-ok-circle"> 已买到的宝贝</a> </li>
-                    <li class="mt-10 "><a th:href="@{/bought_shops.html}" href="bought_shops.html" class="font-black glyphicon glyphicon-home"> 购买过的店铺</a> </li>
-                    <li class="mt-10 "><a th:href="@{/comment_management.html}" href="comment_management.html" class="font-black glyphicon glyphicon-list-alt"> 评价管理</a> </li>
-                    <li class="mt-10 "><a th:href="@{/foot_print.html}" href="foot_print.html" class="font-black glyphicon glyphicon-time"> 我的足迹</a> </li>
+                    <li class="mt-10 "><a th:href="@{/buyer/shopping_cart}"  href="/buyer/shopping_cart" class="font-black glyphicon glyphicon-shopping-cart"> 我的购物车</a> </li>
+                    <li class="mt-10 "><a th:href="@{/buyer/buyer_favorite}" href="/buyer/buyer_favorite" class="font-black glyphicon glyphicon-star-empty"> 我的收藏夹</a> </li>
+                    <li class="mt-10 "><a th:href="@{/buyer/bought_products}" href="/buyer/bought_products" class="font-black glyphicon glyphicon-ok-circle"> 已买到的宝贝</a> </li>
+                    <li class="mt-10 "><a th:href="@{/buyer/bought_shops}" href="/buyer/bought_shops" class="font-black glyphicon glyphicon-home"> 购买过的店铺</a> </li>
+                    <li class="mt-10 "><a th:href="@{/buyer/comment_management}" href="/buyer/comment_management" class="font-black glyphicon glyphicon-list-alt"> 评价管理</a> </li>
+                    <li class="mt-10 "><a th:href="@{/buyer/foot_print}" href="/buyer/foot_print" class="font-black glyphicon glyphicon-time"> 我的足迹</a> </li>
                 </ul>
             </div>
             <div class="col-md-7">
@@ -81,7 +66,7 @@
                         <img src="/img/photo.jpg" alt="买家头像" class="buyer_head_photo"/>
                     </div>
                     <div class="col-md-3 mt-20">
-                        <span class="ml-5  font-middle font-bold " th:text="${buyer.name}">买家姓名</span>
+                        <span class="ml-5  font-middle font-bold " >买家姓名</span>
                     </div>
                     <div class="col-md-3">
                         <a class="float-right font-bold font-middle font-black mt-20" href="buyer_pay.html">我的支付</a>
@@ -190,13 +175,13 @@
                 <div class="row">
                     <div class="border-calendar text-center ">
                         <strong class="font-green font-bold font-bigger">
-                            <script language=JavaScript>
+                            <script language="JavaScript">
                             today=new Date();
                             document.write(today.getDate())
                             </script>
                         </strong><br/>
                         <span class="font-green  font-middle">
-                            <script language=JavaScript>
+                            <script language="JavaScript">
                                 today=new Date();
                                 var weekDay="";
                                 var myWeekDay=today.getDay();
@@ -211,7 +196,7 @@
                             </script>
                         </span><br/><br/>
                         <span class=" font-green  font-middle">
-                            <script language=JavaScript>
+                            <script language="JavaScript">
                                 today=new Date();
                                 document.write(today.getFullYear(),".",today.getMonth()+1)
                             </script>
@@ -262,5 +247,3 @@
 </body>
 </html>
 <!--This is the common footer End-->
-</body>
-</html>

@@ -32,7 +32,10 @@ public class DemoController {
         return "demo/helloworld";
     }
 
-
+    @RequestMapping(value = "/jump")
+    public String jumpTo(){
+        return "buyer/buyer_center";
+    }
     /**
      * Example for returing Object in Json
      * @return
