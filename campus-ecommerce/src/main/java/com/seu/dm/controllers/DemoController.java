@@ -98,4 +98,28 @@ public class DemoController {
         demoService.testAspect();
     }
 
+    /**
+     * 进入店铺主页
+     * @return
+     */
+    @RequestMapping(value="/shopHomepage")
+    public String jumpToShopHomepage(){
+        return "shop/shop_homepage";
+    }
+    /**
+     * 进入店铺商品分类页面
+     * @return
+     */
+    @RequestMapping(value="/shopProductCla")
+    public String jumpToShopProductCla(){
+        return "shop/shop_product_classification";
+    }
+    /**
+     * 进入商品详情页面
+     * @return
+     */
+    @RequestMapping(value="/productDetails")
+    public String jumpToProductDetails(){
+        return "product/product_details";
+    }
 }
