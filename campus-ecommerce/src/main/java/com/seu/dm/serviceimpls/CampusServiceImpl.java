@@ -45,4 +45,9 @@ public class CampusServiceImpl implements CampusService {
         int i = campusMapper.updateByPrimaryKey(campus);
         return i;
     }
+
+    @Override
+    public Campus findCampus(Integer id) {
+        return campusMapper.selectByPrimaryKey(id);
+    }
 }

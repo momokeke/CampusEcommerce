@@ -11,15 +11,23 @@
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
     <result column="hobby" property="hobby" jdbcType="VARCHAR" />
     <result column="student_number" property="studentNumber" jdbcType="INTEGER" />
+    <result column="favorite_id" property="favoriteId" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="campus_id" property="campusId" jdbcType="INTEGER" />
+    <result column="is_banned" property="isBanned" jdbcType="BIT" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, name, password, email, create_time, address, mobile, hobby, student_number
+    id, name, password, email, create_time, address, mobile, hobby, student_number, favorite_id, 
+    order_id, campus_id, is_banned
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
     from buyer
     where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="findBuyersByCampusId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from buyer where school_id = #{campusId}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from buyer
@@ -28,12 +36,14 @@
   <insert id="insert" parameterType="com.seu.dm.entities.Buyer" >
     insert into buyer (id, name, password, 
       email, create_time, address, 
-      mobile, hobby, student_number
-      )
+      mobile, hobby, student_number, 
+      favorite_id, order_id, campus_id,
+       is_banned)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{address,jdbcType=VARCHAR}, 
-      #{mobile,jdbcType=VARCHAR}, #{hobby,jdbcType=VARCHAR}, #{studentNumber,jdbcType=INTEGER}
-      )
+      #{mobile,jdbcType=VARCHAR}, #{hobby,jdbcType=VARCHAR}, #{studentNumber,jdbcType=INTEGER}, 
+      #{favoriteId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{campusId,jdbcType=INTEGER}
+      , #{isBanned,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.seu.dm.entities.Buyer" >
     insert into buyer
@@ -65,6 +75,18 @@
       <if test="studentNumber != null" >
         student_number,
       </if>
+      <if test="favoriteId != null" >
+        favorite_id,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="campusId != null" >
+        campus_id,
+      </if>
+      <if test="isBanned != null" >
+        is_banned,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -93,6 +115,18 @@
       </if>
       <if test="studentNumber != null" >
         #{studentNumber,jdbcType=INTEGER},
+      </if>
+      <if test="favoriteId != null" >
+        #{favoriteId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="campusId != null" >
+        #{campusId,jdbcType=INTEGER},
+      </if>
+      <if test="isBanned != null" >
+        #{isBanned,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -123,6 +157,18 @@
       <if test="studentNumber != null" >
         student_number = #{studentNumber,jdbcType=INTEGER},
       </if>
+      <if test="favoriteId != null" >
+        favorite_id = #{favoriteId,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="campusId != null" >
+        campus_id = #{campusId,jdbcType=INTEGER},
+      </if>
+      <if test="isBanned != null" >
+        #{isBanned,jdbcType=BIT},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -135,7 +181,11 @@
       address = #{address,jdbcType=VARCHAR},
       mobile = #{mobile,jdbcType=VARCHAR},
       hobby = #{hobby,jdbcType=VARCHAR},
-      student_number = #{studentNumber,jdbcType=INTEGER}
+      student_number = #{studentNumber,jdbcType=INTEGER},
+      favorite_id = #{favoriteId,jdbcType=INTEGER},
+      order_id = #{orderId,jdbcType=INTEGER},
+      campus_id = #{campusId,jdbcType=INTEGER}
+      ,is_banned = #{isBanned,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

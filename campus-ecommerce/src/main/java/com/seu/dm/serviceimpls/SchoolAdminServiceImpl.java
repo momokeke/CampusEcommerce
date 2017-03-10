@@ -32,7 +32,7 @@ public class SchoolAdminServiceImpl implements SchoolAdminService {
     }
 
     @Override
-    public SchoolAdmin findAdim(Integer id) {
+    public SchoolAdmin findAdmin(Integer id) {
         return schoolAdminMapper.selectByPrimaryKey(id);
     }
 

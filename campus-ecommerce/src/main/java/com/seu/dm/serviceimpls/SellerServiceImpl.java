@@ -50,4 +50,26 @@ public class SellerServiceImpl implements SellerService {
     public int selectCountOfSellers() {
         return sellerMapper.selectCountOfAll();
     }
+
+    @Override
+    public List<Seller> findAllSellers(Integer campusId) {
+        List<Seller> sellers = sellerMapper.findAllSellers(campusId);
+        return  sellers;
+    }
+
+    @Override
+    public int banSeller(Integer id) {
+        Seller seller = sellerMapper.selectByPrimaryKey(id);
+        seller.setBanned(true);
+        sellerMapper.updateByPrimaryKey(seller);
+        return 1;
+    }
+
+    @Override
+    public int unBanSeller(Integer id) {
+        Seller seller = sellerMapper.selectByPrimaryKey(id);
+        seller.setBanned(false);
+        sellerMapper.updateByPrimaryKey(seller);
+        return 1;
+    }
 }
