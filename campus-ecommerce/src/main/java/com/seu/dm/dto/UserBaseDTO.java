@@ -8,6 +8,18 @@ public class UserBaseDTO {
 
     private Integer id;
 
+    public Integer getCampusId() {
+        return campusId;
+    }
+
+    public void setCampusId(Integer campusId) {
+        this.campusId = campusId;
+    }
+
+    private Integer campusId;
+
+
+
     public Integer getId() {
         return id;
     }
