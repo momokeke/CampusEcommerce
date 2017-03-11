@@ -8,10 +8,11 @@
     <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="campus_id" property="campusId" jdbcType="INTEGER" />
-    <result column="order" property="order" jdbcType="BIT" />
+    <result column="position_id" property="positionId" jdbcType="INTEGER" />
+    <result column="order" property="order" jdbcType="INTEGER" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, picture_src, picture_url, title, description, campus_id, order
+    id, picture_src, picture_url, title, description, campus_id, position_id, order
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -25,11 +26,11 @@
   </delete>
   <insert id="insert" parameterType="com.seu.dm.entities.HomePage" >
     insert into home_page (id, picture_src, picture_url, 
-      title, description, campus_id,
-      order)
+      title, description, campus_id, 
+      position_id, order)
     values (#{id,jdbcType=INTEGER}, #{pictureSrc,jdbcType=VARCHAR}, #{pictureUrl,jdbcType=VARCHAR}, 
-      #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{campusId,jdbcType=INTEGER},
-      #{order,jdbcType=BIT})
+      #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{campusId,jdbcType=INTEGER}, 
+      #{positionId,jdbcType=INTEGER}, #{order,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.seu.dm.entities.HomePage" >
     insert into home_page
@@ -51,6 +52,9 @@
       </if>
       <if test="campusId != null" >
         campus_id,
+      </if>
+      <if test="positionId != null" >
+        position_id,
       </if>
       <if test="order != null" >
         order,
@@ -75,8 +79,11 @@
       <if test="campusId != null" >
         #{campusId,jdbcType=INTEGER},
       </if>
+      <if test="positionId != null" >
+        #{positionId,jdbcType=INTEGER},
+      </if>
       <if test="order != null" >
-        #{order,jdbcType=BIT},
+        #{order,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -98,8 +105,11 @@
       <if test="campusId != null" >
         campus_id = #{campusId,jdbcType=INTEGER},
       </if>
+      <if test="positionId != null" >
+        position_id = #{positionId,jdbcType=INTEGER},
+      </if>
       <if test="order != null" >
-        order = #{order,jdbcType=BIT},
+        order = #{order,jdbcType=INTEGER},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -111,7 +121,8 @@
       title = #{title,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
       campus_id = #{campusId,jdbcType=INTEGER},
-      order = #{order,jdbcType=BIT}
+      position_id = #{positionId,jdbcType=INTEGER},
+      order = #{order,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

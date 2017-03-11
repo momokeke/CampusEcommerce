@@ -11,17 +11,11 @@ public class HomePage {
 
     private String description;
 
-    public Integer getCampusId() {
-        return campusId;
-    }
-
-    public void setCampusId(Integer campusId) {
-        this.campusId = campusId;
-    }
-
     private Integer campusId;
 
-    private Boolean order;
+    private Integer positionId;
+
+    private Integer order;
 
     public Integer getId() {
         return id;
@@ -63,12 +57,27 @@ public class HomePage {
         this.description = description == null ? null : description.trim();
     }
 
+    public Integer getCampusId() {
+        return campusId;
+    }
 
-    public Boolean getOrder() {
+    public void setCampusId(Integer campusId) {
+        this.campusId = campusId;
+    }
+
+    public Integer getPositionId() {
+        return positionId;
+    }
+
+    public void setPositionId(Integer positionId) {
+        this.positionId = positionId;
+    }
+
+    public Integer getOrder() {
         return order;
     }
 
-    public void setOrder(Boolean order) {
+    public void setOrder(Integer order) {
         this.order = order;
     }
 }

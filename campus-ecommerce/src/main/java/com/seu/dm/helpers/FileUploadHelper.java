@@ -17,15 +17,20 @@ public class FileUploadHelper {
      * 传入 request 和文件名 目标保存地址
      * @return
      */
-    public static void upload(HttpServletRequest request,String fileName,String destPath) throws IOException{
+    public static String upload(HttpServletRequest request,String fileName,String destPathPre) throws IOException{
         MultipartHttpServletRequest multiRequest=(MultipartHttpServletRequest)request;
-        MultipartFile file = multiRequest.getFile("picture");
-        String path = destPath;
+        MultipartFile file = multiRequest.getFile(fileName);
+        if(file == null){
+            return "";
+        }
+        String path = destPathPre + file.getOriginalFilename();
         file.transferTo(new File(path));
+        return path;
     }
 
-    public static void uploadPicture(HttpServletRequest request,String fileName,String destPath) throws IOException{
-        upload(request,fileName,destPath);
+
+    public static String uploadPicture(HttpServletRequest request,String fileName,String destPathPre) throws IOException{
+        return upload(request,fileName,destPathPre);
     }
 
 
