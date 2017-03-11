@@ -18,7 +18,7 @@ public class Order {
 
     private Integer shopId;
 
-    private String status;
+    private Integer status;
 
     private Integer payId;
 
@@ -82,12 +82,12 @@ public class Order {
         this.shopId = shopId;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Integer getPayId() {

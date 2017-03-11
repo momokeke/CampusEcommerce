@@ -35,7 +35,7 @@
     <div class="row back_img">
         <div class="col-xs-4"></div>
         <div class="col-xs-4  ml-30" style="width: 350px">
-            <form class="mb-10 mt-120 border-one form-border" th:action="@{/buyer/buyer_center}" method="post">
+            <form id="theForm" class="mb-10 mt-120 border-one form-border" th:action="@{/buyer/buyer_center}" method="post">
                 <div class="form-group mb-5">
                     <label for="name">用户名</label>
                     <input type="text" class="form-control"  name="name" id="name"  placeholder="您注册的用户名" onclick="checkbname()"/><span></span>
@@ -112,6 +112,7 @@
 <script src="/js/common/jquery-3.1.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="/js/formchecker.js"></script>
 </body>
 </html>
 <!--This is the common footer End-->
