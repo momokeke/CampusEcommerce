@@ -12,11 +12,6 @@ public class HomePage {
     private String description;
 
     private Integer campusId;
-<<<<<<< HEAD
-=======
-
-    private Integer positionId;
->>>>>>> b614cc20b018dda22ea9ca7720cd11d1899e340d
 
     private Integer positionId;
 
