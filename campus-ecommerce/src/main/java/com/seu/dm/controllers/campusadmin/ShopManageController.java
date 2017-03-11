@@ -40,7 +40,7 @@ public class ShopManageController {
         Integer schoolAdminId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getId();
         SchoolAdmin schoolAdmin = schoolAdminService.findAdmin(schoolAdminId);
 //        if(schoolAdmin == null) System.out.println("s");
-        List<Seller> sellers = sellerService.findAllSellers(schoolAdmin.getSchoolId());
+        List<Seller> sellers = sellerService.findAllSellers(schoolAdmin.getCampusId());
 
         model.addAttribute("sellers",sellers);
         return "admin/campusadmin/shop/manage";

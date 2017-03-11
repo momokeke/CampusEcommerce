@@ -26,7 +26,7 @@ public class HomePageServiceImpl implements HomePageService {
 
     @Override
     public int addHomePage(Integer campusAdminId,String title,String description,String pictureSrc,String url,Integer order){
-        Integer campusId = schoolAdminService.findAdmin(campusAdminId).getSchoolId();
+        Integer campusId = schoolAdminService.findAdmin(campusAdminId).getCampusId();
         HomePage homePage = new HomePage();
         if(pictureSrc != null && pictureSrc != "" ) {
             homePage.setPictureSrc(pictureSrc);
@@ -41,7 +41,7 @@ public class HomePageServiceImpl implements HomePageService {
 
     @Override
     public int editHomePage(Integer id,Integer campusAdminId,String title,String description,String pictureSrc,String url,Integer order){
-        Integer campusId = schoolAdminService.findAdmin(campusAdminId).getSchoolId();
+        Integer campusId = schoolAdminService.findAdmin(campusAdminId).getCampusId();
         HomePage homePage = new HomePage();
         if(pictureSrc != null && pictureSrc != "" ) {
             homePage.setPictureSrc(pictureSrc);
@@ -62,7 +62,7 @@ public class HomePageServiceImpl implements HomePageService {
 
     @Override
     public List<HomePage> getHomePagesByCampusAdminId(Integer campusAdminId){
-        Integer campusId = schoolAdminService.findAdmin(campusAdminId).getSchoolId();
+        Integer campusId = schoolAdminService.findAdmin(campusAdminId).getCampusId();
         return homePageMapper.getByCampusId(campusId);
     }
 
