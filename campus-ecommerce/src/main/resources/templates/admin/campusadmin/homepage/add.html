@@ -23,6 +23,15 @@
         <div class="col-xs-6">
             <!--Form begin -->
             <form th:action="@{'/campusadmin/homepagemanage/doadd'}" method="post" enctype="multipart/form-data" role="form">
+
+                <div class="form-group has-success">
+                    <label class="control-label" for="positionId">类型</label>
+                    <select name="positionId" id="positionId">
+                        <option value="1">顶部轮播</option>
+                        <option value="2">底部轮播</option>
+                    </select>
+                </div>
+
                 <div class="form-group has-success">
                     <label class="control-label" for="picture">图片</label>
                     <input type="file" class="form-control" id="picture" name="picture"/>
@@ -44,8 +53,8 @@
                 </div>
 
                 <div class="form-group has-success">
-                    <label class="control-label" for="order">排序号</label>
-                    <input type="text" class="form-control" id="order" name="order"/>
+                    <label class="control-label" for="orderId">排序号</label>
+                    <input type="text" class="form-control" id="orderId" name="orderId"/>
                 </div>
 
                 <button class="btn btn-success">添加</button>

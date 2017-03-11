@@ -15,7 +15,7 @@ public class HomePage {
 
     private Integer positionId;
 
-    private Integer order;
+    private Integer orderId;
 
     public Integer getId() {
         return id;
@@ -73,11 +73,11 @@ public class HomePage {
         this.positionId = positionId;
     }
 
-    public Integer getOrder() {
-        return order;
+    public Integer getOrderId() {
+        return orderId;
     }
 
-    public void setOrder(Integer order) {
-        this.order = order;
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 }

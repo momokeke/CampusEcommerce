@@ -54,14 +54,15 @@ public class HomepageManageController {
         return "admin/campusadmin/homepage/edit";
     }
 
-    @RequestMapping("/doedit")
+    @RequestMapping("/doedit/{id}")
     @CampusAdminPermission
     public String doEdit(HttpServletRequest request,
-                         @RequestParam Integer id,
+                         @PathVariable Integer id,
+                         @RequestParam Integer positionId,
                          @RequestParam String title,
                          @RequestParam String description,
                          @RequestParam String url,
-                         @RequestParam Integer order,
+                         @RequestParam Integer orderId,
                          HttpSession httpSession) throws IOException{
 
 
@@ -69,7 +70,7 @@ public class HomepageManageController {
         String homePagePicturePath = UploadConfigure.homePagePicturesPath;
         String pictureSrc = FileUploadHelper.uploadPicture(request,"picture",homePagePicturePath + currentTime.toString());
         UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
-        homePageService.editHomePage(id,userBase.getCampusId(),title,description,pictureSrc,url,order);
+        homePageService.editHomePage(id,positionId,userBase.getId(),title,description,pictureSrc,url,orderId);
         return "redirect:/campusadmin/homepagemanage/";
     }
 
@@ -84,22 +85,26 @@ public class HomepageManageController {
     @CampusAdminPermission
     public String doAdd(HttpServletRequest request,
                         @RequestParam String title,
+                        @RequestParam Integer positionId,
                         @RequestParam String description,
                         @RequestParam String url,
-                        @RequestParam Integer order,
+                        @RequestParam Integer orderId,
                         HttpSession httpSession) throws IOException{
         Long currentTime = System.currentTimeMillis();
         String homePagePicturePath = UploadConfigure.homePagePicturesPath;
         String pictureSrc = FileUploadHelper.uploadPicture(request,"picture",homePagePicturePath + currentTime.toString());
         UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
-        homePageService.addHomePage(userBase.getCampusId(),title,description,pictureSrc,url,order);
+        homePageService.addHomePage(userBase.getId(),positionId,title,description,pictureSrc,url,orderId);
         return "redirect:/campusadmin/homepagemanage/";
     }
 
-    @RequestMapping("/dodelete")
+    @RequestMapping("/dodelete/{id}")
     @CampusAdminPermission
-    public String doDelete(){
-        return "redirect:/campusadmin/homepagemanage/";
+    public String doDelete(@PathVariable Integer id,Model model){
+        homePageService.deleteHomePageById(id);
+        model.addAttribute("message","删除成功");
+        model.addAttribute("jumpUrl","/campusadmin/homepagemanage/");
+        return "common/alert";
     }
 
 

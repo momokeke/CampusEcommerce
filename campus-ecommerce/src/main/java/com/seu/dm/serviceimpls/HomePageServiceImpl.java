@@ -25,8 +25,9 @@ public class HomePageServiceImpl implements HomePageService {
 
 
     @Override
-    public int addHomePage(Integer campusAdminId,String title,String description,String pictureSrc,String url,Integer order){
+    public int addHomePage(Integer campusAdminId,Integer positionId,String title,String description,String pictureSrc,String url,Integer order){
         Integer campusId = schoolAdminService.findAdmin(campusAdminId).getCampusId();
+        System.out.println("campusId:" +campusId);
         HomePage homePage = new HomePage();
         if(pictureSrc != null && pictureSrc != "" ) {
             homePage.setPictureSrc(pictureSrc);
@@ -35,12 +36,14 @@ public class HomePageServiceImpl implements HomePageService {
         homePage.setPictureUrl(url);
         homePage.setCampusId(campusId);
         homePage.setTitle(title);
-        homePage.setOrder(order);
+        homePage.setOrderId(order);
+        homePage.setPositionId(positionId);
         return homePageMapper.insert(homePage);
     }
 
     @Override
-    public int editHomePage(Integer id,Integer campusAdminId,String title,String description,String pictureSrc,String url,Integer order){
+    public int editHomePage(Integer id,Integer positionId,Integer campusAdminId,String title,String description,String pictureSrc,String url,Integer order){
+
         Integer campusId = schoolAdminService.findAdmin(campusAdminId).getCampusId();
         HomePage homePage = new HomePage();
         if(pictureSrc != null && pictureSrc != "" ) {
@@ -50,7 +53,8 @@ public class HomePageServiceImpl implements HomePageService {
         homePage.setPictureUrl(url);
         homePage.setCampusId(campusId);
         homePage.setTitle(title);
-        homePage.setOrder(order);
+        homePage.setOrderId(order);
+        homePage.setPositionId(positionId);
         homePage.setId(id);
         return homePageMapper.updateByPrimaryKey(homePage);
     }
@@ -64,6 +68,11 @@ public class HomePageServiceImpl implements HomePageService {
     public List<HomePage> getHomePagesByCampusAdminId(Integer campusAdminId){
         Integer campusId = schoolAdminService.findAdmin(campusAdminId).getCampusId();
         return homePageMapper.getByCampusId(campusId);
+    }
+
+    @Override
+    public int deleteHomePageById(Integer id){
+        return homePageMapper.deleteByPrimaryKey(id);
     }
 
 }
