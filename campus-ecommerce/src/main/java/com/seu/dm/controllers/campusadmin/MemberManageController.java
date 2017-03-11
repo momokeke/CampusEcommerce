@@ -37,9 +37,9 @@ public class MemberManageController {
     public String index(HttpSession httpSession,Model model){
         Integer schoolAdminId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getId();
         SchoolAdmin schoolAdmin = schoolAdminService.findAdmin(schoolAdminId);
-        Integer campusId = schoolAdmin.getSchoolId();
+        Integer campusId = schoolAdmin.getCampusId();
         List<Buyer> buyers = buyerService.findBuyersByCampusId(campusId);
-        List<Seller> sellers = sellerService.findAllSellers(schoolAdmin.getSchoolId());
+        List<Seller> sellers = sellerService.findAllSellers(schoolAdmin.getCampusId());
         model.addAttribute("schoolAdmin",schoolAdmin);
         model.addAttribute("buyers",buyers);
         model.addAttribute("sellers",sellers);

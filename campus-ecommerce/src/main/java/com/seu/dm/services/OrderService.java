@@ -23,4 +23,6 @@ public interface OrderService {
     HashMap<String, Integer> findHotProductsFromOrder(Integer n);
 
     List<Order> findOrdersByCampusId(Integer campusId);
+
+    List<Order> screenOrders(Integer orderId,String orderStatus,Integer userId,Integer sellerId,Integer campusId);
 }

@@ -7,7 +7,10 @@ import com.seu.dm.mappers.ProductMapper;
 import com.seu.dm.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.expression.Lists;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -86,5 +89,19 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> findOrdersByCampusId(Integer campusId) {
         return orderMapper.findOrdersByCampusId(campusId);
 
+    }
+
+    @Override
+    public List<Order> screenOrders(Integer orderId, String orderStatus, Integer userId,
+                                    Integer sellerId, Integer campusId) {
+
+        if(orderId != null) {
+            List<Order> order = Collections.emptyList();
+            order.add(orderMapper.selectByPrimaryKey(orderId));
+            return order;
+        }
+
+        List<Order> orders = orderMapper.screenOrders(orderStatus,userId,sellerId,campusId);
+        return orders;
     }
 }

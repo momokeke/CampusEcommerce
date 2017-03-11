@@ -105,22 +105,25 @@
 
     <div class="row">
         <div class="col-lg-12">
+            <form th:action="@{'/campusadmin/ordermanage/screen'}"  role="form">
             <label>订单号</label>
-            <input type="text" name="id" placeholder="订单号"/>
+            <input type="text" name="orderId" placeholder="订单号"/>
             <label>订单状态</label>
-            <select>
-                <option value="">未发货</option>
-                <option value="">正退货</option>
-                <option value="">已退货</option>
-                <option value="">已完成</option>
+            <select name="orderStatus">
+                <option value="">全部</option>
+                <option value="待发货">待发货</option>
+                <option value="退货中">正退货</option>
+                <option value="已退货">已退货</option>
+                <option value="已完成">已完成</option>
             </select>
 
-            <label>买家学号</label>
-            <input type="text" name="id" placeholder="订单号"/>
+            <label>买家id</label>
+            <input type="text" name="userId" placeholder="买家id"/>
 
-            <label>卖家学号</label>
-            <input type="text" name="id" placeholder="订单号"/>
+            <label>卖家id</label>
+            <input type="text" name="sellerId" placeholder="卖家id"/>
             <button class="btn btn-primary">搜索</button>
+            </form>
         </div>
     </div>
 

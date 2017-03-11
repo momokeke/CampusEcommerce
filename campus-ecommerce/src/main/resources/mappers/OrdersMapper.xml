@@ -27,6 +27,43 @@
   <select id="findOrdersByCampusId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select * from orders where campus_id = #{campusId}
   </select>
+  <select id="screenOrders" resultMap="BaseResultMap">
+    select * from orders
+    where
+    <if test="id != null" >
+      id = #{id,jdbcType=INTEGER},
+    </if>
+    <if test="orderProductId != null" >
+    order_product_id = #{orderProductId,jdbcType=INTEGER},
+  </if>
+    <if test="userId != null" >
+      user_id = #{userId,jdbcType=INTEGER},
+    </if>
+    <if test="sellerId != null" >
+      seller_id = #{sellerId,jdbcType=INTEGER},
+    </if>
+    <if test="createTime != null" >
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+    </if>
+    <if test="totalPrice != null" >
+      total_price = #{totalPrice,jdbcType=DECIMAL},
+    </if>
+    <if test="shopId != null" >
+      shop_id = #{shopId,jdbcType=INTEGER},
+    </if>
+    <if test="status != null" >
+      status = #{status,jdbcType=VARCHAR},
+    </if>
+    <if test="payId != null" >
+      pay_id = #{payId,jdbcType=INTEGER},
+    </if>
+    <if test="commentId != null" >
+      comment_id = #{commentId,jdbcType=INTEGER},
+    </if>
+    <if test="campusId != null" >
+      campus_id = #{campusId,jdbcType=INTEGER},
+    </if>
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from orders
     where id = #{id,jdbcType=INTEGER}
