@@ -6,7 +6,7 @@ import java.util.Date;
 public class Order {
     private Integer id;
 
-    private Integer oederProductId;
+    private Integer orderProductId;
 
     private Integer userId;
 
@@ -24,6 +24,8 @@ public class Order {
 
     private Integer commentId;
 
+    private Integer campusId;
+
     public Integer getId() {
         return id;
     }
@@ -32,12 +34,12 @@ public class Order {
         this.id = id;
     }
 
-    public Integer getOederProductId() {
-        return oederProductId;
+    public Integer getOrderProductId() {
+        return orderProductId;
     }
 
-    public void setOederProductId(Integer oederProductId) {
-        this.oederProductId = oederProductId;
+    public void setOrderProductId(Integer orderProductId) {
+        this.orderProductId = orderProductId;
     }
 
     public Integer getUserId() {
@@ -102,5 +104,13 @@ public class Order {
 
     public void setCommentId(Integer commentId) {
         this.commentId = commentId;
+    }
+
+    public Integer getCampusId() {
+        return campusId;
+    }
+
+    public void setCampusId(Integer campusId) {
+        this.campusId = campusId;
     }
 }

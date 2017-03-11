@@ -81,4 +81,10 @@ public class OrderServiceImpl implements OrderService {
         }
         return productNameAndNum;
     }
+
+    @Override
+    public List<Order> findOrdersByCampusId(Integer campusId) {
+        return orderMapper.findOrdersByCampusId(campusId);
+
+    }
 }
