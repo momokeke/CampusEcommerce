@@ -27,7 +27,6 @@ public class HomePageServiceImpl implements HomePageService {
     @Override
     public int addHomePage(Integer campusAdminId,Integer positionId,String title,String description,String pictureSrc,String url,Integer order){
         Integer campusId = schoolAdminService.findAdmin(campusAdminId).getCampusId();
-        System.out.println("campusId:" +campusId);
         HomePage homePage = new HomePage();
         if(pictureSrc != null && pictureSrc != "" ) {
             homePage.setPictureSrc(pictureSrc);

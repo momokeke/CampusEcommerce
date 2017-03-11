@@ -93,3 +93,26 @@ function deleteSelectRow(){
 	productCount();
 	}
 
+
+
+
+
+var cartClient = {
+    send : function(id,newNum){
+        $.ajax({
+            type: 'GET',
+            url: '/buyer/shopping_cart_change/',
+            data: {
+                'id':id,'newNum':newNum
+            },
+            async:false,
+            success: function(data){
+                alert(data);
+            },
+        });
+    }
+}
+
+
+
+

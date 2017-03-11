@@ -3,28 +3,17 @@ package com.seu.dm.controllers.campusadmin;
 import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.configs.UploadConfigure;
 import com.seu.dm.dto.UserBaseDTO;
-import com.seu.dm.entities.HomePage;
 import com.seu.dm.helpers.FileUploadHelper;
 import com.seu.dm.services.HomePageService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.websocket.server.PathParam;
 import java.io.IOException;
-import java.util.Date;
-import java.io.File;
-import java.util.Iterator;
 
 /**
  * Created by Greeting on 2017/3/9.
