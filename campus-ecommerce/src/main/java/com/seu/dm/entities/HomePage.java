@@ -11,7 +11,9 @@ public class HomePage {
 
     private String description;
 
-    private Integer schoolId;
+    private Integer campusId;
+
+    private Integer positionId;
 
     private Boolean order;
 
@@ -55,12 +57,20 @@ public class HomePage {
         this.description = description == null ? null : description.trim();
     }
 
-    public Integer getSchoolId() {
-        return schoolId;
+    public Integer getCampusId() {
+        return campusId;
     }
 
-    public void setSchoolId(Integer schoolId) {
-        this.schoolId = schoolId;
+    public void setCampusId(Integer campusId) {
+        this.campusId = campusId;
+    }
+
+    public Integer getPositionId() {
+        return positionId;
+    }
+
+    public void setPositionId(Integer positionId) {
+        this.positionId = positionId;
     }
 
     public Boolean getOrder() {

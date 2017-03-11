@@ -105,22 +105,25 @@
 
     <div class="row">
         <div class="col-lg-12">
+            <form th:action="@{'/campusadmin/ordermanage/screen'}"  role="form">
             <label>订单号</label>
-            <input type="text" name="id" placeholder="订单号"/>
+            <input type="text" name="orderId" placeholder="订单号"/>
             <label>订单状态</label>
-            <select>
-                <option value="">未发货</option>
-                <option value="">正退货</option>
-                <option value="">已退货</option>
-                <option value="">已完成</option>
+            <select name="orderStatus">
+                <option value="">全部</option>
+                <option value="待发货">待发货</option>
+                <option value="退货中">正退货</option>
+                <option value="已退货">已退货</option>
+                <option value="已完成">已完成</option>
             </select>
 
-            <label>买家学号</label>
-            <input type="text" name="id" placeholder="订单号"/>
+            <label>买家id</label>
+            <input type="text" name="userId" placeholder="买家id"/>
 
-            <label>卖家学号</label>
-            <input type="text" name="id" placeholder="订单号"/>
+            <label>卖家id</label>
+            <input type="text" name="sellerId" placeholder="卖家id"/>
             <button class="btn btn-primary">搜索</button>
+            </form>
         </div>
     </div>
 
@@ -168,25 +171,23 @@
                 <tr>
                     <th>#</th>
                     <th>订单号</th>
-                    <th>买家学号</th>
-                    <th>买家姓名</th>
-                    <th>买家电话</th>
-                    <th>卖家学号</th>
-                    <th>卖家姓名</th>
-                    <th>卖家电话</th>
+                    <th>买家id</th>
+                    <th>卖家id</th>
+                    <th>订单创建时间</th>
+                    <th>订单状态</th>
+                    <th>总金额</th>
                     <th>操作</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>99999</td>
-                    <td>163111</td>
-                    <td>SellerX</td>
-                    <td>189</td>
-                    <td>163222</td>
-                    <td>BuyerY</td>
-                    <td>188</td>
+                <tr th:each="order,iterStatus:${orders}">
+                    <td th:text="${iterStatus.count}">1</td>
+                    <td th:text="${order.id}">99999</td>
+                    <td th:text="${order.userId}">163111</td>
+                    <td th:text="${order.sellerId}">SellerX</td>
+                    <td th:text="${order.createTime}">189</td>
+                    <td th:text="${order.status}">189</td>
+                    <td th:text="${order.totalPrice}">163222</td>
                     <td>
                         <a href="/campusadmin/ordermanage/editmember" class="btn btn-primary">完成退货</a>
                         <a href="/campusadmin/ordermanage/editmember" class="btn btn-warning">取消退货</a>
@@ -200,12 +201,10 @@
                 <tr>
                     <th>#</th>
                     <th>订单号</th>
-                    <th>买家学号</th>
-                    <th>买家姓名</th>
-                    <th>买家电话</th>
-                    <th>卖家学号</th>
-                    <th>卖家姓名</th>
-                    <th>卖家电话</th>
+                    <th>买家id</th>
+                    <th>卖家id</th>
+                    <th>订单创建时间</th>
+                    <th>总金额</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -217,8 +216,6 @@
                     <td>SellerX</td>
                     <td>189</td>
                     <td>163222</td>
-                    <td>BuyerY</td>
-                    <td>188</td>
                     <td>
                         <a href="#" class="btn btn-danger">删除</a>
                     </td>
