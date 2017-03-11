@@ -27,4 +27,22 @@ public interface OrderService {
     List<Order> screenOrders(Integer orderId,Integer orderStatus,Integer campusId);
 
     List<Order> findOrdersBySellerId(Integer sellerId);
+
+    List<Order> findOrdersByBuyerId(Integer buyerId);
+
+    List<Order> findOrdersByBuyerIdWithStatusWaitDeliver(Integer buyerId);
+
+    List<Order> findOrdersByBuyerIdWithStatusOnRejection(Integer buyerId);
+
+    List<Order> findOrdersByBuyerIdWithStatusAlreadyRejection(Integer buyerId);
+
+    List<Order> findOrdersByBuyerIdWithStatusSuccess(Integer buyerId);
+
+    List<Order> findOrdersBySellerIdWithStatusWaitDeliver(Integer sellerId);
+
+    List<Order> findOrdersBySellerIdWithStatusOnRejection(Integer sellerId);
+
+    List<Order> findOrdersBySellerIdWithStatusAlreadyRejection(Integer sellerId);
+
+    List<Order> findOrdersBySellerIdWithStatusSuccess(Integer sellerId);
 }

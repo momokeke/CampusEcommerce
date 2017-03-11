@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -34,10 +35,33 @@ public class SellerController {
      * @param seller
      * @return
      */
-    @RequestMapping(value = "/addSellerInfo", method = RequestMethod.POST)
-    public String addSeller(Seller seller){
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String addSeller(Seller seller,HttpServletRequest request){
+        HttpSession httpSession = request.getSession();
         sellerService.addSeller(seller);                //由service层负责添加工作
-        return "/";
+        httpSession.setAttribute("user",seller);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/sellerLogin",method = RequestMethod.POST)
+    public String loginSeller(Seller seller,HttpServletRequest request){
+        String name = seller.getName();
+        Seller sellerFromDB = sellerService.findSellerByName(name);
+        if(sellerFromDB == null) return "seller/register";
+        if(seller.getPassword().equals(sellerFromDB.getPassword())) {
+            HttpSession httpSession = request.getSession();
+            httpSession.setAttribute("user", seller);
+            return "redirect:/";
+        }
+        return "";
+    }
+
+    @RequestMapping(value = "/sellerLogout")
+    public String logoutSeller(HttpServletRequest request){
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null) return "redirect:/";
+        httpSession.removeAttribute("user");
+        return "redirect:/";
     }
 
     /**
@@ -143,9 +167,51 @@ public class SellerController {
     @RequestMapping(value = "/ordersmanage")
     @SellerPermission
     public String getAllOrdersOfSeller(Model model, HttpSession httpSession){
-        Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getSellerId();
+        // Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getSellerId();
+        Seller seller = (Seller)httpSession.getAttribute("user");
+        Integer sellerId = seller.getId();
         List<Order> orders = orderService.findOrdersBySellerId(sellerId);
         model.addAttribute("orders",orders);
-        return "";
+        return "seller/";
+    }
+
+    @RequestMapping(value = "/orders/waitdeliver")
+    public String findSellerOrdersWithStatusWaitDeliver(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        Seller seller = (Seller) httpSession.getAttribute("user");
+        Integer sellerId = seller.getId();
+        List<Order> orders = orderService.findOrdersBySellerIdWithStatusWaitDeliver(sellerId);
+        model.addAttribute("orders",orders);
+        return "redirect:/seller/orders";
+    }
+
+    @RequestMapping(value = "/orders/onrejection")
+    public String findSellerOrdersWithStatusOnRejection(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        Seller seller = (Seller) httpSession.getAttribute("user");
+        Integer sellerId = seller.getId();
+        List<Order> orders = orderService.findOrdersBySellerIdWithStatusOnRejection(sellerId);
+        model.addAttribute("orders",orders);
+        return "redirect:/seller/orders";
+    }
+
+    @RequestMapping(value = "/orders/alreadyrejection")
+    public String findSellerOrdersWithStatusAlreadyRejection(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        Seller seller = (Seller) httpSession.getAttribute("user");
+        Integer sellerId = seller.getId();
+        List<Order> orders = orderService.findOrdersBySellerIdWithStatusAlreadyRejection(sellerId);
+        model.addAttribute("orders",orders);
+        return "redirect:/seller/orders";
+    }
+
+    @RequestMapping(value = "/orders/success")
+    public String findSellerOrdersWithStatusSuccess(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        Seller seller = (Seller) httpSession.getAttribute("user");
+        Integer sellerId = seller.getId();
+        List<Order> orders = orderService.findOrdersBySellerIdWithStatusSuccess(sellerId);
+        model.addAttribute("orders",orders);
+        return "redirect:/seller/orders";
     }
 }
