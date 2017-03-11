@@ -31,8 +31,7 @@ public class BuyerController {
         System.out.println("call");
         int i = buyerService.addBuyer(buyer);
         System.out.println("i = "+i);
-        if(i == 0) return "/index"; // 如果返回值为0 添加失败
-        return "demo/helloworld";
+        return "index";
     }
 
     /**
@@ -78,6 +77,7 @@ public class BuyerController {
     public String jumpToBuyerShoppingCart(){
         return "buyer/shopping_cart";
     }
+
 
     @RequestMapping(value = "/shopping_cart_change")
     @ResponseBody

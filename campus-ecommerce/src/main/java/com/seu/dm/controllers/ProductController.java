@@ -69,29 +69,18 @@ public class ProductController {
 //        List<SearchGoodEntity> searchGoodEntities = productService.searchEntitiesByName(name);
 //        model.addAttribute("entities",searchGoodEntities);
         model.addAttribute("entities",products);
-        httpSession.setAttribute("products",products);
+        httpSession.setAttribute("name",name);
         return "product/product_list";
     }
 
     @RequestMapping(value = "/screenByPrice", method = RequestMethod.GET)
     public String screenByPrice(@RequestParam(value = "minPrice")Double minPrice,
                                 @RequestParam(value = "maxPrice")Double maxPrice,Model model,HttpSession httpSession){
-        List<Product> products = (List<Product>) httpSession.getAttribute("products");
-        Iterator<Product> iterator = products.iterator();
-        Product product = new Product();
-        while(iterator.hasNext()) {
-            product = iterator.next();
-            if(minPrice == null && maxPrice == null) break;
-            if(minPrice == null){
-                if(product.getPrice().doubleValue() > maxPrice) iterator.remove();continue;
-            }
-            if(maxPrice == null){
-                if(product.getPrice().doubleValue() < minPrice) iterator.remove();continue;
-            }
-            if(product.getPrice().doubleValue() < minPrice || product.getPrice().doubleValue() > maxPrice) iterator.remove();
-        }
+        String name = (String) httpSession.getAttribute("name");
+        System.out.println("s" + name);
+        List<Product> products = productService.findProductsByNameAndScreenByPrice(name,minPrice,maxPrice);
         System.out.println(products.size());
-        httpSession.setAttribute("products",products);
+//        httpSession.setAttribute("products",products);
         model.addAttribute("entities",products);
         return "product/product_list";
     }

@@ -1,6 +1,7 @@
 package com.seu.dm.mappers;
 
 import com.seu.dm.entities.Product;
+import org.apache.ibatis.annotations.Param;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -29,4 +30,8 @@ public interface ProductMapper {
     BigDecimal  getPriceById(Integer id);                   //通过主键得到商品价格
 
     List<Product> getProductsBySellerId(Integer sellerId);
+
+    List<Product> getProductsByNameAndScreenByPrice(@Param(value = "s") String s,
+                                                    @Param(value = "minPrice") Double minPrice,
+                                                    @Param(value = "maxPrice") Double maxPrice);
 }

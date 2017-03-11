@@ -28,8 +28,9 @@ public class SellerController {
     private SellerService sellerService;
     @Autowired
     private OrderService orderService;
+
     /**
-     * 根据店铺注册信息向数据库添加一条店铺信息
+     * 根据店铺注册信息向数据库添加卖家
      * @param seller
      * @return
      */

@@ -174,4 +174,14 @@ public class ProductServiceImpl implements ProductService{
         productMapper.updateByPrimaryKey(product);
         return 1 ;
     }
+
+    @Override
+    public List<Product> findProductsByNameAndScreenByPrice(String name, Double minPrice, Double maxPrice) {
+        System.out.println("name is :" + name+"  minprice is :" +minPrice+"  maxprice is : "+maxPrice);
+        if(minPrice!=null && maxPrice == null) return productMapper.getProductsByNameAndScreenByPrice(name,minPrice,123456789.0);
+        if(minPrice==null && maxPrice == null)return productMapper.getProductsByNameAndScreenByPrice(name,-123456789.0,123456789.0);
+        if(minPrice==null && maxPrice != null) return productMapper.getProductsByNameAndScreenByPrice(name,-123456789.0,maxPrice);
+        return productMapper.getProductsByNameAndScreenByPrice(name,minPrice,maxPrice);
+       
+    }
 }

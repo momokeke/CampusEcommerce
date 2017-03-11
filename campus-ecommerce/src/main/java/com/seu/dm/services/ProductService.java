@@ -12,6 +12,9 @@ import java.util.List;
 
 public interface ProductService {
 
+    double minPrice = -321312213.0;
+    double maxPrice = 231231123.0;
+
     int addProduct(Product product);
 
     Product findProduct(Integer id);
@@ -35,4 +38,6 @@ public interface ProductService {
     List<Product> findProductsBySellerId(Integer selledId);
 
     Integer unshelfProduct(Integer productId);
+
+    List<Product> findProductsByNameAndScreenByPrice(String name,Double minPrice,Double maxPrice);
 }
