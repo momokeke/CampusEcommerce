@@ -44,7 +44,9 @@ public class OrderManageController {
                                ,HttpSession httpSession,Model model, HttpServletRequest request){
         Integer schoolAdminId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getId();
         Integer campusId = schoolAdminService.findAdmin(schoolAdminId).getCampusId();
-        List<Order> orders = orderService.screenOrders(orderId,orderStatus,userId,sellerId,campusId);
+        System.out.println(orderStatus);
+        System.out.println("id: "+orderId+"   orderStatus: "+orderStatus);
+        List<Order> orders = orderService.screenOrders(orderId,orderStatus,campusId);
         model.addAttribute("orders",orders);
         return "redirect:/campusadmin/ordermanage";
     }

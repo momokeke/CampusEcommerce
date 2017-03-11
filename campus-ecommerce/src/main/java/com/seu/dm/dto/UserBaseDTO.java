@@ -8,6 +8,16 @@ public class UserBaseDTO {
 
     private Integer id;
 
+    private Integer sellerId;
+
+    public Integer getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(Integer sellerId) {
+        this.sellerId = sellerId;
+    }
+
     public Integer getId() {
         return id;
     }

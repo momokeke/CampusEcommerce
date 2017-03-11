@@ -19,7 +19,7 @@
         </div>
         <div class="col-xs-4">
 
-            <form action="/addproduct" method="post" name="newPro">
+            <form action="/product/addproduct" th:action="@{'/product/addProduct'}" method="post" name="newPro">
                 <div><span class="text-size">商品名称:</span><input class="border-two mt-20 ml-5" type="text" value="" name="name"/></div>
                 <div>
                     <span class="text-size">社团名称:</span><input type="text" name="textfield" class="border-three mt-20 ml-5 text-center"/>

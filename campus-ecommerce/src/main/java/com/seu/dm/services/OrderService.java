@@ -24,5 +24,5 @@ public interface OrderService {
 
     List<Order> findOrdersByCampusId(Integer campusId);
 
-    List<Order> screenOrders(Integer orderId,String orderStatus,Integer userId,Integer sellerId,Integer campusId);
+    List<Order> screenOrders(Integer orderId,String orderStatus,Integer campusId);
 }
