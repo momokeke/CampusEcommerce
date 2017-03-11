@@ -92,16 +92,17 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> screenOrders(Integer orderId, String orderStatus, Integer userId,
-                                    Integer sellerId, Integer campusId) {
+    public List<Order> screenOrders(Integer orderId, String orderStatus, Integer campusId) {
 
         if(orderId != null) {
-            List<Order> order = Collections.emptyList();
-            order.add(orderMapper.selectByPrimaryKey(orderId));
-            return order;
+           List<Order> orders = new ArrayList<>();
+           Order order = orderMapper.selectByPrimaryKey(orderId);
+           if(order == null) System.out.println("null");
+           orders.add(order);
+           return orders;
         }
-
-        List<Order> orders = orderMapper.screenOrders(orderStatus,userId,sellerId,campusId);
+        if("全部".equals(orderStatus)) return orderMapper.findOrdersByCampusId(campusId);
+        List<Order> orders = orderMapper.screenOrders(orderStatus,campusId);
         return orders;
     }
 }

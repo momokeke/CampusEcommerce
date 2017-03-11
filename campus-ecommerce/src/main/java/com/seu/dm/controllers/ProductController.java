@@ -1,5 +1,7 @@
 package com.seu.dm.controllers;
 
+import com.seu.dm.annotations.permissions.CampusAdminPermission;
+import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Product;
 import com.seu.dm.entities.SearchGoodEntity;
 import com.seu.dm.services.ProductService;
@@ -155,7 +157,10 @@ public class ProductController {
      * @return
      */
     @RequestMapping(value = "/addProduct")
-    public String addProduct(Product product, Model model){
+    @CampusAdminPermission
+    public String addProduct(Product product, HttpSession httpSession,Model model){
+        Integer sellId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getSellerId();
+        product.setSellerId(sellId);
         int i = productService.addProduct(product);
         model.addAttribute("product",product);
         return "seller/new_products";
@@ -171,7 +176,6 @@ public class ProductController {
     @RequestMapping(value = "/deleteProduct/{id}")
     public String deleteProduct(@PathVariable Integer id, Model model){
         int i = productService.deleteProduct(id);
-        if(i == 1) return "/";
         return "/";
     }
 

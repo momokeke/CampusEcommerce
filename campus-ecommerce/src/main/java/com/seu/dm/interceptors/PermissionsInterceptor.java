@@ -64,6 +64,7 @@ public class PermissionsInterceptor extends HandlerInterceptorAdapter {
             UserBaseDTO userBase = new UserBaseDTO();
             userBase.setRole("campusAdmin");
             userBase.setId(110);
+            userBase.setSellerId(10);
             httpSession.setAttribute("userBase",userBase);
         }
         return true;

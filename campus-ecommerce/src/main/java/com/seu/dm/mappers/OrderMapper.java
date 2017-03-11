@@ -19,5 +19,5 @@ public interface OrderMapper {
 
     List<Order> findOrdersByCampusId(Integer campusId);
 
-    List<Order> screenOrders(String status,Integer userId,Integer sellerId,Integer campusId);
+    List<Order> screenOrders(String orderStatus,Integer campusId);
 }
