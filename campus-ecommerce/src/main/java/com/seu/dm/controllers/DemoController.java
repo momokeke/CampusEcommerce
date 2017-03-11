@@ -157,5 +157,6 @@ public class DemoController {
     public  String jumpToRefund(){
         return "seller/refund";
     }
-
+    @RequestMapping(value={"/register"})
+    public String jumpToRegister(){return "register";}
 }
