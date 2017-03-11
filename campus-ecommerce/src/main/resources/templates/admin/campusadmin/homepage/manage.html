@@ -12,139 +12,47 @@
         <!-- /.col-lg-12 -->
     </div>
     <div class="row">
+        <div class="col-lg-12">
+            <a href="/campusadmin/homepagemanage/add" class="btn btn-success">增加</a>
+            <hr/>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
         <div class="col-lg-7">
-            <!--Form begin -->
-            <form id="theForm" role="form">
                 <table class="table">
                     <thead>
                     <tr>
-                        <td>原图片</td>
-                        <td>新图片</td>
+                        <td>#</td>
+                        <td>位置</td>
+                        <td>图片</td>
+                        <td>标题</td>
+                        <td>序号</td>
+                        <td>操作</td>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td><img style="width:300px;height:150px;" src="#"/></td>
+                    <tr th:each="one,iterStatus : ${list}">
+                        <td th:text="${iterStatus.count}">1</td>
+                        <th:block th:if="${one.positionId} eq 1">
+                            <td>顶部轮播</td>
+                        </th:block>
+                        <th:block th:if="${one.positionId} eq 2">
+                            <td>底部轮播</td>
+                        </th:block>
+                        <td><img style="width:300px;height:150px;" th:src="${one.pictureUrl}" src="#"/></td>
+                        <td th:text="${one.title}">标题</td>
+                        <td th:text="${one.orderId}">1</td>
                         <td>
-                            <div class="form-group has-success">
-                                <label class="control-label">顶部轮播图1</label>
-                                <input type="file" class="form-control"/>
-                            </div>
+                            <a href="#" th:href="@{'/campusadmin/homepagemanage/edit/'+${one.id}}" class="btn btn-primary">修改</a>
+                            <a href="#" th:href="@{'/campusadmin/homepagemanage/dodelete/'+${one.id}}" class="btn btn-danger">删除</a>
                         </td>
                     </tr>
-                    <tr>
-                        <td><img style="width:300px;height:150px;" src="#"/></td>
-                        <td>
-                            <div class="form-group has-success">
-                                <label class="control-label">顶部轮播图1标题</label>
-                                <input type="text" class="form-control"/>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img style="width:300px;height:150px;" src="#"/></td>
-                        <td>
-                            <div class="form-group has-success">
-                                <label class="control-label">顶部轮播图1简介</label>
-                                <input type="text" class="form-control"/>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img style="width:300px;height:150px;" src="#"/></td>
-                        <td>
-                            <div class="form-group has-success">
-                                <label class="control-label">顶部轮播图2</label>
-                                <input type="file" class="form-control"/>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img style="width:300px;height:150px;" src="#"/></td>
-                        <td>
-                            <div class="form-group has-success">
-                                <label class="control-label">顶部轮播图2标题</label>
-                                <input type="text" class="form-control"/>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img style="width:300px;height:150px;" src="#"/></td>
-                        <td>
-                            <div class="form-group has-success">
-                                <label class="control-label">顶部轮播图2简介</label>
-                                <input type="text" class="form-control"/>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img style="width:300px;height:150px;" src="#"/></td>
-                        <td>
-                            <div class="form-group has-success">
-                                <label class="control-label">顶部轮播图3</label>
-                                <input type="file" class="form-control"/>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img style="width:300px;height:150px;" src="#"/></td>
-                        <td>
-                            <div class="form-group has-success">
-                                <label class="control-label">顶部轮播图3标题</label>
-                                <input type="text" class="form-control"/>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img style="width:300px;height:150px;" src="#"/></td>
-                        <td>
-                            <div class="form-group has-success">
-                                <label class="control-label">顶部轮播图3简介</label>
-                                <input type="text" class="form-control"/>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img style="width:300px;height:150px;" src="#"/></td>
-                        <td>
-                            <div class="form-group has-success">
-                                <label class="control-label">底部轮播图1</label>
-                                <input type="file" class="form-control"/>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img style="width:300px;height:150px;" src="#"/></td>
-                        <td>
-                            <div class="form-group has-success">
-                                <label class="control-label">底部轮播图2</label>
-                                <input type="file" class="form-control"/>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img style="width:300px;height:150px;" src="#"/></td>
-                        <td>
-                            <div class="form-group has-success">
-                                <label class="control-label">底部轮播图3</label>
-                                <input type="file" class="form-control"/>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img style="width:300px;height:150px;" src="#"/></td>
-                        <td>
-                            <div class="form-group has-success">
-                                <label class="control-label">底部轮播图4</label>
-                                <input type="file" class="form-control"/>
-                            </div>
-                        </td>
-                    </tr>
+
+
                     </tbody>
                 </table>
                 <button class="btn btn-success">确定</button>
-            </form>
-            <!--Form end   -->
             <hr/>
         </div>
     </div>

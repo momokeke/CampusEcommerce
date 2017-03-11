@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!-- Any Other things should follow these 3 meta above -->
+    <title>达米注册</title>
+    <link href="/css/register.css" rel="stylesheet"/>
+    <link href="/css/common.css" rel="stylesheet"/>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/js/common/jquery-3.1.1.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="/js/common/html5shiv.min.js"></script>
+    <script src="/js/common/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="cont">
+    <div class="form buyer-register">
+        <h2 style="text-align: center">欢迎您成为达米买家！</h2>
+        <div class="text-ml">
+            <span class="text-grey">用户名：</span><input type="text" name="name" value=""/><span class="text-red">用户名已被注册！</span>
+        </div><br/>
+        <div class="text-ml">
+            <span class="text-grey ml-16">学号：</span><input type="text" name="student_number" value=""/>
+        </div><br/>
+        <div class="text-ml">
+            <span class="text-grey ml-16">密码：</span><input type="password"  name="password" value=""/>
+        </div><br/>
+        <div class="text-ml">
+            <span class="text-grey" style="margin-left: -64px">请再次输入密码：</span><input type="password" name="repassword" value=""/><span class="text-red">两次密码不一致！</span>
+        </div><br/>
+        <div class="text-ml">
+            <span class="text-grey ml-16">邮箱：</span><input type="email" name="email" value=""/><span class="text-red">邮箱格式不正确！</span>
+        </div><br/>
+        <div class="text-ml">
+            <span class="text-grey ml-16">地址：</span><input type="text" name="adress" value=""/>
+        </div><br/>
+        <div class="text-ml">
+            <span class="text-grey" style="margin-left: -16px">电话号码：</span><input type="text" name="mobile" value=""/><span class="text-red">电话号码格式不正确！</span>
+        </div><br/>
+        <button type="submit" class="fb-btn">买家 <span>注册</span></button>
+    </div>
+    <div class="sub-cont">
+        <div class="img">
+            <div class="img__text m--up">
+                <h2>第一次来达米？</h2>
+                <p>注册体验更多美好的校园时光！</p>
+                <span><a href="index.html" th:href="@{/index.html}">去达米首页</a></span>
+            </div>
+            <div class="img__text m--in">
+                <h2>第一次来达米？</h2>
+                <p>注册体验更多美好的校园时光！</p>
+                <span><a href="index.html" th:href="@{/index.html}" class="mt-20">去达米首页</a></span>
+            </div>
+            <div class="img__btn">
+                <span class="m--up">卖家注册</span>
+                <span class="m--in">买家注册</span>
+            </div>
+        </div>
+        <div class="form seller-register ">
+            <h2>欢迎您成为达米卖家！</h2>
+            <div class="text-ml">
+                <span class="text-grey">用户名：</span><input type="text" name="name" value=""/><span class="text-red">用户名已被注册！</span>
+            </div><br/>
+            <div class="text-ml">
+                <span class="text-grey ml-16">学号：</span><input type="text" name="student_number" value=""/>
+            </div><br/>
+            <div class="text-ml">
+                <span class="text-grey ml-16">密码：</span><input type="password"  name="password" value=""/>
+            </div><br/>
+            <div class="text-ml">
+                <span class="text-grey" style="margin-left: -64px">请再次输入密码：</span><input type="password" name="repassword" value=""/><span class="text-red">两次密码不一致！</span>
+            </div><br/>
+            <div class="text-ml">
+                <span class="text-grey">店铺名：</span><input type="text" name="address" value=""/>
+            </div><br/>
+            <div class="text-ml">
+                <span class="text-grey ml-16">地址：</span><input type="text" name="adress" value=""/>
+            </div><br/>
+            <div class="text-ml">
+                <span class="text-grey" style="margin-left: -16px">电话号码：</span><input type="text" name="mobile" value=""/><span class="text-red">电话号码格式不正确！</span>
+            </div><br/>
+            <button type="submit" class="fb-btn">卖家 <span>注册</span></button>
+        </div>
+    </div>
+</div>
+<script>window.onload=function(){document.querySelector('.img__btn').addEventListener('click', function() {
+    document.querySelector('.cont').classList.toggle('s--signup');
+});}</script>
+</body>
+</html>
+<!--This is the common footer End-->

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head data-th-replace="admin/common/head"></head>
+<body>
+<!-- Navigation -->
+<th:block data-th-replace="admin/common/navigation"></th:block>
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 class="page-header">首页信息修改</h1>
+        </div>
+        <!-- /.col-xs-12 -->
+    </div>
+    <!--
+    <div class="row">
+        <div class="col-xs-12">
+            <a href="/superadmin/campusmanage">校区管理</a>&raquo;<a href="#">校区修改</a>
+        </div>
+    </div>
+    -->
+    <div class="row">
+        <div class="col-xs-12">
+            <img style="width:300px;height:200px;" src="#" th:src="@{${one.pictureUrl}}" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+            <!--Form begin -->
+            <form th:action="@{'/campusadmin/homepagemanage/doedit/'+${one.id}}" method="post" enctype="multipart/form-data" role="form">
+                <div class="form-group has-success">
+                    <label class="control-label" for="positionId">类型</label>
+                    <select name="positionId" id="positionId">
+                        <option th:selected="${one.positionId eq 1}" value="1">顶部轮播</option>
+                        <option th:selected="${one.positionId eq 2}" value="2">底部轮播</option>
+                    </select>
+                </div>
+                <div class="form-group has-success">
+                    <label class="control-label" for="picture">图片</label>
+                    <input type="file" class="form-control" id="picture" name="picture"/>
+                </div>
+
+                <div class="form-group has-success">
+                    <label class="control-label" for="url">URL</label>
+                    <input type="text" class="form-control" th:value="${one.pictureUrl}" id="url" name="url"/>
+                </div>
+
+                <div class="form-group has-success">
+                    <label class="control-label" for="title">标题</label>
+                    <input type="text" class="form-control" th:value="${one.title}" id="title" name="title"/>
+                </div>
+
+                <div class="form-group has-success">
+                    <label class="control-label" for="description">简介</label>
+                    <input type="text" class="form-control" th:value="${one.description}" id="description" name="description"/>
+                </div>
+
+                <div class="form-group has-success">
+                    <label class="control-label" for="orderId">排序号</label>
+                    <input type="text" class="form-control" th:value="${one.orderId}" id="orderId" name="orderId"/>
+                </div>
+
+                <button class="btn btn-success">修改</button>
+            </form>
+            <!--Form end   -->
+            <hr/>
+        </div>
+    </div>
+
+
+
+    <!-- /.row -->
+</div>
+<!-- /#page-wrapper -->
+
+<!-- Scripts -->
+<th:block data-th-replace="admin/common/scripts"></th:block>
+</body>
+</html>

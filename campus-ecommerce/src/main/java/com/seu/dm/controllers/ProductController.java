@@ -1,5 +1,7 @@
 package com.seu.dm.controllers;
 
+import com.seu.dm.annotations.permissions.CampusAdminPermission;
+import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Product;
 import com.seu.dm.entities.SearchGoodEntity;
 import com.seu.dm.services.ProductService;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -59,15 +62,39 @@ public class ProductController {
      * @return
      */
     @RequestMapping(value = "/searchGood",method = RequestMethod.GET)
-    public String searchEntityByName(@RequestParam(value = "search")String name,Model model){
+    public String searchEntityByName(@RequestParam(value = "search")String name,Model model,
+                                     HttpSession httpSession){
         List<Product> products = productService.findProductsByName(name);
         System.out.println(products.size());
 //        List<SearchGoodEntity> searchGoodEntities = productService.searchEntitiesByName(name);
 //        model.addAttribute("entities",searchGoodEntities);
         model.addAttribute("entities",products);
+        httpSession.setAttribute("products",products);
         return "product/product_list";
     }
 
+    @RequestMapping(value = "/screenByPrice", method = RequestMethod.GET)
+    public String screenByPrice(@RequestParam(value = "minPrice")Double minPrice,
+                                @RequestParam(value = "maxPrice")Double maxPrice,Model model,HttpSession httpSession){
+        List<Product> products = (List<Product>) httpSession.getAttribute("products");
+        Iterator<Product> iterator = products.iterator();
+        Product product = new Product();
+        while(iterator.hasNext()) {
+            product = iterator.next();
+            if(minPrice == null && maxPrice == null) break;
+            if(minPrice == null){
+                if(product.getPrice().doubleValue() > maxPrice) iterator.remove();continue;
+            }
+            if(maxPrice == null){
+                if(product.getPrice().doubleValue() < minPrice) iterator.remove();continue;
+            }
+            if(product.getPrice().doubleValue() < minPrice || product.getPrice().doubleValue() > maxPrice) iterator.remove();
+        }
+        System.out.println(products.size());
+        httpSession.setAttribute("products",products);
+        model.addAttribute("entities",products);
+        return "product/product_list";
+    }
 
     /**
      * 根据ID找到指定商品
@@ -155,7 +182,10 @@ public class ProductController {
      * @return
      */
     @RequestMapping(value = "/addProduct")
-    public String addProduct(Product product, Model model){
+    @CampusAdminPermission
+    public String addProduct(Product product, HttpSession httpSession,Model model){
+        Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getSellerId();
+        product.setSellerId(sellerId);
         int i = productService.addProduct(product);
         model.addAttribute("product",product);
         return "seller/new_products";
@@ -171,7 +201,6 @@ public class ProductController {
     @RequestMapping(value = "/deleteProduct/{id}")
     public String deleteProduct(@PathVariable Integer id, Model model){
         int i = productService.deleteProduct(id);
-        if(i == 1) return "/";
         return "/";
     }
 

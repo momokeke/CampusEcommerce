@@ -19,7 +19,7 @@ public class SchoolAdmin {
 
     private Integer studentNumber;
 
-    private Integer schoolId;
+    private Integer campusId;
 
     public Integer getStudentNumber() {
         return studentNumber;
@@ -29,12 +29,12 @@ public class SchoolAdmin {
         this.studentNumber = studentNumber;
     }
 
-    public Integer getSchoolId() {
-        return schoolId;
+    public Integer getCampusId() {
+        return campusId;
     }
 
-    public void setSchoolId(Integer schoolId) {
-        this.schoolId = schoolId;
+    public void setCampusId(Integer campusId) {
+        this.campusId = campusId;
     }
 
     private Date registerTime;

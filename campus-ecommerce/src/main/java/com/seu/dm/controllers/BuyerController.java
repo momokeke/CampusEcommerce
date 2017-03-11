@@ -6,6 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+
 /**
  * Created by 张老师 on 2017/3/3.
  */
@@ -66,6 +70,26 @@ public class BuyerController {
     public String jumpToBuyerCenter(){
         return "buyer/buyer_center";
     }
+
+
+    /**
+     *跳到买家购物车
+    */
+    @RequestMapping(value = "/shopping_cart")
+    public String jumpToBuyerShoppingCart(){
+        return "buyer/shopping_cart";
+    }
+
+    @RequestMapping(value = "/shopping_cart_change")
+    @ResponseBody
+    public Object changeShoppingCart(@RequestParam Integer id,@RequestParam Integer newNum,HttpSession httpSession){
+        httpSession.setAttribute("cart",new HashMap<Integer,Integer>());
+        HashMap<Integer,Integer> cart = (HashMap<Integer,Integer>)httpSession.getAttribute("cart");
+        cart.put(id,newNum);
+        return "ok";
+    }
+
+
 
 
     /*
