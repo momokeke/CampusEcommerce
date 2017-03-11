@@ -67,13 +67,13 @@
     <div class="row">
         <div class="col-xs-4"> </div>
         <div class="col-xs-3">
-            <form th:action="@{/product_list.html}" method="post">
+            <form th:action="@{'/product/screenByPrice'}" method="get">
                 <a th:href="@{/product_list.html}" class="border-one">最新发布</a>
                 <span class="float-right">
-                    <input type="text" name="min_price" style="height:20px; width: 20px"/>
+                    <input type="text" name="minPrice" style="height:20px; width: 20px"/>
                     <span> - </span>
-                    <input type="text" name="max_price" style="height:20px; width: 20px"/>
-                    <input type="submit" name="submit" class="btn-success" value="价格"/>
+                    <input type="text" name="maxPrice" style="height:20px; width: 20px"/>
+                    <input type="submit"  class="btn-success" value="价格"/>
                 </span>
             </form>
         </div>

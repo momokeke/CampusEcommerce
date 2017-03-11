@@ -17,7 +17,9 @@ public interface OrderMapper {
 
     int updateByPrimaryKey(Order record);
 
+    List<Order> findOrdersBySellerId(Integer sellerId);
+
     List<Order> findOrdersByCampusId(Integer campusId);
 
-    List<Order> screenOrders(String orderStatus,Integer campusId);
+    List<Order> screenOrders(Integer orderStatus,Integer campusId);
 }

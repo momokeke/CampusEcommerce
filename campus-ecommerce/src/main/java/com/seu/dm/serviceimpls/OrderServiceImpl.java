@@ -92,7 +92,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> screenOrders(Integer orderId, String orderStatus, Integer campusId) {
+    public List<Order> screenOrders(Integer orderId, Integer orderStatus, Integer campusId) {
 
         if(orderId != null) {
            List<Order> orders = new ArrayList<>();
@@ -104,5 +104,10 @@ public class OrderServiceImpl implements OrderService {
         if("全部".equals(orderStatus)) return orderMapper.findOrdersByCampusId(campusId);
         List<Order> orders = orderMapper.screenOrders(orderStatus,campusId);
         return orders;
+    }
+
+    @Override
+    public List<Order> findOrdersBySellerId(Integer sellerId) {
+        return orderMapper.findOrdersBySellerId(sellerId);
     }
 }
