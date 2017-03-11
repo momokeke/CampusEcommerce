@@ -67,13 +67,7 @@ public class BuyerController {
         return "buyer/buyer_center";
     }
 
-    /*
-         *跳到买家购物车
-          */
-    @RequestMapping(value = "/shopping_cart")
-    public String jumpToBuyerShoppingCart(){
-        return "buyer/shopping_cart";
-    }
+
     /*
     *跳到买家收藏夹
      */

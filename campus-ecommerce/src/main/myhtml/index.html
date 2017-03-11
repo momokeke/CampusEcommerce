@@ -8,8 +8,20 @@
     <title>达米首页</title>
     <!-- Bootstrap -->
     <link href="bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
+    <link href="bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet"/>
     <link href="css/common.css" rel="stylesheet"/>
     <link href="css/index.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/pop_up.css" media="all">
+    <!-- bootstrap theme -->
+    <!--external css-->
+    <!-- font icon -->
+    <link href="css/elegant-icons-style.css" rel="stylesheet" />
+    <link href="css/font-awesome.css" rel="stylesheet" />
+    <!-- Custom styles -->
+    <link href="css/buyer_login.css" rel="stylesheet">
+    <link href="css/style-responsive.css" rel="stylesheet" />
+    <script src="js/common/jquery-3.1.1.min.js"></script>
+    <script src="js/login.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -20,37 +32,56 @@
 <body>
 <!-- this is the common top begin -->
 <div class="container-fluid">
-
     <div class="row top font-small">
         <div class="col-md-2 col-sm-2"></div>
         <div class="col-md-8 col-sm-8">
             当前学校：<span>东南大学</span>
             <div class="float-right">
-                <a href="#">买家登录</a>
-                &nbsp;&nbsp;&nbsp;<a href="#">卖家登录</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;<a href="buyer/buyer_register.html">买家注册</a>
-                &nbsp;&nbsp;&nbsp;<a href="seller/seller_register.html">卖家注册</a>
-                &nbsp;&nbsp;&nbsp;&nbsp;<a href="#">我的订单</a>
+                <a href="javascript:;" class="theme-logIn">登录</a>
+                <a href="">注册</a>
+                <a href="">我的订单</a>
             </div>
+            <div class="theme-popover">
+                <div class="theme-popTit">
+                    <a href="javascript:;" title="关闭" class="close">×</a>
+                    <h3>登录DaMi</h3>
+                </div>
+                <div class="theme-popBod dForm">
+                    <form class="theme-signIn" name="loginForm" action="" method="post">
+                        <div class="login-wrap">
+                            <p class="login-img"><i class="icon_lock_alt"></i></p>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="icon_profile"></i></span>
+                                <input type="text" name="name" class="form-control" placeholder="请输入达米账号"/>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+                                <input type="password" name="password"  class="form-control" placeholder="请输入密码"/>
+                            </div>
+                            <button class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="theme-popover-mask"></div>
         </div>
         <div class="col-md-2 col-sm-2">
-
         </div>
     </div>
-    <div class="row banner">
-        <div class="col-md-2 col-sm-2"></div>
-        <div class="col-md-8 col-sm-8">
+    <div class="row banner" >
+        <div class="col-md-2 col-sm-2 col-xs-2"></div>
+        <div class="col-md-8 col-sm-8 col-xs-8">
             <div class="row">
 
-                <div class="col-md-3 logo"><img src="img/cute_logo.jpg" class="logo_wh"/></div>
-                <div class="col-md-5 font-bold">
+                <div class="col-md-3 col-xs-3 logo"><img src="img/cute_logo.jpg" class="logo_wh"/></div>
+                <div class="col-md-5 col-xs-5 font-bold">
                     <a class="mr-15" href="index.html">首页</a>
                     <a class="mr-15" href="#">二手</a>
                     <a class="mr-15" href="#">促销</a>
                     <a class="mr-15" href="#">秒杀</a>
 
                 </div>
-                <div class="col-md-4 col-sm-4">
+                <div class="col-md-4 col-sm-4 col-xs-4">
                     <form class="form-inline" th:action="@{/product/product_list.html}">
                         <div class="form-group">
                             <input type="text" class="form-control search" name="search" id="search" placeholder="请输入商品名\关键词" style="width: 320px"/>
@@ -65,7 +96,7 @@
 <!-- this is the common top end -->
 <div class="container">
     <div class="row line-three">
-        <div class="col-md-3 col-sm-3 category">
+        <div class="col-md-3 col-sm-3 col-xs-3 category">
             <ul class="list-unstyled">
                 <li><a href="#">产品大类A</a><span><a href="#">产品小类</a><a href="#">产品小类</a></span></li>
                 <li><a href="#">产品大类B</a><span><a href="#">产品小类</a><a href="#">产品小类</a></span></li>
@@ -74,7 +105,7 @@
                 <li><a href="#">产品大类E</a><span><a href="#">产品小类</a><a href="#">产品小类</a></span></li>
             </ul>
         </div>
-        <div class="col-md-6 col-sm-6">
+        <div class="col-md-6 col-sm-6 col-xs-6">
             <div class="carousel slide" id="carousel-1">
                 <ol class="carousel-indicators">
                     <li class="active" data-slide-to="0" data-target="#carousel-1">
@@ -121,16 +152,19 @@
                 </div> <a rel="nofollow" class="left carousel-control" href="#carousel-1" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a rel="nofollow" class="right carousel-control" href="#carousel-1" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
-        <div class="col-md-3 col-sm-3">
+        <script src="js/common/jquery-3.1.1.min.js"></script>
+
+        <div class="col-md-3 col-sm-3 col-xs-3">
             <div class="status show text-center">
                 <br/>
-                <button type="button" class="btn btn-primary">买家登录</button>
-                <button type="button" class="btn btn-primary">卖家登录</button><br/><br/>
-                <button type="button" class="btn btn-success">成为买家</button>
-                <button type="button" class="btn btn-success">成为卖家</button><br/><br/>
+                <a class="btn btn-primary theme-login" >买家登录</a>
+                <a class="btn btn-primary theme-login" >卖家登录</a><br/><br/>
+                <a class="btn btn-primary theme-login" >成为买家</a>
+                <a class="btn btn-primary theme-login" >成为卖家</a><br/><br/>
 
                 <img class="qr-code" src="img/qr_code.png" alt="我是二维码"/>
             </div>
+
             <div class="status">
                 <a href="#">注册买家</a>
             </div>
@@ -143,31 +177,31 @@
 
 
     <div class="row mt-10 border-one index-products font-small text-center">
-        <div class="row"><div class="col-md-1"><h5 class="font-bold">新品图片</h5></div></div>
-        <div class="col-md-12">
-        <div class="col-md-2 mb-5"><a href="#"><img alt="新品图片" src="#"/></a><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a></div></div>
-        <div class="col-md-2 mb-5"><a href="#"><img alt="新品图片" src="#"/></a><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a></div></div>
-        <div class="col-md-2 mb-5"><a href="#"><img alt="新品图片" src="#"/></a><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a></div></div>
-        <div class="col-md-2 mb-5"><a href="#"><img alt="新品图片" src="#"/></a><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a></div></div>
-        <div class="col-md-2 mb-5"><a href="#"><img alt="新品图片" src="#"/></a><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a></div></div>
-        <div class="col-md-2 mb-5"><a href="#"><img alt="新品图片" src="#"/></a><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a></div></div>
+        <div class="row"><div class="col-md-1 col-xs-1"><h5 class="font-bold">新品图片</h5></div></div>
+        <div class="col-md-12 col-xs-12">
+        <div class="col-md-2 col-xs-2 mb-5"><a href="#"><img alt="新品图片" src="#"/></a><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a></div></div>
+        <div class="col-md-2 col-xs-2 mb-5"><a href="#"><img alt="新品图片" src="#"/></a><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a></div></div>
+        <div class="col-md-2 col-xs-2 mb-5"><a href="#"><img alt="新品图片" src="#"/></a><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a></div></div>
+        <div class="col-md-2 col-xs-2 mb-5"><a href="#"><img alt="新品图片" src="#"/></a><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a></div></div>
+        <div class="col-md-2 col-xs-2 mb-5"><a href="#"><img alt="新品图片" src="#"/></a><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a></div></div>
+        <div class="col-md-2 col-xs-2 mb-5"><a href="#"><img alt="新品图片" src="#"/></a><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a></div></div>
         </div>
     </div>
 
     <div class="row mt-10 border-one index-products font-small text-center">
         <div class="row"><div class="col-md-1"><h5 class="font-bold">促销商品</h5></div></div>
-        <div class="col-md-2 mb-5"><img alt="促销图片" src="#"/><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a><br/><span class="font-red"><s class="font-grey">原价：200</s> 现价：100</span></div></div>
-        <div class="col-md-2 mb-5"><img alt="促销图片" src="#"/><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a><br/><span class="font-red"><s class="font-grey">原价：200</s> 现价：100</span></div></div>
-        <div class="col-md-2 mb-5"><img alt="促销图片" src="#"/><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a><br/><span class="font-red"><s class="font-grey">原价：200</s> 现价：100</span></div></div>
-        <div class="col-md-2 mb-5"><img alt="促销图片" src="#"/><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a><br/><span class="font-red"><s class="font-grey">原价：200</s> 现价：100</span></div></div>
-        <div class="col-md-2 mb-5"><img alt="促销图片" src="#"/><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a><br/><span class="font-red"><s class="font-grey">原价：200</s> 现价：100</span></div></div>
-        <div class="col-md-2 mb-5"><img alt="促销图片" src="#"/><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a><br/><span class="font-red"><s class="font-grey">原价：200</s> 现价：100</span></div></div>
+        <div class="col-md-2 col-xs-2 mb-5"><img alt="促销图片" src="#"/><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a><br/><span class="font-red"><s class="font-grey">原价：200</s> 现价：100</span></div></div>
+        <div class="col-md-2 col-xs-2 mb-5"><img alt="促销图片" src="#"/><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a><br/><span class="font-red"><s class="font-grey">原价：200</s> 现价：100</span></div></div>
+        <div class="col-md-2 col-xs-2 mb-5"><img alt="促销图片" src="#"/><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a><br/><span class="font-red"><s class="font-grey">原价：200</s> 现价：100</span></div></div>
+        <div class="col-md-2 col-xs-2 mb-5"><img alt="促销图片" src="#"/><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a><br/><span class="font-red"><s class="font-grey">原价：200</s> 现价：100</span></div></div>
+        <div class="col-md-2 col-xs-2 mb-5"><img alt="促销图片" src="#"/><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a><br/><span class="font-red"><s class="font-grey">原价：200</s> 现价：100</span></div></div>
+        <div class="col-md-2 col-xs-2 mb-5"><img alt="促销图片" src="#"/><div class="mt-5"><a href="#">出exo玩偶衣服 懵倩倩白狗</a><br/><span class="font-red"><s class="font-grey">原价：200</s> 现价：100</span></div></div>
     </div>
 <!-- 3d轮播效果图 Beginning -->
     <div class="row mt-20">
         <div class="col-md-12 products-show">
-            <div class="col-md-2"></div>
-            <div class="col-md-8">
+            <div class="col-md-2 col-xs-2"></div>
+            <div class="col-md-8 col-xs-8">
                 <div class="picture_3d">
                     <ul id="detail_3d" class="detail_3d">
                         <li><a href="product/product_details.html" class="target"></a></li>
@@ -178,7 +212,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-2"></div>
+            <div class="col-md-2 col-xs-2"></div>
         </div>
     </div>
 <!-- 3d轮播效果图 Ending -->
@@ -188,18 +222,18 @@
 <!--This is the common footer Begin-->
 <div class="container-fluid mt-20">
     <div class="row">
-        <div class="col-md-12 footer-info">
-            <div class="col-md-2 col-md-offset-3 mt-40 "><img src="img/logo_button_1.jpg"/></div>
-            <div class="col-md-3 mt-40 "><img src="img/logo_button_2.jpg " /><br/><span class="font-grey" >一家专门做校园文化产品的网站</span></div>
-            <div class="col-md-4 mt-60"><img class="qr-code"  src="img/qr_code.png "/><br/><div class="mt-20 ">扫码有惊喜哦</div></div>
+        <div class="col-md-12 col-xs-12 footer-info">
+            <div class="col-md-2 col-xs-2 col-md-offset-3 mt-40 "><img src="img/logo_button_1.jpg"/></div>
+            <div class="col-md-3 col-xs-3 mt-40 "><img src="img/logo_button_2.jpg " /><br/><span class="font-grey" >一家专门做校园文化产品的网站</span></div>
+            <div class="col-md-4 col-xs-4 mt-60"><img class="qr-code"  src="img/qr_code.png "/><br/><div class="mt-20 ">扫码有惊喜哦</div></div>
         </div>
     </div>
 </div>
 
 <div class="container">
     <div class="row mt-20 font-small">
-        <div class="col-md-2 col-sm-2"></div>
-        <div class="col-md-8 col-sm-8">
+        <div class="col-md-2 col-sm-2 col-xs-2"></div>
+        <div class="col-md-8 col-sm-8 col-xs-8">
             <div id="footer">
                 <div class="footerNav text-center">
                     <a href="#">关于我们</a> |
@@ -213,7 +247,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-2"></div>
+        <div class="col-md-2 col-xs-2"></div>
     </div>
 </div>
 
