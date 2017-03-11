@@ -8,7 +8,6 @@ public class UserBaseDTO {
 
     private Integer id;
 
-<<<<<<< HEAD
     public Integer getCampusId() {
         return campusId;
     }
@@ -19,8 +18,6 @@ public class UserBaseDTO {
 
     private Integer campusId;
 
-
-=======
     private Integer sellerId;
 
     public Integer getSellerId() {
@@ -30,7 +27,6 @@ public class UserBaseDTO {
     public void setSellerId(Integer sellerId) {
         this.sellerId = sellerId;
     }
->>>>>>> b614cc20b018dda22ea9ca7720cd11d1899e340d
 
     public Integer getId() {
         return id;

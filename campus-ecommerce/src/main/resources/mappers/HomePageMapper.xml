@@ -9,11 +9,7 @@
     <result column="description" property="description" jdbcType="VARCHAR" />
     <result column="campus_id" property="campusId" jdbcType="INTEGER" />
     <result column="position_id" property="positionId" jdbcType="INTEGER" />
-<<<<<<< HEAD
     <result column="order" property="order" jdbcType="INTEGER" />
-=======
-    <result column="order" property="order" jdbcType="BIT" />
->>>>>>> b614cc20b018dda22ea9ca7720cd11d1899e340d
   </resultMap>
   <sql id="Base_Column_List" >
     id, picture_src, picture_url, title, description, campus_id, position_id, order
@@ -33,12 +29,8 @@
       title, description, campus_id, 
       position_id, order)
     values (#{id,jdbcType=INTEGER}, #{pictureSrc,jdbcType=VARCHAR}, #{pictureUrl,jdbcType=VARCHAR}, 
-      #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{campusId,jdbcType=INTEGER}, 
-<<<<<<< HEAD
+      #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{campusId,jdbcType=INTEGER},
       #{positionId,jdbcType=INTEGER}, #{order,jdbcType=INTEGER})
-=======
-      #{positionId,jdbcType=INTEGER}, #{order,jdbcType=BIT})
->>>>>>> b614cc20b018dda22ea9ca7720cd11d1899e340d
   </insert>
   <insert id="insertSelective" parameterType="com.seu.dm.entities.HomePage" >
     insert into home_page
@@ -130,11 +122,7 @@
       description = #{description,jdbcType=VARCHAR},
       campus_id = #{campusId,jdbcType=INTEGER},
       position_id = #{positionId,jdbcType=INTEGER},
-<<<<<<< HEAD
       order = #{order,jdbcType=INTEGER}
-=======
-      order = #{order,jdbcType=BIT}
->>>>>>> b614cc20b018dda22ea9ca7720cd11d1899e340d
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
