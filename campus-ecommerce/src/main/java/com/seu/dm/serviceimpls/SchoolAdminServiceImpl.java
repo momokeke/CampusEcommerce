@@ -44,7 +44,6 @@ public class SchoolAdminServiceImpl implements SchoolAdminService {
         schoolAdmin.setStudentNumber(studentNumber);
         int i = schoolAdminMapper.insert(schoolAdmin);
         return i;
-
     }
 
     @Override

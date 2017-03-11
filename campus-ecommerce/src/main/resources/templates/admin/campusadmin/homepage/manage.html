@@ -32,15 +32,20 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>顶部轮播</td>
-                        <td><img style="width:300px;height:150px;" src="#"/></td>
-                        <td>标题</td>
-                        <td>1</td>
+                    <tr th:each="one,iterStatus : ${list}">
+                        <td th:text="${iterStatus.count}">1</td>
+                        <th:block th:if="${one.positionId} eq 1">
+                            <td>顶部轮播</td>
+                        </th:block>
+                        <th:block th:if="${one.positionId} eq 2">
+                            <td>底部轮播</td>
+                        </th:block>
+                        <td><img style="width:300px;height:150px;" th:src="${one.pictureUrl}" src="#"/></td>
+                        <td th:text="${one.title}">标题</td>
+                        <td th:text="${one.order}">1</td>
                         <td>
-                            <a href="#" th:href="@{'/campusadmin/homepagemanage/edit'}" class="btn btn-primary">修改</a>
-                            <a href="#" th:href="@{'/campusadmin/homepagemanage/dodelete'}" class="btn btn-danger">删除</a>
+                            <a href="#" th:href="@{'/campusadmin/homepagemanage/edit/'+${one.id}}" class="btn btn-primary">修改</a>
+                            <a href="#" th:href="@{'/campusadmin/homepagemanage/dodelete/'+${one.id}}" class="btn btn-danger">删除</a>
                         </td>
                     </tr>
 

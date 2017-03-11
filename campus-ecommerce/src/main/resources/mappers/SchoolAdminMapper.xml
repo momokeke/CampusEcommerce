@@ -6,11 +6,11 @@
     <result column="name" jdbcType="VARCHAR" property="name" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="register_time" jdbcType="TIMESTAMP" property="registerTime" />
-    <result column="school_id" jdbcType="INTEGER" property="schoolId" />
+    <result column="campus_id" jdbcType="INTEGER" property="campusId" />
     <result column="student_number" jdbcType="INTEGER" property="studentNumber" />
   </resultMap>
   <sql id="Base_Column_List">
-    id, name, password, register_time, school_id, student_number
+    id, name, password, register_time, campus_id, student_number
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
@@ -19,7 +19,7 @@
     where id = #{id,jdbcType=INTEGER}
   </select>
   <select id="findAllBySchoolId" resultMap="BaseResultMap">
-    select * from school_admin where school_id = #{schoolId};
+    select * from school_admin where campus_id = #{campusId};
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from school_admin
@@ -27,10 +27,10 @@
   </delete>
   <insert id="insert" parameterType="com.seu.dm.entities.SchoolAdmin">
     insert into school_admin (id, name, password, 
-      register_time, school_id, student_number
+      register_time, campus_id, student_number
       )
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{registerTime,jdbcType=TIMESTAMP}, #{schoolId,jdbcType=INTEGER}, #{studentNumber,jdbcType=INTEGER}
+      #{registerTime,jdbcType=TIMESTAMP}, #{campusId,jdbcType=INTEGER}, #{studentNumber,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.seu.dm.entities.SchoolAdmin">
@@ -48,8 +48,8 @@
       <if test="registerTime != null">
         register_time,
       </if>
-      <if test="schoolId != null">
-        school_id,
+      <if test="campusId != null">
+        campus_id,
       </if>
       <if test="studentNumber != null">
         student_number,
@@ -68,8 +68,8 @@
       <if test="registerTime != null">
         #{registerTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="schoolId != null">
-        #{schoolId,jdbcType=INTEGER},
+      <if test="campusId != null">
+        #{campusId,jdbcType=INTEGER},
       </if>
       <if test="studentNumber != null">
         #{studentNumber,jdbcType=INTEGER},
@@ -88,8 +88,8 @@
       <if test="registerTime != null">
         register_time = #{registerTime,jdbcType=TIMESTAMP},
       </if>
-      <if test="schoolId != null">
-        school_id = #{schoolId,jdbcType=INTEGER},
+      <if test="campusId != null">
+        campus_id = #{campusId,jdbcType=INTEGER},
       </if>
       <if test="studentNumber != null">
         student_number = #{studentNumber,jdbcType=INTEGER},
@@ -102,7 +102,7 @@
     set name = #{name,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       register_time = #{registerTime,jdbcType=TIMESTAMP},
-      school_id = #{schoolId,jdbcType=INTEGER},
+      campus_id = #{campusId,jdbcType=INTEGER},
       student_number = #{studentNumber,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

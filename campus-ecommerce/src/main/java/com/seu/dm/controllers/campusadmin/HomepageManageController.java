@@ -9,6 +9,8 @@ import com.seu.dm.services.HomePageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.websocket.server.PathParam;
 import java.io.IOException;
 import java.util.Date;
 import java.io.File;
@@ -38,15 +41,16 @@ public class HomepageManageController {
 
     @RequestMapping("/")
     @CampusAdminPermission
-    public String index() {
+    public String index(Model model,HttpSession httpSession) {
+        Integer campusAdminId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getId();
+        model.addAttribute("list",homePageService.getHomePagesByCampusAdminId(campusAdminId));
         return "admin/campusadmin/homepage/manage";
     }
 
-    @RequestMapping("/edit")
+    @RequestMapping("/edit/{id}")
     @CampusAdminPermission
-    public String edit(){
-
-
+    public String edit(@PathVariable Integer id,Model model){
+        model.addAttribute("one",homePageService.getHomePageById(id));
         return "admin/campusadmin/homepage/edit";
     }
 
@@ -58,8 +62,14 @@ public class HomepageManageController {
                          @RequestParam String description,
                          @RequestParam String url,
                          @RequestParam Integer order,
-                         HttpSession httpSession){
+                         HttpSession httpSession) throws IOException{
 
+
+        Long currentTime = System.currentTimeMillis();
+        String homePagePicturePath = UploadConfigure.homePagePicturesPath;
+        String pictureSrc = FileUploadHelper.uploadPicture(request,"picture",homePagePicturePath + currentTime.toString());
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        homePageService.editHomePage(id,userBase.getCampusId(),title,description,pictureSrc,url,order);
         return "redirect:/campusadmin/homepagemanage/";
     }
 
@@ -94,15 +104,4 @@ public class HomepageManageController {
 
 
 
-    @RequestMapping("/doupdate")
-    @CampusAdminPermission
-    public String doUpdate() {
-
-
-
-
-
-
-        return "redirect:/campusadmin/homepagemanage/";
-    }
 }
