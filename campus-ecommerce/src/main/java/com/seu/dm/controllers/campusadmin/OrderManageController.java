@@ -39,7 +39,7 @@ public class OrderManageController {
 
     @RequestMapping("/screen")
     @CampusAdminPermission
-    public String screenOrders(@RequestParam(value = "orderId")Integer orderId, @RequestParam(value = "orderStatus")String orderStatus,
+    public String screenOrders(@RequestParam(value = "orderId")Integer orderId, @RequestParam(value = "orderStatus")Integer orderStatus,
                                @RequestParam(value = "userId")Integer userId, @RequestParam(value = "sellerId")Integer sellerId
                                ,HttpSession httpSession,Model model, HttpServletRequest request){
         Integer schoolAdminId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getId();

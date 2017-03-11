@@ -1,6 +1,11 @@
 package com.seu.dm.controllers;
 
+import com.seu.dm.annotations.permissions.CampusAdminPermission;
+import com.seu.dm.annotations.permissions.SellerPermission;
+import com.seu.dm.dto.UserBaseDTO;
+import com.seu.dm.entities.Order;
 import com.seu.dm.entities.Seller;
+import com.seu.dm.services.OrderService;
 import com.seu.dm.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+import java.util.List;
+
 /**
  * Created by 张老师 on 2017/3/6.
  */
@@ -18,7 +26,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SellerController {
     @Autowired
     private SellerService sellerService;
-
+    @Autowired
+    private OrderService orderService;
     /**
      * 根据店铺注册信息向数据库添加一条店铺信息
      * @param seller
@@ -127,5 +136,15 @@ public class SellerController {
     @RequestMapping(value = "/shop_homepage")
     public String test(){
         return "shop/shop_homepage";
+    }
+
+
+    @RequestMapping(value = "/ordersmanage")
+    @SellerPermission
+    public String getAllOrdersOfSeller(Model model, HttpSession httpSession){
+        Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getSellerId();
+        List<Order> orders = orderService.findOrdersBySellerId(sellerId);
+        model.addAttribute("orders",orders);
+        return "";
     }
 }
