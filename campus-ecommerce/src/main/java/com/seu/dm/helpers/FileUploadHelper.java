@@ -21,7 +21,7 @@ public class FileUploadHelper {
         MultipartHttpServletRequest multiRequest=(MultipartHttpServletRequest)request;
         MultipartFile file = multiRequest.getFile(fileName);
         if(file == null){
-            return null;
+            return new byte[0];
         }
         return file.getBytes();
     }

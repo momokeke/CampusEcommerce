@@ -1,9 +1,9 @@
 package com.seu.dm.serviceimpls;
 
 import com.seu.dm.entities.Order;
-import com.seu.dm.mappers.OrderProductMapper;
-import com.seu.dm.mappers.OrderMapper;
-import com.seu.dm.mappers.ProductMapper;
+import com.seu.dm.entities.OrderProduct;
+import com.seu.dm.entities.Seller;
+import com.seu.dm.mappers.*;
 import com.seu.dm.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +25,10 @@ public class OrderServiceImpl implements OrderService {
     private OrderProductMapper orderProductMapper;
     @Autowired
     private ProductMapper productMapper;
+    @Autowired
+    private BuyerMapper buyerMapper;
+    @Autowired
+    private SellerMapper sellerMapper;
 
     @Override
     public int addOrder(Order order) {
@@ -45,6 +49,11 @@ public class OrderServiceImpl implements OrderService {
     public Order findOrder(Integer id) {
         return orderMapper.selectByPrimaryKey(id);
     }
+
+
+
+
+
 
     @Override
     public HashMap<String, Integer> findHotProductsFromOrder(Integer n) {
@@ -87,8 +96,20 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> findOrdersByCampusId(Integer campusId) {
-        return orderMapper.findOrdersByCampusId(campusId);
+        List<Order> orders  = orderMapper.findOrdersByCampusId(campusId);
+        for(Order order : orders){
+            order.setBuyer(buyerMapper.selectByPrimaryKey(order.getUserId()));
+            order.setSeller(sellerMapper.selectByPrimaryKey(order.getSellerId()));
+            order.setOrderProduct(orderProductMapper.findOneOrderProductByOrderId(order.getId()));
+            order.setProduct(productMapper.selectByPrimaryKey(order.getOrderProduct().getId()));
 
+        }
+        return orders;
+    }
+
+    @Override
+    public Integer getCountByStatus(Integer status) {
+        return orderMapper.getCountByStatus(status);
     }
 
     @Override

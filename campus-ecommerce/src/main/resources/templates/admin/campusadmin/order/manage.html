@@ -21,12 +21,12 @@
                             <i class="fa fa-shopping-cart fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">100</div>
+                            <div class="huge" th:text="${stayCount}">100</div>
                             <div>尚未发货</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="/campusadmin/ordermanage/?status=1">
                     <div class="panel-footer">
                         <span class="pull-left">查看</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -44,12 +44,12 @@
                             <i class="fa fa-support fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">13</div>
+                            <div class="huge" th:text="${backCount}">13</div>
                             <div>正在退货</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="/campusadmin/ordermanage/?status=2">
                     <div class="panel-footer">
                         <span class="pull-left">查看</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -67,12 +67,12 @@
                             <i class="fa fa-tasks fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">12</div>
+                            <div class="huge" th:text="${finishCount}">12</div>
                             <div>已完成</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="/campusadmin/ordermanage/?status=3,4">
                     <div class="panel-footer">
                         <span class="pull-left">查看</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -90,12 +90,12 @@
                             <i class="fa fa-comments fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge">26</div>
+                            <div class="huge" th:text="${totalCount}">26</div>
                             <div>所有货单</div>
                         </div>
                     </div>
                 </div>
-                <a href="#">
+                <a href="/campusadmin/ordermanage/">
                     <div class="panel-footer">
                         <span class="pull-left">查看</span>
                         <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -135,6 +135,10 @@
                 <tr>
                     <th>#</th>
                     <th>货单号</th>
+                    <th>货物名称</th>
+                    <th>货物数量</th>
+                    <th>货物单价</th>
+                    <th>货物总价</th>
                     <th>买家学号</th>
                     <th>买家姓名</th>
                     <th>买家电话</th>
@@ -143,7 +147,6 @@
                     <th>卖家电话</th>
                     <th>货单创建时间</th>
                     <th>货单状态</th>
-                    <th>总金额</th>
                     <th>操作</th>
                 </tr>
                 </thead>
@@ -151,19 +154,42 @@
                 <tr th:each="order,iterStatus:${orders}">
                     <td th:text="${iterStatus.count}">1</td>
                     <td th:text="${order.id}">订单号</td>
+                    <td th:text="${order.product.name}">货物名称</td>
+                    <td th:text="${order.orderProduct.productNum}">货物数量</td>
+                    <td th:text="${order.orderProduct.price}">货物单价</td>
+                    <td th:text="${order.totalPrice}">货物总价</td>
                     <td th:text="${order.buyer.studentNumber}">买家学号</td>
                     <td th:text="${order.buyer.name}">买家姓名</td>
                     <td th:text="${order.buyer.mobile}">买家电话</td>
                     <td th:text="${order.seller.studentNumber}">卖家学号</td>
                     <td th:text="${order.seller.name}">卖家姓名</td>
                     <td th:text="${order.seller.mobile}">卖家电话</td>
-                    <td th:text="${order.createTime}">货单创建时间</td>
-                    <td th:text="${order.status}">货单状态</td>
-                    <td th:text="${order.totalPrice}">总金额</td>
+                    <td th:text="${#dates.format(order.createTime, 'yyyy-MMM-dd hh:mm:ss')}">货单创建时间</td>
                     <td>
-                        <a href="/campusadmin/ordermanage/editmember" class="btn btn-primary">完成退货</a>
-                        <a href="/campusadmin/ordermanage/editmember" class="btn btn-warning">取消退货</a>
+                        <th:block th:if="${order.status} eq 1">
+                            待发货
+                        </th:block>
+                        <th:block th:if="${order.status} eq 2">
+                            退货中
+                        </th:block>
+                        <th:block th:if="${order.status} eq 3">
+                            已完成(退货)
+                        </th:block>
+                        <th:block th:if="${order.status} eq 4">
+                            已完成
+                        </th:block>
+                    </td>
+                    <td>
+                        <th:block th:if="${order.status} eq 1">
+                            <a th:href="@{'/campusadmin/ordermanage/send/'+${order.id}}" class="btn btn-primary">发货</a>
+                            <a th:href="@{'/campusadmin/ordermanage/back/'+${order.id}}" class="btn btn-danger">退货</a>
+                        </th:block>
+                        <th:block th:if="${order.status} eq 2">
+                            <a th:href="@{'/campusadmin/ordermanage/finishback/'+${order.id}}" class="btn btn-primary">完成退货</a>
+                            <a th:href="@{'/campusadmin/ordermanage/cancelback/'+${order.id}}" class="btn btn-warning">撤销退货</a>
+                        </th:block>
                         <a href="#" class="btn btn-danger">删除</a>
+
                     </td>
                 </tr>
                 </tbody>

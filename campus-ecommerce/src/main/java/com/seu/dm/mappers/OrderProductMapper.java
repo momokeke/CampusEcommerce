@@ -22,4 +22,6 @@ public interface OrderProductMapper {
     List<HashMap<String,Integer>> findHotProducts(Integer n);
 
     OrderProduct findOrderProductByProductId(Integer id);
+
+    OrderProduct findOneOrderProductByOrderId(Integer id);
 }
