@@ -1,10 +1,12 @@
 package com.seu.dm.controllers.campusadmin;
 
 import com.seu.dm.annotations.permissions.CampusAdminPermission;
-import com.seu.dm.configs.UploadConfigure;
 import com.seu.dm.dto.UserBaseDTO;
+import com.seu.dm.entities.HomePage;
+import com.seu.dm.entities.Picture;
 import com.seu.dm.helpers.FileUploadHelper;
 import com.seu.dm.services.HomePageService;
+import com.seu.dm.services.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,6 +27,9 @@ public class HomepageManageController {
 
     @Autowired
     private HomePageService homePageService;
+
+    @Autowired
+    private PictureService pictureService;
 
 
 
@@ -51,15 +56,25 @@ public class HomepageManageController {
                          @RequestParam String title,
                          @RequestParam String description,
                          @RequestParam String url,
-                         @RequestParam Integer orderId,
-                         HttpSession httpSession) throws IOException{
-
-
-        Long currentTime = System.currentTimeMillis();
-        String homePagePicturePath = UploadConfigure.homePagePicturesPath;
-        String pictureSrc = FileUploadHelper.uploadPicture(request,"picture",homePagePicturePath + currentTime.toString());
-        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
-        homePageService.editHomePage(id,positionId,userBase.getId(),title,description,pictureSrc,url,orderId);
+                         @RequestParam Integer orderId
+                         ) throws IOException{
+        HomePage homePage = homePageService.getHomePageById(id);
+        homePage.setId(id);
+        homePage.setPositionId(positionId);
+        homePage.setTitle(title);
+        homePage.setDescription(description);
+        homePage.setPictureUrl(url);
+        homePage.setOrderId(orderId);
+        //先更新图片
+        Picture picture = new Picture();
+        picture.setId(homePage.getPictureId());
+        byte[] pictureBinary = (FileUploadHelper.uploadPicture(request,"picture"));
+        if(pictureBinary != null){
+            picture.setBinaryFile(pictureBinary);
+            pictureService.updatePicture(picture);
+        }
+        //再更新Homepage
+        homePageService.editHomePage(homePage);
         return "redirect:/campusadmin/homepagemanage/";
     }
 
@@ -79,17 +94,32 @@ public class HomepageManageController {
                         @RequestParam String url,
                         @RequestParam Integer orderId,
                         HttpSession httpSession) throws IOException{
-        Long currentTime = System.currentTimeMillis();
-        String homePagePicturePath = UploadConfigure.homePagePicturesPath;
-        String pictureSrc = FileUploadHelper.uploadPicture(request,"picture",homePagePicturePath + currentTime.toString());
         UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
-        homePageService.addHomePage(userBase.getId(),positionId,title,description,pictureSrc,url,orderId);
+        HomePage homePage = new HomePage();
+        homePage.setCampusId(userBase.getCampusId());
+        homePage.setPositionId(positionId);
+        homePage.setTitle(title);
+        homePage.setDescription(description);
+        homePage.setPictureUrl(url);
+        homePage.setOrderId(orderId);
+        //先更新图片
+        Picture picture = new Picture();
+        byte[] pictureBinary = (FileUploadHelper.uploadPicture(request,"picture"));
+        if(pictureBinary != null){
+            picture.setBinaryFile(pictureBinary);
+            Integer pictureId = pictureService.addPicture(picture);
+            homePage.setPictureId(pictureId);
+        }
+        //再更新Homepage
+        homePageService.addHomePage(homePage);
         return "redirect:/campusadmin/homepagemanage/";
     }
 
     @RequestMapping("/dodelete/{id}")
     @CampusAdminPermission
     public String doDelete(@PathVariable Integer id,Model model){
+        HomePage homePage = homePageService.getHomePageById(id);
+        pictureService.deletePictureById(homePage.getPictureId());
         homePageService.deleteHomePageById(id);
         model.addAttribute("message","删除成功");
         model.addAttribute("jumpUrl","/campusadmin/homepagemanage/");

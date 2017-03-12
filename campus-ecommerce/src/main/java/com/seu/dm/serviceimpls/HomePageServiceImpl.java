@@ -22,39 +22,13 @@ public class HomePageServiceImpl implements HomePageService {
     @Autowired
     HomePageMapper homePageMapper;
 
-
-
     @Override
-    public int addHomePage(Integer campusAdminId,Integer positionId,String title,String description,String pictureSrc,String url,Integer order){
-        Integer campusId = schoolAdminService.findAdmin(campusAdminId).getCampusId();
-        HomePage homePage = new HomePage();
-        if(pictureSrc != null && pictureSrc != "" ) {
-            homePage.setPictureSrc(pictureSrc);
-        }
-        homePage.setDescription(description);
-        homePage.setPictureUrl(url);
-        homePage.setCampusId(campusId);
-        homePage.setTitle(title);
-        homePage.setOrderId(order);
-        homePage.setPositionId(positionId);
+    public int addHomePage(HomePage homePage) {
         return homePageMapper.insert(homePage);
     }
 
     @Override
-    public int editHomePage(Integer id,Integer positionId,Integer campusAdminId,String title,String description,String pictureSrc,String url,Integer order){
-
-        Integer campusId = schoolAdminService.findAdmin(campusAdminId).getCampusId();
-        HomePage homePage = new HomePage();
-        if(pictureSrc != null && pictureSrc != "" ) {
-            homePage.setPictureSrc(pictureSrc);
-        }
-        homePage.setDescription(description);
-        homePage.setPictureUrl(url);
-        homePage.setCampusId(campusId);
-        homePage.setTitle(title);
-        homePage.setOrderId(order);
-        homePage.setPositionId(positionId);
-        homePage.setId(id);
+    public int editHomePage(HomePage homePage) {
         return homePageMapper.updateByPrimaryKey(homePage);
     }
 

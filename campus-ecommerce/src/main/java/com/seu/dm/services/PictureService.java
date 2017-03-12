@@ -9,5 +9,5 @@ public interface PictureService {
     Picture getPictureById(Integer id);
     int updatePicture(Picture picture);
     int deletePictureById(Integer id);
-
+    int addPicture(Picture picture);
 }

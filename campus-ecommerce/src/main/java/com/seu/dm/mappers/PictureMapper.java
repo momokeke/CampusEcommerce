@@ -13,7 +13,4 @@ public interface PictureMapper {
 
     int updateByPrimaryKeySelective(Picture record);
 
-    int updateByPrimaryKeyWithBLOBs(Picture record);
-
-    Picture findPictureByProductId(Integer productId);
 }
