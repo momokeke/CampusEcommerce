@@ -1,11 +1,23 @@
 package com.seu.dm.entities;
 
+import java.math.BigDecimal;
+
 public class OrderProduct {
     private Integer id;
 
     private Integer productId;
 
     private Integer productNum;
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    private BigDecimal price;
 
     public Integer getId() {
         return id;

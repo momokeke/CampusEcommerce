@@ -13,4 +13,5 @@ public interface HomePageService {
     HomePage getHomePageById(Integer id);
     List<HomePage> getHomePagesByCampusAdminId(Integer campusAdminId);
     int deleteHomePageById(Integer id);
+
 }
