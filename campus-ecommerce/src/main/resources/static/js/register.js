@@ -17,12 +17,12 @@ function checkMobile(sibling,str){
 function show(sibling,inputNode){
     switch(inputNode.name){
         case "name":sibling.innerHTML="请输入用户名！";break;
-        case "student_number":sibling.innerHTML="请输入学号！";break;
+        case "studentNumber":sibling.innerHTML="请输入学号！";break;
         case "password":sibling.innerHTML="请设置密码！";break;
         case "repass":sibling.innerHTML="请确认密码！";break;
         case "email":sibling.innerHTML="请输入邮箱地址！";break;
         case "address":sibling.innerHTML="请输入地址！";break;
-        case "shop_name":sibling.innerHTML="请输入注册的店铺名！";break;
+        case "shopName":sibling.innerHTML="请输入注册的店铺名！";break;
         case "mobile":sibling.innerHTML="请输入电话号码！";
     }
 }
