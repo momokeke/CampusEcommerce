@@ -52,7 +52,7 @@ public class BuyerController {
         return "index";
     }
 
-    @RequestMapping(value = "/buyerLogin",method = RequestMethod.POST)
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String loginBuyer(Buyer buyer,HttpServletRequest request){
         Integer studentNumber = buyer.getStudentNumber();
         Buyer buyerFromDB = buyerService.findBuyerByStudentNumber(studentNumber);
