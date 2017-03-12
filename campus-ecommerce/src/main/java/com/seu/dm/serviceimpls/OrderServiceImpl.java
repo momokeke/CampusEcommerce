@@ -148,7 +148,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> findOrdersBySellerIdWithStatusAlreadyRejection(Integer sellerId) {
-        return orderMapper.findOrdersByBuyerIdWithStatusAlreadyRejection(sellerId);
+        return orderMapper.findOrdersBySellerIdWithStatusAlreadyRejection(sellerId);
     }
 
     @Override

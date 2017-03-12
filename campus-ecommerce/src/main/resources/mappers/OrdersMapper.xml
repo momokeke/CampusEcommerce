@@ -39,9 +39,6 @@
   <select id="findOrdersByBuyerIdWithStatusSuccess" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select * from orders where user_id = #{buyerId} and status = 4
   </select>
-  <select id="findOrdersBySellerId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select * from orders where seller_id = #{sellerId}
-  </select>
   <select id="findOrdersBySellerIdWithStatusWaitDeliver" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select * from orders where seller_id = #{sellerId} and status = 1
   </select>

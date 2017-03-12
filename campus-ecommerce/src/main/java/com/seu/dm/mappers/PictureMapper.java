@@ -13,7 +13,7 @@ public interface PictureMapper {
 
     int updateByPrimaryKeySelective(Picture record);
 
-    int updateByPrimaryKey(Picture record);
+    int updateByPrimaryKeyWithBLOBs(Picture record);
 
-    Picture findPictureByProductId(Integer id);
+    Picture findPictureByProductId(Integer productId);
 }

@@ -26,7 +26,7 @@ public class PictureServiceImpl implements PictureService{
 
     @Override
     public int updatePicture(Picture picture) {
-        return pictureMapper.updateByPrimaryKey(picture);
+        return pictureMapper.updateByPrimaryKeyWithBLOBs(picture);
     }
 
     @Override
