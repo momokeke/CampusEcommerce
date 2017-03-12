@@ -63,4 +63,11 @@ public class BuyerServiceImpl implements BuyerService {
         buyerMapper.updateByPrimaryKey(buyer);
         return 1;
     }
+
+    @Override
+    public Buyer findBuyerByStudentNumber(Integer studentNumber) {
+        return buyerMapper.findBuyerByStudentNumber(studentNumber);
+    }
+
+
 }

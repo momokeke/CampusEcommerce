@@ -110,4 +110,49 @@ public class OrderServiceImpl implements OrderService {
     public List<Order> findOrdersBySellerId(Integer sellerId) {
         return orderMapper.findOrdersBySellerId(sellerId);
     }
+
+    @Override
+    public List<Order> findOrdersByBuyerId(Integer buyerId) {
+        return orderMapper.findOrdersByBuyerId(buyerId);
+    }
+
+    @Override
+    public List<Order> findOrdersByBuyerIdWithStatusWaitDeliver(Integer buyerId) {
+        return orderMapper.findOrdersByBuyerIdWithStatusWaitDeliver(buyerId);
+    }
+
+    @Override
+    public List<Order> findOrdersByBuyerIdWithStatusOnRejection(Integer buyerId) {
+        return orderMapper.findOrdersByBuyerIdWithStatusOnRejection(buyerId);
+    }
+
+    @Override
+    public List<Order> findOrdersByBuyerIdWithStatusAlreadyRejection(Integer buyerId) {
+        return orderMapper.findOrdersByBuyerIdWithStatusAlreadyRejection(buyerId);
+    }
+
+    @Override
+    public List<Order> findOrdersByBuyerIdWithStatusSuccess(Integer buyerId) {
+        return orderMapper.findOrdersByBuyerIdWithStatusSuccess(buyerId);
+    }
+
+    @Override
+    public List<Order> findOrdersBySellerIdWithStatusWaitDeliver(Integer sellerId) {
+        return orderMapper.findOrdersBySellerIdWithStatusWaitDeliver(sellerId);
+    }
+
+    @Override
+    public List<Order> findOrdersBySellerIdWithStatusOnRejection(Integer sellerId) {
+        return orderMapper.findOrdersBySellerIdWithStatusOnRejection(sellerId);
+    }
+
+    @Override
+    public List<Order> findOrdersBySellerIdWithStatusAlreadyRejection(Integer sellerId) {
+        return orderMapper.findOrdersByBuyerIdWithStatusAlreadyRejection(sellerId);
+    }
+
+    @Override
+    public List<Order> findOrdersBySellerIdWithStatusSuccess(Integer sellerId) {
+        return orderMapper.findOrdersBySellerIdWithStatusSuccess(sellerId);
+    }
 }
