@@ -18,4 +18,6 @@ public interface BuyerMapper {
     int updateByPrimaryKey(Buyer record);
 
     List<Buyer> findBuyersByCampusId(Integer campusId);
+
+    Buyer findBuyerByStudentNumber(Integer studentNumber);
 }

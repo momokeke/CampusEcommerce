@@ -28,6 +28,8 @@ public class ProductServiceImpl implements ProductService{
     @Autowired
     private OrderProductMapper orderProductMapper;
 
+    final static double MAXPRICEVALUE = 123456789.0;
+    final static double MINPRICEVALUE = 0.0;
 
     /**
      * 向数据库加入商品
@@ -178,10 +180,10 @@ public class ProductServiceImpl implements ProductService{
     @Override
     public List<Product> findProductsByNameAndScreenByPrice(String name, Double minPrice, Double maxPrice) {
         System.out.println("name is :" + name+"  minprice is :" +minPrice+"  maxprice is : "+maxPrice);
-        if(minPrice!=null && maxPrice == null) return productMapper.getProductsByNameAndScreenByPrice(name,minPrice,123456789.0);
-        if(minPrice==null && maxPrice == null)return productMapper.getProductsByNameAndScreenByPrice(name,-123456789.0,123456789.0);
-        if(minPrice==null && maxPrice != null) return productMapper.getProductsByNameAndScreenByPrice(name,-123456789.0,maxPrice);
+        if(minPrice!=null && maxPrice == null) return productMapper.getProductsByNameAndScreenByPrice(name,minPrice,MAXPRICEVALUE);
+        if(minPrice==null && maxPrice == null)return productMapper.getProductsByNameAndScreenByPrice(name,MINPRICEVALUE,MAXPRICEVALUE);
+        if(minPrice==null && maxPrice != null) return productMapper.getProductsByNameAndScreenByPrice(name,MINPRICEVALUE,maxPrice);
         return productMapper.getProductsByNameAndScreenByPrice(name,minPrice,maxPrice);
-       
+
     }
 }

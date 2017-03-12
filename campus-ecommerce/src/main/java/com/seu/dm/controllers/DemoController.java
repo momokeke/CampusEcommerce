@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -27,9 +30,13 @@ public class DemoController {
      * @return
      */
     @RequestMapping(value="/helloworld")
-    public String helloWorld(){
+    public String helloWorld(HttpServletRequest request, HttpServletResponse response){
         demoService.testAspect();
-
+        try {
+            response.sendRedirect("/");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "seller/new_products";
     }
 

@@ -1,0 +1,53 @@
+/*error page*/
+
+
+
+.page-error{
+
+    position:relative;
+
+    width:350px;
+
+    height:200px;
+
+    margin:100px auto;
+
+    text-align: center;
+
+}
+
+
+
+.text-error{
+
+    font-size:138px;
+
+    background:#e9e3dd;
+
+    background-image: url('https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQTdWeWNteABnbzguiXSBxmfc8Z8nh_HHoWoK35QL81x4HnpVmgvQ');
+
+    background-repeat: no-repeat;
+
+    background-size: 200% 200%;
+
+    background-position: 100% 100%;
+
+    -webkit-animation: square 3s linear infinite;
+
+    -ms-animation: square 3s linear infinite;
+
+    animation: square 3s linear infinite;
+
+    -webkit-background-clip: text;
+
+    color:transparent;
+
+    text-align:center;
+
+    line-height:200px;
+
+    position:relative;
+
+}
+
+
