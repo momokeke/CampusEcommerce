@@ -3,18 +3,14 @@ package com.seu.dm.controllers;
 import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Product;
-import com.seu.dm.entities.SearchGoodEntity;
 import com.seu.dm.services.ProductService;
-import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
-import java.util.Iterator;
 import java.util.List;
 
 /**
