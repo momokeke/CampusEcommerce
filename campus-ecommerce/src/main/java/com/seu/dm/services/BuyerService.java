@@ -22,5 +22,7 @@ public interface BuyerService {
 
     int unBanBuyer(Integer id);
 
-    Buyer findBuyerByStudentNumber(Integer studentNumber);
+    Buyer findBuyerByStudentNumber(String studentNumber);
+
+    Buyer findBuyerByName(String name);
 }

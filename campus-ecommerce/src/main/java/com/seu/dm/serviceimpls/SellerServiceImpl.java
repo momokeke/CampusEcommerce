@@ -38,6 +38,7 @@ public class SellerServiceImpl implements SellerService {
 
     @Override
     public Seller findSellerByName(String name) {
+        System.out.println("duandian");
         return sellerMapper.selectByName(name);
     }
 

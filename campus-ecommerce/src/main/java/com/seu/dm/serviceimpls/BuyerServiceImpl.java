@@ -65,9 +65,12 @@ public class BuyerServiceImpl implements BuyerService {
     }
 
     @Override
-    public Buyer findBuyerByStudentNumber(Integer studentNumber) {
+    public Buyer findBuyerByStudentNumber(String studentNumber) {
         return buyerMapper.findBuyerByStudentNumber(studentNumber);
     }
 
-
+    @Override
+    public Buyer findBuyerByName(String name) {
+        return buyerMapper.findBuyerByName(name);
+    }
 }

@@ -8,6 +8,8 @@ public class UserBaseDTO {
 
     private Integer id;
 
+    private Boolean isLogin;
+
     public Integer getCampusId() {
         return campusId;
     }
@@ -44,5 +46,11 @@ public class UserBaseDTO {
         this.role = role;
     }
 
+    public Boolean getLogin() {
+        return isLogin;
+    }
 
+    public void setLogin(Boolean login) {
+        isLogin = login;
+    }
 }
