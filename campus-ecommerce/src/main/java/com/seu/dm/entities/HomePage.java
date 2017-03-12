@@ -17,6 +17,16 @@ public class HomePage {
 
     private Integer orderId;
 
+    private Integer pictureId;
+
+    public Integer getPictureId() {
+        return pictureId;
+    }
+
+    public void setPictureId(Integer pictureId) {
+        this.pictureId = pictureId;
+    }
+
     public Integer getId() {
         return id;
     }

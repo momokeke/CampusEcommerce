@@ -43,7 +43,7 @@ public class SellerController {
         return "redirect:/";
     }
 
-    @RequestMapping(value = "/sellerLogin",method = RequestMethod.POST)
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String loginSeller(Seller seller,HttpServletRequest request){
         String name = seller.getName();
         Seller sellerFromDB = sellerService.findSellerByName(name);
