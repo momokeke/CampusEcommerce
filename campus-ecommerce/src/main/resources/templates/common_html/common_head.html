@@ -4,8 +4,15 @@
         <div class="col-md-8 col-sm-8">
             当前学校：<span>东南大学</span>
             <div class="float-right">
-                <a href="javascript:;" class="theme-logIn">登录</a>
-                <a href="">注册</a>
+                <span th:if="${session.userBase}==null">
+                    <a href="javascript:;" class="theme-logIn">登录</a>
+                    <a href="" th:href="@{/register}">注册</a>
+                </span>
+                <span th:if="${session.userBase}!=null">
+                    <span th:if="${session.userBase.role} == 'buyer'"><a href="javascript:;" th:href="@{/buyer/center}" class="theme-logIn">买家个人中心</a></span>
+                    <span th:if="${session.userBase.role} == 'seller'"><a href="javascript:;" th:href="@{/seller/center}" class="theme-logIn">卖家个人中心</a></span>
+                    <a href="" th:if="@{/logout}">注销</a>
+                </span>
             </div>
             <div class="theme-popover">
                 <div class="theme-popTit">
@@ -17,9 +24,9 @@
                         <ol>
                             <li><strong>用户名：</strong><input class="ipt" type="text" name="name"  size="20" /></li>
                             <li><strong>密</strong>&nbsp;&nbsp;&nbsp;<strong>码：</strong><input class="ipt" type="password" name="password"  size="20" /></li>
-                            <li><strong>买家</strong>&nbsp;&nbsp;&nbsp;<input type="radio" name="userType" value="buyer"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <li><strong>买家</strong>&nbsp;&nbsp;&nbsp;<input type="radio" name="userType" value="buyer" checked="checked"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <strong>卖家</strong>&nbsp;&nbsp;&nbsp;<input type="radio" name="userType" value="seller"  /></li>
-                            <li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <li><input class="btn btn-primary" type="submit"  value=" 登 录 " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <a href="#" th:href="@{/register}" style="padding-left: 50px">没有账号? 请注册</a></li>
                             <li></li>
                         </ol>
