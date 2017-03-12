@@ -25,7 +25,7 @@
     delete from picture
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.seu.dm.entities.Picture" >
+  <insert id="insert" parameterType="com.seu.dm.entities.Picture" useGeneratedKeys="true" keyProperty="id">
     insert into picture (id, binary_file)
     values (#{id,jdbcType=INTEGER}, #{binaryFile,jdbcType=LONGVARBINARY})
   </insert>
