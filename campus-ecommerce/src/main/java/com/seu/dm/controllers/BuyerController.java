@@ -146,6 +146,7 @@ public class BuyerController {
         return "buyer/buyer_center";
     }
 
+
     /**
      *跳到买家购物车
     */
@@ -163,6 +164,7 @@ public class BuyerController {
         cart.put(id,newNum);
         return "ok";
     }
+
 
 
 
