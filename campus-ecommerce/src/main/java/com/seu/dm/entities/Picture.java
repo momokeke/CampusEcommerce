@@ -3,9 +3,7 @@ package com.seu.dm.entities;
 public class Picture {
     private Integer id;
 
-    private Integer productId;
-
-    private String url;
+    private byte[] binaryFile;
 
     public Integer getId() {
         return id;
@@ -15,19 +13,11 @@ public class Picture {
         this.id = id;
     }
 
-    public Integer getProductId() {
-        return productId;
+    public byte[] getBinaryFile() {
+        return binaryFile;
     }
 
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url == null ? null : url.trim();
+    public void setBinaryFile(byte[] binaryFile) {
+        this.binaryFile = binaryFile;
     }
 }
