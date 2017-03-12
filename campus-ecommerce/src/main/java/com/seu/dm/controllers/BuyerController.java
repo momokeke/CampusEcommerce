@@ -54,8 +54,10 @@ public class BuyerController {
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     public String loginBuyer(Buyer buyer,HttpServletRequest request){
-        Integer studentNumber = buyer.getStudentNumber();
-        Buyer buyerFromDB = buyerService.findBuyerByStudentNumber(studentNumber);
+//        Integer studentNumber = buyer.getStudentNumber();
+//        Buyer buyerFromDB = buyerService.findBuyerByStudentNumber(studentNumber);
+        String buyerName = buyer.getName();
+        Buyer buyerFromDB = buyerService.findBuyerByName(buyerName);
         if(buyerFromDB == null) return "buyer/register";
         if(buyer.getPassword().equals(buyerFromDB.getPassword())) {
             HttpSession httpSession = request.getSession();

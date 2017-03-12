@@ -10,7 +10,7 @@
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
     <result column="hobby" property="hobby" jdbcType="VARCHAR" />
-    <result column="student_number" property="studentNumber" jdbcType="INTEGER" />
+    <result column="student_number" property="studentNumber" jdbcType="VARCHAR" />
     <result column="favorite_id" property="favoriteId" jdbcType="INTEGER" />
     <result column="order_id" property="orderId" jdbcType="INTEGER" />
     <result column="campus_id" property="campusId" jdbcType="INTEGER" />
@@ -26,10 +26,13 @@
     from buyer
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="findBuyerByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from buyer where `name` like #{name};
+  </select>
   <select id="findBuyersByCampusId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select * from buyer where campus_id = #{campusId}
   </select>
-  <select id="findBuyerByStudentNumber" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="findBuyerByStudentNumber" parameterType="java.lang.String" resultMap="BaseResultMap">
     select * from buyer where student_number = #{studentNumber}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
@@ -44,7 +47,7 @@
        is_banned)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{address,jdbcType=VARCHAR}, 
-      #{mobile,jdbcType=VARCHAR}, #{hobby,jdbcType=VARCHAR}, #{studentNumber,jdbcType=INTEGER}, 
+      #{mobile,jdbcType=VARCHAR}, #{hobby,jdbcType=VARCHAR}, #{studentNumber,jdbcType=VARCHAR},
       #{favoriteId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{campusId,jdbcType=INTEGER}
       , #{isBanned,jdbcType=BIT})
   </insert>
@@ -117,7 +120,7 @@
         #{hobby,jdbcType=VARCHAR},
       </if>
       <if test="studentNumber != null" >
-        #{studentNumber,jdbcType=INTEGER},
+        #{studentNumber,jdbcType=VARCHAR},
       </if>
       <if test="favoriteId != null" >
         #{favoriteId,jdbcType=INTEGER},
@@ -158,7 +161,7 @@
         hobby = #{hobby,jdbcType=VARCHAR},
       </if>
       <if test="studentNumber != null" >
-        student_number = #{studentNumber,jdbcType=INTEGER},
+        student_number = #{studentNumber,jdbcType=VARCHAR},
       </if>
       <if test="favoriteId != null" >
         favorite_id = #{favoriteId,jdbcType=INTEGER},
@@ -184,7 +187,7 @@
       address = #{address,jdbcType=VARCHAR},
       mobile = #{mobile,jdbcType=VARCHAR},
       hobby = #{hobby,jdbcType=VARCHAR},
-      student_number = #{studentNumber,jdbcType=INTEGER},
+      student_number = #{studentNumber,jdbcType=VARCHAR},
       favorite_id = #{favoriteId,jdbcType=INTEGER},
       order_id = #{orderId,jdbcType=INTEGER},
       campus_id = #{campusId,jdbcType=INTEGER}

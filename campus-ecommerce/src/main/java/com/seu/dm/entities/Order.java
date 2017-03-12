@@ -28,6 +28,8 @@ public class Order {
 
     private Buyer buyer;
 
+    private Seller seller;
+
     public Buyer getBuyer() {
         return buyer;
     }
@@ -43,12 +45,6 @@ public class Order {
     public void setSeller(Seller seller) {
         this.seller = seller;
     }
-
-    private Seller seller;
-
-
-
-
 
     public Integer getId() {
         return id;

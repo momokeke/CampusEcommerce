@@ -2,8 +2,11 @@ package com.seu.dm.controllers;
 
 import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.dto.UserBaseDTO;
+import com.seu.dm.entities.Picture;
 import com.seu.dm.entities.Product;
 import com.seu.dm.entities.Seller;
+import com.seu.dm.helpers.FileUploadHelper;
+import com.seu.dm.services.PictureService;
 import com.seu.dm.services.ProductService;
 import com.seu.dm.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +14,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -25,6 +30,8 @@ public class ProductController {
     private ProductService productService;
     @Autowired
     private SellerService sellerService;
+    @Autowired
+    private PictureService pictureService;
 //    @RequestMapping(value = "/login",method = RequestMethod.POST)
 //    public String addProduct(@RequestBody Product product, Model model){
 //
@@ -179,9 +186,18 @@ public class ProductController {
      */
     @RequestMapping(value = "/addProduct")
     @CampusAdminPermission
-    public String addProduct(Product product, HttpSession httpSession,Model model){
+    public String addProduct(Product product, HttpSession httpSession, HttpServletRequest request,Model model)throws IOException{
         Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getSellerId();
         product.setSellerId(sellerId);
+        Picture picture = new Picture();
+        byte[] pictureBinary = (FileUploadHelper.uploadPicture(request,"picture"));
+        if(pictureBinary.length != 0){
+            picture.setBinaryFile(pictureBinary);
+            pictureService.addPicture(picture);
+            Integer pictureId = picture.getId();
+            product.setPictureId(pictureId);
+        }
+
         int i = productService.addProduct(product);
         model.addAttribute("product",product);
         return "seller/new_products";
