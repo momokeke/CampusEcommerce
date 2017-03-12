@@ -3,7 +3,9 @@ package com.seu.dm.controllers;
 import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Product;
+import com.seu.dm.entities.Seller;
 import com.seu.dm.services.ProductService;
+import com.seu.dm.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,7 +23,8 @@ import java.util.List;
 public class ProductController {
     @Autowired
     private ProductService productService;
-
+    @Autowired
+    private SellerService sellerService;
 //    @RequestMapping(value = "/login",method = RequestMethod.POST)
 //    public String addProduct(@RequestBody Product product, Model model){
 //
@@ -81,6 +84,14 @@ public class ProductController {
         return "product/product_list";
     }
 
+    @RequestMapping(value = "/product_detail/{productId}")
+    public String productDetail(@PathVariable Integer productId,Model model){
+        Product product = productService.findProduct(productId);
+        Seller seller = sellerService.findSeller(product.getSellerId());
+        model.addAttribute("product",product);
+        model.addAttribute("seller",seller);
+        return "product/product_details";
+    }
     /**
      * 根据ID找到指定商品
      * @param id
