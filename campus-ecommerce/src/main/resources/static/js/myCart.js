@@ -98,7 +98,7 @@ function deleteSelectRow(){
 
 
 var cartClient = {
-    send : function(id,newNum){
+    send : function(id,newNum,callBack){
         $.ajax({
             type: 'GET',
             url: '/buyer/shopping_cart_change/',
@@ -107,12 +107,16 @@ var cartClient = {
             },
             async:false,
             success: function(data){
-                alert(data);
+            	if(data == "ok") {
+                    callBack();
+                }
             },
         });
     }
 }
 
+cartClient.send(1,2,function(){
 
+})
 
 

@@ -11,15 +11,8 @@
     <link href="bootstrap/dist/css/bootstrap-theme.css" rel="stylesheet"/>
     <link href="css/common.css" rel="stylesheet"/>
     <link href="css/index.css" rel="stylesheet"/>
-    <link rel="stylesheet" href="css/pop_up.css" media="all">
-    <!-- bootstrap theme -->
-    <!--external css-->
-    <!-- font icon -->
-    <link href="css/elegant-icons-style.css" rel="stylesheet" />
-    <link href="css/font-awesome.css" rel="stylesheet" />
+    <link href="css/pop-up.css" rel="stylesheet" media="all">
     <!-- Custom styles -->
-    <link href="css/buyer_login.css" rel="stylesheet">
-    <link href="css/style-responsive.css" rel="stylesheet" />
     <script src="js/common/jquery-3.1.1.min.js"></script>
     <script src="js/login.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -44,22 +37,19 @@
             <div class="theme-popover">
                 <div class="theme-popTit">
                     <a href="javascript:;" title="关闭" class="close">×</a>
-                    <h3>登录DaMi</h3>
+                    <h4>登录DaMi，享受更多优惠</h4>
                 </div>
                 <div class="theme-popBod dForm">
                     <form class="theme-signIn" name="loginForm" action="" method="post">
-                        <div class="login-wrap">
-                            <p class="login-img"><i class="icon_lock_alt"></i></p>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="icon_profile"></i></span>
-                                <input type="text" name="name" class="form-control" placeholder="请输入达米账号"/>
-                            </div>
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="icon_key_alt"></i></span>
-                                <input type="password" name="password"  class="form-control" placeholder="请输入密码"/>
-                            </div>
-                            <button class="btn btn-primary btn-lg btn-block" type="submit">登录</button>
-                        </div>
+                        <ol>
+                            <li><strong>用户名：</strong><input class="ipt" type="text" name="log"  size="20" /></li>
+                            <li><strong>密</strong>&nbsp;&nbsp;&nbsp;<strong>码：</strong><input class="ipt" type="password" name="pwd"  size="20" /></li>
+                            <li><strong>买家</strong>&nbsp;&nbsp;&nbsp;<input type="radio" name="userType" value="buyer"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <strong>卖家</strong>&nbsp;&nbsp;&nbsp;<input type="radio" name="userType" value="seller"  /></li>
+                            <li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <a href="#">没有账号? 请注册</a></li>
+                            <li></li>
+                        </ol>
                     </form>
                 </div>
             </div>

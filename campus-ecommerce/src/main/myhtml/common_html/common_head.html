@@ -1,14 +1,31 @@
-<div class="container-fluid ">
-    <div class="row top font-small">
+<div class="row top font-small">
         <div class="col-md-2 col-sm-2"></div>
         <div class="col-md-8 col-sm-8">
             当前学校：<span>东南大学</span>
             <div class="float-right">
-                <a href="">登录</a>
+                <a href="javascript:;" class="theme-logIn">登录</a>
                 <a href="">注册</a>
             </div>
+            <div class="theme-popover">
+                <div class="theme-popTit">
+                    <a href="javascript:;" title="关闭" class="close">×</a>
+                    <h4>登录DaMi，享受更多优惠</h4>
+                </div>
+                <div class="theme-popBod dForm">
+                    <form class="theme-signIn" name="loginForm" action="" method="post">
+                        <ol>
+                            <li><strong>用户名：</strong><input class="ipt" type="text" name="log"  size="20" /></li>
+                            <li><strong>密</strong>&nbsp;&nbsp;&nbsp;<strong>码：</strong><input class="ipt" type="password" name="pwd"  size="20" /></li>
+                            <li><strong>买家</strong>&nbsp;&nbsp;&nbsp;<input type="radio" name="userType" value="buyer"  />
+                                <strong>卖家</strong>&nbsp;&nbsp;&nbsp;<input type="radio" name="userType" value="seller"  /></li>
+                            <li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " />
+                                <a href="#" class="ml-16" >没有账号? 请注册</a></li>
+                        </ol>
+                    </form>
+                </div>
+            </div>
+            <div class="theme-popover-mask"></div>
         </div>
         <div class="col-md-2 col-sm-2">
         </div>
     </div>
-</div>
