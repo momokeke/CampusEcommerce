@@ -9,12 +9,12 @@
     <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
     <link href="/css/common.css" rel="stylesheet"/>
     <link href="/css/product_list.css" rel="stylesheet"/>
-    <link href="css/pop-up.css" rel="stylesheet" media="all"/>
+    <link href="/css/pop-up.css" rel="stylesheet" media="all"/>
     <!-- Custom styles -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="js/common/jquery-3.1.1.min.js"></script>
-    <script src="js/login.js"></script>
+    <script src="/js/common/jquery-3.1.1.min.js"></script>
+    <script src="/js/login.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -119,7 +119,7 @@
                         <img th:src="@{entity.productUrl}" alt="查询结果列表图片" class="product_img mt-5 mb-5"/>
                     </div>
                     <div class="col-xs-4">
-                        <a href="product_details.html" th:href="@{'/product/product_details/'+${entity.id}}"><span th:text="${entity.name}">商品名称</span></a><br/>
+                        <a href="product_details.html" th:href="@{'/product/product_detail/'+${entity.id}}"><span th:text="${entity.name}">商品名称</span></a><br/>
                         <e>¥ <span class="font-red" th:text="${entity.price}">100</span></e>
                         <p class="mt-10" th:text="${entity.description}">商品描述</p>
                     </div>

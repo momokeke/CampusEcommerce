@@ -3,6 +3,7 @@ package com.seu.dm.controllers;
 import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.annotations.permissions.SellerPermission;
 import com.seu.dm.dto.UserBaseDTO;
+import org.springframework.web.bind.annotation.*;
 import com.seu.dm.entities.Order;
 import com.seu.dm.entities.Seller;
 import com.seu.dm.services.OrderService;
@@ -38,6 +39,7 @@ public class SellerController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public String addSeller(Seller seller,HttpServletRequest request){
         HttpSession httpSession = request.getSession();
+        System.out.println("call");
         sellerService.addSeller(seller);                //由service层负责添加工作
         httpSession.setAttribute("user",seller);
         return "redirect:/";
