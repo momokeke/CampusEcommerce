@@ -1,12 +1,14 @@
 package com.seu.dm.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.websocket.server.PathParam;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -19,7 +21,7 @@ import java.util.Random;
 public class PictureController {
 
     @RequestMapping("/picture/{id}")
-    public void picture(){
+    public void picture(@PathVariable Integer id, HttpServletResponse response){
 
     }
 
