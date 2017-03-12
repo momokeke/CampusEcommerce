@@ -36,7 +36,7 @@ public class IndexController {
             Buyer buyerFromDB = buyerService.findBuyerByName(name);
             if(buyerFromDB == null) {
                 System.out.println("login fail!");
-                return "buyer/register";
+                return "redirect:/register";
             }
             if(!password.equals(buyerFromDB.getPassword())) {
                 System.out.println("password error!");
@@ -50,7 +50,7 @@ public class IndexController {
             Seller sellerFromDB = sellerService.findSellerByName(name);
             if(sellerFromDB == null) {
                 System.out.println("login fail!");
-                return "seller/register";
+                return "redirect:/register";
             }
             if(!password.equals(sellerFromDB.getPassword())) {
                 System.out.println("password error!");

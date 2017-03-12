@@ -191,13 +191,10 @@ public class ProductController {
         product.setSellerId(sellerId);
         Picture picture = new Picture();
         byte[] pictureBinary = (FileUploadHelper.uploadPicture(request,"picture"));
-        if(pictureBinary.length != 0){
-            picture.setBinaryFile(pictureBinary);
-            pictureService.addPicture(picture);
-            Integer pictureId = picture.getId();
-            product.setPictureId(pictureId);
-        }
-
+        picture.setBinaryFile(pictureBinary);
+        pictureService.addPicture(picture);
+        Integer pictureId = picture.getId();
+        product.setPictureId(pictureId);
         int i = productService.addProduct(product);
         model.addAttribute("product",product);
         return "seller/new_products";

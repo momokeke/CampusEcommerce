@@ -73,7 +73,7 @@
     </div>
     <div class="presentation row">
         <div class="col-xs-5 col-xs-offset-1">
-            <img src="/img/portraiture.jpg" width="400px" height="400px"/>
+            <img style="width:400px;height:400px;" th:src="@{'/picture/'+${product.pictureId}}" src="#"/>
         </div>
         <div class="col-xs-6">
             <div class="row"> <h2 class="col-xs-12 text-center">赵丽颖肖像画素描画绘画社团颖宝</h2></div>
@@ -121,7 +121,7 @@
             <div class="row" >
                 <div class="col-xs-5 col-xs-offset-1" >
                     <div class="thumbnail">
-                        <img src="/img/portraiture.jpg" height="300px"  width="300px"  alt="色系1"/>
+                        <img style="width:300px;height:300px;" th:src="@{'/picture/'+${product.pictureId}}" src="#"/>
                         <div class="caption">
                             <span>详情图1</span>
                         </div>
