@@ -1,11 +1,13 @@
 package com.seu.dm.controllers;
 
+import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Buyer;
 import com.seu.dm.entities.Seller;
 import com.seu.dm.services.BuyerService;
 import com.seu.dm.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -30,36 +32,70 @@ public class IndexController {
 
     @RequestMapping(value = "/login")
     public String login(@RequestParam String name, @RequestParam String password, @RequestParam String userType,
-                        HttpServletRequest request){
+                        HttpServletRequest request, Model model){
         if("buyer".equals(userType)){
             System.out.println("buyer");
             Buyer buyerFromDB = buyerService.findBuyerByName(name);
             if(buyerFromDB == null) {
-                System.out.println("login fail!");
-                return "redirect:/register";
+                model.addAttribute("message","登录失败，请注册买家账号");
+                model.addAttribute("jumpUrl","/register");
+                return "common/alert";
+//                return "redirect:/register";
             }
             if(!password.equals(buyerFromDB.getPassword())) {
-                System.out.println("password error!");
+                model.addAttribute("message","密码错误");
+                model.addAttribute("jumpUrl","/");
+                return "common/alert";
             }
             HttpSession httpSession = request.getSession();
-            httpSession.setAttribute("user", buyerFromDB);
+            UserBaseDTO userBase = new UserBaseDTO();
+            userBase.setRole("buyer");
+            userBase.setId(buyerFromDB.getId());
+            userBase.setLogin(true);
+            userBase.setCampusId(1);
+            httpSession.setAttribute("userBase",userBase);
             return "redirect:/";
         }
         if("seller".equals(userType)){
             System.out.println("seller");
             Seller sellerFromDB = sellerService.findSellerByName(name);
             if(sellerFromDB == null) {
-                System.out.println("login fail!");
-                return "redirect:/register";
+                model.addAttribute("message","登录失败，请注册卖家账号");
+                model.addAttribute("jumpUrl","/register");
+                return "common/alert";
+//                System.out.println("login fail!");
+//                return "redirect:/register";
             }
             if(!password.equals(sellerFromDB.getPassword())) {
-                System.out.println("password error!");
+                model.addAttribute("message","密码错误");
+                model.addAttribute("jumpUrl","/");
+                return "common/alert";
             }
             System.out.println("there");
             HttpSession httpSession = request.getSession();
-            httpSession.setAttribute("user", sellerFromDB);
+            UserBaseDTO userBase = new UserBaseDTO();
+            userBase.setRole("seller");
+            userBase.setId(sellerFromDB.getId());
+            userBase.setLogin(true);
+            userBase.setCampusId(1);
+            httpSession.setAttribute("userBase",userBase);
             return "redirect:/";
         }
-        return "";
+        model.addAttribute("message","请选择类别");
+        model.addAttribute("jumpUrl","/");
+        return "common/alert";
+    }
+
+    @RequestMapping(value = "/register")
+    public String jumpToRegister(){
+        return "register";
+    }
+
+    @RequestMapping(value = "/logout")
+    public String logout(HttpServletRequest request){
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null) return "redirect:/";
+        httpSession.removeAttribute("userBase");
+        return "redirect:/";
     }
 }

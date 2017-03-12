@@ -143,7 +143,7 @@ public class BuyerController {
     /*
     *跳到买家中心
      */
-    @RequestMapping(value = "/buyer_center")
+    @RequestMapping(value = "/center")
     public String jumpToBuyerCenter(){
         return "buyer/buyer_center";
     }
