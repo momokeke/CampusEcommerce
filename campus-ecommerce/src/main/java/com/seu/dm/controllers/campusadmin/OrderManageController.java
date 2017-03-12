@@ -2,9 +2,12 @@ package com.seu.dm.controllers.campusadmin;
 
 import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.dto.UserBaseDTO;
+import com.seu.dm.entities.Buyer;
 import com.seu.dm.entities.Order;
+import com.seu.dm.services.BuyerService;
 import com.seu.dm.services.OrderService;
 import com.seu.dm.services.SchoolAdminService;
+import com.seu.dm.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,6 +29,10 @@ public class OrderManageController {
     private SchoolAdminService schoolAdminService;
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private SellerService sellerService;
+    @Autowired
+    private BuyerService buyerService;
 
     @RequestMapping("/")
     @CampusAdminPermission
@@ -42,11 +49,21 @@ public class OrderManageController {
     public String screenOrders(@RequestParam(value = "orderId")Integer orderId, @RequestParam(value = "orderStatus")Integer orderStatus,
                                @RequestParam(value = "userId")Integer userId, @RequestParam(value = "sellerId")Integer sellerId
                                ,HttpSession httpSession,Model model, HttpServletRequest request){
+
         Integer schoolAdminId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getId();
         Integer campusId = schoolAdminService.findAdmin(schoolAdminId).getCampusId();
-        System.out.println(orderStatus);
-        System.out.println("id: "+orderId+"   orderStatus: "+orderStatus);
         List<Order> orders = orderService.screenOrders(orderId,orderStatus,campusId);
+
+        for(Order order : orders){
+            order.setBuyer(buyerService.findBuyer(order.getUserId()));
+            order.setSeller(sellerService.findSeller(order.getSellerId()));
+        }
+
+        for(Order order : orders){
+            Buyer buyer = order.getBuyer();
+            System.out.println(buyer);
+        }
+
         model.addAttribute("orders",orders);
         return "redirect:/campusadmin/ordermanage";
     }

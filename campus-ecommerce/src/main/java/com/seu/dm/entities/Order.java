@@ -26,6 +26,30 @@ public class Order {
 
     private Integer campusId;
 
+    private Buyer buyer;
+
+    public Buyer getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(Buyer buyer) {
+        this.buyer = buyer;
+    }
+
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
+    }
+
+    private Seller seller;
+
+
+
+
+
     public Integer getId() {
         return id;
     }
