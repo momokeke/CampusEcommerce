@@ -9,7 +9,7 @@
     <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="/css/common.css" rel="stylesheet" />
     <link href="/css/shop_homepage.css" rel="stylesheet" />
-    <link href="css/pop-up.css" rel="stylesheet" media="all"/>
+    <link href="/css/pop-up.css" rel="stylesheet" media="all"/>
     <!-- Custom styles -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -30,8 +30,8 @@
 <div class="container">
     <div class="row">
         <a href="../index.html"><img class="col-xs-3 logo_wh border-right" src="/img/cute_logo.jpg" style="padding: 0"/></a>
-        <div class="col-xs-3">
-            <h3>店铺名称<small>社团名称</small></h3>
+        <div class="col-xs-3 mt-20">
+            <a href="../shop/shop_homepage.html" th:href="@{/demo/shopHomepage}"><h3>淡雅墨色画社<small>绘画社</small></h3></a>
         </div>
         <form th:action="@{/product_list.html}">
             <div class="mt-20 float-right">
@@ -61,7 +61,7 @@
 </div>
 <div class="container">
     <div class="row mt-40">
-        <div class="col-xs-3"><a href="../product/product_details.html" th:href="@{/demo/productDetails}"><img src="/img/portraiture.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
+        <div class="col-xs-3"><a href="../product/product_details.html" th:href="@{/product/product_detail/12}"><img src="/img/portraiture.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
         <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show2.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
         <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show3.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
         <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show4.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>

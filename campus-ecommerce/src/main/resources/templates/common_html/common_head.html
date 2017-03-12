@@ -1,11 +1,11 @@
-<div class="container-fluid" style="margin-right: -15px;margin-left: -15px">
+<div class="container-fluid" style="margin-right: -15px;margin-left: -15px" xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="row top font-small">
         <div class="col-md-2 col-sm-2"></div>
         <div class="col-md-8 col-sm-8">
             当前学校：<span>东南大学</span>
             <div class="float-right">
                 <a href="javascript:;" class="theme-logIn">登录</a>
-                <a href="">注册</a>
+                <a href="/demo/register" th:href="@{/demo/register}">注册</a>
             </div>
             <div class="theme-popover">
                 <div class="theme-popTit">
@@ -20,7 +20,7 @@
                             <li><strong>买家</strong>&nbsp;&nbsp;&nbsp;<input type="radio" name="userType" value="buyer"  />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <strong>卖家</strong>&nbsp;&nbsp;&nbsp;<input type="radio" name="userType" value="seller"  /></li>
                             <li><input class="btn btn-primary" type="submit" name="submit" value=" 登 录 " />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                <a href="#" th:href="@{/register}" style="padding-left: 50px">没有账号? 请注册</a></li>
+                                <a href="/demo/register" th:href="@{/demo/register}" style="padding-left: 50px">没有账号? 请注册</a></li>
                             <li></li>
                         </ol>
                     </form>
