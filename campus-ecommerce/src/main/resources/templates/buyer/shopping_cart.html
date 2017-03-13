@@ -42,7 +42,7 @@
                             <input type="text" class="form-control search" id="search" placeholder="请输入商品名\关键词"/>
 
                         </div>
-                        <button type="submit" class="btn btn-default ">搜索</button>
+                        <button type="submit" class="search-btn">搜索</button>
                     </form>
                 </div>
             </div>
@@ -82,15 +82,15 @@
                         </td>
                         <td class="cart_td_5" th:text="${cartProduct.price}">56.50</td>
                         <td class="cart_td_6">
-                            <img src="/img/minus.jpg" alt="minus" onclick="changeNum('num_1','minus')" class="hand"/>
-                            <input id="num_1" type="text"  value="1" class="num_input" readonly="readonly"/>
-                            <img src="/img/adding.jpg" alt="add" onclick="changeNum('num_1','add')"  class="hand"/>
+                            <img src="/img/minus.jpg" alt="minus" th:onclick="@{'javascript:changeNum('+${cartProduct.id}+','+${cartProduct.num}+','+'\'minus\''+')'}" class="hand"/>
+                            <input type="text" th:id="@{'product-'+${cartProduct.id}}"  value="1"  th:value="${cartProduct.num}" class="num_input" readonly="readonly"/>
+                            <img src="/img/adding.jpg"  alt="add"  th:onclick="@{'javascript:changeNum('+${cartProduct.id}+','+${cartProduct.num}+','+'\'add\''+')'}" class="hand"/>
                         </td>
                         <td class="cart_td_7"></td>
                         <td class="cart_td_8"><a th:href="@{'/buyer/shopping_cart/remove/'+${cartProduct.id}}">删除</a></td>
                     </tr>
                     <tr>
-                        <td  colspan="3"></td>
+                        <td  colspan="3"><a href="javascript:deleteSelectRow()"><img src="/img/del.jpg" alt="delete"/></a></td>
                         <td colspan="5" class="shop_end">商品总价：<label id="total" class="yellow"></label> 元<br />
                             <input name=" " type="image" src="/img/subtn.jpg" /></td>
                     </tr>

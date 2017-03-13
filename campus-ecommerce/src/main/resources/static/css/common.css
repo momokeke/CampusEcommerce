@@ -146,6 +146,9 @@
 .mt-25{
     margin-top: 25px;
 }
+.ml-20{
+    margin-left: 20px;
+}
 
 
 
@@ -191,10 +194,8 @@
     text-decoration: none;
 }
 
-.banner .active{
-    border-bottom: 23px solid #f0be48;
-    border-radius: 14px;
-    border-top: 23px solid #f0be48;
+.search-btn{
+    height:30px; width: 40px;color: #ffffff;border-color: #1c293a;background-color:  #1c2930;
 }
 
 .banner .search{
@@ -231,6 +232,9 @@
 }
 .font-black{
     color: black;
+}
+.font-17{
+    font-size: 17px;
 }
 /* Website Top end*/
 .container { width: 1280px !important; max-width: none !important; }

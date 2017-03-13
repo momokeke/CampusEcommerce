@@ -3,21 +3,28 @@
 
 
 /*改变所购商品的数量*/
-function changeNum(numId,flag){/*numId表示对应商品数量的文本框ID，flag表示是增加还是减少商品数量*/
-	var numId=document.getElementById(numId);
+function changeNum(productId,num,flag){/*num表示对应商品数量的文本框的值，flag表示是增加还是减少商品数量*/
+    var num = parseInt($("#product-"+productId).val());
+    var productNum=num;//接收商品数量
 	if(flag=="minus"){/*减少商品数量*/
-		if(numId.value<=1){
+		if(productNum<=1){
 			alert("宝贝数量必须是大于0");
 			return false;
 			}
 		else{
-			numId.value=parseInt(numId.value)-1;
-			productCount();
+			cartClient.send(productId,productNum-1,function () {
+                productNum=productNum-1;
+				$("#product-"+productId).val(productNum);
+                productCount();
+            });
 			}
 		}
 	else{/*flag为add，增加商品数量*/
-		numId.value=parseInt(numId.value)+1;
-		productCount();
+        cartClient.send(productId,productNum+1,function () {
+            productNum=productNum+1;
+            $("#product-"+productId).val(productNum);
+            productCount();
+        });
 		}
 	}
 	
@@ -94,9 +101,6 @@ function selectSingle(){
 // 	}
 
 
-
-
-
 var cartClient = {
     send : function(id,newNum,callBack){
         $.ajax({
@@ -107,13 +111,16 @@ var cartClient = {
             },
             async:false,
             success: function(data){
-            	if(data == "ok") {
+                if(data == "ok") {
                     callBack();
                 }
             },
         });
     }
 }
+
+
+
 
 // cartClient.send(1,2,function(){
 //

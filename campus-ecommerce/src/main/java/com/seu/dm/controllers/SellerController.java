@@ -41,7 +41,13 @@ public class SellerController {
         HttpSession httpSession = request.getSession();
         System.out.println("call");
         sellerService.addSeller(seller);                //由service层负责添加工作
-        httpSession.setAttribute("user",seller);
+        Seller sellerFromDB = sellerService.findSellerByName(seller.getName());
+        UserBaseDTO userBase = new UserBaseDTO();
+        userBase.setRole("seller");
+        userBase.setId(sellerFromDB.getId());
+        userBase.setLogin(true);
+        userBase.setCampusId(1);
+        httpSession.setAttribute("userBase",userBase);
         return "redirect:/";
     }
 
