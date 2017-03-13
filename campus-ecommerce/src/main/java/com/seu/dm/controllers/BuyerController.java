@@ -3,6 +3,7 @@ package com.seu.dm.controllers;
 import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Buyer;
 import com.seu.dm.entities.Order;
+import com.seu.dm.helpers.mail.MailSender;
 import com.seu.dm.services.BuyerService;
 import com.seu.dm.services.OrderService;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,7 @@ public class BuyerController {
     private BuyerService buyerService;
     @Autowired
     private OrderService orderService;
+
     /**
      * 注册用户
      * @param buyer
@@ -34,10 +36,19 @@ public class BuyerController {
      */
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public String addBuyer(Buyer buyer, Model model, HttpServletRequest request){
+        //置标志位为未激活
+        buyer.setIsActive(false);
         HttpSession httpSession = request.getSession();
         System.out.println("call");
+
+        //向数据库中添加买家
         int i = buyerService.addBuyer(buyer);
         Buyer buyerFromDB = buyerService.findBuyerByName(buyer.getName());
+
+        //发送验证激活邮件
+        MailSender.send(buyerFromDB.getId(),buyerFromDB.getEmail());
+
+        //
         UserBaseDTO userBase = new UserBaseDTO();
         userBase.setRole("buyer");
         userBase.setId(buyerFromDB.getId());
@@ -74,6 +85,11 @@ public class BuyerController {
         return "";
     }
 
+    /**
+     * 移除session中的userBase并回到首页
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/buyerLogout")
     public String logoutBuyer(HttpServletRequest request){
         HttpSession httpSession = request.getSession(false);
