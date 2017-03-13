@@ -176,7 +176,7 @@ public class SellerController {
     @SellerPermission
     public String getAllOrdersOfSeller(Model model, HttpSession httpSession){
         // Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getSellerId();
-        Seller seller = (Seller)httpSession.getAttribute("user");
+        Seller seller = (Seller)httpSession.getAttribute("userBase");
         Integer sellerId = seller.getId();
         List<Order> orders = orderService.findOrdersBySellerId(sellerId);
         model.addAttribute("orders",orders);
@@ -186,7 +186,7 @@ public class SellerController {
     @RequestMapping(value = "/orders/waitdeliver")
     public String findSellerOrdersWithStatusWaitDeliver(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("user");
+        Seller seller = (Seller) httpSession.getAttribute("userBase");
         Integer sellerId = seller.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusWaitDeliver(sellerId);
         model.addAttribute("orders",orders);
@@ -196,7 +196,7 @@ public class SellerController {
     @RequestMapping(value = "/orders/onrejection")
     public String findSellerOrdersWithStatusOnRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("user");
+        Seller seller = (Seller) httpSession.getAttribute("userBase");
         Integer sellerId = seller.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusOnRejection(sellerId);
         model.addAttribute("orders",orders);
@@ -206,7 +206,7 @@ public class SellerController {
     @RequestMapping(value = "/orders/alreadyrejection")
     public String findSellerOrdersWithStatusAlreadyRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("user");
+        Seller seller = (Seller) httpSession.getAttribute("userBase");
         Integer sellerId = seller.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusAlreadyRejection(sellerId);
         model.addAttribute("orders",orders);
@@ -216,7 +216,7 @@ public class SellerController {
     @RequestMapping(value = "/orders/success")
     public String findSellerOrdersWithStatusSuccess(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("user");
+        Seller seller = (Seller) httpSession.getAttribute("userBase");
         Integer sellerId = seller.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusSuccess(sellerId);
         model.addAttribute("orders",orders);

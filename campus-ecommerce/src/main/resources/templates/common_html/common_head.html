@@ -11,6 +11,8 @@
                 <span th:if="${session.userBase}!=null">
                     <span th:if="${session.userBase.role} == 'buyer'"><a href="javascript:;" th:href="@{/buyer/center}" class="theme-logIn">买家个人中心</a></span>
                     <span th:if="${session.userBase.role} == 'seller'"><a href="javascript:;" th:href="@{/seller/center}" class="theme-logIn">卖家个人中心</a></span>
+                    <span th:if="${session.userBase.role} == 'campusAdmin'"><a href="javascript:;" th:href="@{/campusAdmin/center}" class="theme-logIn">管理员个人中心</a></span>
+                    <span th:if="${session.userBase.role} == 'superAdmin'"><a href="javascript:;" th:href="@{/superAdmin/center}" class="theme-logIn">超级管理员个人中心</a></span>
                     <a href="" th:href="@{/logout}">注销</a>
                 </span>
             </div>
