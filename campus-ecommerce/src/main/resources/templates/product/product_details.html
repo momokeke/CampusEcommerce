@@ -99,10 +99,10 @@
         </div>
             <div class="row mt-40 ml-10 text-center" >
                 <button class="btn btn-danger col-xs-3 mr-5">立即购买</button>
-                <button class="btn btn-danger col-xs-3">
+                <a class="btn btn-danger col-xs-3" th:href="@{'/buyer/shopping_cart/add/'+${product.id}}">
                     <span class="glyphicon glyphicon-shopping-cart"></span>
-                    加入购物车</button>
-                <button type="button" class="btn btn-danger float-right mr-15 ">我的购物车 <span class="badge">3</span></button>
+                    加入购物车</a>
+                <a type="button" class="btn btn-danger float-right mr-15 " th:href="@{'/buyer/shopping_cart'}">我的购物车 <span class="badge">3</span></a>
             </div>
         </div>
     </div>
