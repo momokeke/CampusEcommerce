@@ -27,6 +27,15 @@
   <select id="findAllSellers" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select * from seller where campus_id = #{campusId}
   </select>
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select * from seller where name like #{name}
+  </select>
+  <delete id="deleteByName" parameterType="java.lang.String">
+    delete from seller where name = #{name}
+  </delete>
+  <select id="selectCountOfAll" resultType="java.lang.Integer">
+    select count(*) from seller
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from seller
     where id = #{id,jdbcType=INTEGER}

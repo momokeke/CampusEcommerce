@@ -28,6 +28,29 @@ public class Order {
 
     private Buyer buyer;
 
+
+    private Seller seller;
+
+    private Product product;
+
+    public OrderProduct getOrderProduct() {
+        return orderProduct;
+    }
+
+    public void setOrderProduct(OrderProduct orderProduct) {
+        this.orderProduct = orderProduct;
+    }
+
+    private OrderProduct orderProduct;
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
     public Buyer getBuyer() {
         return buyer;
     }
@@ -43,12 +66,6 @@ public class Order {
     public void setSeller(Seller seller) {
         this.seller = seller;
     }
-
-    private Seller seller;
-
-
-
-
 
     public Integer getId() {
         return id;

@@ -19,5 +19,7 @@ public interface BuyerMapper {
 
     List<Buyer> findBuyersByCampusId(Integer campusId);
 
-    Buyer findBuyerByStudentNumber(Integer studentNumber);
+    Buyer findBuyerByStudentNumber(String  studentNumber);
+
+    Buyer findBuyerByName(String name);
 }

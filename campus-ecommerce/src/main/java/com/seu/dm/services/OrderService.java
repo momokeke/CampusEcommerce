@@ -20,6 +20,8 @@ public interface OrderService {
 
     Order findOrder(Integer id);
 
+    Integer getCountByStatus(Integer status);
+
     HashMap<String, Integer> findHotProductsFromOrder(Integer n);
 
     List<Order> findOrdersByCampusId(Integer campusId);

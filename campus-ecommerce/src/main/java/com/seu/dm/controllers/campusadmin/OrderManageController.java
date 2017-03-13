@@ -40,6 +40,15 @@ public class OrderManageController {
         Integer schoolAdminId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getId();
         Integer campusId = schoolAdminService.findAdmin(schoolAdminId).getCampusId();
         List<Order> orders = orderService.findOrdersByCampusId(campusId);
+        Integer stayCount = orderService.getCountByStatus(1);
+        Integer backCount = orderService.getCountByStatus(2);
+        Integer backFinishCount = orderService.getCountByStatus(3);
+        Integer normalFinishCount = orderService.getCountByStatus(4);
+        model.addAttribute("stayCount",stayCount);
+        model.addAttribute("backCount",backCount);
+        model.addAttribute("finishCount",backFinishCount.intValue() + normalFinishCount.intValue());
+        model.addAttribute("totalCount",stayCount+backCount.intValue()+backFinishCount.intValue()+normalFinishCount.intValue());
+
         model.addAttribute("orders",orders);
         return "admin/campusadmin/order/manage";
     }
@@ -53,8 +62,10 @@ public class OrderManageController {
         Integer schoolAdminId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getId();
         Integer campusId = schoolAdminService.findAdmin(schoolAdminId).getCampusId();
         List<Order> orders = orderService.screenOrders(orderId,orderStatus,campusId);
-
+        System.out.println(orders);
         for(Order order : orders){
+            System.out.println(buyerService.findBuyer(order.getUserId()));
+            System.out.println(sellerService.findSeller(order.getSellerId()));
             order.setBuyer(buyerService.findBuyer(order.getUserId()));
             order.setSeller(sellerService.findSeller(order.getSellerId()));
         }

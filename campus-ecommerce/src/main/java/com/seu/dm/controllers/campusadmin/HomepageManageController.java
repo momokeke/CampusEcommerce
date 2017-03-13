@@ -68,8 +68,8 @@ public class HomepageManageController {
         //先更新图片
         Picture picture = new Picture();
         picture.setId(homePage.getPictureId());
-        byte[] pictureBinary = (FileUploadHelper.uploadPicture(request,"picture"));
-        if(pictureBinary != null){
+        byte[] pictureBinary = FileUploadHelper.uploadPicture(request,"picture");
+        if(pictureBinary.length != 0){
             picture.setBinaryFile(pictureBinary);
             pictureService.updatePicture(picture);
         }
@@ -105,11 +105,10 @@ public class HomepageManageController {
         //先更新图片
         Picture picture = new Picture();
         byte[] pictureBinary = (FileUploadHelper.uploadPicture(request,"picture"));
-        if(pictureBinary != null){
-            picture.setBinaryFile(pictureBinary);
-            Integer pictureId = pictureService.addPicture(picture);
-            homePage.setPictureId(pictureId);
-        }
+        picture.setBinaryFile(pictureBinary);
+        pictureService.addPicture(picture);
+        Integer pictureId = picture.getId();
+        homePage.setPictureId(pictureId);
         //再更新Homepage
         homePageService.addHomePage(homePage);
         return "redirect:/campusadmin/homepagemanage/";

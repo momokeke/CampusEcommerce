@@ -19,7 +19,7 @@ public class Buyer {
 
     private String hobby;
 
-    private Integer studentNumber;
+    private String studentNumber;
 
     private Integer favoriteId;
 
@@ -93,11 +93,11 @@ public class Buyer {
         this.hobby = hobby == null ? null : hobby.trim();
     }
 
-    public Integer getStudentNumber() {
+    public String getStudentNumber() {
         return studentNumber;
     }
 
-    public void setStudentNumber(Integer studentNumber) {
+    public void setStudentNumber(String studentNumber) {
         this.studentNumber = studentNumber;
     }
 
