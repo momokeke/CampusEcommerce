@@ -244,10 +244,29 @@
 </div>
 
 
-
+<div id="popup">
+    <div class="bg"><img style="position: absolute; top:200px; left:200px;" src="" alt=""/></div>
+</div>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/js/common/jquery-3.1.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    var img = document.getElementsByTagName("img").item(1);
+    var popup = document.getElementById("popup");
+
+    img.onclick = function (event) {
+        event = event || window.event;
+        var target = document.elementFromPoint(event.clientX, event.clientY);
+        showBig(target.src);
+    }
+    popup.onclick = function (){
+        popup.style.display = "none";
+    }
+    function showBig(src){
+        popup.getElementsByTagName("img")[0].src = src;
+        popup.style.display = "block";
+    }
+</script>
 </body>
 </html>
