@@ -1,5 +1,6 @@
 package com.seu.dm.controllers;
 
+import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Buyer;
 import com.seu.dm.entities.Order;
 import com.seu.dm.services.BuyerService;
@@ -36,7 +37,13 @@ public class BuyerController {
         HttpSession httpSession = request.getSession();
         System.out.println("call");
         int i = buyerService.addBuyer(buyer);
-        httpSession.setAttribute("user",buyer);
+        Buyer buyerFromDB = buyerService.findBuyerByName(buyer.getName());
+        UserBaseDTO userBase = new UserBaseDTO();
+        userBase.setRole("buyer");
+        userBase.setId(buyerFromDB.getId());
+        userBase.setLogin(true);
+        userBase.setCampusId(1);
+        httpSession.setAttribute("userBase",userBase);
         return "redirect:/";
     }
 
