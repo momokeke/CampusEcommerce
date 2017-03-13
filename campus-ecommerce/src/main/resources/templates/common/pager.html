@@ -1,0 +1,24 @@
+<!--page begin-->
+<nav aria-label="Page navigation">
+    <ul class="pagination">
+        <th:block th:if="${pageInfo.isHasPreviousPage()}">
+        <li>
+            <a th:href="${pageBaseUrl}+${pageInfo.getPageNum()-1}" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        </th:block>
+        <li th:each="page,iterStatus:${pageList}">
+            <span th:if="${iterStatus.count} eq ${pageInfo.getPageNum()}" th:text="${iterStatus.count}"></span>
+            <a th:if="${iterStatus.count} neq ${pageInfo.getPageNum()}" th:href="${page}" th:text="${iterStatus.count}"></a>
+        </li>
+        <th:block th:if="${pageInfo.isHasNextPage()}">
+        <li>
+            <a th:href="${pageBaseUrl}+${pageInfo.getPageNum()+1}" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+        </th:block>
+    </ul>
+</nav>
+<!--page end -->

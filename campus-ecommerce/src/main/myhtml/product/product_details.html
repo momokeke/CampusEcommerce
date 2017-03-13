@@ -12,6 +12,9 @@
     <link href="../css/product_details.css" rel="stylesheet" />
     <link href="../css/common.css" rel="stylesheet" />
     <link href="../css/index.css" rel="stylesheet" />
+    <script type="text/javascript" src="../js/common/jquery-3.1.1.min.js"></script>
+    <script type="text/javascript" src="../js/common/jquery.cookie.js"></script>
+    <script type="text/javascript" src="../js/shoppingCart.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -66,7 +69,7 @@
 <div class="container">
     <div class="row">
         <div class="page-header">
-            <h1>店铺名称<small>社团名称</small></h1>
+            <h1 id="PShop">店铺名称<small>社团名称</small></h1>
         </div>
     </div>
     <div class="row">
@@ -86,10 +89,16 @@
             <img src="../img/portraiture.jpg" width="400px" height="400px"/>
         </div>
         <div class="col-md-6">
-            <div class="row"> <h2 class="col-md-12 text-center" th:text="${pruduct.name}">赵丽颖肖像画素描画绘画社团颖宝</h2></div>
+            <div class="row"> <h2 class="col-md-12 text-center" id="PName">赵丽颖肖像画素描画绘画社团颖宝</h2></div>
             <div class="price mt-30" >
-                <div class="row"><div class="col-md-11 col-md-offset-1"><span class="priceone">价格：</span><span th:text="${product.discountPrice}" class="priceone">95</span></div></div>
-                <div class="pricetwo row"><div class="col-md-11 col-md-offset-1"><span>达米价:</span><span th:text="*${product.price}">90</span></div></div>
+                <div class="row"><div class="col-md-11 col-md-offset-1"><span class="priceone" >价格：</span>
+                    <span  class="priceone" id="PPrice">95</span></div>
+                </div>
+                <div class="pricetwo row">
+                    <div class="col-md-11 col-md-offset-1"><span id="PCountPrice">达米价:</span>
+                    <span >90</span>
+                    </div>
+                </div>
             </div>
         <div class="price">
             <div class="row mt-30 " >
@@ -101,15 +110,18 @@
             <div class="row mt-30">
                 <div class="col-md-2 col-md-offset-1  text-danger mt-8">数量</div>
                 <div class="input-group col-md-2">
-                    <span class="input-group-addon">+</span>
-                    <input type="text" class="form-control text-center" value="1" style="width: 60px" />
-                    <span class="input-group-addon">-</span>
+                    <form action="#" method="post">
+                        <span class="input-group-addon">+</span>
+                        <input type="text" class="form-control text-center" value="1" id="PNum" style="width: 60px" />
+                        <span class="input-group-addon">-</span>
+                    </form>
+
                 </div>
             </div>
         </div>
             <div class="row mt-40 ml-10 text-center" >
                 <button class="btn btn-danger col-md-3 mr-5">立即购买</button>
-                <button class="btn btn-danger col-md-3">
+                <button class="btn btn-danger col-md-3" id="putCart">
                     <span class="glyphicon glyphicon-shopping-cart"></span>
                     加入购物车</button>
                 <button type="button" class="btn btn-danger float-right mr-15 ">我的购物车 <span class="badge">3</span></button>

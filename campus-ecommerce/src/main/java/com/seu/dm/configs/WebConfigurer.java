@@ -16,4 +16,6 @@ public class WebConfigurer extends WebMvcConfigurerAdapter {
         interceptorRegistry.addInterceptor(new PermissionsInterceptor()).addPathPatterns("/**");
         super.addInterceptors(interceptorRegistry);
     }
+
+
 }
