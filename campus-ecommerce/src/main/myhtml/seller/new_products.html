@@ -143,16 +143,16 @@
         </div>
         <div class="col-md-4">
             <form action="/addproduct" method="post" name="newPro">
-                <div><span class="text-size">商品名称:</span><input class="border-two mt-20 ml-5" type="text" value="" name="name" th:text="${product.id}"/></div>
+                <div><span class="text-size">商品名称:</span><input class="border-two mt-20 ml-5" type="text" value="" name="name" required/></div>
                 <div>
-                    <span class="text-size">社团名称:</span><input type="text" name="textfield" class="border-three mt-20 ml-5 text-center" name="community" th:text="${community.id}"/>
-                    <select name="communities" class="border-three" onChange="ShowToText()" th:each="community:${communityList}"/>
+                    <span class="text-size">社团名称:</span><input type="text" name="textfield" class="border-three mt-20 ml-5 text-center" name="community" required/>
+                    <select name="communities" class="border-three" onChange="ShowToText()"/>
                         <option th:text="${community.name}">绘画社</option>
                     </select>
             </div>
-                <div><span class="text-size">商品种类:</span><input class="border-two mt-20 ml-5" type="text" value="" name="category" th:text="${product.category}"/></div>
-                <div><span class="text-size">商品价格:</span><input class="border-two mt-20 ml-5" type="text" value="" name="price" th:text="${product.price}"/></div>
-                <div><span class="text-size">商品描述:</span><textarea class="border-two mt-20 ml-5 textarea-wh" name="description" th:text="${product.description}"></textarea></div>
+                <div><span class="text-size">商品种类:</span><input class="border-two mt-20 ml-5" type="text" value="" name="category" required/></div>
+                <div><span class="text-size">商品价格:</span><input class="border-two mt-20 ml-5" type="text" value="" name="price" required/></div>
+                <div><span class="text-size">商品描述:</span><textarea class="border-two mt-20 ml-5 textarea-wh" name="description" required></textarea></div>
                 <div><input type="submit" class=" mt-25 ml-5 btn-success btn-lg" value="提交商品信息"></div>
             </form>
         </div>
