@@ -78,14 +78,14 @@ public class BuyerController {
     public String logoutBuyer(HttpServletRequest request){
         HttpSession httpSession = request.getSession(false);
         if(httpSession == null) return "redirect:/";
-        httpSession.removeAttribute("user");
+        httpSession.removeAttribute("userBase");
         return "redirect:/";
     }
 
     @RequestMapping(value = "/orders")
     public String findBuyerOrders(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Buyer buyer = (Buyer) httpSession.getAttribute("user");
+        Buyer buyer = (Buyer) httpSession.getAttribute("userBase");
         Integer buyerId = buyer.getId();
         List<Order> orders = orderService.findOrdersByBuyerId(buyerId);
         model.addAttribute("orders",orders);
@@ -95,7 +95,7 @@ public class BuyerController {
     @RequestMapping(value = "/orders/waitdeliver")
     public String findBuyerOrdersWithStatusWaitDeliver(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Buyer buyer = (Buyer) httpSession.getAttribute("user");
+        Buyer buyer = (Buyer) httpSession.getAttribute("userBase");
         Integer buyerId = buyer.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusWaitDeliver(buyerId);
         model.addAttribute("orders",orders);
@@ -105,7 +105,7 @@ public class BuyerController {
     @RequestMapping(value = "/orders/onrejection")
     public String findBuyerOrdersWithStatusOnRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Buyer buyer = (Buyer) httpSession.getAttribute("user");
+        Buyer buyer = (Buyer) httpSession.getAttribute("userBase");
         Integer buyerId = buyer.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusOnRejection(buyerId);
         model.addAttribute("orders",orders);
@@ -115,7 +115,7 @@ public class BuyerController {
     @RequestMapping(value = "/orders/alreadyrejection")
     public String findBuyerOrdersWithStatusAlreadyRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Buyer buyer = (Buyer) httpSession.getAttribute("user");
+        Buyer buyer = (Buyer) httpSession.getAttribute("userBase");
         Integer buyerId = buyer.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusAlreadyRejection(buyerId);
         model.addAttribute("orders",orders);
@@ -125,7 +125,7 @@ public class BuyerController {
     @RequestMapping(value = "/orders/success")
     public String findBuyerOrdersWithStatusSuccess(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Buyer buyer = (Buyer) httpSession.getAttribute("user");
+        Buyer buyer = (Buyer) httpSession.getAttribute("userBase");
         Integer buyerId = buyer.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusSuccess(buyerId);
         model.addAttribute("orders",orders);

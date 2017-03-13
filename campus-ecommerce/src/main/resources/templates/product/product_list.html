@@ -84,7 +84,7 @@
             </form>
         </div>
         <div class="col-xs-5 float-right">
-            <form th:action="@{/product_list.html}" method="post">
+            <form th:action="@{/product/searchGood}"  method="get" >
                 <input type="text" name="search" placeholder="请输入关键字或商品名"/>
                 <input type="submit" name="submit" class="btn-primary" value="搜索"/>
             </form>
