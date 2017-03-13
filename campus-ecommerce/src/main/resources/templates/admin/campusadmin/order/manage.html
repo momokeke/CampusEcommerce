@@ -182,16 +182,16 @@
                     </td>
                     <td>
                         <th:block th:if="${order.status} eq 1">
-                            <a th:href="@{'/campusadmin/ordermanage/'+${order.id}+'/send'}" class="btn btn-primary">发货</a>
+                            <a th:href="@{'/campusadmin/ordermanage/changeStatus/'+${order.id}+'/send'}" class="btn btn-primary">发货</a>
                         </th:block>
                         <th:block th:if="${order.status} eq 2">
-                            <a th:href="@{'/campusadmin/ordermanage/'+${order.id}+'/finish'}" class="btn btn-primary">完成订单</a>
-                            <a th:href="@{'/campusadmin/ordermanage/'+${order.id}+'/back'}" class="btn btn-warning">退货</a>
+                            <a th:href="@{'/campusadmin/ordermanage/changeStatus/'+${order.id}+'/finish'}" class="btn btn-primary">完成订单</a>
+                            <a th:href="@{'/campusadmin/ordermanage/changeStatus/'+${order.id}+'/back'}" class="btn btn-warning">退货</a>
                         </th:block>
                         <th:block th:if="${order.status} eq 3">
-                            <a th:href="@{'/campusadmin/ordermanage/'+${order.id}+'/finish'}" class="btn btn-info">完成订单</a>
-                            <a th:href="@{'/campusadmin/ordermanage/'+${order.id}+'/finishBack'}" class="btn btn-primary">完成退货</a>
-                            <a th:href="@{'/campusadmin/ordermanage/'+${order.id}+'/cancelBack'}" class="btn btn-warning">撤销退货</a>
+                            <a th:href="@{'/campusadmin/ordermanage/changeStatus/'+${order.id}+'/finish'}" class="btn btn-info">完成订单</a>
+                            <a th:href="@{'/campusadmin/ordermanage/changeStatus/'+${order.id}+'/finishBack'}" class="btn btn-primary">完成退货</a>
+                            <a th:href="@{'/campusadmin/ordermanage/changeStatus/'+${order.id}+'/cancelBack'}" class="btn btn-warning">撤销退货</a>
                         </th:block>
                     </td>
                 </tr>
