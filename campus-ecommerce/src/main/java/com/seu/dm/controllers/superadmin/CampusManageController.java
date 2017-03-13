@@ -110,6 +110,10 @@ public class CampusManageController {
     @RequestMapping(value = "/deletecampus/{id}")
     public String deleteCampus(@PathVariable Integer id,HttpServletRequest request){
         int i = campusService.deleteCampusById(id);
+        List<SchoolAdmin>schoolAdmins = schoolAdminService.findAllSchoolAdminsBySchoolId(id);
+        for (SchoolAdmin schoolAdmin : schoolAdmins) {
+            schoolAdminService.deleteSchoolAdmin(schoolAdmin.getId());
+        }
         return "redirect:/superadmin/campusmanage/";
     }
 

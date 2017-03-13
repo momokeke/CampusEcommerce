@@ -7,54 +7,42 @@
 <!-- this is the common top end -->
 <div class="container-fluid row">
     <lfet data-th-replace="seller/sellercommon/left"></lfet>
-    <div class="col-md-6 row border-one border-radius mt-40 ml-30">
+    <div class="col-xs-7 row border-one border-radius mt-40 ml-30">
         <div class="mt-20">
-            <a href="#">卖家中心</a>
-            <span>&gt;</span>
-            <a href="#">登录店铺</a>
-            <span>&gt;</span>
-            <span>修改店铺信息</span>
+            <h2 class="active">卖家个人中心</h2>
             <hr/>
         </div>
-        <div class="col-md-4">
-            <form action="#" method="post">
-                <div><span class="text-size">卖家姓名:</span><input class="border-two mt-20 ml-5 bg-info" type="text" value=""/></div>
-                <div><span class="text-size">社团名称:</span><input class="border-two mt-20 ml-5 bg-success" type="text" value=""/></div>
-                <div><span class="text-size">店铺名称:</span><input class="border-two mt-20 ml-5 bg-warning" type="text" value=""/></div>
-                <div><span class="text-size">学生学号:</span><input class="border-two mt-20 ml-5 bg-info" type="text" value=""/></div>
-                <div><span class="text-size">手机号码:</span><input class="border-two mt-20 ml-5 bg-success" type="text" value=""/></div>
-                <div><span class="text-size">登录密码:</span><input class="border-two mt-20 ml-5 bg-warning" type="text" value=""/></div>
-                <div><span class="text-size">修改密码:</span><input class="border-two mt-20 ml-5 bg-danger" type="text" value=""/></div>
-                <div><input type="button" class=" mt-20 ml-5 btn-success btn-lg" value="提交修改信息"/></div>
-            </form>
-        </div>
-        <div class="col-md-6 ml-30">
-
-
-            <!--this is the shop login form begin-->
-            <div class="col-md-3">
-                <div class="form_fade border-one border-r6 mt-40">
-                    <form class="mt-40">
-                        <div class="form-group mb-5">
-                            <label for="shop_name">店铺名</label>
-                            <input type="text" class="form-control" id="shop_name"  placeholder="您注册的店铺名"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">密码</label>
-                            <input type="password" class="form-control" id="password" placeholder="输入您的登录密码"/>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-default mr-88 fadeout">登录</button>
-                        </div>
-                    </form>
-                </div>
+        <div>
+            <div class="text-center">
+                <img src="../img/account.png" class="icon_wh"/><br/>
+                <h2 style="color: cornflowerblue;">我的个人店铺</h2><br/>
             </div>
-            <!--this is the shop login form end-->
-
-
+        </div>
+        <div class="col-xs-4">
+            <h3 style="color: cornflowerblue;"><i class="iconfont">&#xe61a;</i>店铺管理须知</h3>
+            <ol>
+                <li>您已成功注册成为达米卖家</li>
+                <li>您可以在点击左侧导航栏进入修改信息页面，修改店铺信息</li>
+            </ol>
+        </div>
+        <div class="col-xs-4">
+            <h3 style="color: cornflowerblue;"><i class="iconfont">&#xe6db;</i>商品管理须知</h3>
+            <ol>
+                <li>发布新产品，可以上传商品图片</li>
+                <li>查看库存，管理库存，修改商品价格</li>
+            </ol>
+        </div>
+        <div class="col-xs-4">
+            <h3 style="color: cornflowerblue;"><i class="iconfont">&#xe626;</i>交易管理须知</h3>
+            <ol>
+                <li>查看订单信息</li>
+                <li>只可查看订单状态，不可修改</li>
+            </ol>
         </div>
     </div>
-    <div class="col-md-1"></div>
+    <div class="col-xs-1">
+        <right data-th-replace="seller/sellercommon/rightdate"></right>
+    </div>
 </div>
 
 
@@ -64,21 +52,9 @@
 
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="js/common/jquery-3.1.1.min.js"></script>
+<script src="../js/common/jquery-3.1.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="bootstrap/dist/js/bootstrap.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $(".shop_login").click(function(){
-            $(".form_fade").fadeIn();
-
-        });
-        $(".fadeout").click(function(){
-            $(".form_fade").fadeOut();
-
-        });
-    });
-</script>
+<script src="../bootstrap/dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>

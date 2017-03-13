@@ -3,13 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- Any Other things should follow these 3 meta above -->
     <title>店铺商品分类</title>
     <!-- Bootstrap -->
     <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
     <link href="/css/common.css" rel="stylesheet" />
     <link href="/css/shop_homepage.css" rel="stylesheet" />
+    <link href="/css/pop-up.css" rel="stylesheet" media="all"/>
+    <!-- Custom styles -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/js/common/jquery-3.1.1.min.js"></script>
+    <script src="/js/login.js"></script>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -19,12 +24,14 @@
 </head>
 <body>
 <!-- this is the common top begin -->
-<div data-th-replace="common_html/common_head"></div>
+<div class="container-fluid">
+    <div data-th-replace="common_html/common_head"></div>
+</div>
 <div class="container">
     <div class="row">
-        <a href="../index.html"><img class="col-md-3 logo_wh border-right" src="/img/cute_logo.jpg" style="padding: 0"/></a>
-        <div class="col-md-3">
-            <h3>店铺名称<small>社团名称</small></h3>
+        <a href="../index.html"><img class="col-xs-3 logo_wh border-right" src="/img/cute_logo.jpg" style="padding: 0"/></a>
+        <div class="col-xs-3 mt-20">
+            <a href="../shop/shop_homepage.html" th:href="@{/demo/shopHomepage}"><h3>淡雅墨色画社<small>绘画社</small></h3></a>
         </div>
         <form th:action="@{/product_list.html}">
             <div class="mt-20 float-right">
@@ -35,8 +42,8 @@
         </form>
     </div>
 </div>
-<div class="container-fluid"  style="padding: 0px">
-    <img src="/img/homepage_top.jpg" class="font-info mt-5"/>
+<div class="container-fluid" style="padding: 0px">
+    <img style="width: 100%" src="/img/homepage_top.jpg" class="font-info mt-5"/>
 </div>
 <div class="container mt-5">
     <div class="row">
@@ -54,28 +61,28 @@
 </div>
 <div class="container">
     <div class="row mt-40">
-        <div class="col-md-3"><a href="../product/product_details.html" th:href="@{/demo/productDetails}"><img src="/img/portraiture.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
-        <div class="col-md-3"><a href="../product/product_details.html"><img src="/img/show2.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
-        <div class="col-md-3"><a href="../product/product_details.html"><img src="/img/show3.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
-        <div class="col-md-3"><a href="../product/product_details.html"><img src="/img/show4.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
+        <div class="col-xs-3"><a href="../product/product_details.html" th:href="@{/product/product_detail/12}"><img src="/img/portraiture.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
+        <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show2.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
+        <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show3.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
+        <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show4.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
     </div>
     <div class="row mt-40">
-        <div class="col-md-3"><a href="../product/product_details.html"><img src="/img/show5.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
-        <div class="col-md-3"><a href="../product/product_details.html"><img src="/img/show6.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
-        <div class="col-md-3"><a href="../product/product_details.html"><img src="/img/show7.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
-        <div class="col-md-3"><a href="../product/product_details.html"><img src="/img/show8.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
+        <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show5.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
+        <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show6.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
+        <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show7.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
+        <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show8.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
     </div>
     <div class="row mt-40">
-        <div class="col-md-3"><a href="../product/product_details.html"><img src="/img/show3.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
-        <div class="col-md-3"><a href="../product/product_details.html"><img src="/img/show2.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
-        <div class="col-md-3"><a href="../product/product_details.html"><img src="/img/show1.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
-        <div class="col-md-3"><a href="../product/product_details.html"><img src="/img/show4.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
+        <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show3.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
+        <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show2.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
+        <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show1.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
+        <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show4.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
     </div>
     <div class="row mt-40">
-        <div class="col-md-3"><a href="../product/product_details.html"><img src="/img/show6.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
-        <div class="col-md-3"><a href="../product/product_details.html"><img src="/img/show8.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
-        <div class="col-md-3"><a href="../product/product_details.html"><img src="/img/show7.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
-        <div class="col-md-3"><a href="../product/product_details.html"><img src="/img/show5.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
+        <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show6.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
+        <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show8.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
+        <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show7.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
+        <div class="col-xs-3"><a href="../product/product_details.html"><img src="/img/show5.jpg" style="height: 240px;width: 240px;"/></a><div class="font-small"><span class="font-red font-middle">￥148</span><br/>这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画这是一幅水墨画</div></div>
     </div>
 </div>
 
@@ -85,17 +92,17 @@
 <div>
     <div class="container-fluid mt-60">
         <div class="row">
-            <div class="col-md-12 footer-info">
-                <div class="col-md-2 col-md-offset-3 mt-40 "><img src="/img/logo_button_1.jpg"/></div>
-                <div class="col-md-3 mt-40 "><img src="/img/logo_button_2.jpg " /><br/><span class="font-grey" >一家专门做校园文化产品的网站</span></div>
-                <div class="col-md-4 mt-60"><img class="qr-code"  src="/img/qr_code.png "/><br/><div class="mt-20 ">扫码有惊喜哦</div></div>
+            <div class="col-xs-12 footer-info">
+                <div class="col-xs-2 col-xs-offset-3 mt-40 "><img src="/img/logo_button_1.jpg"/></div>
+                <div class="col-xs-3 mt-40 "><img src="/img/logo_button_2.jpg " /><br/><span class="font-grey" >一家专门做校园文化产品的网站</span></div>
+                <div class="col-xs-4 mt-60"><img class="qr-code"  src="/img/qr_code.png "/><br/><div class="mt-20 ">扫码有惊喜哦</div></div>
             </div>
         </div>
     </div>
     <div class="container">
         <div class="row mt-20 font-small">
-            <div class="col-md-2 col-sm-2"></div>
-            <div class="col-md-8 col-sm-8">
+            <div class="col-xs-2 col-sm-2"></div>
+            <div class="col-xs-8 col-sm-8">
                 <div id="footer">
                     <div class="footerNav text-center">
                         <a href="#">关于我们</a> |
@@ -109,7 +116,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-2"></div>
+            <div class="col-xs-2"></div>
         </div>
     </div>
 </div>

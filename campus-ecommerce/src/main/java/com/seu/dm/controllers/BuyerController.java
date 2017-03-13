@@ -1,11 +1,19 @@
 package com.seu.dm.controllers;
 
 import com.seu.dm.entities.Buyer;
+import com.seu.dm.entities.Order;
 import com.seu.dm.services.BuyerService;
+import com.seu.dm.services.OrderService;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.List;
+
 /**
  * Created by 张老师 on 2017/3/3.
  */
@@ -15,7 +23,8 @@ import org.springframework.web.bind.annotation.*;
 public class BuyerController {
     @Autowired
     private BuyerService buyerService;
-
+    @Autowired
+    private OrderService orderService;
     /**
      * 注册用户
      * @param buyer
@@ -23,12 +32,12 @@ public class BuyerController {
      * @return
      */
     @RequestMapping(value = "/register",method = RequestMethod.POST)
-    public String addBuyer(Buyer buyer, Model model){
+    public String addBuyer(Buyer buyer, Model model, HttpServletRequest request){
+        HttpSession httpSession = request.getSession();
         System.out.println("call");
         int i = buyerService.addBuyer(buyer);
-        System.out.println("i = "+i);
-        if(i == 0) return "/index"; // 如果返回值为0 添加失败
-        return "demo/helloworld";
+        httpSession.setAttribute("user",buyer);
+        return "redirect:/";
     }
 
     /**
@@ -43,6 +52,78 @@ public class BuyerController {
         return "index";
     }
 
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    public String loginBuyer(Buyer buyer,HttpServletRequest request){
+//        Integer studentNumber = buyer.getStudentNumber();
+//        Buyer buyerFromDB = buyerService.findBuyerByStudentNumber(studentNumber);
+        String buyerName = buyer.getName();
+        Buyer buyerFromDB = buyerService.findBuyerByName(buyerName);
+        if(buyerFromDB == null) return "buyer/register";
+        if(buyer.getPassword().equals(buyerFromDB.getPassword())) {
+            HttpSession httpSession = request.getSession();
+            httpSession.setAttribute("user", buyer);
+            return "redirect:/";
+        }
+        return "";
+    }
+
+    @RequestMapping(value = "/buyerLogout")
+    public String logoutBuyer(HttpServletRequest request){
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null) return "redirect:/";
+        httpSession.removeAttribute("user");
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/orders")
+    public String findBuyerOrders(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        Buyer buyer = (Buyer) httpSession.getAttribute("user");
+        Integer buyerId = buyer.getId();
+        List<Order> orders = orderService.findOrdersByBuyerId(buyerId);
+        model.addAttribute("orders",orders);
+        return "redirect:/buyer/orders";
+    }
+
+    @RequestMapping(value = "/orders/waitdeliver")
+    public String findBuyerOrdersWithStatusWaitDeliver(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        Buyer buyer = (Buyer) httpSession.getAttribute("user");
+        Integer buyerId = buyer.getId();
+        List<Order> orders = orderService.findOrdersByBuyerIdWithStatusWaitDeliver(buyerId);
+        model.addAttribute("orders",orders);
+        return "redirect:/buyer/orders";
+    }
+
+    @RequestMapping(value = "/orders/onrejection")
+    public String findBuyerOrdersWithStatusOnRejection(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        Buyer buyer = (Buyer) httpSession.getAttribute("user");
+        Integer buyerId = buyer.getId();
+        List<Order> orders = orderService.findOrdersByBuyerIdWithStatusOnRejection(buyerId);
+        model.addAttribute("orders",orders);
+        return "redirect:/buyer/orders";
+    }
+
+    @RequestMapping(value = "/orders/alreadyrejection")
+    public String findBuyerOrdersWithStatusAlreadyRejection(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        Buyer buyer = (Buyer) httpSession.getAttribute("user");
+        Integer buyerId = buyer.getId();
+        List<Order> orders = orderService.findOrdersByBuyerIdWithStatusAlreadyRejection(buyerId);
+        model.addAttribute("orders",orders);
+        return "redirect:/buyer/orders";
+    }
+
+    @RequestMapping(value = "/orders/success")
+    public String findBuyerOrdersWithStatusSuccess(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        Buyer buyer = (Buyer) httpSession.getAttribute("user");
+        Integer buyerId = buyer.getId();
+        List<Order> orders = orderService.findOrdersByBuyerIdWithStatusSuccess(buyerId);
+        model.addAttribute("orders",orders);
+        return "redirect:/buyer/orders";
+    }
     /*
     *跳转到买家登录
      */
@@ -62,18 +143,33 @@ public class BuyerController {
     /*
     *跳到买家中心
      */
-    @RequestMapping(value = "/buyer_center")
+    @RequestMapping(value = "/center")
     public String jumpToBuyerCenter(){
         return "buyer/buyer_center";
     }
 
-    /*
-         *跳到买家购物车
-          */
+
+    /**
+     *跳到买家购物车
+    */
     @RequestMapping(value = "/shopping_cart")
     public String jumpToBuyerShoppingCart(){
         return "buyer/shopping_cart";
     }
+
+
+    @RequestMapping(value = "/shopping_cart_change")
+    @ResponseBody
+    public Object changeShoppingCart(@RequestParam Integer id,@RequestParam Integer newNum,HttpSession httpSession){
+        httpSession.setAttribute("cart",new HashMap<Integer,Integer>());
+        HashMap<Integer,Integer> cart = (HashMap<Integer,Integer>)httpSession.getAttribute("cart");
+        cart.put(id,newNum);
+        return "ok";
+    }
+
+
+
+
     /*
     *跳到买家收藏夹
      */

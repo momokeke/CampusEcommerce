@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head data-th-replace="seller/sellercommon/sellerhead"></head>
+<body>
+<!-- this is the common top begin -->
+<top data-th-replace="seller/sellercommon/top"></top>
+<!-- this is the common top end -->
+
+<div class="container-fluid row">
+    <lfet data-th-replace="seller/sellercommon/left"></lfet>
+    <div class="col-xs-7 row border-one border-radius mt-40 ml-30">
+        <div class="mt-20">
+            <a href="#">卖家中心</a>
+            <span>&gt;</span>
+            <a href="#">商品管理</a>
+            <span>&gt;</span>
+            <span>新品上架</span>
+            <hr/>
+        </div>
+        <form enctype="multipart/form-data" action="/product/addproduct" th:action="@{'/product/addProduct'}" method="post" name="newPro">
+        <div class="col-xs-4">
+                <div><span class="text-size">商品名称:</span><input class="border-two mt-20 ml-5" type="text" value="" name="name"/></div>
+                <div>
+                    <span class="text-size">社团名称:</span><input type="text" name="textfield" class="border-three mt-20 ml-5 text-center"/>
+                    <select name="communities" class="border-three" onChange="ShowToText()" style="width: 64px;">
+                        <option>绘画社</option>
+                    </select>
+            </div>
+                <div><span class="text-size">商品种类:</span><input class="border-two mt-20 ml-5" type="text" value="" name="category" /></div>
+                <div><span class="text-size">商品价格:</span><input class="border-two mt-20 ml-5" type="text" value="" name="price"/></div>
+                <div><span class="text-size">商品描述:</span><textarea class="border-two mt-20 ml-5 textarea-wh" name="description"></textarea></div>
+                <div><input type="submit" class=" mt-25 ml-5 btn-success btn-lg" value="提交商品信息"/></div>
+
+        </div>
+        <div class="col-xs-7">
+            <h3>请选择图片文件：JPG/GIF</h3>
+            <h5>建议像素：550px*500px</h5>
+
+                <input type="file" name="picture" id="picture" multiple="multiple" class="btn-default"/><button type="submit" class="btn btn-default">提交</button><br/>
+                <img src="../../img/new_pro.jpg" th:src="@{../../img/new_pro.jpg}" id="img0" alt="图片预览" title="图片预览" class="new-pro-img"/>
+        </div>
+        </form>
+    </div>
+</div>
+
+
+<!--This is the common footer Begin-->
+<bottom data-th-replace="seller/sellercommon/bottom"></bottom>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../js/common/jquery-3.1.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $(".shop_login").click(function(){
+            $(".form_fade").fadeIn();
+
+        });
+        $(".fadeout").click(function(){
+            $(".form_fade").fadeOut();
+
+        });
+    });
+    $("#file0").change(function(){
+        var objUrl = getObjectURL(this.files[0]) ;
+        console.log("objUrl = "+objUrl) ;
+        if (objUrl) {
+            $("#img0").attr("src", objUrl) ;
+        }
+    }) ;
+    //建立一個可存取到該file的url
+    function getObjectURL(file) {
+        var url = null ;
+        if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(file) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file) ;
+        }
+        return url ;
+    }
+</script>
+
+</body>
+</html>

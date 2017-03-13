@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -27,9 +30,13 @@ public class DemoController {
      * @return
      */
     @RequestMapping(value="/helloworld")
-    public String helloWorld(){
+    public String helloWorld(HttpServletRequest request, HttpServletResponse response){
         demoService.testAspect();
-
+        try {
+            response.sendRedirect("/");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "seller/new_products";
     }
 
@@ -128,9 +135,16 @@ public class DemoController {
     }
 
 
+
+
     @RequestMapping(value ="/seller")
     public  String jumpToSellerCenter(){
         return "seller/seller_center";
+    }
+
+    @RequestMapping(value ="/modify")
+    public  String jumpToModify(){
+        return "seller/modify_message";
     }
 
     @RequestMapping(value ="/new")
@@ -157,5 +171,6 @@ public class DemoController {
     public  String jumpToRefund(){
         return "seller/refund";
     }
-
+    @RequestMapping(value={"/register"})
+    public String jumpToRegister(){return "register";}
 }

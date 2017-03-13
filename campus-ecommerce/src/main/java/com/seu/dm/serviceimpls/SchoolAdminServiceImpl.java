@@ -39,12 +39,11 @@ public class SchoolAdminServiceImpl implements SchoolAdminService {
     @Override
     public int addSchoolAdminByNumAndName(Integer id, Integer studentNumber, String name) {
         SchoolAdmin schoolAdmin = new SchoolAdmin();
-        schoolAdmin.setSchoolId(id);
+        schoolAdmin.setCampusId(id);
         schoolAdmin.setName(name);
         schoolAdmin.setStudentNumber(studentNumber);
         int i = schoolAdminMapper.insert(schoolAdmin);
         return i;
-
     }
 
     @Override

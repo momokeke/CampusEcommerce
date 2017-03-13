@@ -6,7 +6,7 @@ import java.util.Date;
 public class Order {
     private Integer id;
 
-    private Integer oederProductId;
+    private Integer orderProductId;
 
     private Integer userId;
 
@@ -18,11 +18,54 @@ public class Order {
 
     private Integer shopId;
 
-    private String status;
+    private Integer status;
 
     private Integer payId;
 
     private Integer commentId;
+
+    private Integer campusId;
+
+    private Buyer buyer;
+
+
+    private Seller seller;
+
+    private Product product;
+
+    public OrderProduct getOrderProduct() {
+        return orderProduct;
+    }
+
+    public void setOrderProduct(OrderProduct orderProduct) {
+        this.orderProduct = orderProduct;
+    }
+
+    private OrderProduct orderProduct;
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    public Buyer getBuyer() {
+        return buyer;
+    }
+
+    public void setBuyer(Buyer buyer) {
+        this.buyer = buyer;
+    }
+
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
+    }
 
     public Integer getId() {
         return id;
@@ -32,12 +75,12 @@ public class Order {
         this.id = id;
     }
 
-    public Integer getOederProductId() {
-        return oederProductId;
+    public Integer getOrderProductId() {
+        return orderProductId;
     }
 
-    public void setOederProductId(Integer oederProductId) {
-        this.oederProductId = oederProductId;
+    public void setOrderProductId(Integer orderProductId) {
+        this.orderProductId = orderProductId;
     }
 
     public Integer getUserId() {
@@ -80,12 +123,12 @@ public class Order {
         this.shopId = shopId;
     }
 
-    public String getStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Integer getPayId() {
@@ -102,5 +145,13 @@ public class Order {
 
     public void setCommentId(Integer commentId) {
         this.commentId = commentId;
+    }
+
+    public Integer getCampusId() {
+        return campusId;
+    }
+
+    public void setCampusId(Integer campusId) {
+        this.campusId = campusId;
     }
 }

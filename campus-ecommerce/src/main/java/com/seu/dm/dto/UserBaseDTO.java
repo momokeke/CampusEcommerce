@@ -8,6 +8,28 @@ public class UserBaseDTO {
 
     private Integer id;
 
+    private Boolean isLogin;
+
+    public Integer getCampusId() {
+        return campusId;
+    }
+
+    public void setCampusId(Integer campusId) {
+        this.campusId = campusId;
+    }
+
+    private Integer campusId;
+
+    private Integer sellerId;
+
+    public Integer getSellerId() {
+        return sellerId;
+    }
+
+    public void setSellerId(Integer sellerId) {
+        this.sellerId = sellerId;
+    }
+
     public Integer getId() {
         return id;
     }
@@ -22,5 +44,13 @@ public class UserBaseDTO {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public Boolean getLogin() {
+        return isLogin;
+    }
+
+    public void setLogin(Boolean login) {
+        isLogin = login;
     }
 }

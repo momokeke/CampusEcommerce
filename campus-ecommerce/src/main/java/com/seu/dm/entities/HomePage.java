@@ -11,9 +11,21 @@ public class HomePage {
 
     private String description;
 
-    private Integer schoolId;
+    private Integer campusId;
 
-    private Boolean order;
+    private Integer positionId;
+
+    private Integer orderId;
+
+    private Integer pictureId;
+
+    public Integer getPictureId() {
+        return pictureId;
+    }
+
+    public void setPictureId(Integer pictureId) {
+        this.pictureId = pictureId;
+    }
 
     public Integer getId() {
         return id;
@@ -55,19 +67,27 @@ public class HomePage {
         this.description = description == null ? null : description.trim();
     }
 
-    public Integer getSchoolId() {
-        return schoolId;
+    public Integer getCampusId() {
+        return campusId;
     }
 
-    public void setSchoolId(Integer schoolId) {
-        this.schoolId = schoolId;
+    public void setCampusId(Integer campusId) {
+        this.campusId = campusId;
     }
 
-    public Boolean getOrder() {
-        return order;
+    public Integer getPositionId() {
+        return positionId;
     }
 
-    public void setOrder(Boolean order) {
-        this.order = order;
+    public void setPositionId(Integer positionId) {
+        this.positionId = positionId;
+    }
+
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
     }
 }

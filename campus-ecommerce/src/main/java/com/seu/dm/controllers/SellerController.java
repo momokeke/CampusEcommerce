@@ -1,6 +1,12 @@
 package com.seu.dm.controllers;
 
+import com.seu.dm.annotations.permissions.CampusAdminPermission;
+import com.seu.dm.annotations.permissions.SellerPermission;
+import com.seu.dm.dto.UserBaseDTO;
+import org.springframework.web.bind.annotation.*;
+import com.seu.dm.entities.Order;
 import com.seu.dm.entities.Seller;
+import com.seu.dm.services.OrderService;
 import com.seu.dm.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +16,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.List;
+
 /**
  * Created by 张老师 on 2017/3/6.
  */
@@ -18,16 +28,42 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SellerController {
     @Autowired
     private SellerService sellerService;
+    @Autowired
+    private OrderService orderService;
 
     /**
-     * 根据店铺注册信息向数据库添加一条店铺信息
+     * 根据店铺注册信息向数据库添加卖家
      * @param seller
      * @return
      */
-    @RequestMapping(value = "/addSellerInfo", method = RequestMethod.POST)
-    public String addSeller(Seller seller){
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String addSeller(Seller seller,HttpServletRequest request){
+        HttpSession httpSession = request.getSession();
+        System.out.println("call");
         sellerService.addSeller(seller);                //由service层负责添加工作
-        return "/";
+        httpSession.setAttribute("user",seller);
+        return "redirect:/";
+    }
+
+    @RequestMapping(value = "/login",method = RequestMethod.POST)
+    public String loginSeller(Seller seller,HttpServletRequest request){
+        String name = seller.getName();
+        Seller sellerFromDB = sellerService.findSellerByName(name);
+        if(sellerFromDB == null) return "seller/register";
+        if(seller.getPassword().equals(sellerFromDB.getPassword())) {
+            HttpSession httpSession = request.getSession();
+            httpSession.setAttribute("user", seller);
+            return "redirect:/";
+        }
+        return "";
+    }
+
+    @RequestMapping(value = "/sellerLogout")
+    public String logoutSeller(HttpServletRequest request){
+        HttpSession httpSession = request.getSession(false);
+        if(httpSession == null) return "redirect:/";
+        httpSession.removeAttribute("user");
+        return "redirect:/";
     }
 
     /**
@@ -118,7 +154,7 @@ public class SellerController {
     /*
     *进入买家中心页面
      */
-    @RequestMapping(value = "/seller_center")
+    @RequestMapping(value = "/center")
     public String jumpToSellerCenter() {
         return "seller/seller_center";
     }
@@ -127,5 +163,57 @@ public class SellerController {
     @RequestMapping(value = "/shop_homepage")
     public String test(){
         return "shop/shop_homepage";
+    }
+
+
+    @RequestMapping(value = "/ordersmanage")
+    @SellerPermission
+    public String getAllOrdersOfSeller(Model model, HttpSession httpSession){
+        // Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getSellerId();
+        Seller seller = (Seller)httpSession.getAttribute("user");
+        Integer sellerId = seller.getId();
+        List<Order> orders = orderService.findOrdersBySellerId(sellerId);
+        model.addAttribute("orders",orders);
+        return "seller/";
+    }
+
+    @RequestMapping(value = "/orders/waitdeliver")
+    public String findSellerOrdersWithStatusWaitDeliver(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        Seller seller = (Seller) httpSession.getAttribute("user");
+        Integer sellerId = seller.getId();
+        List<Order> orders = orderService.findOrdersBySellerIdWithStatusWaitDeliver(sellerId);
+        model.addAttribute("orders",orders);
+        return "redirect:/seller/orders";
+    }
+
+    @RequestMapping(value = "/orders/onrejection")
+    public String findSellerOrdersWithStatusOnRejection(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        Seller seller = (Seller) httpSession.getAttribute("user");
+        Integer sellerId = seller.getId();
+        List<Order> orders = orderService.findOrdersBySellerIdWithStatusOnRejection(sellerId);
+        model.addAttribute("orders",orders);
+        return "redirect:/seller/orders";
+    }
+
+    @RequestMapping(value = "/orders/alreadyrejection")
+    public String findSellerOrdersWithStatusAlreadyRejection(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        Seller seller = (Seller) httpSession.getAttribute("user");
+        Integer sellerId = seller.getId();
+        List<Order> orders = orderService.findOrdersBySellerIdWithStatusAlreadyRejection(sellerId);
+        model.addAttribute("orders",orders);
+        return "redirect:/seller/orders";
+    }
+
+    @RequestMapping(value = "/orders/success")
+    public String findSellerOrdersWithStatusSuccess(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        Seller seller = (Seller) httpSession.getAttribute("user");
+        Integer sellerId = seller.getId();
+        List<Order> orders = orderService.findOrdersBySellerIdWithStatusSuccess(sellerId);
+        model.addAttribute("orders",orders);
+        return "redirect:/seller/orders";
     }
 }

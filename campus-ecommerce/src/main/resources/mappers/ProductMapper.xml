@@ -35,6 +35,9 @@
     from product
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="getProductsByNameAndScreenByPrice" resultMap="ResultMapWithBLOBs">
+    select * from product WHERE NAME LIKE concat('%',#{s},'%')and price between #{minPrice} and #{maxPrice} order by price
+  </select>
   <select id="getProductsBySellerId" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select * from product where seller_id = #{sellerId}
   </select>

@@ -1,13 +1,16 @@
 package com.seu.dm.serviceimpls;
 
 import com.seu.dm.entities.Order;
-import com.seu.dm.mappers.OrderProductMapper;
-import com.seu.dm.mappers.OrderMapper;
-import com.seu.dm.mappers.ProductMapper;
+import com.seu.dm.entities.OrderProduct;
+import com.seu.dm.entities.Seller;
+import com.seu.dm.mappers.*;
 import com.seu.dm.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.expression.Lists;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,6 +25,10 @@ public class OrderServiceImpl implements OrderService {
     private OrderProductMapper orderProductMapper;
     @Autowired
     private ProductMapper productMapper;
+    @Autowired
+    private BuyerMapper buyerMapper;
+    @Autowired
+    private SellerMapper sellerMapper;
 
     @Override
     public int addOrder(Order order) {
@@ -42,6 +49,11 @@ public class OrderServiceImpl implements OrderService {
     public Order findOrder(Integer id) {
         return orderMapper.selectByPrimaryKey(id);
     }
+
+
+
+
+
 
     @Override
     public HashMap<String, Integer> findHotProductsFromOrder(Integer n) {
@@ -80,5 +92,88 @@ public class OrderServiceImpl implements OrderService {
             productNameAndNum.put(productName,sellNum);
         }
         return productNameAndNum;
+    }
+
+    @Override
+    public List<Order> findOrdersByCampusId(Integer campusId) {
+        List<Order> orders  = orderMapper.findOrdersByCampusId(campusId);
+        for(Order order : orders){
+            order.setBuyer(buyerMapper.selectByPrimaryKey(order.getUserId()));
+            order.setSeller(sellerMapper.selectByPrimaryKey(order.getSellerId()));
+            order.setOrderProduct(orderProductMapper.findOneOrderProductByOrderId(order.getId()));
+            order.setProduct(productMapper.selectByPrimaryKey(order.getOrderProduct().getId()));
+
+        }
+        return orders;
+    }
+
+    @Override
+    public Integer getCountByStatus(Integer status) {
+        return orderMapper.getCountByStatus(status);
+    }
+
+    @Override
+    public List<Order> screenOrders(Integer orderId, Integer orderStatus, Integer campusId) {
+
+        if(orderId != null) {
+           List<Order> orders = new ArrayList<>();
+           Order order = orderMapper.selectByPrimaryKey(orderId);
+           if(order == null) System.out.println("null");
+           orders.add(order);
+           return orders;
+        }
+        if("全部".equals(orderStatus)) return orderMapper.findOrdersByCampusId(campusId);
+        List<Order> orders = orderMapper.screenOrders(orderStatus,campusId);
+        return orders;
+    }
+
+    @Override
+    public List<Order> findOrdersBySellerId(Integer sellerId) {
+        return orderMapper.findOrdersBySellerId(sellerId);
+    }
+
+    @Override
+    public List<Order> findOrdersByBuyerId(Integer buyerId) {
+        return orderMapper.findOrdersByBuyerId(buyerId);
+    }
+
+    @Override
+    public List<Order> findOrdersByBuyerIdWithStatusWaitDeliver(Integer buyerId) {
+        return orderMapper.findOrdersByBuyerIdWithStatusWaitDeliver(buyerId);
+    }
+
+    @Override
+    public List<Order> findOrdersByBuyerIdWithStatusOnRejection(Integer buyerId) {
+        return orderMapper.findOrdersByBuyerIdWithStatusOnRejection(buyerId);
+    }
+
+    @Override
+    public List<Order> findOrdersByBuyerIdWithStatusAlreadyRejection(Integer buyerId) {
+        return orderMapper.findOrdersByBuyerIdWithStatusAlreadyRejection(buyerId);
+    }
+
+    @Override
+    public List<Order> findOrdersByBuyerIdWithStatusSuccess(Integer buyerId) {
+        return orderMapper.findOrdersByBuyerIdWithStatusSuccess(buyerId);
+    }
+
+    @Override
+    public List<Order> findOrdersBySellerIdWithStatusWaitDeliver(Integer sellerId) {
+        return orderMapper.findOrdersBySellerIdWithStatusWaitDeliver(sellerId);
+    }
+
+    @Override
+    public List<Order> findOrdersBySellerIdWithStatusOnRejection(Integer sellerId) {
+        return orderMapper.findOrdersBySellerIdWithStatusOnRejection(sellerId);
+    }
+
+    @Override
+    public List<Order> findOrdersBySellerIdWithStatusAlreadyRejection(Integer sellerId) {
+        return orderMapper.findOrdersBySellerIdWithStatusAlreadyRejection(sellerId);
+    }
+
+    @Override
+    public List<Order> findOrdersBySellerIdWithStatusSuccess(Integer sellerId) {
+        return orderMapper.findOrdersBySellerIdWithStatusSuccess(sellerId);
     }
 }

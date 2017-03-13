@@ -1,125 +1,154 @@
-/**
- * Created by Administrator on 2017/3/3.
- */
-//验证输入的店铺名和所属社团
-function checksname()
-{
-    var oName1 = document.getElementById("shop_name");//获取店铺和社团元素，此时为一个集合
-    oName1.value = "";//一旦点击input，文本框中的内容为空
-    //失去焦点，点击下一个文本框时，确认上一个文本框输入是否为空
-    oName1.onblur = function () {
-        check(oName1, oName1.nextElementSibling, "输入不可为空，请重新输入");
-    }
-}
-function checkbname()
-{
-    var oName1 = document.getElementById("name");//获取买家姓名元素，此时为一个集合
-    oName1.value = "";//一旦点击input，文本框中的内容为空
-    //失去焦点，点击下一个文本框时，确认上一个文本框输入是否为空
-    oName1.onblur = function () {
-        check(oName1, oName1.nextElementSibling, "输入不可为空，请重新输入");
-    }
-}
-function checkuname()
-{
-    var oName2 = document.getElementById("username");//获取店铺和社团元素，此时为一个集合
-    oName2.value = "";//一旦点击input，文本框中的内容为空
-    //失去焦点，点击下一个文本框时，确认上一个文本框输入是否为空
-    oName2.onblur = function () {
-        check(oName2, oName2.nextElementSibling, "输入不可为空，请重新输入");
-    }
-}
-function checkcard()
-{
-    var oName3= document.getElementById("card");//获取店铺和社团元素，此时为一个集合
-    oName3.value = "";//一旦点击input，文本框中的内容为空
-    //失去焦点，点击下一个文本框时，确认上一个文本框输入是否为空
-    oName3.onblur = function () {
-        check(oName3, oName3.nextElementSibling, "输入不可为空，请重新输入");
-    }
-}
-function checkpass()
-{
-    var oPassword=document.getElementById("password");
-    oPassword.value="";
-    oPassword.onblur=function()
-    {
-        check(oPassword,oPassword.nextElementSibling,"请设置您的密码");
-        if(oPassword.value.length<=8){
-            alert("密码长度不可小于8位");
-        }
-    }
-}
-function recheckpass() {
-    var rePass=document.getElementById("re_password");
-    var oPassword=document.getElementById("password");
-    rePass.value="";
-    rePass.onblur=function () {
-        if(rePass.value!=oPassword.value)
-        {
-            alert("两次输入密码不同");
-        }
 
-        check(rePass,rePass.nextElementSibling,"请再次输入您的密码");
-
+function display(){document.querySelector('.img__btn').addEventListener('click', function() {
+    document.querySelector('.cont').classList.toggle('s--signup');
+});}
+function checkEmail(sibling,str){
+    var reg =/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
+    if (!reg.test(str)){
+        sibling.style.display="inline"; sibling.innerHTML="邮箱格式不正确！";return false;
     }
+    else return true;
 }
-function checkemail(){
-    var x=document.forms["myForm"]["email"].value;
-    var atpos=x.indexOf("@");
-    var dotpos=x.lastIndexOf(".");
-    if (atpos<1 || dotpos<atpos+2 || dotpos+2>=x.length){
-        alert("不是一个有效的 e-mail 地址");
-        return false;
-    }
+function checkMobile(sibling,str){
+    var mobileZhengZe=/^1[3587]\d{9}$/;
+    if(!mobileZhengZe.test(str)){sibling.style.display="inline"; sibling.innerHTML="电话号码格式错误！";return false;}
+    else return true;
 }
-function checkphone() {
-    var oPhone=document.getElementById("phone");
-    oPhone.value="";
-    oPhone.onblur=function()
-    {
-        var re=/^1[358]\d{9}$/
-        if(re.test(oPhone.value)){
-            alert("手机号码输入正确");
-            return true;
-        }else{
-            alert("手机号码输入错误");
-            return false;
-        }
+function show(sibling,inputNode){
+    switch(inputNode.name){
+        case "name":sibling.innerHTML="请输入用户名！";break;
+        case "studentNumber":sibling.innerHTML="请输入学号！";break;
+        case "password":sibling.innerHTML="请设置密码！";break;
+        case "repass":sibling.innerHTML="请确认密码！";break;
+        case "email":sibling.innerHTML="请输入邮箱地址！";break;
+        case "address":sibling.innerHTML="请输入地址！";break;
+        case "shopName":sibling.innerHTML="请输入注册的店铺名！";break;
+        case "mobile":sibling.innerHTML="请输入电话号码！";
     }
 }
 
-function check(node,siblingNode,msg)
-{
-    if(!node.value)
-    {
-        node.value="";
-        if(siblingNode!=null)
-        {
-            show(siblingNode,msg);
-        }
-        return false;
-    }return true;
-}
-function show(node,str)
-{
-    node.innerHTML=str;
-    node.style.color="red";
-}
-function checkAll()
-{
-    var inputNode=document.getElementsByTagName("input");
-    for(var i=0;i<4;i++)
-    {
-        var str=i==0||i==1||i==2?"输入不可为空，请重新输入":"请设置您的密码";
-        if(check(inputNode[i],inputNode[i].nextSibling,str)&&i==3)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+function checkBuyerName(){
+    var buyer_name=document.getElementById("buyer-register").getElementsByTagName("input")[0];
+    buyer_name.onblur=function(){checkBuyer(this,this.nextSibling,buyer_name.value);}
+    buyer_name.onfocus=function(){buyer_name.nextSibling.innerHTML="";}}
+function checkBuyerStudentNumber(){
+    var buyer_student_number=document.getElementById("buyer-register").getElementsByTagName("input")[1];
+    buyer_student_number.onblur=function(){checkBuyer(this,this.nextSibling,buyer_student_number.value);}
+    buyer_student_number.onfocus=function(){buyer_student_number.nextSibling.innerHTML="";}}
+function checkBuyerPassword(){
+    var buyer_password=document.getElementById("buyer-register").getElementsByTagName("input")[2];
+    buyer_password.onblur=function(){checkBuyer(this,this.nextSibling,buyer_password.value);}
+    buyer_password.onfocus=function(){buyer_password.nextSibling.innerHTML="";}}
+function checkBuyerRepass(){
+    var buyer_repass=document.getElementById("buyer-register").getElementsByTagName("input")[3];
+    buyer_repass.onblur=function(){checkBuyer(this,this.nextSibling,buyer_repass.value);}
+    buyer_repass.onfocus=function(){buyer_repass.nextSibling.innerHTML="";}}
+function checkBuyerEmail(){
+    var buyer_email=document.getElementById("buyer-register").getElementsByTagName("input")[4];
+    buyer_email.onblur=function(){checkBuyer(this,this.nextSibling,buyer_email.value);}
+    buyer_email.onfocus=function (){buyer_email.nextSibling.innerHTML="";}}
+function checkBuyerAddress(){
+    var buyer_address=document.getElementById("buyer-register").getElementsByTagName("input")[5];
+    buyer_address.onblur=function(){checkBuyer(this,this.nextSibling,buyer_address.value);}
+    buyer_address.onfocus=function (){buyer_address.nextSibling.innerHTML=""; }}
+function checkBuyerMobile(){
+    var buyer_mobile=document.getElementById("buyer-register").getElementsByTagName("input")[6];
+    buyer_mobile.onblur=function(){checkBuyer(this,this.nextSibling,buyer_mobile.value);}
+    buyer_mobile.onfocus=function () {buyer_mobile.nextSibling.innerHTML="";}}
+function checkBuyer(inputNode,sibling,str){
+    if(str==""){sibling.style.diaplay="inline"; show(sibling,inputNode); return false;}
+    else if (inputNode.name=="repass"){var password=document.getElementById("buyer-register").getElementsByTagName("input")[2].value;if(str!=password){sibling.style.display="inline"; sibling.innerHTML="两次密码不一致！";return false;}else {sibling.style.color="green";sibling.style.display="inline"; sibling.innerHTML="验证通过";return true;}}
+    else if(inputNode.name=="email"){if(!checkEmail(sibling,str)){return false;}return true;}
+    else if(inputNode.name=="mobile"){if(!checkMobile(sibling,str)){return false;}return true;}
+    else if (inputNode.name=="student_number"){inputNode.value=str.replace(/[^0-9-]+/,'');return true;}
+    else if (inputNode.name=="password"){if(str.length< 6){sibling.innerHTML="密码至少为6位！";return false;}return true;}
+    else{
+        return true;
     }
+}
+function checkBuyerAll(){
+
+    var buyer_name=document.getElementById("buyer-register").getElementsByTagName("input")[0];
+    var buyer_student_number=document.getElementById("buyer-register").getElementsByTagName("input")[1];
+    var buyer_password=document.getElementById("buyer-register").getElementsByTagName("input")[2];
+    var buyer_repass=document.getElementById("buyer-register").getElementsByTagName("input")[3];
+    var buyer_email=document.getElementById("buyer-register").getElementsByTagName("input")[4];
+    var buyer_address=document.getElementById("buyer-register").getElementsByTagName("input")[5];
+    var buyer_mobile=document.getElementById("buyer-register").getElementsByTagName("input")[6];
+    if(
+        !checkBuyer(buyer_name,buyer_name.nextSibling,buyer_name.value) ||
+        !checkBuyer(buyer_student_number,buyer_student_number.nextSibling,buyer_student_number.value) ||
+        !checkBuyer(buyer_password,buyer_password.nextSibling,buyer_password.value) ||
+        !checkBuyer(buyer_repass,buyer_repass.nextSibling,buyer_repass.value) ||
+        !checkBuyer(buyer_email,buyer_email.nextSibling,buyer_email.value) ||
+        !checkBuyer(buyer_address,buyer_address.nextSibling,buyer_address.value) ||
+        !checkBuyer(buyer_mobile,buyer_mobile.nextSibling,buyer_mobile.value)) {return false;}
+    else {alert("注册成功！");return true;}
 
 }
+
+function checkSellerName(){
+    var seller_name=document.getElementById("seller-register").getElementsByTagName("input")[0];
+    seller_name.onblur=function(){checkSeller(this,this.nextSibling,seller_name.value);}
+    seller_name.onfocus=function(){seller_name.nextSibling.innerHTML="";}}
+function checkSellerStudentNumber(){
+    var seller_student_number=document.getElementById("seller-register").getElementsByTagName("input")[1];
+    seller_student_number.onblur=function(){checkSeller(this,this.nextSibling,seller_student_number.value);}
+    seller_student_number.onfocus=function(){seller_student_number.nextSibling.innerHTML="";}}
+function checkSellerPassword(){
+    var seller_password=document.getElementById("seller-register").getElementsByTagName("input")[2];
+    seller_password.onblur=function(){checkSeller(this,this.nextSibling,seller_password.value);}
+    seller_password.onfocus=function(){seller_password.nextSibling.innerHTML="";}}
+function checkSellerRepass(){
+    var seller_repass=document.getElementById("seller-register").getElementsByTagName("input")[3];
+    seller_repass.onblur=function(){checkSeller(this,this.nextSibling,seller_repass.value);}
+    seller_repass.onfocus=function(){seller_repass.nextSibling.innerHTML="";}}
+function checkSellerShopName(){
+    var seller_shop_name=document.getElementById("seller-register").getElementsByTagName("input")[4];
+    seller_shop_name.onblur=function(){checkSeller(this,this.nextSibling,seller_shop_name.value);}
+    seller_shop_name.onfocus=function (){seller_shop_name.nextSibling.innerHTML="";}}
+function checkSellerAddress(){
+    var seller_address=document.getElementById("seller-register").getElementsByTagName("input")[5];
+    seller_address.onblur=function(){checkSeller(this,this.nextSibling,seller_address.value);}
+    seller_address.onfocus=function (){seller_address.nextSibling.innerHTML=""; }}
+function checkSellerMobile(){
+    var seller_mobile=document.getElementById("seller-register").getElementsByTagName("input")[6];
+    seller_mobile.onblur=function(){checkSeller(this,this.nextSibling,seller_mobile.value);}
+    seller_mobile.onfocus=function () {seller_mobile.nextSibling.innerHTML="";}}
+function checkSeller(inputNode,sibling,str){
+    if(str==""){sibling.style.diaplay="inline"; show(sibling,inputNode); return false;}
+    else if (inputNode.name=="repass"){var password=document.getElementById("seller-register").getElementsByTagName("input")[2].value;if(str!=password){sibling.style.display="inline"; sibling.innerHTML="两次密码不一致！";return false;}else {sibling.style.color="green";sibling.style.display="inline"; sibling.innerHTML="验证通过";return true;}}
+    else if(inputNode.name=="mobile"){if(!checkMobile(sibling,str)){return false;}return true;}
+    else if (inputNode.name=="student_number"){inputNode.value=str.replace(/[^0-9-]+/,'');return true;}
+    else if (inputNode.name=="password"){if(str.length< 6){sibling.innerHTML="密码至少为6位！";return false;}return true;}
+    else{
+        return true;
+    }
+}
+function checkSellerAll(){
+
+    var seller_name=document.getElementById("seller-register").getElementsByTagName("input")[0];
+    var seller_student_number=document.getElementById("seller-register").getElementsByTagName("input")[1];
+    var seller_password=document.getElementById("seller-register").getElementsByTagName("input")[2];
+    var seller_repass=document.getElementById("seller-register").getElementsByTagName("input")[3];
+    var seller_shop_name=document.getElementById("seller-register").getElementsByTagName("input")[4];
+    var seller_address=document.getElementById("seller-register").getElementsByTagName("input")[5];
+    var seller_mobile=document.getElementById("seller-register").getElementsByTagName("input")[6];
+    if(
+        !checkSeller(seller_name,seller_name.nextSibling,seller_name.value) ||
+        !checkSeller(seller_student_number,seller_student_number.nextSibling,seller_student_number.value) ||
+        !checkSeller(seller_password,seller_password.nextSibling,seller_password.value) ||
+        !checkSeller(seller_repass,seller_repass.nextSibling,seller_repass.value) ||
+        !checkSeller(seller_shop_name,seller_shop_name.nextSibling,seller_shop_name.value) ||
+        !checkSeller(seller_address,seller_address.nextSibling,seller_address.value) ||
+        !checkSeller(seller_mobile,seller_mobile.nextSibling,seller_mobile.value)) {return false;}
+    else {alert("注册成功！");return true;}
+
+}
+
+window.onload=function(){
+        display();
+        checkBuyerName();checkBuyerStudentNumber();checkBuyerPassword();checkBuyerRepass();checkBuyerEmail();checkBuyerAddress();checkBuyerMobile();
+        checkSellerName();checkSellerStudentNumber();checkSellerPassword();checkSellerRepass();checkSellerShopName();checkSellerAddress();checkSellerMobile();
+    }
+

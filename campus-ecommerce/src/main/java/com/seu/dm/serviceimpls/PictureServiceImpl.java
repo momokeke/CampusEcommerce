@@ -11,28 +11,27 @@ import org.springframework.stereotype.Service;
  */
 @Service
 public class PictureServiceImpl implements PictureService{
+
     @Autowired
-    private PictureMapper pictureMapper;
+    PictureMapper pictureMapper;
+
+    @Override
+    public Picture getPictureById(Integer id) {
+        return pictureMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public int updatePicture(Picture picture) {
+        return pictureMapper.updateByPrimaryKeySelective(picture);
+    }
+
+    @Override
+    public int deletePictureById(Integer id) {
+        return pictureMapper.deleteByPrimaryKey(id);
+    }
 
     @Override
     public int addPicture(Picture picture) {
         return pictureMapper.insert(picture);
     }
-
-    @Override
-    public int deletePicture(Integer id) {
-        return pictureMapper.deleteByPrimaryKey(id);
-    }
-
-    @Override
-    public int updatePicture(Picture picture) {
-        return pictureMapper.updateByPrimaryKey(picture);
-    }
-
-    @Override
-    public Picture findPicture(Integer id) {
-        return pictureMapper.selectByPrimaryKey(id);
-    }
-
-
 }
