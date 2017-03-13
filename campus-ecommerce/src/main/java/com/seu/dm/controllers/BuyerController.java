@@ -203,7 +203,7 @@ public class BuyerController {
         Map<Integer,Integer> cartMap = (Map<Integer,Integer>)httpSession.getAttribute("cart");
         cartMap.remove(id);
         httpSession.setAttribute("cartMap",cartMap);
-        return "buyer/shopping_cart";
+        return "redirect:/buyer/shopping_cart";
     }
 
     /*
@@ -211,12 +211,16 @@ public class BuyerController {
      */
 
     @RequestMapping(value = "/shopping_cart/add/{id}")
-    public String addProductFromCart(@PathVariable Integer id,HttpSession httpSession,Model model){
-        httpSession.setAttribute("cart",new HashMap<Integer,Integer>());
-        HashMap<Integer,Integer> cartMap = (HashMap<Integer,Integer>)httpSession.getAttribute("cart");
+    public String addProductFromCart( @PathVariable Integer id, HttpSession httpSession, Model model){
+        HashMap<Integer,Integer> cartMap = null;
+        if(httpSession.getAttribute("cart") == null){
+            cartMap = new HashMap<>();
+        }else {
+            cartMap = (HashMap<Integer, Integer>) httpSession.getAttribute("cart");
+        }
         cartMap.put(id,1);
         httpSession.setAttribute("cart",cartMap);
-        return "buyer/shopping_cart";
+        return "redirect:/buyer/shopping_cart";
     }
 
 

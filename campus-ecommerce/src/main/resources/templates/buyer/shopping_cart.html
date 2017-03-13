@@ -87,11 +87,11 @@
                             <img src="/img/adding.jpg" alt="add" onclick="changeNum('num_1','add')"  class="hand"/>
                         </td>
                         <td class="cart_td_7"></td>
-                        <td class="cart_td_8"><a href="javascript:deleteRow('product1');">删除</a></td>
+                        <td class="cart_td_8"><a th:href="@{'/buyer/shopping_cart/remove/'+${cartProduct.id}}">删除</a></td>
                     </tr>
                     <tr>
-                        <td  colspan="3"><a href="javascript:deleteSelectRow()"><img src="/img/del.jpg" alt="delete"/></a></td>
-                        <td colspan="5" class="shop_end">商品总价（不含运费）：<label id="total" class="yellow"></label> 元<br />
+                        <td  colspan="3"></td>
+                        <td colspan="5" class="shop_end">商品总价：<label id="total" class="yellow"></label> 元<br />
                             <input name=" " type="image" src="/img/subtn.jpg" /></td>
                     </tr>
 
