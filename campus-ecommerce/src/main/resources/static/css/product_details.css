@@ -33,3 +33,63 @@
 .ml-10{
   margin-left: 10px;
 }
+.pt-40{
+  padding-top: 40px;
+}
+.pb-40{
+  padding-bottom: 40px;
+}
+.mt-28{
+  margin-top: 28px;
+}
+/**按钮*/
+.btn-style{
+  text-decoration: none;
+  display: inline-block;
+  height: 40px;
+  width: 150px;
+  background-color: #f0be48;
+  line-height: 40px;
+  text-align: center;
+  position: relative;
+  margin: 15px;
+  color: #f7f7f7;
+}
+
+.btn-style:before,
+.btn-style:after
+{
+  -webkit-transition: .3s ease;
+  transition: .3s ease;
+}
+.btn-style:before,
+.btn-style:after
+{
+  content: '';
+  width: 150px;
+  height: 40px;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  box-sizing: border-box;
+}
+
+.btn-style:before {
+  border-right: 1px solid #f9c74c;
+  border-bottom: 1px solid #f9c74c;
+}
+
+.btn-style:after {
+  border-left: 1px solid #f9c74c;
+  border-top: 1px solid #f9c74c;
+}
+
+.btn-style:hover:before {
+  -webkit-transform: translate(4px, 4px);
+  transform: translate(4px, 4px);
+}
+
+.btn-3:hover:after {
+  -webkit-transform: translate(-4px, -4px);
+  transform: translate(-4px, -4px);
+}
