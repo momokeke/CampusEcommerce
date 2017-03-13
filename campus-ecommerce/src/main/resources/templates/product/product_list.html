@@ -74,9 +74,8 @@
                     <div class="col-xs-3 mt-20" >
                         <a href="product_details.html" th:href="@{'/product/product_detail/'+${entity.id}}"><span th:text="${entity.name}" style="font-size: 17px">商品名称</span></a><br/>
                         <e>¥ <span class="font-red font-17" th:text="${entity.price}">100</span></e>
-
                     </div>
-                    <div class="col-xs-3 font-md" >
+                    <div class="col-xs-6 font-md" >
                         <p class="mt-10" th:text="${entity.description}">商品描述</p>
                     </div>
                 </div>
