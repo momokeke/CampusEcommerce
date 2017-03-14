@@ -41,7 +41,13 @@ public class SellerController {
         HttpSession httpSession = request.getSession();
         System.out.println("call");
         sellerService.addSeller(seller);                //由service层负责添加工作
-        httpSession.setAttribute("user",seller);
+        Seller sellerFromDB = sellerService.findSellerByName(seller.getName());
+        UserBaseDTO userBase = new UserBaseDTO();
+        userBase.setRole("seller");
+        userBase.setId(sellerFromDB.getId());
+        userBase.setLogin(true);
+        userBase.setCampusId(1);
+        httpSession.setAttribute("userBase",userBase);
         return "redirect:/";
     }
 
@@ -170,7 +176,7 @@ public class SellerController {
     @SellerPermission
     public String getAllOrdersOfSeller(Model model, HttpSession httpSession){
         // Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getSellerId();
-        Seller seller = (Seller)httpSession.getAttribute("user");
+        Seller seller = (Seller)httpSession.getAttribute("userBase");
         Integer sellerId = seller.getId();
         List<Order> orders = orderService.findOrdersBySellerId(sellerId);
         model.addAttribute("orders",orders);
@@ -180,7 +186,7 @@ public class SellerController {
     @RequestMapping(value = "/orders/waitdeliver")
     public String findSellerOrdersWithStatusWaitDeliver(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("user");
+        Seller seller = (Seller) httpSession.getAttribute("userBase");
         Integer sellerId = seller.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusWaitDeliver(sellerId);
         model.addAttribute("orders",orders);
@@ -190,7 +196,7 @@ public class SellerController {
     @RequestMapping(value = "/orders/onrejection")
     public String findSellerOrdersWithStatusOnRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("user");
+        Seller seller = (Seller) httpSession.getAttribute("userBase");
         Integer sellerId = seller.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusOnRejection(sellerId);
         model.addAttribute("orders",orders);
@@ -200,7 +206,7 @@ public class SellerController {
     @RequestMapping(value = "/orders/alreadyrejection")
     public String findSellerOrdersWithStatusAlreadyRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("user");
+        Seller seller = (Seller) httpSession.getAttribute("userBase");
         Integer sellerId = seller.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusAlreadyRejection(sellerId);
         model.addAttribute("orders",orders);
@@ -210,7 +216,7 @@ public class SellerController {
     @RequestMapping(value = "/orders/success")
     public String findSellerOrdersWithStatusSuccess(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("user");
+        Seller seller = (Seller) httpSession.getAttribute("userBase");
         Integer sellerId = seller.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusSuccess(sellerId);
         model.addAttribute("orders",orders);

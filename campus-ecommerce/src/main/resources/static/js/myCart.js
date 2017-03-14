@@ -33,10 +33,10 @@ function productCount(){
 	if(myTableTr.length>0){
 	for(var i=1;i<myTableTr.length;i++){/*从1开始，第一行的标题不计算*/
 	    if(myTableTr[i].getElementsByTagName("td").length>2){ //最后一行不计算
-		price=myTableTr[i].getElementsByTagName("td")[3].innerHTML;
-		number=myTableTr[i].getElementsByTagName("td")[4].getElementsByTagName("input")[0].value;
+		price=myTableTr[i].getElementsByTagName("td")[4].innerHTML;
+		number=myTableTr[i].getElementsByTagName("td")[5].getElementsByTagName("input")[0].value;
 		total+=price*number;
-		myTableTr[i].getElementsByTagName("td")[5].innerHTML=price*number;
+		myTableTr[i].getElementsByTagName("td")[6].innerHTML=price*number;
 		}
 	}
 	document.getElementById("total").innerHTML=total;
@@ -72,26 +72,26 @@ function selectSingle(){
 }
 
 /*删除单行商品*/
-function deleteRow(rowId){
-	var Index=document.getElementById(rowId).rowIndex; //获取当前行的索引
-	document.getElementById("shopping").deleteRow(Index);
-	document.getElementById("shopping").deleteRow(Index-1);
-	productCount();
-	}
+// function deleteRow(rowId){
+// 	var Index=document.getElementById(rowId).rowIndex; //获取当前行的索引
+// 	document.getElementById("shopping").deleteRow(Index);
+// 	//document.getElementById("shopping").deleteRow(Index-1);
+// 	productCount();
+// 	}
 
 /*删除选中行的商品*/
-function deleteSelectRow(){
-	var oInput=document.getElementsByName("cartCheckBox");
-	var Index;
-	 for (var i=oInput.length-1;i>=0;i--){
-	   if(oInput[i].checked==true){
-		 Index=document.getElementById(oInput[i].value).rowIndex; /*获取选中行的索引号*/
-		 document.getElementById("shopping").deleteRow(Index);
-	     document.getElementById("shopping").deleteRow(Index-1);
-	    }
-	}
-	productCount();
-	}
+// function deleteSelectRow(){
+// 	var oInput=document.getElementsByName("cartCheckBox");
+// 	var Index;
+// 	 for (var i=oInput.length-1;i>=0;i--){
+// 	   if(oInput[i].checked==true){
+// 		 Index=document.getElementById(oInput[i].value).rowIndex; /*获取选中行的索引号*/
+// 		 document.getElementById("shopping").deleteRow(Index);
+// 	     //document.getElementById("shopping").deleteRow(Index-1);
+// 	    }
+// 	}
+// 	productCount();
+// 	}
 
 
 
@@ -115,8 +115,8 @@ var cartClient = {
     }
 }
 
-cartClient.send(1,2,function(){
-
-})
+// cartClient.send(1,2,function(){
+//
+// })
 
 

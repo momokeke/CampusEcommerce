@@ -42,7 +42,7 @@
                     <a href="#">秒杀</a>
                 </div>
                 <div class="col-xs-4">
-                    <form class="form-inline" th:action="@{/product_list.html}">
+                    <form class="form-inline" th:action="@{/product/searchGood}">
                         <div class="form-group">
                             <input type="text" name="search" class="form-control search" placeholder="商品关键字" />
                         </div>
@@ -82,12 +82,14 @@
                     </div>
                 </div>
             </div>
-            <div class="row text-center" >
-                <button class="col-xs-2 btn-style">立即购买</button>
-                <button class="col-xs-3 btn-style">
+        </div>
+            <div class="row mt-40 ml-10 text-center" >
+                <button class="btn btn-danger col-xs-3 mr-5">立即购买</button>
+                <a class="btn btn-danger col-xs-3" th:href="@{'/buyer/shopping_cart/add/'+${product.id}}">
                     <span class="glyphicon glyphicon-shopping-cart"></span>
-                    加入购物车</button>
-                <button type="button" class="float-right mr-15 btn-style">我的购物车 <span class="badge">3</span></button>
+                    加入购物车</a>
+                <a type="button" class="btn btn-danger float-right mr-15 " th:href="@{'/buyer/shopping_cart'}">我的购物车 <span class="badge">3</span></a>
+
             </div>
         </div>
     </div>
@@ -223,6 +225,7 @@
     </div>
 </div>
 
+
 <script type="text/javascript">
     function changeNum(numId, flag) {
         var numId = document.getElementById(numId);
@@ -233,9 +236,32 @@
     }
 </script>
 
+
+
+<div id="popup">
+    <div class="bg"><img style="position: absolute; top:200px; left:200px;" src="" alt=""/></div>
+</div>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/js/common/jquery-3.1.1.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    var img = document.getElementsByTagName("img").item(1);
+    var popup = document.getElementById("popup");
+
+    img.onclick = function (event) {
+        event = event || window.event;
+        var target = document.elementFromPoint(event.clientX, event.clientY);
+        showBig(target.src);
+    }
+    popup.onclick = function (){
+        popup.style.display = "none";
+    }
+    function showBig(src){
+        popup.getElementsByTagName("img")[0].src = src;
+        popup.style.display = "block";
+    }
+</script>
 </body>
 </html>

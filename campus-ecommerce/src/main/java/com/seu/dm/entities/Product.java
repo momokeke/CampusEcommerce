@@ -8,6 +8,16 @@ public class Product {
 
     private String name;
 
+    private Integer inventory;
+
+    public Integer getInventory() {
+        return inventory;
+    }
+
+    public void setInventory(Integer inventory) {
+        this.inventory = inventory;
+    }
+
     private BigDecimal price;
 
     private Integer sellerId;
