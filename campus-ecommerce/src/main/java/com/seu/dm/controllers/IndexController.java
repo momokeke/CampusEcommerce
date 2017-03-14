@@ -41,7 +41,7 @@ public class IndexController {
         UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
         HomePage homePage = new HomePage();
 
-        homePage.setCampusId(userBase.getCampusId());
+        //homePage.setCampusId(userBase.getCampusId());
         homePage.setCampusId(1);
         homePage.setPositionId(1);
         PageHelper.startPage(1,3);

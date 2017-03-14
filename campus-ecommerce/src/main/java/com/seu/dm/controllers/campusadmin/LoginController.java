@@ -51,7 +51,7 @@ public class LoginController {
             userBase.setLogin(true);
             userBase.setRole("campusAdmin");
             httpSession.setAttribute("userBase" , userBase);
-            return "redirect: /campusadmin/";
+            return "redirect:/campusadmin/";
         }else{
             model.addAttribute("isWrong",true);
             return "admin/campusadmin/login";

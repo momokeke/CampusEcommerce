@@ -29,21 +29,21 @@ public class PermissionsInterceptor extends HandlerInterceptorAdapter {
 
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         Method method = handlerMethod.getMethod();
-        return forTesting(request,method);
-//        if(method.getAnnotation(SuperAdminPermission.class)!=null){
-//            return verifySuperAdmin(request,response);
-//        }
-//        if(method.getAnnotation(CampusAdminPermission.class)!=null){
-//            return verifyCampusAdmin(request,response);
-//        }
-//        if(method.getAnnotation(SellerPermission.class)!=null){
-//            return verifySeller(request,response);
-//        }
-//        if(method.getAnnotation(BuyerPermission.class)!=null){
-//            return verifyBuyer(request,response);
-//        }
-//
-//        return true;
+        //return forTesting(request,method);
+        if(method.getAnnotation(SuperAdminPermission.class)!=null){
+            return verifySuperAdmin(request,response);
+        }
+        if(method.getAnnotation(CampusAdminPermission.class)!=null){
+            return verifyCampusAdmin(request,response);
+        }
+        if(method.getAnnotation(SellerPermission.class)!=null){
+            return verifySeller(request,response);
+        }
+        if(method.getAnnotation(BuyerPermission.class)!=null){
+            return verifyBuyer(request,response);
+        }
+
+        return true;
 
     }
 

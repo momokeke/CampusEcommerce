@@ -44,10 +44,10 @@ public class LoginController {
             userBase.setId(0);
             userBase.setRole("superAdmin");
             httpSession.setAttribute("userBase" , userBase);
-            return "redirect: /superadmin/";
+            return "redirect:/superadmin/";
         }else{
             model.addAttribute("isWrong",true);
-            return "admin/superadmin/login/";
+            return "admin/superadmin/login";
         }
     }
 }
