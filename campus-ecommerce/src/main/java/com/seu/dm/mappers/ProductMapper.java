@@ -36,4 +36,6 @@ public interface ProductMapper {
                                                     @Param(value = "maxPrice") Double maxPrice);
 
     List<Product> getNewProductsByCampusId(Integer campusId);
+
+    List<Product> getCheapProductsByCampusId(Integer campusId);
 }

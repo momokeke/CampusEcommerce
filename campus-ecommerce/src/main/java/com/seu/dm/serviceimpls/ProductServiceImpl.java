@@ -191,4 +191,11 @@ public class ProductServiceImpl implements ProductService{
     public List<Product> findNewProducts(Integer campusId) {
         return productMapper.getNewProductsByCampusId(campusId);
     }
+
+
+    @Override
+    public List<Product> findCheapProducts(Integer campusId) {
+        return productMapper.getCheapProductsByCampusId(campusId);
+    }
+
 }

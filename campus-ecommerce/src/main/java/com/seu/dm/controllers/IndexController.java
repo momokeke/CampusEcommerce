@@ -57,6 +57,9 @@ public class IndexController {
         List<Product> newProducts = productService.findNewProducts(campusId);
         model.addAttribute("newProducts",newProducts);
 
+        PageHelper.startPage(1,6);
+        List<Product> cheapProducts = productService.findCheapProducts(campusId);
+        model.addAttribute("cheapProducts",cheapProducts);
 
 
 

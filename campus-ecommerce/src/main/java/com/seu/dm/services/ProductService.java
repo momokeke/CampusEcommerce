@@ -42,4 +42,6 @@ public interface ProductService {
 
     List<Product> findNewProducts(Integer campusId);
 
+    List<Product> findCheapProducts(Integer campusId);
+
 }
