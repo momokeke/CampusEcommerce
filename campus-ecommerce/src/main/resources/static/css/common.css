@@ -240,3 +240,7 @@
 .container { width: 1280px !important; max-width: none !important; }
 .container-fluid { width: 1680px !important; max-width: none !important; }
 a:hover {text-decoration: none;}
+
+.pt-20{
+    padding-top: 20px;
+}
