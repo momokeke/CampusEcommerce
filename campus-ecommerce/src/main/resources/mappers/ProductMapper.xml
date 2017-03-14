@@ -28,6 +28,11 @@
   <sql id="Blob_Column_List">
     description
   </sql>
+  <select id="getNewProductsByCampusId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select p.id , p.name, p.price, p.picture_id
+    from product as p left join seller s ON p.seller_id = s.id
+    where s.campus_id = #{campusId} order by p.add_time desc
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />

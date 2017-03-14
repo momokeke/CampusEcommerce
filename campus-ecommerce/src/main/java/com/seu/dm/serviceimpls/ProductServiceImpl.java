@@ -186,4 +186,9 @@ public class ProductServiceImpl implements ProductService{
         return productMapper.getProductsByNameAndScreenByPrice(name,minPrice,maxPrice);
 
     }
+
+    @Override
+    public List<Product> findNewProducts(Integer campusId) {
+        return productMapper.getNewProductsByCampusId(campusId);
+    }
 }

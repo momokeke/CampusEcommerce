@@ -34,4 +34,6 @@ public interface ProductMapper {
     List<Product> getProductsByNameAndScreenByPrice(@Param(value = "s") String s,
                                                     @Param(value = "minPrice") Double minPrice,
                                                     @Param(value = "maxPrice") Double maxPrice);
+
+    List<Product> getNewProductsByCampusId(Integer campusId);
 }
