@@ -39,10 +39,10 @@ function productCount(){
 	if(myTableTr.length>0){
 	for(var i=1;i<myTableTr.length;i++){/*从1开始，第一行的标题不计算*/
 	    if(myTableTr[i].getElementsByTagName("td").length>2){ //最后一行不计算
-		price=myTableTr[i].getElementsByTagName("td")[4].innerHTML;
-		number=myTableTr[i].getElementsByTagName("td")[5].getElementsByTagName("input")[0].value;
+		price=myTableTr[i].getElementsByTagName("td")[3].innerHTML;
+		number=myTableTr[i].getElementsByTagName("td")[4].getElementsByTagName("input")[0].value;
 		total+=price*number;
-		myTableTr[i].getElementsByTagName("td")[6].innerHTML=price*number;
+		myTableTr[i].getElementsByTagName("td")[5].innerHTML=price*number;
 		}
 	}
 	document.getElementById("total").innerHTML=total;
@@ -52,30 +52,30 @@ function productCount(){
 window.onload=productCount;
 
 /*复选框全选或全不选效果*/
-function selectAll(){
-	var oInput=document.getElementsByName("cartCheckBox");
- for (var i=0;i<oInput.length;i++){
- 	    oInput[i].checked=document.getElementById("allCheckBox").checked;
-	}
-}
+// function selectAll(){
+// 	var oInput=document.getElementsByName("cartCheckBox");
+//  for (var i=0;i<oInput.length;i++){
+//  	    oInput[i].checked=document.getElementById("allCheckBox").checked;
+// 	}
+// }
 	
 /*根据单个复选框的选择情况确定全选复选框是否被选中*/
-function selectSingle(){
-	var k=0;
-	var oInput=document.getElementsByName("cartCheckBox");
-	 for (var i=0;i<oInput.length;i++){
-	   if(oInput[i].checked==false){
-		  k=1;
-		  break;
-	    }
-	}
-	if(k==0){
-		document.getElementById("allCheckBox").checked=true;
-		}
-	else{
-		document.getElementById("allCheckBox").checked=false;
-		}
-}
+// function selectSingle(){
+// 	var k=0;
+// 	var oInput=document.getElementsByName("cartCheckBox");
+// 	 for (var i=0;i<oInput.length;i++){
+// 	   if(oInput[i].checked==false){
+// 		  k=1;
+// 		  break;
+// 	    }
+// 	}
+// 	if(k==0){
+// 		document.getElementById("allCheckBox").checked=true;
+// 		}
+// 	else{
+// 		document.getElementById("allCheckBox").checked=false;
+// 		}
+// }
 
 /*删除单行商品*/
 // function deleteRow(rowId){
