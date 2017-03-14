@@ -1,15 +1,10 @@
 package com.seu.dm.helpers.mail;
 
-import com.seu.dm.helpers.mail.MailEntity;
-
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.Properties;
 
@@ -29,7 +24,7 @@ public class MailSender {
     private static final String MAILSERVERPORT="587";
     private static final String USERNAME="964753691@qq.com";
     private static final String FROMADDRESS="964753691@qq.com";
-    private static final String PASSWORD="qxmmpldleytsbche";
+    private static final String PASSWORD="saraxxxlokntbaii";
     private static final String SUBJECT="激活邮件";
 
 
@@ -37,8 +32,9 @@ public class MailSender {
 
         String validateCode = MD5Util.encode2hex(id.toString());
         System.out.println(validateCode);
+        System.out.println(email);
         ///邮件的内容
-        StringBuffer sb=new StringBuffer("点击下面链接激活账号，48小时生效，否则重新注册账号，链接只能使用一次，请尽快激活！</br>");
+        StringBuffer sb=new StringBuffer("点击下面链接激活账号，48小时生效，否则重新注册账号，链接只能使用一次，请尽快激活！如果无法访问，请手动复制链接到地址栏。</br>");
         sb.append("<a href=\"http://localhost:8080/user/register?action=activate&id=");
         sb.append(id);
         sb.append("&validateCode=");
@@ -48,7 +44,7 @@ public class MailSender {
         sb.append("&validateCode=");
         sb.append(validateCode);
         sb.append("</a>");
-
+        System.out.println(sb.toString());
         //Mail实体
         MailEntity mail = new MailEntity();
         mail.setMailServerHost(MAILSERVERHOST);

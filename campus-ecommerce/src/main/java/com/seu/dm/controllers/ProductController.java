@@ -93,6 +93,7 @@ public class ProductController {
 
     @RequestMapping(value = "/product_detail/{productId}")
     public String productDetail(@PathVariable Integer productId,Model model){
+        System.out.println(productId);
         Product product = productService.findProduct(productId);
         Seller seller = sellerService.findSeller(product.getSellerId());
         model.addAttribute("product",product);
@@ -187,7 +188,7 @@ public class ProductController {
     @RequestMapping(value = "/addProduct")
     @CampusAdminPermission
     public String addProduct(Product product, HttpSession httpSession, HttpServletRequest request,Model model)throws IOException{
-        Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getSellerId();
+        Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getId();
         product.setSellerId(sellerId);
         Picture picture = new Picture();
         byte[] pictureBinary = (FileUploadHelper.uploadPicture(request,"picture"));

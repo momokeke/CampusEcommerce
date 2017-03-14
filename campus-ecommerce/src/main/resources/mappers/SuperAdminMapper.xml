@@ -9,6 +9,11 @@
   <sql id="Base_Column_List" >
     id, name, password
   </sql>
+  <select id="getSuperAdmin" resultMap="BaseResultMap" parameterType="com.seu.dm.entities.SuperAdmin">
+    select * from super_admin
+    where name = #{name,jdbcType=VARCHAR}
+    and password = #{password,jdbcType=VARCHAR}
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

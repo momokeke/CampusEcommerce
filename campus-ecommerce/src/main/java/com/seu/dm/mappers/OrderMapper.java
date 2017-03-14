@@ -2,6 +2,7 @@ package com.seu.dm.mappers;
 
 import com.seu.dm.entities.Order;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface OrderMapper {
@@ -17,6 +18,8 @@ public interface OrderMapper {
 
     int updateByPrimaryKey(Order record);
 
+    List<Order> selectWeekTransactions();
+
     Integer getCount(Order order);
 
     List<Order> findOrders(Order order);
@@ -29,6 +32,8 @@ public interface OrderMapper {
 
     List<Order> findOrdersByBuyerIdWithStatusWaitDeliver(Integer buyerId);
 
+    List<Order> findOrdersByBuyerIdWithStatusAlreadyDeliver(Integer buyerId);
+
     List<Order> findOrdersByBuyerIdWithStatusOnRejection(Integer buyerId);
 
     List<Order> findOrdersByBuyerIdWithStatusAlreadyRejection(Integer buyerId);
@@ -36,6 +41,8 @@ public interface OrderMapper {
     List<Order> findOrdersByBuyerIdWithStatusSuccess(Integer buyerId);
 
     List<Order> findOrdersBySellerIdWithStatusWaitDeliver(Integer sellerId);
+
+    List<Order> findOrdersBySellerIdWithStatusAlreadyDeliver(Integer sellerId);
 
     List<Order> findOrdersBySellerIdWithStatusOnRejection(Integer sellerId);
 

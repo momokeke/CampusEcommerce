@@ -18,4 +18,6 @@ public interface SchoolAdminMapper {
     int updateByPrimaryKey(SchoolAdmin record);
 
     List<SchoolAdmin> findAllBySchoolId(Integer campusId);
+
+    SchoolAdmin findAdmin(SchoolAdmin schoolAdmin);
 }

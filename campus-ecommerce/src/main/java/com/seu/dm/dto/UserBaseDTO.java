@@ -10,6 +10,16 @@ public class UserBaseDTO {
 
     private Boolean isLogin;
 
+    private String CampusName;
+
+    public String getCampusName() {
+        return CampusName;
+    }
+
+    public void setCampusName(String campusName) {
+        CampusName = campusName;
+    }
+
     public Integer getCampusId() {
         return campusId;
     }

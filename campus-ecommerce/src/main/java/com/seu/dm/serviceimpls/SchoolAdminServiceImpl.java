@@ -37,6 +37,11 @@ public class SchoolAdminServiceImpl implements SchoolAdminService {
     }
 
     @Override
+    public SchoolAdmin findAdmin(SchoolAdmin schoolAdmin) {
+        return schoolAdminMapper.findAdmin(schoolAdmin);
+    }
+
+    @Override
     public int addSchoolAdminByNumAndName(Integer id, Integer studentNumber, String name) {
         SchoolAdmin schoolAdmin = new SchoolAdmin();
         schoolAdmin.setCampusId(id);

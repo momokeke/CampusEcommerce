@@ -193,6 +193,12 @@
                             <a th:href="@{'/campusadmin/ordermanage/changeStatus/'+${order.id}+'/finishBack'}" class="btn btn-primary">完成退货</a>
                             <a th:href="@{'/campusadmin/ordermanage/changeStatus/'+${order.id}+'/cancelBack'}" class="btn btn-warning">撤销退货</a>
                         </th:block>
+                        <th:block th:if="${order.status} eq 4">
+                            <a th:href="@{'/campusadmin/ordermanage/changeStatus/'+${order.id}+'/recover'}" class="btn btn-primary">恢复最初状态</a>
+                        </th:block>
+                        <th:block th:if="${order.status} eq 5">
+                            <a th:href="@{'/campusadmin/ordermanage/changeStatus/'+${order.id}+'/recover'}" class="btn btn-primary">恢复最初状态</a>
+                        </th:block>
                     </td>
                 </tr>
                 </tbody>

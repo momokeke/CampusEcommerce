@@ -76,39 +76,34 @@
                     </li>
                 </ol>
                 <div class="carousel-inner">
+                    <th:block th:each="one,iterStatus:${top}">
+                    <th:block th:if="${iterStatus.count} eq 1">
                     <div class="item active">
-                        <img alt="" src="http://images.huanqiu.com/sarons/2013/11/6e4fe63f9b455d1dfc94569ada25d790.jpg" />
+                        <img alt="" th:src="@{'/picture/'+${one.pictureId}}" src="http://images.huanqiu.com/sarons/2013/11/6e4fe63f9b455d1dfc94569ada25d790.jpg" />
                         <div class="carousel-caption">
-                            <h4>
-                                焦点图一
-                            </h4>
-                            <p>
-                                焦点图一的描述,焦点图一的描述,焦点图一的描述,焦点图一的描述,焦点图一的描述,
-                            </p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img alt="" src="http://images.huanqiu.com/sarons/2013/11/6e4fe63f9b455d1dfc94569ada25d790.jpg" />
-                        <div class="carousel-caption">
-                            <h4>
+                            <h4 th:text="${one.title}">
                                 焦点图二
                             </h4>
-                            <p>
+                            <p th:text="${one.description}">
                                 焦点图二的描述,焦点图二的描述,焦点图二的描述,焦点图二的描述,焦点图二的描述,焦点图二的描述,
                             </p>
                         </div>
                     </div>
-                    <div class="item">
-                        <img alt="" src="http://images.huanqiu.com/sarons/2013/11/6e4fe63f9b455d1dfc94569ada25d790.jpg" />
-                        <div class="carousel-caption">
-                            <h4>
-                                焦点图三
-                            </h4>
-                            <p>
-                                焦点图三的描述，焦点图三的描述，焦点图三的描述，焦点图三的描述，焦点图三的描述，
-                            </p>
+                    </th:block>
+                    <th:block th:if="${iterStatus.count} neq 1">
+                        <div class="item active">
+                            <img alt="" th:src="@{'/picture/'+${one.pictureId}}" src="http://images.huanqiu.com/sarons/2013/11/6e4fe63f9b455d1dfc94569ada25d790.jpg" />
+                            <div class="carousel-caption">
+                                <h4 th:text="${one.title}">
+                                    焦点图二
+                                </h4>
+                                <p th:text="${one.description}">
+                                    焦点图二的描述,焦点图二的描述,焦点图二的描述,焦点图二的描述,焦点图二的描述,焦点图二的描述,
+                                </p>
+                            </div>
                         </div>
-                    </div>
+                    </th:block>
+                    </th:block>
                 </div> <a rel="nofollow" class="left carousel-control" href="#carousel-1" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a rel="nofollow" class="right carousel-control" href="#carousel-1" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
             </div>
         </div>
@@ -161,11 +156,9 @@
             <div class="col-xs-8">
                 <div class="picture_3d">
                     <ul id="detail_3d" class="detail_3d">
-                        <li><a href="product/product_details.html" class="target"></a></li>
-                        <li><a href="product/product_details.html" class="target"></a></li>
-                        <li><a href="product/product_details.html" class="target"></a></li>
-                        <li><a href="product/product_details.html" class="target"></a></li>
-
+                        <li th:each="one,iterStatus:${bottom}">
+                            <a href="product/product_details.html" th:href="#" class="target"></a>
+                        </li>
                     </ul>
                 </div>
             </div>

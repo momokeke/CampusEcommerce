@@ -86,19 +86,22 @@ public class OrderManageController {
         Integer status = null;
         if(action.equals("send")){
             status = 2;
-            message = "该订单已发货";
+            message = "该货单已发货";
         }else if(action.equals("back")){
             status = 3;
-            message = "该订单退货中";
+            message = "该货单退货中";
         }else if(action.equals("finishBack")){
             status = 4;
-            message = "该订单退货完成";
+            message = "该货单退货完成";
         }else if(action.equals("finish")){
             status = 5;
-            message = "该订单完成";
+            message = "该货单完成";
         }else if(action.equals("cancelBack")){
             status = 2;
-            message = "该订单的退货被撤销，回到已发货状态";
+            message = "该货单的退货被撤销，回到已发货状态";
+        }else if(action.equals("recover")){
+            status = 1;
+            message = "该货单状态回到未发货";
         }
         Order order = new Order();
         order.setId(id);

@@ -1,9 +1,6 @@
 package com.seu.dm.services;
 
 import com.seu.dm.entities.Order;
-import com.seu.dm.entities.Product;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +14,8 @@ public interface OrderService {
     int deleteOrder(Integer id);
 
     int updateOrder(Order order);
+
+    List<Order> selectWeekTransactions();
 
     Order findOrder(Integer id);
 
@@ -34,6 +33,8 @@ public interface OrderService {
 
     List<Order> findOrdersByBuyerIdWithStatusWaitDeliver(Integer buyerId);
 
+    List<Order> findOrdersByBuyerIdWithStatusAlreadyDeliver(Integer buyerId);
+
     List<Order> findOrdersByBuyerIdWithStatusOnRejection(Integer buyerId);
 
     List<Order> findOrdersByBuyerIdWithStatusAlreadyRejection(Integer buyerId);
@@ -41,6 +42,8 @@ public interface OrderService {
     List<Order> findOrdersByBuyerIdWithStatusSuccess(Integer buyerId);
 
     List<Order> findOrdersBySellerIdWithStatusWaitDeliver(Integer sellerId);
+
+    List<Order> findOrdersBySellerIdWithStatusAlreadyDeliver(Integer sellerId);
 
     List<Order> findOrdersBySellerIdWithStatusOnRejection(Integer sellerId);
 

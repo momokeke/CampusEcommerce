@@ -1,10 +1,16 @@
 package com.seu.dm.controllers;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Buyer;
+import com.seu.dm.entities.HomePage;
+import com.seu.dm.entities.Order;
 import com.seu.dm.entities.Seller;
+import com.seu.dm.helpers.PageGenerateHelper;
 import com.seu.dm.helpers.mail.MD5Util;
 import com.seu.dm.services.BuyerService;
+import com.seu.dm.services.HomePageService;
 import com.seu.dm.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.net.HttpCookie;
+import java.util.List;
 
 /**
  * Created by Greeting on 2017/2/28.
@@ -25,9 +33,24 @@ public class IndexController {
     private BuyerService buyerService;
     @Autowired
     private SellerService sellerService;
+    @Autowired
+    private HomePageService homePageService;
 
     @RequestMapping(value={"/","/index.html"})
-    public String index(){
+    public String index( HttpSession httpSession, Model model){
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        HomePage homePage = new HomePage();
+
+        //homePage.setCampusId(userBase.getCampusId());
+        homePage.setCampusId(1);
+        homePage.setPositionId(1);
+        PageHelper.startPage(1,3);
+        List<HomePage> top = homePageService.findHomePage(homePage);
+        homePage.setPositionId(2);
+        PageHelper.startPage(1,4);
+        List<HomePage> bottom = homePageService.findHomePage(homePage);
+        model.addAttribute("top",top);
+        model.addAttribute("bottom",bottom);
         return "index";
     }
 
@@ -48,11 +71,11 @@ public class IndexController {
                 model.addAttribute("jumpUrl","/");
                 return "common/alert";
             }
-            if(!buyerFromDB.getIsActive()){
-                model.addAttribute("message","账号尚未激活");
-                model.addAttribute("jumpUrl","/");
-                return "common/alert";
-            }
+//            if(!buyerFromDB.getIsActive()){
+//                model.addAttribute("message","账号尚未激活");
+//                model.addAttribute("jumpUrl","/");
+//                return "common/alert";
+//            }
             HttpSession httpSession = request.getSession();
             UserBaseDTO userBase = new UserBaseDTO();
             userBase.setRole("buyer");
@@ -115,6 +138,7 @@ public class IndexController {
             System.out.println(id);
             Buyer buyer = buyerService.findBuyer(id);
             buyer.setIsActive(true);
+            buyerService.updateBuyer(buyer);
             model.addAttribute("message","激活成功");
             model.addAttribute("jumpUrl","/");
             return "common/alert";
