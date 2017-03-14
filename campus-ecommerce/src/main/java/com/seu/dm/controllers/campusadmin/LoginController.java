@@ -46,9 +46,9 @@ public class LoginController {
             UserBaseDTO userBase = new UserBaseDTO();
             userBase.setId(schoolAdmin.getId());
             userBase.setCampusId(schoolAdmin.getCampusId());
-
-
-
+            String campusName = campusService.findCampus(schoolAdmin.getCampusId()).getName();
+            userBase.setCampusName(campusName);
+            userBase.setLogin(true);
             userBase.setRole("campusAdmin");
             httpSession.setAttribute("userBase" , userBase);
             return "redirect: /campusadmin/";

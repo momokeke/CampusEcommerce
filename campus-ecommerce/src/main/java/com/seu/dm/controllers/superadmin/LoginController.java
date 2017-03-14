@@ -47,7 +47,7 @@ public class LoginController {
             return "redirect: /superadmin/";
         }else{
             model.addAttribute("isWrong",true);
-            return "admin/superadmin/login";
+            return "admin/superadmin/login/";
         }
     }
 }

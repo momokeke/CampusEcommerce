@@ -59,6 +59,7 @@ public class HomepageManageController {
                          @RequestParam Integer orderId
                          ) throws IOException{
         HomePage homePage = homePageService.getHomePageById(id);
+        homePage.setCampusId(1);
         homePage.setId(id);
         homePage.setPositionId(positionId);
         homePage.setTitle(title);

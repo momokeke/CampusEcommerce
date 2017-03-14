@@ -9,8 +9,8 @@
   <sql id="Base_Column_List" >
     id, name, password
   </sql>
-  <select id="getCount" resultType="java.lang.Integer" parameterType="com.seu.dm.entities.SuperAdmin">
-    select count(1) from super_admin
+  <select id="getSuperAdmin" resultMap="BaseResultMap" parameterType="com.seu.dm.entities.SuperAdmin">
+    select * from super_admin
     where name = #{name,jdbcType=VARCHAR}
     and password = #{password,jdbcType=VARCHAR}
   </select>

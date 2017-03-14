@@ -15,8 +15,7 @@ public class SuperAdminServiceImpl implements SuperAdminService {
     SuperAdminMapper superAdminMapper;
     @Override
     public boolean checkSuperAdmin(SuperAdmin superAdmin) {
-        Integer count = superAdminMapper.getCount(superAdmin);
-        if(count == 0){
+        if(superAdminMapper.getSuperAdmin(superAdmin) == null){
             return false;
         }
         return true;

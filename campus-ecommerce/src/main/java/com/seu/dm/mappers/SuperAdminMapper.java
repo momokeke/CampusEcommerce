@@ -15,5 +15,5 @@ public interface SuperAdminMapper {
 
     int updateByPrimaryKey(SuperAdmin record);
 
-    Integer getCount(SuperAdmin superAdmin);
+    SuperAdmin getSuperAdmin(SuperAdmin superAdmin);
 }
