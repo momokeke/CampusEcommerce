@@ -12,6 +12,12 @@
   <sql id="Base_Column_List">
     id, name, password, register_time, campus_id, student_number
   </sql>
+  <select id="findAdmin" parameterMap="com.seu.dm.entities.SchoolAdmin" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"/>
+    from school_admin WHERE
+    name = #{name,jdbcType=VARCHAR} AND password = #{password,jdbcType=VARCHAR}
+  </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />

@@ -19,4 +19,6 @@ public interface SchoolAdminService {
     int addSchoolAdminByNumAndName(Integer id,Integer studentNumber,String name);
 
     List<SchoolAdmin> findAllSchoolAdminsBySchoolId(Integer id);
+
+    SchoolAdmin findAdmin(SchoolAdmin schoolAdmin);
 }
