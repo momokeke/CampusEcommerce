@@ -173,4 +173,24 @@ public class DemoController {
     }
     @RequestMapping(value={"/register"})
     public String jumpToRegister(){return "register";}
+
+    @RequestMapping(value={"/aboutUs"})
+    public String jumpToAboutUs(){
+        return "aboutus/aboutUs";}
+
+    @RequestMapping(value={"/service"})
+    public String jumpToService(){
+        return "aboutus/service";}
+
+    @RequestMapping(value={"/disclaimer"})
+    public String jumpToDisclaimer(){
+        return "aboutus/disclaimer";}
+
+    @RequestMapping(value={"/map"})
+    public String jumpToWebMap(){
+        return "aboutus/webMap";}
+
+    @RequestMapping(value={"/contactUs"})
+    public String jumpToContactUs(){
+        return "aboutus/ContactUs";}
 }
