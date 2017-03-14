@@ -36,7 +36,7 @@
                                 <td>商品</td>
                                 <td>单价</td>
                                 <td>数量</td>
-                                <td>售后</td>
+                                <td>订单状态</td>
                                 <td>买家</td>
                                 <td>实收款</td>
                             </tr>
@@ -68,7 +68,6 @@
                                 <td>商品</td>
                                 <td>单价</td>
                                 <td>数量</td>
-                                <td>售后</td>
                                 <td>买家</td>
                                 <td>实收款</td>
                             </tr>
@@ -81,7 +80,6 @@
                                     <td>2</td>
                                     <td>3</td>
                                     <td>4</td>
-                                    <td>5</td>
                                 </tr>
                             </table>
                         </div>
@@ -92,7 +90,6 @@
                                 <td>商品</td>
                                 <td>单价</td>
                                 <td>数量</td>
-                                <td>售后</td>
                                 <td>买家</td>
                                 <td>实收款</td>
                             </tr>
@@ -110,31 +107,51 @@
                             </table>
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane fade" id="settings">...</div>
+                    <div role="tabpanel" class="tab-pane fade" id="settings">
+                        <table class="table">
+                            <tr class="text-center">
+                                <td style="width: 111px"><img src="#" alt="商品图片"/></td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>3</td>
+                                <td>4</td>
+                                <td>5</td>
+                            </tr>
+                        </table>
+                    </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-xs-12 column text-center">
+                    <ul class="pagination">
+                        <li>
+                            <a rel="nofollow" href="#">上一页</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="#">1</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="#">2</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="#">3</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="#">4</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="#">5</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="#">下一页</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
 
         </div>
         <!--this is the order manage end-->
 
-        <!--this is the shop login form begin-->
-            <div class="col-xs-3">
-                <div class="form_fade border-one border-r6 mt-40">
-                    <form class="mt-40">
-                        <div class="form-group mb-5">
-                            <label for="shop_name">店铺名</label>
-                            <input type="text" class="form-control" id="shop_name"  placeholder="您注册的店铺名"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">密码</label>
-                            <input type="password" class="form-control" id="password" placeholder="输入您的登录密码"/>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-default mr-88 fadeout">登录</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        <!--this is the shop login form end-->
     </div>
     <div class="col-xs-1"></div>
 </div>
@@ -148,22 +165,7 @@
 <script src="../js/common/jquery-3.1.1.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="../bootstrap/dist/js/bootstrap.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $(".shop_login").click(function(){
-            $(".form_fade").fadeIn();
 
-        });
-        $(".fadeout").click(function(){
-            $(".form_fade").fadeOut();
-
-        });
-        $('#myTabs a').click(function (e) {
-            e.preventDefault()
-            $(this).tab('show')
-        })
-    });
-</script>
 
 </body>
 </html>
