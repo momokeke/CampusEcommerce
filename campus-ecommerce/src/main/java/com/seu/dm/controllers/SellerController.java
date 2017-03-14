@@ -180,7 +180,7 @@ public class SellerController {
         Integer sellerId = seller.getId();
         List<Order> orders = orderService.findOrdersBySellerId(sellerId);
         model.addAttribute("orders",orders);
-        return "seller/";
+        return "seller/transaction_manage";
     }
 
     @RequestMapping(value = "/orders/waitdeliver")
@@ -193,6 +193,15 @@ public class SellerController {
         return "redirect:/seller/orders";
     }
 
+    @RequestMapping(value = "/orders/alreadydeliver")
+    public String findSellerOrdersWithStatusAlreadyDelever(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        Seller seller = (Seller) httpSession.getAttribute("userBase");
+        Integer sellerId = seller.getId();
+        List<Order> orders = orderService.findOrdersBySellerIdWithStatusAlreadyDeliver(sellerId);
+        model.addAttribute("orders",orders);
+        return "redirect:/seller/orders";
+    }
     @RequestMapping(value = "/orders/onrejection")
     public String findSellerOrdersWithStatusOnRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();

@@ -127,6 +127,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<Order> findOrdersByBuyerIdWithStatusAlreadyDeliver(Integer buyerId) {
+        return orderMapper.findOrdersByBuyerIdWithStatusAlreadyDeliver(buyerId);
+    }
+
+    @Override
     public List<Order> findOrdersByBuyerIdWithStatusOnRejection(Integer buyerId) {
         return orderMapper.findOrdersByBuyerIdWithStatusOnRejection(buyerId);
     }
@@ -144,6 +149,11 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<Order> findOrdersBySellerIdWithStatusWaitDeliver(Integer sellerId) {
         return orderMapper.findOrdersBySellerIdWithStatusWaitDeliver(sellerId);
+    }
+
+    @Override
+    public List<Order> findOrdersBySellerIdWithStatusAlreadyDeliver(Integer sellerId) {
+        return orderMapper.findOrdersBySellerIdWithStatusAlreadyDeliver(sellerId);
     }
 
     @Override

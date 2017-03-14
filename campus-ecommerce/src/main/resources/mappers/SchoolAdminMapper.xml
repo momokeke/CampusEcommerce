@@ -12,7 +12,7 @@
   <sql id="Base_Column_List">
     id, name, password, register_time, campus_id, student_number
   </sql>
-  <select id="findAdmin" parameterMap="com.seu.dm.entities.SchoolAdmin" resultMap="BaseResultMap">
+  <select id="findAdmin" parameterType="com.seu.dm.entities.SchoolAdmin" resultMap="BaseResultMap">
     select
     <include refid="Base_Column_List"/>
     from school_admin WHERE
@@ -24,7 +24,7 @@
     from school_admin
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <select id="findAllBySchoolId" resultMap="BaseResultMap">
+  <select id="findAllBySchoolId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select * from school_admin where campus_id = #{campusId};
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
