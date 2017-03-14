@@ -71,7 +71,7 @@
                     </tr>
                     <tr id="product1" th:each="cartProduct : ${cartProducts}">
                         <td class="cart_td_1"><span th:text="${cartProduct.shopName}">店铺</span></td>
-                        <td class="cart_td_2"><img th:src="@{cartProduct.pictureId}" src="/img/cart1.jpg" class="td_img" alt="shopping"/></td>
+                        <td class="cart_td_2"><img th:src="@{'/picture/'+${cartProduct.pictureId}}" src="/img/cart1.jpg" class="td_img" alt="shopping"/></td>
                         <td class="cart_td_3"><a th:text="${cartProduct.name}" href="#">大鞋子</a><br />
                         </td>
                         <td class="cart_td_4" th:text="${cartProduct.price}">56.50</td>
