@@ -3,6 +3,7 @@ package com.seu.dm.controllers;
 import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Buyer;
 import com.seu.dm.entities.Seller;
+import com.seu.dm.helpers.mail.MD5Util;
 import com.seu.dm.services.BuyerService;
 import com.seu.dm.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,8 +108,10 @@ public class IndexController {
     @RequestMapping("/user/register")
     public String activeBuyer(@RequestParam(value = "action")String action,
                               @RequestParam(value = "id")Integer id,
+                              @RequestParam(value = "validateCode")String validateCode,
                               Model model){
-        if("activate".equals(action)){
+        String validate = MD5Util.encode2hex(id.toString());
+        if("activate".equals(action) && validate.equals(validateCode)){
             System.out.println(id);
             Buyer buyer = buyerService.findBuyer(id);
             buyer.setIsActive(true);
