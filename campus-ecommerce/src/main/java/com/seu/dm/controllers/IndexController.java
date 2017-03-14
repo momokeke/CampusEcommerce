@@ -48,11 +48,11 @@ public class IndexController {
                 model.addAttribute("jumpUrl","/");
                 return "common/alert";
             }
-            if(!buyerFromDB.getIsActive()){
-                model.addAttribute("message","账号尚未激活");
-                model.addAttribute("jumpUrl","/");
-                return "common/alert";
-            }
+//            if(!buyerFromDB.getIsActive()){
+//                model.addAttribute("message","账号尚未激活");
+//                model.addAttribute("jumpUrl","/");
+//                return "common/alert";
+//            }
             HttpSession httpSession = request.getSession();
             UserBaseDTO userBase = new UserBaseDTO();
             userBase.setRole("buyer");

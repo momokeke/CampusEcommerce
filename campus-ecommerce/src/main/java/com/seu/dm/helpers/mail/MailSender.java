@@ -1,15 +1,10 @@
 package com.seu.dm.helpers.mail;
 
-import com.seu.dm.helpers.mail.MailEntity;
-
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
-import java.io.UnsupportedEncodingException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.Date;
 import java.util.Properties;
 
@@ -29,7 +24,7 @@ public class MailSender {
     private static final String MAILSERVERPORT="587";
     private static final String USERNAME="964753691@qq.com";
     private static final String FROMADDRESS="964753691@qq.com";
-    private static final String PASSWORD="qxmmpldleytsbche";
+    private static final String PASSWORD="saraxxxlokntbaii";
     private static final String SUBJECT="激活邮件";
 
 
