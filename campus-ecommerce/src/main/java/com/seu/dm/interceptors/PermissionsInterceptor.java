@@ -6,6 +6,8 @@ import com.seu.dm.annotations.permissions.SellerPermission;
 import com.seu.dm.annotations.permissions.SuperAdminPermission;
 import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Seller;
+import com.seu.dm.services.CampusService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
@@ -20,6 +22,9 @@ import java.lang.reflect.Method;
  * 检查用户权限的拦截器
  */
 public class PermissionsInterceptor extends HandlerInterceptorAdapter {
+
+    @Autowired
+    private CampusService campusService;
 
     @Override
     public boolean preHandle(HttpServletRequest request,
