@@ -39,7 +39,7 @@ public class MailSender {
         System.out.println(validateCode);
         System.out.println(email);
         ///邮件的内容
-        StringBuffer sb=new StringBuffer("点击下面链接激活账号，48小时生效，否则重新注册账号，链接只能使用一次，请尽快激活！</br>");
+        StringBuffer sb=new StringBuffer("点击下面链接激活账号，48小时生效，否则重新注册账号，链接只能使用一次，请尽快激活！如果无法访问，请手动复制链接到地址栏。</br>");
         sb.append("<a href=\"http://localhost:8080/user/register?action=activate&id=");
         sb.append(id);
         sb.append("&validateCode=");
