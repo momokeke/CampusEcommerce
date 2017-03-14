@@ -3,21 +3,27 @@
 
 
 /*改变所购商品的数量*/
-function changeNum(numId,flag){/*numId表示对应商品数量的文本框ID，flag表示是增加还是减少商品数量*/
-	var numId=document.getElementById(numId);
+function changeNum(productId,flag){/*num表示对应商品数量的文本框的值，flag表示是增加还是减少商品数量*/
+    var productNum = parseInt($("#product-"+productId).val());//接收商品数量
 	if(flag=="minus"){/*减少商品数量*/
-		if(numId.value<=1){
+		if(productNum<=1){
 			alert("宝贝数量必须是大于0");
 			return false;
 			}
 		else{
-			numId.value=parseInt(numId.value)-1;
-			productCount();
+			cartClient.send(productId,productNum-1,function () {
+                productNum=productNum-1;
+				$("#product-"+productId).val(productNum);
+                productCount();
+            });
 			}
 		}
 	else{/*flag为add，增加商品数量*/
-		numId.value=parseInt(numId.value)+1;
-		productCount();
+        cartClient.send(productId,productNum+1,function () {
+            productNum=productNum+1;
+            $("#product-"+productId).val(productNum);
+            productCount();
+        });
 		}
 	}
 	
@@ -46,55 +52,52 @@ function productCount(){
 window.onload=productCount;
 
 /*复选框全选或全不选效果*/
-function selectAll(){
-	var oInput=document.getElementsByName("cartCheckBox");
- for (var i=0;i<oInput.length;i++){
- 	    oInput[i].checked=document.getElementById("allCheckBox").checked;
-	}
-}
+// function selectAll(){
+// 	var oInput=document.getElementsByName("cartCheckBox");
+//  for (var i=0;i<oInput.length;i++){
+//  	    oInput[i].checked=document.getElementById("allCheckBox").checked;
+// 	}
+// }
 	
 /*根据单个复选框的选择情况确定全选复选框是否被选中*/
-function selectSingle(){
-	var k=0;
-	var oInput=document.getElementsByName("cartCheckBox");
-	 for (var i=0;i<oInput.length;i++){
-	   if(oInput[i].checked==false){
-		  k=1;
-		  break;
-	    }
-	}
-	if(k==0){
-		document.getElementById("allCheckBox").checked=true;
-		}
-	else{
-		document.getElementById("allCheckBox").checked=false;
-		}
-}
+// function selectSingle(){
+// 	var k=0;
+// 	var oInput=document.getElementsByName("cartCheckBox");
+// 	 for (var i=0;i<oInput.length;i++){
+// 	   if(oInput[i].checked==false){
+// 		  k=1;
+// 		  break;
+// 	    }
+// 	}
+// 	if(k==0){
+// 		document.getElementById("allCheckBox").checked=true;
+// 		}
+// 	else{
+// 		document.getElementById("allCheckBox").checked=false;
+// 		}
+// }
 
 /*删除单行商品*/
-function deleteRow(rowId){
-	var Index=document.getElementById(rowId).rowIndex; //获取当前行的索引
-	document.getElementById("shopping").deleteRow(Index);
-	document.getElementById("shopping").deleteRow(Index-1);
-	productCount();
-	}
+// function deleteRow(rowId){
+// 	var Index=document.getElementById(rowId).rowIndex; //获取当前行的索引
+// 	document.getElementById("shopping").deleteRow(Index);
+// 	//document.getElementById("shopping").deleteRow(Index-1);
+// 	productCount();
+// 	}
 
 /*删除选中行的商品*/
-function deleteSelectRow(){
-	var oInput=document.getElementsByName("cartCheckBox");
-	var Index;
-	 for (var i=oInput.length-1;i>=0;i--){
-	   if(oInput[i].checked==true){
-		 Index=document.getElementById(oInput[i].value).rowIndex; /*获取选中行的索引号*/
-		 document.getElementById("shopping").deleteRow(Index);
-	     document.getElementById("shopping").deleteRow(Index-1);
-	    }
-	}
-	productCount();
-	}
-
-
-
+// function deleteSelectRow(){
+// 	var oInput=document.getElementsByName("cartCheckBox");
+// 	var Index;
+// 	 for (var i=oInput.length-1;i>=0;i--){
+// 	   if(oInput[i].checked==true){
+// 		 Index=document.getElementById(oInput[i].value).rowIndex; /*获取选中行的索引号*/
+// 		 document.getElementById("shopping").deleteRow(Index);
+// 	     //document.getElementById("shopping").deleteRow(Index-1);
+// 	    }
+// 	}
+// 	productCount();
+// 	}
 
 
 var cartClient = {
@@ -107,7 +110,7 @@ var cartClient = {
             },
             async:false,
             success: function(data){
-            	if(data == "ok") {
+                if(data == "ok") {
                     callBack();
                 }
             },
@@ -115,8 +118,11 @@ var cartClient = {
     }
 }
 
-cartClient.send(1,2,function(){
 
-})
+
+
+// cartClient.send(1,2,function(){
+//
+// })
 
 

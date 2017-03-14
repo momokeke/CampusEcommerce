@@ -2,7 +2,15 @@
     <div class="row top font-small">
         <div class="col-md-2 col-sm-2"></div>
         <div class="col-md-8 col-sm-8">
-            当前学校：<span>东南大学</span>
+            <label>当前学校：</label><span>东南大学</span>
+            <label>当前校区：</label>
+            <select id="select_campus" style="width: 66px;height: 18px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;opacity: 0.8;" >
+                <option >九龙湖</option>
+                <option >四牌楼</option>
+                <option >丁家桥</option>
+                <option >苏州</option>
+                <option >无锡</option>
+            </select>
             <div class="float-right">
                 <span th:if="${session.userBase}==null">
                     <a href="javascript:;" class="theme-logIn">登录</a>
@@ -11,7 +19,9 @@
                 <span th:if="${session.userBase}!=null">
                     <span th:if="${session.userBase.role} == 'buyer'"><a href="javascript:;" th:href="@{/buyer/center}" class="theme-logIn">买家个人中心</a></span>
                     <span th:if="${session.userBase.role} == 'seller'"><a href="javascript:;" th:href="@{/seller/center}" class="theme-logIn">卖家个人中心</a></span>
-                    <a href="" th:if="@{/logout}">注销</a>
+                    <span th:if="${session.userBase.role} == 'campusAdmin'"><a href="javascript:;" th:href="@{/campusAdmin/center}" class="theme-logIn">管理员个人中心</a></span>
+                    <span th:if="${session.userBase.role} == 'superAdmin'"><a href="javascript:;" th:href="@{/superAdmin/center}" class="theme-logIn">超级管理员个人中心</a></span>
+                    <a href="" th:href="@{/logout}">注销</a>
                 </span>
             </div>
             <div class="theme-popover">

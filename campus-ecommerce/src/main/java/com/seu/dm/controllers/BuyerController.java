@@ -1,18 +1,29 @@
 package com.seu.dm.controllers;
 
+import com.seu.dm.dto.CartProductDTO;
+import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Buyer;
 import com.seu.dm.entities.Order;
+import com.seu.dm.helpers.mail.MailSender;
+import com.seu.dm.entities.Product;
+import com.seu.dm.entities.Seller;
 import com.seu.dm.services.BuyerService;
 import com.seu.dm.services.OrderService;
-import org.springframework.stereotype.Controller;
+import com.seu.dm.services.ProductService;
+import com.seu.dm.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import static jdk.nashorn.internal.objects.Global.undefined;
 
 /**
  * Created by 张老师 on 2017/3/3.
@@ -25,6 +36,10 @@ public class BuyerController {
     private BuyerService buyerService;
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private ProductService productService;
+    @Autowired
+    private SellerService sellerService;
     /**
      * 注册用户
      * @param buyer
@@ -33,10 +48,25 @@ public class BuyerController {
      */
     @RequestMapping(value = "/register",method = RequestMethod.POST)
     public String addBuyer(Buyer buyer, Model model, HttpServletRequest request){
+        //置标志位为未激活
+        buyer.setIsActive(false);
         HttpSession httpSession = request.getSession();
         System.out.println("call");
+
+        //向数据库中添加买家
         int i = buyerService.addBuyer(buyer);
-        httpSession.setAttribute("user",buyer);
+        Buyer buyerFromDB = buyerService.findBuyerByName(buyer.getName());
+
+        //发送验证激活邮件
+        MailSender.send(buyerFromDB.getId(),buyerFromDB.getEmail());
+
+        //
+        UserBaseDTO userBase = new UserBaseDTO();
+        userBase.setRole("buyer");
+        userBase.setId(buyerFromDB.getId());
+        userBase.setLogin(true);
+        userBase.setCampusId(1);
+        httpSession.setAttribute("userBase",userBase);
         return "redirect:/";
     }
 
@@ -67,18 +97,23 @@ public class BuyerController {
         return "";
     }
 
+    /**
+     * 移除session中的userBase并回到首页
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "/buyerLogout")
     public String logoutBuyer(HttpServletRequest request){
         HttpSession httpSession = request.getSession(false);
         if(httpSession == null) return "redirect:/";
-        httpSession.removeAttribute("user");
+        httpSession.removeAttribute("userBase");
         return "redirect:/";
     }
 
     @RequestMapping(value = "/orders")
     public String findBuyerOrders(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Buyer buyer = (Buyer) httpSession.getAttribute("user");
+        Buyer buyer = (Buyer) httpSession.getAttribute("userBase");
         Integer buyerId = buyer.getId();
         List<Order> orders = orderService.findOrdersByBuyerId(buyerId);
         model.addAttribute("orders",orders);
@@ -88,7 +123,7 @@ public class BuyerController {
     @RequestMapping(value = "/orders/waitdeliver")
     public String findBuyerOrdersWithStatusWaitDeliver(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Buyer buyer = (Buyer) httpSession.getAttribute("user");
+        Buyer buyer = (Buyer) httpSession.getAttribute("userBase");
         Integer buyerId = buyer.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusWaitDeliver(buyerId);
         model.addAttribute("orders",orders);
@@ -98,7 +133,7 @@ public class BuyerController {
     @RequestMapping(value = "/orders/onrejection")
     public String findBuyerOrdersWithStatusOnRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Buyer buyer = (Buyer) httpSession.getAttribute("user");
+        Buyer buyer = (Buyer) httpSession.getAttribute("userBase");
         Integer buyerId = buyer.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusOnRejection(buyerId);
         model.addAttribute("orders",orders);
@@ -108,7 +143,7 @@ public class BuyerController {
     @RequestMapping(value = "/orders/alreadyrejection")
     public String findBuyerOrdersWithStatusAlreadyRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Buyer buyer = (Buyer) httpSession.getAttribute("user");
+        Buyer buyer = (Buyer) httpSession.getAttribute("userBase");
         Integer buyerId = buyer.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusAlreadyRejection(buyerId);
         model.addAttribute("orders",orders);
@@ -118,7 +153,7 @@ public class BuyerController {
     @RequestMapping(value = "/orders/success")
     public String findBuyerOrdersWithStatusSuccess(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Buyer buyer = (Buyer) httpSession.getAttribute("user");
+        Buyer buyer = (Buyer) httpSession.getAttribute("userBase");
         Integer buyerId = buyer.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusSuccess(buyerId);
         model.addAttribute("orders",orders);
@@ -148,26 +183,82 @@ public class BuyerController {
         return "buyer/buyer_center";
     }
 
+    /*
+    **空购物车提示页面
+     */
+    @RequestMapping(value = "/noProductsInCart")
+    public String noProduct(){
+        return "buyer/noProductsInCart";
+    }
 
     /**
      *跳到买家购物车
     */
     @RequestMapping(value = "/shopping_cart")
-    public String jumpToBuyerShoppingCart(){
-        return "buyer/shopping_cart";
-    }
+    public String jumpToBuyerShoppingCart(HttpSession httpSession,Model model){
+        if(httpSession.getAttribute("cart") == null || httpSession.getAttribute("cart") == undefined){
+            return "buyer/noProductsInCart";
+        }
+        else {
+            Map<Integer,Integer> cartMap = (Map<Integer,Integer>)httpSession.getAttribute("cart");
 
+            List<CartProductDTO> cartProducts = new ArrayList<>();
+            //遍历cartMap，遍历出来的key是productid，value是这个商品的数量
+            //根据id调用Service获得商品的信息，在for里面new一个CartProduct，在CartProduct取好所有数据填好，放进list
+            //然后把要的数据放进Model，然后去html里面用th取出来
+            for (Map.Entry<Integer, Integer> entry : cartMap.entrySet()) {
+                Integer productid = (Integer)  entry.getKey();
+                Integer num = (Integer)entry.getValue();
+                Product product=productService.findProduct(productid);
+                Seller seller= sellerService.findSeller(product.getSellerId());
+                CartProductDTO cartProductDTO=new CartProductDTO();
+                cartProductDTO.setId(product.getId());
+                cartProductDTO.setName(product.getName());
+                cartProductDTO.setPictureId(product.getPictureId());
+                cartProductDTO.setNum(num);
+                cartProductDTO.setPrice(product.getPrice());
+                cartProductDTO.setShopName(seller.getShopName());
+                cartProducts.add(cartProductDTO);
+
+            }
+            model.addAttribute("cartProducts",cartProducts);
+            return "buyer/shopping_cart";
+        }
+
+    }
 
     @RequestMapping(value = "/shopping_cart_change")
     @ResponseBody
-    public Object changeShoppingCart(@RequestParam Integer id,@RequestParam Integer newNum,HttpSession httpSession){
-        httpSession.setAttribute("cart",new HashMap<Integer,Integer>());
-        HashMap<Integer,Integer> cart = (HashMap<Integer,Integer>)httpSession.getAttribute("cart");
-        cart.put(id,newNum);
+    public Object changeShoppingCart(@RequestParam Integer id, @RequestParam Integer newNum, HttpSession httpSession){
+        Map<Integer,Integer> cartMap = (Map<Integer,Integer>)httpSession.getAttribute("cart");
+        cartMap.put(id,newNum);
         return "ok";
     }
 
+    @RequestMapping(value = "/shopping_cart/remove/{id}")
+    public String removeProductFromCart(@PathVariable Integer id, HttpSession httpSession, Model model){
+        Map<Integer,Integer> cartMap = (Map<Integer,Integer>)httpSession.getAttribute("cart");
+        cartMap.remove(id);
+        httpSession.setAttribute("cartMap",cartMap);
+        return "redirect:/buyer/shopping_cart";
+    }
 
+    /*
+    *加入购物车
+     */
+
+    @RequestMapping(value = "/shopping_cart/add/{id}")
+    public String addProductFromCart( @PathVariable Integer id, HttpSession httpSession, Model model){
+        HashMap<Integer,Integer> cartMap = null;
+        if(httpSession.getAttribute("cart") == null){
+            cartMap = new HashMap<>();
+        }else {
+            cartMap = (HashMap<Integer, Integer>) httpSession.getAttribute("cart");
+        }
+        cartMap.put(id,1);
+        httpSession.setAttribute("cart",cartMap);
+        return "redirect:/buyer/shopping_cart";
+    }
 
 
     /*

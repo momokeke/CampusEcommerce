@@ -15,10 +15,11 @@
     <result column="order_id" property="orderId" jdbcType="INTEGER" />
     <result column="campus_id" property="campusId" jdbcType="INTEGER" />
     <result column="is_banned" property="isBanned" jdbcType="BIT" />
+    <result column="is_active" property="isActive" jdbcType="BIT" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, name, password, email, create_time, address, mobile, hobby, student_number, favorite_id, 
-    order_id, campus_id, is_banned
+    order_id, campus_id, is_banned, is_active
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -44,12 +45,12 @@
       email, create_time, address, 
       mobile, hobby, student_number, 
       favorite_id, order_id, campus_id,
-       is_banned)
+       is_banned,is_active)
     values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{address,jdbcType=VARCHAR}, 
       #{mobile,jdbcType=VARCHAR}, #{hobby,jdbcType=VARCHAR}, #{studentNumber,jdbcType=VARCHAR},
       #{favoriteId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{campusId,jdbcType=INTEGER}
-      , #{isBanned,jdbcType=BIT})
+      , #{isBanned,jdbcType=BIT}, #{isActive,jdbcType=BIT})
   </insert>
   <insert id="insertSelective" parameterType="com.seu.dm.entities.Buyer" >
     insert into buyer
@@ -93,6 +94,9 @@
       <if test="isBanned != null" >
         is_banned,
       </if>
+      <if test="isActive != null" >
+        is_active,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -133,6 +137,9 @@
       </if>
       <if test="isBanned != null" >
         #{isBanned,jdbcType=BIT},
+      </if>
+      <if test="isActive != null" >
+        #{isActive,jdbcType=BIT},
       </if>
     </trim>
   </insert>
@@ -175,6 +182,9 @@
       <if test="isBanned != null" >
         #{isBanned,jdbcType=BIT},
       </if>
+      <if test="isActive != null" >
+        #{isActive,jdbcType=BIT},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -192,6 +202,7 @@
       order_id = #{orderId,jdbcType=INTEGER},
       campus_id = #{campusId,jdbcType=INTEGER}
       ,is_banned = #{isBanned,jdbcType=BIT}
+      ,is_active = #{isActive,jdbcType=BIT}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
