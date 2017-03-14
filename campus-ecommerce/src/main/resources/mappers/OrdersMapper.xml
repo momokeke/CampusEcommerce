@@ -35,26 +35,32 @@
   <select id="findOrdersByBuyerIdWithStatusWaitDeliver" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select * from orders where user_id = #{buyerId} and status = 1
   </select>
-  <select id="findOrdersByBuyerIdWithStatusOnRejection" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="findOrdersByBuyerIdWithStatusAlreadyDeliver" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select * from orders where user_id = #{buyerId} and status = 2
   </select>
-  <select id="findOrdersByBuyerIdWithStatusAlreadyRejection" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="findOrdersByBuyerIdWithStatusOnRejection" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select * from orders where user_id = #{buyerId} and status = 3
   </select>
-  <select id="findOrdersByBuyerIdWithStatusSuccess" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="findOrdersByBuyerIdWithStatusAlreadyRejection" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select * from orders where user_id = #{buyerId} and status = 4
+  </select>
+  <select id="findOrdersByBuyerIdWithStatusSuccess" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from orders where user_id = #{buyerId} and status = 5
   </select>
   <select id="findOrdersBySellerIdWithStatusWaitDeliver" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select * from orders where seller_id = #{sellerId} and status = 1
   </select>
-  <select id="findOrdersBySellerIdWithStatusOnRejection" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="findOrdersBySellerIdWithStatusAlreadyDeliver" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select * from orders where seller_id = #{sellerId} and status = 2
   </select>
-  <select id="findOrdersBySellerIdWithStatusAlreadyRejection" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="findOrdersBySellerIdWithStatusOnRejection" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select * from orders where seller_id = #{sellerId} and status = 3
   </select>
-  <select id="findOrdersBySellerIdWithStatusSuccess" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  <select id="findOrdersBySellerIdWithStatusAlreadyRejection" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select * from orders where seller_id = #{sellerId} and status = 4
+  </select>
+  <select id="findOrdersBySellerIdWithStatusSuccess" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from orders where seller_id = #{sellerId} and status = 5
   </select>
   <select id="findOrdersBySellerId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select * from orders where seller_id = #{sellerId}
