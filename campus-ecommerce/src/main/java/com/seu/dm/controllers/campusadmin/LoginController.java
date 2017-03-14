@@ -3,9 +3,12 @@ package com.seu.dm.controllers.campusadmin;
 import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.SchoolAdmin;
 import com.seu.dm.entities.SuperAdmin;
+import com.seu.dm.serviceimpls.CampusServiceImpl;
+import com.seu.dm.services.CampusService;
 import com.seu.dm.services.SchoolAdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +25,8 @@ public class LoginController {
 
     @Autowired
     private SchoolAdminService schoolAdminService;
+    @Autowired
+    private CampusService campusService;
 
     @RequestMapping(value="/")
     public String login() {
@@ -31,23 +36,25 @@ public class LoginController {
     @RequestMapping(value="/dologin", method = RequestMethod.POST)
     public String doLogin(HttpSession httpSession,
                           @RequestParam String username,
-                          @RequestParam String password) {
-        SchoolAdmin schoolAdmin = new SchoolAdmin();
-        schoolAdmin.setName(username);
-        schoolAdmin.setPassword(password);
-        schoolAdminService.findAdmin(schoolAdmin);
-
-        /*
-        if(checkResult){
+                          @RequestParam String password,
+                          Model model) {
+        SchoolAdmin schoolAdminCondition = new SchoolAdmin();
+        schoolAdminCondition.setName(username);
+        schoolAdminCondition.setPassword(password);
+        SchoolAdmin schoolAdmin = schoolAdminService.findAdmin(schoolAdminCondition);
+        if(schoolAdmin != null){
             UserBaseDTO userBase = new UserBaseDTO();
-            userBase.setId(0);
-            userBase.setRole("superAdmin");
+            userBase.setId(schoolAdmin.getId());
+            userBase.setCampusId(schoolAdmin.getCampusId());
+
+
+
+            userBase.setRole("campusAdmin");
             httpSession.setAttribute("userBase" , userBase);
-            return "redirect: /superadmin/";
+            return "redirect: /campusadmin/";
         }else{
             model.addAttribute("isWrong",true);
-            return "admin/superadmin/login";
-        }*/
-        return "xxx";
+            return "admin/campusadmin/login";
+        }
     }
 }

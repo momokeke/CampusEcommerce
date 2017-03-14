@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.net.HttpCookie;
 import java.util.List;
 
 /**
@@ -36,18 +37,20 @@ public class IndexController {
     private HomePageService homePageService;
 
     @RequestMapping(value={"/","/index.html"})
-    public String index(HttpSession httpSession,Model model){
+    public String index( HttpSession httpSession, Model model){
         UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
         HomePage homePage = new HomePage();
-        homePage.setCampusId(userBase.getCampusId());
-        homePage.setPositionId(1);
-        PageHelper.startPage(1,3);
-        List<HomePage> top = homePageService.findHomePage(homePage);
-        homePage.setPositionId(2);
-        PageHelper.startPage(1,4);
-        List<HomePage> bottom = homePageService.findHomePage(homePage);
-        model.addAttribute("top",top);
-        model.addAttribute("bottom",bottom);
+
+        //homePage.setCampusId(userBase.getCampusId());
+//        homePage.setCampusId(1);
+//        homePage.setPositionId(1);
+//        PageHelper.startPage(1,3);
+//        List<HomePage> top = homePageService.findHomePage(homePage);
+//        homePage.setPositionId(2);
+//        PageHelper.startPage(1,4);
+//        List<HomePage> bottom = homePageService.findHomePage(homePage);
+//        model.addAttribute("top",top);
+//        model.addAttribute("bottom",bottom);
         return "index";
     }
 
