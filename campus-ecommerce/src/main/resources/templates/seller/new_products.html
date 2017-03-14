@@ -7,7 +7,7 @@
 <!-- this is the common top end -->
 
 <div class="container-fluid">
-    <lfet data-th-replace="seller/sellercommon/left"></lfet>
+    <left data-th-replace="seller/sellercommon/left"></left>
     <div class="col-xs-7 row border-one border-radius mt-40 ml-30">
         <div class="mt-20">
             <a href="#">卖家中心</a>
@@ -17,22 +17,20 @@
             <span>新品上架</span>
             <hr/>
         </div>
-        <div class="text-center">
-            <form enctype="multipart/form-data" action="/product/addproduct" th:action="@{'/product/addProduct'}" method="post" name="newPro">
-            <div class="col-xs-4">
-                    <div><span class="text-size">商品名称:</span><input class="border-two mt-20 ml-5" type="text" value="" name="name"/></div>
-                    <div><span class="text-size">商品种类:</span><input class="border-two mt-20 ml-5" type="text" value="" name="category" /></div>
-                    <div><span class="text-size">商品价格:</span><input class="border-two mt-20 ml-5" type="text" value="" name="price"/></div>
-                    <div><span class="text-size">商品描述:</span><textarea class="border-two mt-20 ml-5 textarea-wh" name="description"></textarea></div>
-                    <div><input type="file" name="picture" id="picture" multiple="multiple" class="mt-20 ml-5"/></div>
-                    <div><input type="submit" class=" mt-25 ml-5 btn-success btn-lg" value="提交商品信息"/></div>
+        <form enctype="multipart/form-data" action="/product/addproduct" th:action="@{'/product/addProduct'}" method="post" name="newPro">
+        <div class="col-xs-4">
+                <div><span class="text-size">商品名称:</span><input class="border-two mt-20 ml-5" type="text" value="" name="name"/></div>
+                <div><span class="text-size">商品种类:</span><input class="border-two mt-20 ml-5" type="text" value="" name="category" /></div>
+                <div><span class="text-size">商品价格:</span><input class="border-two mt-20 ml-5" type="text" value="" name="price"/></div>
+                <div><span class="text-size">商品描述:</span><textarea class="border-two mt-20 ml-5 textarea-wh" name="description"></textarea></div>
+                <div><input type="file" name="picture" id="picture" multiple="multiple" class="btn-default mt-20 ml-5"/></div>
+                <div><input type="submit" class=" mt-25 ml-5 btn-success btn-lg" value="提交商品信息"/></div>
 
-            </div>
-            <div class="col-xs-7">
-                    <img src="../img/new_pro.jpg" id="img0" alt="图片预览" title="图片预览" class="new-pro-img"/>
-            </div>
-            </form>
         </div>
+        <div class="col-xs-7">
+                <img src="../../img/new_pro.jpg" th:src="@{../../img/new_pro.jpg}" id="img0" alt="图片预览" title="图片预览" class="new-pro-img mt-20"/>
+        </div>
+        </form>
     </div>
 </div>
 
@@ -56,7 +54,7 @@
 
         });
     });
-    $("#file0").change(function(){
+    $("#picture").change(function(){
         var objUrl = getObjectURL(this.files[0]) ;
         console.log("objUrl = "+objUrl) ;
         if (objUrl) {
