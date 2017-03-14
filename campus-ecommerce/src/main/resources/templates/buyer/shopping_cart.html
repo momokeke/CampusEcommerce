@@ -82,9 +82,9 @@
                         </td>
                         <td class="cart_td_5" th:text="${cartProduct.price}">56.50</td>
                         <td class="cart_td_6">
-                            <img src="/img/minus.jpg" alt="minus" th:onclick="@{'javascript:changeNum('+${cartProduct.id}+','+${cartProduct.num}+','+'\'minus\''+')'}" class="hand"/>
+                            <img src="/img/minus.jpg" alt="minus" th:onclick="@{'javascript:changeNum('+${cartProduct.id}+','+'\'minus\''+')'}" class="hand"/>
                             <input type="text" th:id="@{'product-'+${cartProduct.id}}"  value="1"  th:value="${cartProduct.num}" class="num_input" readonly="readonly"/>
-                            <img src="/img/adding.jpg"  alt="add"  th:onclick="@{'javascript:changeNum('+${cartProduct.id}+','+${cartProduct.num}+','+'\'add\''+')'}" class="hand"/>
+                            <img src="/img/adding.jpg"  alt="add"  th:onclick="@{'javascript:changeNum('+${cartProduct.id}+','+'\'add\''+')'}" class="hand"/>
                         </td>
                         <td class="cart_td_7"></td>
                         <td class="cart_td_8"><a th:href="@{'/buyer/shopping_cart/remove/'+${cartProduct.id}}">删除</a></td>

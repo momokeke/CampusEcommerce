@@ -3,9 +3,8 @@
 
 
 /*改变所购商品的数量*/
-function changeNum(productId,num,flag){/*num表示对应商品数量的文本框的值，flag表示是增加还是减少商品数量*/
-    var num = parseInt($("#product-"+productId).val());
-    var productNum=num;//接收商品数量
+function changeNum(productId,flag){/*num表示对应商品数量的文本框的值，flag表示是增加还是减少商品数量*/
+    var productNum = parseInt($("#product-"+productId).val());//接收商品数量
 	if(flag=="minus"){/*减少商品数量*/
 		if(productNum<=1){
 			alert("宝贝数量必须是大于0");
