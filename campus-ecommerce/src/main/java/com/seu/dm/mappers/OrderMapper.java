@@ -17,11 +17,11 @@ public interface OrderMapper {
 
     int updateByPrimaryKey(Order record);
 
-    Integer getCountByStatus(Integer status);
+    Integer getCount(Order order);
+
+    List<Order> findOrders(Order order);
 
     List<Order> findOrdersBySellerId(Integer sellerId);
-
-    List<Order> findOrdersByCampusId(Integer campusId);
 
     List<Order> screenOrders(Integer orderStatus,Integer campusId);
 

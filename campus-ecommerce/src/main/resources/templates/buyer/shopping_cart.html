@@ -42,7 +42,7 @@
                             <input type="text" class="form-control search" id="search" placeholder="请输入商品名\关键词"/>
 
                         </div>
-                        <button type="submit" class="btn btn-default ">搜索</button>
+                        <button type="submit" class="search-btn">搜索</button>
                     </form>
                 </div>
             </div>
@@ -61,70 +61,37 @@
                         <td class="title_1">
                             <input id="allCheckBox" type="checkbox" value="" onclick="selectAll()" />全选
                         </td>
-                        <td class="title_2" colspan="2">店铺宝贝</td>
-                        <td class="title_3">单价（元）</td>
-                        <td class="title_4">数量</td>
-                        <td class="title_5">小计（元）</td>
-                        <td class="title_6">操作</td>
+                        <td class="title_2">店铺</td>
+                        <td class="title_3" colspan="2">店铺宝贝</td>
+                        <td class="title_4">单价（元）</td>
+                        <td class="title_5">数量</td>
+                        <td class="title_6">小计（元）</td>
+                        <td class="title_7">操作</td>
                     </tr>
                     <tr>
                         <td colspan="8" class="line">
                         </td>
                     </tr>
-                    <tr>
-                        <td colspan="1" class="shopInfo ">
-                            店铺：<a href="#">哈哈哈店铺</a>
-                        </td>
-                        <td colspan="2" class="shopInfo ">
-                            卖家：<a href="#" >大哈哈</a>
-                        </td>
-                    </tr>
-                    <tr id="product1">
+                    <tr id="product1" th:each="cartProduct : ${cartProducts}">
                         <td class="cart_td_1">
                             <input name="cartCheckBox" type="checkbox" value="product1" onclick="selectSingle()" />
                         </td>
-                        <td class="cart_td_2"><img src="/img/cart1.jpg" class="td_img" alt="shopping"/></td>
-                        <td class="cart_td_3"><a href="#">大鞋子</a><br />
+                        <td class="cart_td_2"><span th:text="${cartProduct.shopName}">店铺</span></td>
+                        <td class="cart_td_3"><img th:src="@{cartProduct.pictureId}" src="/img/cart1.jpg" class="td_img" alt="shopping"/></td>
+                        <td class="cart_td_4"><a th:text="${cartProduct.name}" href="#">大鞋子</a><br />
                         </td>
-                        <td class="cart_td_5">56.50</td>
+                        <td class="cart_td_5" th:text="${cartProduct.price}">56.50</td>
                         <td class="cart_td_6">
                             <img src="/img/minus.jpg" alt="minus" onclick="changeNum('num_1','minus')" class="hand"/>
                             <input id="num_1" type="text"  value="1" class="num_input" readonly="readonly"/>
                             <img src="/img/adding.jpg" alt="add" onclick="changeNum('num_1','add')"  class="hand"/>
                         </td>
                         <td class="cart_td_7"></td>
-                        <td class="cart_td_8"><a href="javascript:deleteRow('product1');">删除</a></td>
-                    </tr>
-
-
-                    <tr>
-                        <td colspan="1" class="shopInfo ">
-                            店铺：<a href="#">哈哈哈店铺</a>
-                        </td>
-                        <td colspan="2" class="shopInfo ">
-                            卖家：<a href="#" >大哈哈</a>
-                        </td>
-                    </tr>
-
-                    <tr id="product4">
-                        <td class="cart_td_1">
-                            <input name="cartCheckBox" type="checkbox" value="product1" onclick="selectSingle()" />
-                        </td>
-                        <td class="cart_td_2"><img src="/img/cart2.jpg" class="td_img" alt="shopping"/></td>
-                        <td class="cart_td_3"><a href="#">小鞋子</a><br />
-                        </td>
-                        <td class="cart_td_5">98.20</td>
-                        <td class="cart_td_6">
-                            <img src="/img/minus.jpg" alt="minus" onclick="changeNum('num_1','minus')" class="hand"/>
-                            <input id="num_4" type="text"  value="1" class="num_input" readonly="readonly"/>
-                            <img src="/img/adding.jpg" alt="add" onclick="changeNum('num_1','add')"  class="hand"/>
-                        </td>
-                        <td class="cart_td_7"></td>
-                        <td class="cart_td_8"><a href="javascript:deleteRow('product4');">删除</a></td>
+                        <td class="cart_td_8"><a th:href="@{'/buyer/shopping_cart/remove/'+${cartProduct.id}}">删除</a></td>
                     </tr>
                     <tr>
-                        <td  colspan="3"><a href="javascript:deleteSelectRow()"><img src="/img/del.jpg" alt="delete"/></a></td>
-                        <td colspan="5" class="shop_end">商品总价（不含运费）：<label id="total" class="yellow"></label> 元<br />
+                        <td  colspan="3"></td>
+                        <td colspan="5" class="shop_end">商品总价：<label id="total" class="yellow"></label> 元<br />
                             <input name=" " type="image" src="/img/subtn.jpg" /></td>
                     </tr>
 

@@ -54,7 +54,6 @@ public class OrderServiceImpl implements OrderService {
 
 
 
-
     @Override
     public HashMap<String, Integer> findHotProductsFromOrder(Integer n) {
 
@@ -95,37 +94,27 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<Order> findOrdersByCampusId(Integer campusId) {
-        List<Order> orders  = orderMapper.findOrdersByCampusId(campusId);
-        for(Order order : orders){
-            order.setBuyer(buyerMapper.selectByPrimaryKey(order.getUserId()));
-            order.setSeller(sellerMapper.selectByPrimaryKey(order.getSellerId()));
-            order.setOrderProduct(orderProductMapper.findOneOrderProductByOrderId(order.getId()));
-            order.setProduct(productMapper.selectByPrimaryKey(order.getOrderProduct().getId()));
-
-        }
-        return orders;
-    }
-
-    @Override
-    public Integer getCountByStatus(Integer status) {
-        return orderMapper.getCountByStatus(status);
-    }
-
-    @Override
     public List<Order> screenOrders(Integer orderId, Integer orderStatus, Integer campusId) {
+        return null;
+    }
 
-        if(orderId != null) {
-           List<Order> orders = new ArrayList<>();
-           Order order = orderMapper.selectByPrimaryKey(orderId);
-           if(order == null) System.out.println("null");
-           orders.add(order);
-           return orders;
+    @Override
+    public List<Order> findOrders(Order order) {
+        List<Order> orders  = orderMapper.findOrders(order);
+        for(Order o : orders){
+            o.setBuyer(buyerMapper.selectByPrimaryKey(o.getUserId()));
+            o.setSeller(sellerMapper.selectByPrimaryKey(o.getSellerId()));
+            o.setOrderProduct(orderProductMapper.findOneOrderProductByOrderId(o.getId()));
+            o.setProduct(productMapper.selectByPrimaryKey(o.getOrderProduct().getProductId()));
         }
-        if("全部".equals(orderStatus)) return orderMapper.findOrdersByCampusId(campusId);
-        List<Order> orders = orderMapper.screenOrders(orderStatus,campusId);
         return orders;
     }
+
+    @Override
+    public Integer getCount(Order order) {
+        return orderMapper.getCount(order);
+    }
+
 
     @Override
     public List<Order> findOrdersBySellerId(Integer sellerId) {
