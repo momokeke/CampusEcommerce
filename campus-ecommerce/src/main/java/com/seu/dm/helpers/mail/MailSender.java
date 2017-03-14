@@ -29,7 +29,7 @@ public class MailSender {
     private static final String MAILSERVERPORT="587";
     private static final String USERNAME="964753691@qq.com";
     private static final String FROMADDRESS="964753691@qq.com";
-    private static final String PASSWORD="qxmmpldleytsbche";
+    private static final String PASSWORD="saraxxxlokntbaii";
     private static final String SUBJECT="激活邮件";
 
 
