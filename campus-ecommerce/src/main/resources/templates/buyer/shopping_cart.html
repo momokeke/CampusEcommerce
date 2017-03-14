@@ -58,43 +58,36 @@
             <table  border="0" cellspacing="0" cellpadding="0" id="shopping">
                 <form action="" method="post" name="myform">
                     <tr>
-                        <td class="title_1">
-                            <input id="allCheckBox" type="checkbox" value="" onclick="selectAll()" />全选
-                        </td>
-                        <td class="title_2">店铺</td>
-                        <td class="title_3" colspan="2">店铺宝贝</td>
-                        <td class="title_4">单价（元）</td>
-                        <td class="title_5">数量</td>
-                        <td class="title_6">小计（元）</td>
-                        <td class="title_7">操作</td>
+                        <td class="title_1">店铺</td>
+                        <td class="title_2" colspan="2">店铺宝贝</td>
+                        <td class="title_3">单价（元）</td>
+                        <td class="title_4">数量</td>
+                        <td class="title_5">小计（元）</td>
+                        <td class="title_6">操作</td>
                     </tr>
                     <tr>
                         <td colspan="8" class="line">
                         </td>
                     </tr>
                     <tr id="product1" th:each="cartProduct : ${cartProducts}">
-                        <td class="cart_td_1">
-                            <input name="cartCheckBox" type="checkbox" value="product1" onclick="selectSingle()" />
+                        <td class="cart_td_1"><span th:text="${cartProduct.shopName}">店铺</span></td>
+                        <td class="cart_td_2"><img th:src="@{cartProduct.pictureId}" src="/img/cart1.jpg" class="td_img" alt="shopping"/></td>
+                        <td class="cart_td_3"><a th:text="${cartProduct.name}" href="#">大鞋子</a><br />
                         </td>
-                        <td class="cart_td_2"><span th:text="${cartProduct.shopName}">店铺</span></td>
-                        <td class="cart_td_3"><img th:src="@{cartProduct.pictureId}" src="/img/cart1.jpg" class="td_img" alt="shopping"/></td>
-                        <td class="cart_td_4"><a th:text="${cartProduct.name}" href="#">大鞋子</a><br />
+                        <td class="cart_td_4" th:text="${cartProduct.price}">56.50</td>
+                        <td class="cart_td_5">
+                            <img src="/img/minus.jpg" alt="minus" th:onclick="@{'javascript:changeNum('+${cartProduct.id}+','+'\'minus\''+')'}" class="hand"/>
+                            <input type="text" th:id="@{'product-'+${cartProduct.id}}"  value="1"  th:value="${cartProduct.num}" class="num_input" readonly="readonly"/>
+                            <img src="/img/adding.jpg"  alt="add"  th:onclick="@{'javascript:changeNum('+${cartProduct.id}+','+'\'add\''+')'}" class="hand"/>
                         </td>
-                        <td class="cart_td_5" th:text="${cartProduct.price}">56.50</td>
-                        <td class="cart_td_6">
-                            <img src="/img/minus.jpg" alt="minus" onclick="changeNum('num_1','minus')" class="hand"/>
-                            <input id="num_1" type="text"  value="1" class="num_input" readonly="readonly"/>
-                            <img src="/img/adding.jpg" alt="add" onclick="changeNum('num_1','add')"  class="hand"/>
-                        </td>
-                        <td class="cart_td_7"></td>
-                        <td class="cart_td_8"><a th:href="@{'/buyer/shopping_cart/remove/'+${cartProduct.id}}">删除</a></td>
+                        <td class="cart_td_6"></td>
+                        <td class="cart_td_7"><a th:href="@{'/buyer/shopping_cart/remove/'+${cartProduct.id}}">删除</a></td>
                     </tr>
                     <tr>
                         <td  colspan="3"></td>
                         <td colspan="5" class="shop_end">商品总价：<label id="total" class="yellow"></label> 元<br />
-                            <input name=" " type="image" src="/img/subtn.jpg" /></td>
+                            <img src="/img/subtn.png" style="width: 120px;height: 32px;border-radius: 13px;"/></td>
                     </tr>
-
                 </form>
             </table>
 
