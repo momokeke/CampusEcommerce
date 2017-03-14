@@ -1,0 +1,33 @@
+<right>
+    <div class="row">
+        <div class="border-calendar text-center mt-40">
+            <strong class="font-green font-bold font-bigger">
+                <script language="JavaScript">
+                    today=new Date();
+                    document.write(today.getDate())
+                </script>
+            </strong><br/>
+            <span class="font-green  font-middle">
+                                <script language="JavaScript">
+                                    today=new Date();
+                                    var weekDay="";
+                                    var myWeekDay=today.getDay();
+                                    if(myWeekDay==0) weekDay = "星期日";
+                                    if(myWeekDay==1) weekDay = "星期一";
+                                    if(myWeekDay==2) weekDay = "星期二";
+                                    if(myWeekDay==3) weekDay = "星期三";
+                                    if(myWeekDay==4) weekDay = "星期四";
+                                    if(myWeekDay==5) weekDay = "星期五";
+                                    if(myWeekDay==6) weekDay = "星期六";
+                                    document.write(weekDay)
+                                </script>
+                            </span><br/><br/>
+            <span class=" font-green  font-middle">
+                                <script language="JavaScript">
+                                    today=new Date();
+                                    document.write(today.getFullYear(),".",today.getMonth()+1)
+                                </script>
+                            </span><br/>
+        </div>
+    </div>
+</right>
