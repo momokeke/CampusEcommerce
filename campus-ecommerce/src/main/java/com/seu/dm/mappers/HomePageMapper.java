@@ -19,8 +19,7 @@ public interface HomePageMapper {
 
     int updateByPrimaryKey(HomePage record);
 
-    @Select("select * from home_page where campus_id = #{campusId} AND position_id = #{positionId}")
-    List<HomePage> getByCampusIdAndPositionId(Integer campusId,Integer positionId);
+    List<HomePage> findHomePage(HomePage homePage);
 
     @Select("select * from home_page where campus_id = #{campusId}")
     List<HomePage> getByCampusId(Integer campusId);

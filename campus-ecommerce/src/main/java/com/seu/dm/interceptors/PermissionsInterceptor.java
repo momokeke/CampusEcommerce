@@ -12,6 +12,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.lang.reflect.Method;
 
 /**
@@ -28,9 +29,7 @@ public class PermissionsInterceptor extends HandlerInterceptorAdapter {
 
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         Method method = handlerMethod.getMethod();
-
-        return forTesting(request,method);
-        /*
+        //return forTesting(request,method);
         if(method.getAnnotation(SuperAdminPermission.class)!=null){
             return verifySuperAdmin(request,response);
         }
@@ -44,11 +43,8 @@ public class PermissionsInterceptor extends HandlerInterceptorAdapter {
             return verifyBuyer(request,response);
         }
 
+        return true;
 
-        return forTesting(request);
-
-        //return true;
-        */
     }
 
     private boolean forTesting(HttpServletRequest request,Method method){
@@ -65,6 +61,7 @@ public class PermissionsInterceptor extends HandlerInterceptorAdapter {
             userBase.setId(110);
             userBase.setSellerId(10);
             userBase.setCampusId(4);
+            userBase.setCampusName("东南大学苏州校区");
             httpSession.setAttribute("userBase",userBase);
         }
         if(method.getAnnotation(SellerPermission.class)!=null){
@@ -78,20 +75,55 @@ public class PermissionsInterceptor extends HandlerInterceptorAdapter {
 
 
 
-    private boolean verifySuperAdmin(HttpServletRequest request,HttpServletResponse response){
-        //response.sendRedirect("/");
+    private boolean verifySuperAdmin(HttpServletRequest request,HttpServletResponse response) throws IOException{
+        HttpSession httpSession = request.getSession();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        if(userBase == null){
+            response.sendRedirect("/superadmin/login/");
+            return false;
+        }else if(!"superAdmin".equals(userBase.getRole())){
+            response.sendRedirect("/superadmin/login/");
+            return false;
+        }
         return true;
     }
 
-    private boolean verifyCampusAdmin(HttpServletRequest request,HttpServletResponse response){
+    private boolean verifyCampusAdmin(HttpServletRequest request,HttpServletResponse response) throws IOException{
+        HttpSession httpSession = request.getSession();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        if(userBase == null){
+            response.sendRedirect("/campusadmin/login/");
+            return false;
+        }else if(!"campusAdmin".equals(userBase.getRole())){
+            response.sendRedirect("/campusadmin/login/");
+            return false;
+        }
         return true;
     }
 
-    private boolean verifySeller(HttpServletRequest request,HttpServletResponse response){
+    private boolean verifySeller(HttpServletRequest request,HttpServletResponse response) throws IOException{
+        HttpSession httpSession = request.getSession();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        if(userBase == null){
+            response.sendRedirect("/seller/login/");
+            return false;
+        }else if(!"seller".equals(userBase.getRole())){
+            response.sendRedirect("/seller/login/");
+            return false;
+        }
         return true;
     }
 
-    private boolean verifyBuyer(HttpServletRequest request,HttpServletResponse response){
+    private boolean verifyBuyer(HttpServletRequest request,HttpServletResponse response) throws IOException{
+        HttpSession httpSession = request.getSession();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        if(userBase == null){
+            response.sendRedirect("/buyer/login/");
+            return false;
+        }else if(!"buyer".equals(userBase.getRole())){
+            response.sendRedirect("/buyer/login/");
+            return false;
+        }
         return true;
     }
 

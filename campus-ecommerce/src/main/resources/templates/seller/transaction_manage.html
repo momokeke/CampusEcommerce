@@ -7,8 +7,9 @@
 <!-- this is the common top end -->
 
 
-<div class="container-fluid">
-    <lfet data-th-replace="seller/sellercommon/left"></lfet>
+
+<div class="container-fluid row">
+    <left data-th-replace="seller/sellercommon/left"></left>
     <div class="col-xs-6 row border-one border-radius mt-40 ml-30">
         <div class="mt-20">
             <a href="#">卖家中心</a>
@@ -22,10 +23,12 @@
 
             <!-- Nav tabs -->
             <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">全部订单</a></li>
-                <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">已签收订单</a></li>
-                <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">未签收订单</a></li>
-                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">待发货订单</a></li>
+                <li role="presentation" class="active"><a href="#home" th:href="@{/seller/ordersmanage}" aria-controls="home" role="tab" data-toggle="tab">全部订单</a></li>
+                <li role="presentation"><a href="#profile" th:href="@{/seller/orders/success}" aria-controls="profile" role="tab" data-toggle="tab">已签收订单</a></li>
+                <li role="presentation"><a href="#messages" th:href="@{/seller/orders/alreadydeliver}" aria-controls="messages" role="tab" data-toggle="tab">未签收订单</a></li>
+                <li role="presentation"><a href="#messages" th:href="@{/seller/orders/onrejection}" aria-controls="messages" role="tab" data-toggle="tab">退货中订单</a></li>
+                <li role="presentation"><a href="#messages" th:href="@{/seller/orders/alreadyrejection}" aria-controls="messages" role="tab" data-toggle="tab">已退货订单</a></li>
+                <li role="presentation"><a href="#settings" th:href="@{/seller/orders/waitdeliver}" aria-controls="settings" role="tab" data-toggle="tab">待发货订单</a></li>
             </ul>
 
             <!-- Tab panes -->

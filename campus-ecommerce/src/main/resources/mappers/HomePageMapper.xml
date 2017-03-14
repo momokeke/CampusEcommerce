@@ -21,6 +21,12 @@
     from home_page
     where id = #{id,jdbcType=INTEGER}
   </select>
+  <select id="findHomePage" parameterType="com.seu.dm.entities.HomePage" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from home_page
+    where campus_id = #{campusId,jdbcType=INTEGER} AND position_id = #{positionId,jdbcType=INTEGER}
+  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from home_page
     where id = #{id,jdbcType=INTEGER}
