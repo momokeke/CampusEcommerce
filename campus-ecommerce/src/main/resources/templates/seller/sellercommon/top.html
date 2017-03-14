@@ -1,11 +1,18 @@
 <top>
 <!-- this is the common top begin -->
-    <div class="container-fluid" style="margin-right: -15px;margin-left: -15px" xmlns:th="http://www.w3.org/1999/xhtml">
-        <div class="row top font-small">
+    <div class="container-fluid" xmlns:th="http://www.w3.org/1999/xhtml">
+        <div class="top font-small">
             <div class="col-xs-12">
                 <div class="col-xs-2 col-xs-2"></div>
                 <div class="col-xs-8 col-xs-8">
                     当前学校：<span>东南大学</span>
+                    <select id="select_campus" style="width: 66px;height: 18px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;opacity: 0.8;" >
+                        <option >九龙湖</option>
+                        <option >四牌楼</option>
+                        <option >丁家桥</option>
+                        <option >苏州</option>
+                        <option >无锡</option>
+                    </select>
                     <div class="float-right">
                     <span th:if="${session.userBase}==null">
                         <a href="javascript:;" class="theme-logIn">登录</a>
@@ -22,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class="row banner">
+        <div class="banner">
             <div class="col-xs-12">
                 <div class="col-xs-2 col-xs-2"></div>
                 <div class="col-xs-8 col-xs-8">
@@ -30,7 +37,7 @@
 
                         <div class="col-xs-3 logo"><img src="/img/cute_logo.jpg" class="logo_wh"/></div>
                         <div class="col-xs-5 font-bold">
-                            <a class="mr-15" href="index.html">首页</a>
+                            <a class="mr-15" href="index.html" th:href="@{/}">首页</a>
                             <a class="mr-15" href="#">二手</a>
                             <a class="mr-15" href="#">促销</a>
                             <a class="mr-15" href="#">秒杀</a>

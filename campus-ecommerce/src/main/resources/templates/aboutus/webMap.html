@@ -17,29 +17,41 @@
 <div class="container-fluid row">
     <lfetnav data-th-replace="aboutus/aboutcommon/leftNav"></lfetnav>
     <div class="col-xs-7 row border-one border-radius mt-40 ml-30">
-        <span>网站地图</span><hr/>
+        <div class="mt-20 nav-font">网站地图</div><hr class="mt-5"/>
         <div>
-            <table>
+            <table class="table table-striped">
                 <tr>
                     <td colspan="2">我是买家</td>
                 </tr>
                 <tr>
-                    <td>。。。</td>
-                    <td>。。。</td>
+                    <td>
+                        <i class="iconfont">&#xe6e4;</i>成为达米会员<br/>
+                        <a href="javascript:;" class="theme-logIn ml-10">登录</a>&nbsp;&nbsp;&nbsp;
+                        <a class="ml-10" href="" th:href="@{/register}">注册</a>&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td>
+                        <i class="iconfont">&#xe6a3;</i>达米助手<br/>
+                        <a class="mr-10 ml-10 mt-10" th:href="@{/buyer/buyer_favorite}"><i class="iconfont">&#xe6a0;</i>我的收藏夹</a>
+                        <a class="mr-10 ml-10 mt-10" th:href="@{/buyer/bought_shops}"><i class="iconfont">&#xe722;</i>购买过的店铺</a><br/>
+                        <a class="mr-15 ml-10 mt-10" th:href="@{/buyer/comment_management}"><i class="iconfont">&#xe69b;</i>评价管理</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <a class="mr-20 ml-15 mt-10" th:href="@{/buyer/shopping_cart.html}"><i class="iconfont">&#xe698;</i>我的购物车</a><br/>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">我是卖家</td>
                 </tr>
                 <tr>
-                    <td>....</td>
-                    <td>....</td>
-                </tr>
-                <tr>
-                    <td colspan="2">我是管理员</td>
-                </tr>
-                <tr>
-                    <td>....</td>
-                    <td>....</td>
+                    <td>
+                        <i class="iconfont">&#xe6e4;</i>成为达米卖家<br/>
+                        <a href="javascript:;" class="theme-logIn ml-10">登录</a>&nbsp;&nbsp;&nbsp;
+                        <a class="ml-10" href="" th:href="@{/register}">注册</a>&nbsp;&nbsp;&nbsp;
+                    </td>
+                    <td>
+                        <i class="iconfont">&#xe625;</i>卖家中心<br/>
+                        <a class="mr-10 ml-10 mt-10" th:href="@{/demo/modify}"><i class="iconfont">&#xe61a;</i>店铺管理</a>
+                        <a class="mr-10 ml-10 mt-10" th:href="@{/demo/new}"><i class="iconfont">&#xe6db;</i>商品管理</a>
+                        <a class="mr-15 ml-10 mt-10" th:href="@{/demo/transaction}"><i class="iconfont">&#xe626;</i>交易管理</a>
+                    </td>
                 </tr>
             </table>
         </div>
