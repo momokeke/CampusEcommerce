@@ -186,10 +186,10 @@ public class BuyerController {
     /*
     **空购物车提示页面
      */
-    @RequestMapping(value = "/noProductsInCart")
-    public String noProduct(){
-        return "buyer/noProductsInCart";
-    }
+//    @RequestMapping(value = "/noProductsInCart")
+//    public String noProduct(){
+//        return "buyer/noProductsInCart";
+//    }
 
     /**
      *跳到买家购物车
@@ -197,7 +197,9 @@ public class BuyerController {
     @RequestMapping(value = "/shopping_cart")
     public String jumpToBuyerShoppingCart(HttpSession httpSession,Model model){
         if(httpSession.getAttribute("cart") == null || httpSession.getAttribute("cart") == undefined){
-            return "buyer/noProductsInCart";
+            model.addAttribute("message","购物车为空！");
+            model.addAttribute("jumpUrl","/buyer/center");
+            return "common/alert";
         }
         else {
             Map<Integer,Integer> cartMap = (Map<Integer,Integer>)httpSession.getAttribute("cart");
