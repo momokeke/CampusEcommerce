@@ -23,6 +23,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static jdk.nashorn.internal.objects.Global.undefined;
+
 /**
  * Created by 张老师 on 2017/3/3.
  */
@@ -181,40 +183,53 @@ public class BuyerController {
         return "buyer/buyer_center";
     }
 
+    /*
+    **空购物车提示页面
+     */
+    @RequestMapping(value = "/noProductsInCart")
+    public String noProduct(){
+        return "buyer/noProductsInCart";
+    }
 
     /**
      *跳到买家购物车
     */
     @RequestMapping(value = "/shopping_cart")
     public String jumpToBuyerShoppingCart(HttpSession httpSession,Model model){
-        Map<Integer,Integer> cartMap = (Map<Integer,Integer>)httpSession.getAttribute("cart");
-
-        List<CartProductDTO> cartProducts = new ArrayList<>();
-        //遍历cartMap，遍历出来的key是productid，value是这个商品的数量
-        //根据id调用Service获得商品的信息，在for里面new一个CartProduct，在CartProduct取好所有数据填好，放进list
-        //然后把要的数据放进Model，然后去html里面用th取出来
-        for (Map.Entry<Integer, Integer> entry : cartMap.entrySet()) {
-            Integer productid = (Integer)  entry.getKey();
-            Integer num = (Integer)entry.getValue();
-            Product product=productService.findProduct(productid);
-            Seller seller= sellerService.findSeller(product.getSellerId());
-            CartProductDTO cartProductDTO=new CartProductDTO();
-            cartProductDTO.setId(product.getId());
-            cartProductDTO.setName(product.getName());
-            cartProductDTO.setPictureId(product.getPictureId());
-            cartProductDTO.setNum(num);
-            cartProductDTO.setPrice(product.getPrice());
-            cartProductDTO.setShopName(seller.getShopName());
-            cartProducts.add(cartProductDTO);
-
+        if(httpSession.getAttribute("cart") == null || httpSession.getAttribute("cart") == undefined){
+            return "buyer/noProductsInCart";
         }
-        model.addAttribute("cartProducts",cartProducts);
-        return "buyer/shopping_cart";
+        else {
+            Map<Integer,Integer> cartMap = (Map<Integer,Integer>)httpSession.getAttribute("cart");
+
+            List<CartProductDTO> cartProducts = new ArrayList<>();
+            //遍历cartMap，遍历出来的key是productid，value是这个商品的数量
+            //根据id调用Service获得商品的信息，在for里面new一个CartProduct，在CartProduct取好所有数据填好，放进list
+            //然后把要的数据放进Model，然后去html里面用th取出来
+            for (Map.Entry<Integer, Integer> entry : cartMap.entrySet()) {
+                Integer productid = (Integer)  entry.getKey();
+                Integer num = (Integer)entry.getValue();
+                Product product=productService.findProduct(productid);
+                Seller seller= sellerService.findSeller(product.getSellerId());
+                CartProductDTO cartProductDTO=new CartProductDTO();
+                cartProductDTO.setId(product.getId());
+                cartProductDTO.setName(product.getName());
+                cartProductDTO.setPictureId(product.getPictureId());
+                cartProductDTO.setNum(num);
+                cartProductDTO.setPrice(product.getPrice());
+                cartProductDTO.setShopName(seller.getShopName());
+                cartProducts.add(cartProductDTO);
+
+            }
+            model.addAttribute("cartProducts",cartProducts);
+            return "buyer/shopping_cart";
+        }
+
     }
 
     @RequestMapping(value = "/shopping_cart_change")
     @ResponseBody
-    public Object changeShoppingCart(@RequestParam Integer id,@RequestParam Integer newNum,HttpSession httpSession){
+    public Object changeShoppingCart(@RequestParam Integer id, @RequestParam Integer newNum, HttpSession httpSession){
         Map<Integer,Integer> cartMap = (Map<Integer,Integer>)httpSession.getAttribute("cart");
         cartMap.put(id,newNum);
         return "ok";
