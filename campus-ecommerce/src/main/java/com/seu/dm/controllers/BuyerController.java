@@ -130,6 +130,16 @@ public class BuyerController {
         return "redirect:/buyer/orders";
     }
 
+    @RequestMapping(value = "/orders/alreadydeliver")
+    public String findBuyerOrdersWithStatusAlreadyDeliver(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        Buyer buyer = (Buyer) httpSession.getAttribute("userBase");
+        Integer buyerId = buyer.getId();
+        List<Order> orders = orderService.findOrdersByBuyerIdWithStatusAlreadyDeliver(buyerId);
+        model.addAttribute("orders",orders);
+        return "redirect:/buyer/orders";
+    }
+
     @RequestMapping(value = "/orders/onrejection")
     public String findBuyerOrdersWithStatusOnRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
@@ -275,7 +285,12 @@ public class BuyerController {
     *跳到买家已买到的宝贝
      */
     @RequestMapping(value = "/bought_products")
-    public String jumpToBoughtProducts(){
+    public String jumpToBoughtProducts(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        Buyer buyer = (Buyer) httpSession.getAttribute("userBase");
+        Integer buyerId = buyer.getId();
+        List<Order> orders = orderService.findOrdersByBuyerId(buyerId);
+        model.addAttribute("orders",orders);
         return "buyer/bought_products";
     }
     /*

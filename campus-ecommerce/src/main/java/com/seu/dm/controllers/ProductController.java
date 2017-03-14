@@ -188,7 +188,7 @@ public class ProductController {
     @RequestMapping(value = "/addProduct")
     @CampusAdminPermission
     public String addProduct(Product product, HttpSession httpSession, HttpServletRequest request,Model model)throws IOException{
-        Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getSellerId();
+        Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getId();
         product.setSellerId(sellerId);
         Picture picture = new Picture();
         byte[] pictureBinary = (FileUploadHelper.uploadPicture(request,"picture"));

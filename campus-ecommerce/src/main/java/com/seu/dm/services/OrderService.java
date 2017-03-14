@@ -33,6 +33,8 @@ public interface OrderService {
 
     List<Order> findOrdersByBuyerIdWithStatusWaitDeliver(Integer buyerId);
 
+    List<Order> findOrdersByBuyerIdWithStatusAlreadyDeliver(Integer buyerId);
+
     List<Order> findOrdersByBuyerIdWithStatusOnRejection(Integer buyerId);
 
     List<Order> findOrdersByBuyerIdWithStatusAlreadyRejection(Integer buyerId);
@@ -40,6 +42,8 @@ public interface OrderService {
     List<Order> findOrdersByBuyerIdWithStatusSuccess(Integer buyerId);
 
     List<Order> findOrdersBySellerIdWithStatusWaitDeliver(Integer sellerId);
+
+    List<Order> findOrdersBySellerIdWithStatusAlreadyDeliver(Integer sellerId);
 
     List<Order> findOrdersBySellerIdWithStatusOnRejection(Integer sellerId);
 
