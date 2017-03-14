@@ -93,6 +93,7 @@ public class ProductController {
 
     @RequestMapping(value = "/product_detail/{productId}")
     public String productDetail(@PathVariable Integer productId,Model model){
+        System.out.println(productId);
         Product product = productService.findProduct(productId);
         Seller seller = sellerService.findSeller(product.getSellerId());
         model.addAttribute("product",product);
