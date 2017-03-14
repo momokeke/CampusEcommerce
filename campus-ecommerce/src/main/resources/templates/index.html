@@ -133,7 +133,7 @@
     <div class="row mt-10 border-one index-products font-small text-center">
         <div class="row"><div class="col-xs-1"><h5 class="font-bold">新品图片</h5></div></div>
         <div class="col-xs-2 mb-5" th:each="one,iterStatus:${newProducts}">
-            <a th:href="@{'/product/product_detail/'+${one.id}}"><img th:alt="${one.name}" th:src="@{'/picture/'+${one.pictureId}}" /></a>
+            <a th:href="@{'/product/product_detail/'+${one.id}}"><img th:alt="${one.name}" th:src="@{'/picture/'+${one.pictureId}}" /></a><br/>
             <a th:href="@{'/product/product_detail/'+${one.id}}" th:text="${one.name}"></a>
         </div>
     </div>
@@ -141,7 +141,7 @@
     <div class="row mt-10 border-one index-products font-small text-center">
         <div class="row"><div class="col-xs-1"><h5 class="font-bold">低价销售</h5></div></div>
         <div class="col-xs-2 mb-5" th:each="one,iterStatus:${cheapProducts}">
-            <a th:href="@{'/product/product_detail/'+${one.id}}"><img th:alt="${one.name}" th:src="@{'/picture/'+${one.pictureId}}" /></a>
+            <a th:href="@{'/product/product_detail/'+${one.id}}"><img th:alt="${one.name}" th:src="@{'/picture/'+${one.pictureId}}" /></a><br/>
             <a th:href="@{'/product/product_detail/'+${one.id}}" th:text="${one.name}"></a>
         </div>
     </div>
