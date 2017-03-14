@@ -18,6 +18,11 @@
     id, order_product_id, user_id, seller_id, create_time, total_price, shop_id, status, 
     pay_id, comment_id, campus_id
   </sql>
+  <select id="selectWeekTransactions" resultMap="BaseResultMap">
+    SELECT date(create_time) as create_time,sum(total_price) as total_price FROM ecommerce.orders
+    where date_sub(curdate(), INTERVAL 7 DAY) <![CDATA[<=]]> date(`create_time`)
+    group by date(create_time) order by create_time
+  </select>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />

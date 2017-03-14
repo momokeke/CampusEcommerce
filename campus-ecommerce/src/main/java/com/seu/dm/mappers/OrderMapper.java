@@ -2,6 +2,7 @@ package com.seu.dm.mappers;
 
 import com.seu.dm.entities.Order;
 
+import java.util.HashMap;
 import java.util.List;
 
 public interface OrderMapper {
@@ -16,6 +17,8 @@ public interface OrderMapper {
     int updateByPrimaryKeySelective(Order record);
 
     int updateByPrimaryKey(Order record);
+
+    List<Order> selectWeekTransactions();
 
     Integer getCount(Order order);
 

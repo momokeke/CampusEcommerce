@@ -65,6 +65,7 @@ public class PermissionsInterceptor extends HandlerInterceptorAdapter {
             userBase.setId(110);
             userBase.setSellerId(10);
             userBase.setCampusId(4);
+            userBase.setCampusName("东南大学苏州校区");
             httpSession.setAttribute("userBase",userBase);
         }
         if(method.getAnnotation(SellerPermission.class)!=null){

@@ -1,16 +1,10 @@
 package com.seu.dm.serviceimpls;
 
 import com.seu.dm.entities.Order;
-import com.seu.dm.entities.OrderProduct;
-import com.seu.dm.entities.Seller;
 import com.seu.dm.mappers.*;
 import com.seu.dm.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.expression.Lists;
-
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -42,7 +36,7 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public int updateOrder(Order order) {
-        return orderMapper.updateByPrimaryKey(order);
+        return orderMapper.updateByPrimaryKeySelective(order);
     }
 
     @Override
@@ -50,9 +44,10 @@ public class OrderServiceImpl implements OrderService {
         return orderMapper.selectByPrimaryKey(id);
     }
 
-
-
-
+    @Override
+    public List<Order> selectWeekTransactions() {
+        return orderMapper.selectWeekTransactions();
+    }
 
     @Override
     public HashMap<String, Integer> findHotProductsFromOrder(Integer n) {

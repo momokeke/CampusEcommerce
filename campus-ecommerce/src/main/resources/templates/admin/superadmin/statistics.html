@@ -16,7 +16,7 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <div style="width:450px;height:300px;text-align:center;margin:10px">
+            <div style="width:850px;height:300px;text-align:center;margin:10px">
                 <div id="flot-placeholder" style="width:100%;height:100%;"></div>
             </div>
         </div>
@@ -28,10 +28,16 @@
 <!-- Scripts -->
 <th:block data-th-replace="admin/common/scripts"></th:block>
 
-<script>
-    var data = [[0, 11],[1, 15],[2, 25],[3, 24],[4, 13],[5, 18]];
+<script  th:inline="javascript">
+
+    var data = /*[[${javascriptData}]]*/ 'Sebastian';
+    var ticks = /*[[${javascriptTicks}]]*/ 'Sebastian';
+
+    data = eval(data);
+    ticks = eval(ticks);
+    //var data = [[0, 11],[1, 15],[2, 25],[3, 24],[4, 13],[5, 18]];
     var dataset = [{ label: "近7天交易额", data: data, color: "#5482FF" }];
-    var ticks = [[0, "7"], [1, "6"], [2, "5"], [3, "4"],[4, "3"], [5, "2"],[6,"1"]];
+    //var ticks = [[0, "7"], [1, "6"], [2, "5"], [3, "4"],[4, "3"], [5, "2"],[6,"1"]];
     var options = {
         series: {
             bars: {
@@ -51,13 +57,13 @@
             ticks: ticks
         },
         yaxis: {
-            axisLabel: "成交量",
+            axisLabel: "交易额",
             axisLabelUseCanvas: true,
             axisLabelFontSizePixels: 12,
             axisLabelFontFamily: 'Verdana, Arial',
             axisLabelPadding: 3,
             tickFormatter: function (v, axis) {
-                return v + "°C";
+                return v + "元";
             }
         },
         legend: {
@@ -110,7 +116,7 @@
                     showTooltip(item.pageX,
                         item.pageY,
                         color,
-                        "<strong>" + item.series.label + "</strong><br>" + item.series.xaxis.ticks[x].label + " : <strong>" + y + "</strong>件");
+                        "<strong>" + item.series.label + "</strong><br>" + item.series.xaxis.ticks[x].label + " : <strong>" + y + "</strong>元");
                 }
             } else {
                 $("#tooltip").remove();

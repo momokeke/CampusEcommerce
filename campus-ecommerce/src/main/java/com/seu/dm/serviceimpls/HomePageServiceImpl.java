@@ -23,6 +23,11 @@ public class HomePageServiceImpl implements HomePageService {
     HomePageMapper homePageMapper;
 
     @Override
+    public List<HomePage> findHomePage(HomePage homePage) {
+        return homePageMapper.findHomePage(homePage);
+    }
+
+    @Override
     public int addHomePage(HomePage homePage) {
         return homePageMapper.insert(homePage);
     }
