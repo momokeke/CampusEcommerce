@@ -62,6 +62,22 @@ function checkBuyer(inputNode,sibling,str){
     else if(inputNode.name=="mobile"){if(!checkMobile(sibling,str)){return false;}return true;}
     else if (inputNode.name=="student_number"){inputNode.value=str.replace(/[^0-9-]+/,'');return true;}
     else if (inputNode.name=="password"){if(str.length< 6){sibling.innerHTML="密码至少为6位！";return false;}return true;}
+    else if (inputNode.name=="name"){
+        var checkResult = true;
+
+        $.ajax({
+            type: 'GET',
+            url: '/buyer/checkregister/'+inputNode.value,
+            async:false,
+            success: function(data){
+                if(data == false) {
+                    sibling.innerHTML="用户名已被注册";
+                    checkResult = false;
+                }
+            },
+        });
+        return checkResult;
+    }
     else{
         return true;
     }
@@ -121,6 +137,22 @@ function checkSeller(inputNode,sibling,str){
     else if(inputNode.name=="mobile"){if(!checkMobile(sibling,str)){return false;}return true;}
     else if (inputNode.name=="student_number"){inputNode.value=str.replace(/[^0-9-]+/,'');return true;}
     else if (inputNode.name=="password"){if(str.length< 6){sibling.innerHTML="密码至少为6位！";return false;}return true;}
+    else if (inputNode.name="name"){
+        var checkResult = true;
+
+        $.ajax({
+            type: 'GET',
+            url: '/seller/checkregister/'+inputNode.value,
+            async:false,
+            success: function(data){
+                if(data == false) {
+                    sibling.innerHTML="用户名已被注册";
+                    checkResult = false;
+                }
+            },
+        });
+        return checkResult;
+    }
     else{
         return true;
     }
