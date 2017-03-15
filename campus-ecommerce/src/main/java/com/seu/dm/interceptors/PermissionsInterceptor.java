@@ -73,7 +73,6 @@ public class PermissionsInterceptor extends HandlerInterceptorAdapter {
 
 
         if (campusService == null) {//解决service为null无法注入问题
-            System.out.println("campusService is null!!!");
             BeanFactory factory = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
             campusService = (CampusService) factory.getBean("campusServiceImpl");
         }
