@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <!-- Any Other things should follow these 3 meta above -->
-    <title>买过的店铺</title>
+    <title>买过的商品</title>
     <!-- Bootstrap -->
     <link href="/bootstrap/dist/css/bootstrap.css" rel="stylesheet"/>
     <link href="/css/common.css" rel="stylesheet"/>
@@ -30,7 +30,6 @@
         <div class="col-xs-2 col-sm-2"></div>
         <div class="col-xs-8 col-sm-8">
             <div class="row">
-
                 <div class="col-xs-3 logo"><a class="mr-15 " th:href="@{/}"><img src="/img/cute_logo.jpg" class="logo_wh"/></a></div>
                 <div class="col-xs-5 font-bold">
                     <a class="mr-15 " th:href="@{/}">首页</a>
@@ -63,37 +62,65 @@
                 <li class="mt-10 "><a th:href="@{/buyer/comment_management}" href="/buyer/comment_management" class="font-black glyphicon glyphicon-list-alt"> 评价管理</a> </li>
             </ul>
         </div>
-        <div class="col-xs-6">
-            <div class="row mt-20">
-                <form role="form" action="" method="post">
-                    <h3 class="text-center mt-10">个人修改信息</h3>
-                    <div class="form-group">
-                        <label for="password">修改密码：</label><input type="password" class="form-control" id="password" />
+        <div class="col-xs-10" style="min-height: 500px">
+            <div class="row mt-10">
+                <ul class=" list-inline">
+                    <li class="ml-10"><a th:href="@{/buyer/orders}" class="font-middle font-black" style="text-decoration: none">所有订单</a></li>
+                    <li class="ml-10"><a th:href="@{/buyer/ordersWaitdeliver}" class="font-middle font-black" style="text-decoration: none">待发货</a></li>
+                    <li class="ml-10"><a th:href="@{/buyer/ordersAlreadydeliver}" class="font-middle font-black" style="text-decoration: none">已发货</a></li>
+                    <li class="ml-10"><a th:href="@{/buyer/ordersOnrejection}" class="font-middle font-black" style="text-decoration: none">退款中</a></li>
+                    <li class="ml-10"><a th:href="@{/buyer/ordersAlreadyrejection}" class="font-middle font-black" style="text-decoration: none">已退款</a></li>
+                    <li class="ml-10"><a th:href="@{/buyer/ordersSuccess}" class="font-middle font-black" style="text-decoration: none">成功</a></li>
+                </ul>
+            </div>
+            <div class="tab-content mt-20">
+                <div id="success" class="tab-pane fade in active">
+                    <div class="row mt-20  bk-grey border-one" style="height: 30px;">
+                        <div class="col-xs-1">订单日期</div>
+                        <div class="col-xs-2">金额</div>
+                        <div class="col-xs-1">店铺名</div>
+                        <div class="col-xs-2">图片</div>
+                        <div class="col-xs-2">商品</div>
+                        <div class="col-xs-1">单价</div>
+                        <div class="col-xs-1">数量</div>
+                        <div class="col-xs-2">交易状态</div>
                     </div>
-                    <div class="form-group">
-                        <label for="rePassword">重复新密码：</label><input type="password" class="form-control" id="rePassword" />
+                    <div class="row mt-20 bk-blue border-one" th:each="order : ${orders}">
+                        <div class="col-xs-1" th:text="${order.Id}">订单号</div>
+                        <div class="col-xs-2">
+                            <strong>￥</strong><span class="font-small" th:text="${order.totalPrice}">订单实付款金额</span>
+                        </div>
+                        <div class="col-xs-1" th:text="${order.seller.shopName}">店铺名</div>
+                        <div class="col-xs-2">
+                            <img alt="图片" style="width: 50px;height: 50px;" class="order_item_img" th:src="@{'/picture/'+${order.getProduct().getPictureId()}}"/><br/>
+                        </div>
+                        <div class="col-xs-2">
+                            <a href="#"><span class="font-small"  th:text="${order.product.name}">商品名称</span></a>
+                        </div>
+                        <div class="col-xs-1">
+                            <span class="font-small" th:text="${order.product.price}">单价</span>
+                        </div>
+                        <div class="col-xs-1">
+                            <span class="font-small"  th:text="${order.getOrderProduct().getProductNum()}">数量</span>
+                        </div>
+                        <div class="col-xs-2">
+                            <span class="font-small" th:text="${order.status}">交易状态</span>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="email">修改邮箱：</label><input type="email" class="form-control" id="email"/>
-                    </div>
-                    <div class="form-group">
-                        <label for="mobile">手机号：</label><input type="text" class="form-control" id="mobile"/>
-                    </div>
-                    <button type="submit" class="btn btn-default">提交</button>
-                </form>
+                </div>
             </div>
         </div>
     </div>
-
 </div>
+
 <!--This is the common footer Begin-->
 <div class="navbar-fixed-bottom">
-    <div class="container-fluid mt-20">
+    <div class="container-fluid mt-20 ">
         <div class="row">
-            <div class="col-xs-12 footer-info" style="height: 150px;">
+            <div class="col-xs-12 footer-info bottom-height">
                 <div class="col-xs-2 col-xs-offset-3 mt-40 "><img src="/img/logo_button_1.jpg"/></div>
-                <div class="col-xs-3 mt-40 "><img src="/img/logo_button_2.jpg " /><br/><span class="font-grey font-15" >一家专门做校园文化产品的网站</span></div>
-                <div class="col-xs-4 mt-60"><img class="qr-code"  src="/img/qr_code.png" th:src="@{'/picture/72'}"/><br/><div class="mt-20 font-15 ml-10">扫码有惊喜哦</div></div>
+                <div class="col-xs-3 mt-40 "><img src="/img/logo_button_2.jpg " /><br/><span class="font-grey" >一家专门做校园文化产品的网站</span></div>
+                <div class="col-xs-4 mt-60"><img class="qr-code"  src="/img/qr_code.png "/><br/><div class="mt-20 ">扫码有惊喜哦</div></div>
             </div>
         </div>
     </div>
@@ -128,4 +155,3 @@
 <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 </html>
-<!--This is the common footer End-->

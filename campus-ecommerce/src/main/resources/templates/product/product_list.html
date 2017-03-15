@@ -69,7 +69,7 @@
             <div class="col-xs-12" style="min-height:700px" >
                 <div class="row border-black product_list_area"  th:each="entity : ${entities}">
                     <div class="col-xs-3">
-                        <img th:src="@{entity.productUrl}" alt="查询结果列表图片" class="product_img mt-5 mb-5"/>
+                        <img th:src="@{'/picture/'+${entity.pictureId}}" alt="查询结果列表图片" class="product_img mt-5 mb-5"/>
                     </div>
                     <div class="col-xs-3 mt-20" >
                         <a href="product_details.html" th:href="@{'/product/product_detail/'+${entity.id}}"><span th:text="${entity.name}" style="font-size: 17px">商品名称</span></a><br/>

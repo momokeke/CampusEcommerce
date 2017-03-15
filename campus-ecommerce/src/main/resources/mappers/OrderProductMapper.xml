@@ -32,6 +32,9 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.seu.dm.entities.OrderProduct" >
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into order_product (id, product_id, product_num, order_id, price
       )
     values (#{id,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{productNum,jdbcType=INTEGER},

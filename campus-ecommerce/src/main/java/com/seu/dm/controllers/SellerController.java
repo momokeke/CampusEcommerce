@@ -1,9 +1,7 @@
 package com.seu.dm.controllers;
 
-import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.annotations.permissions.SellerPermission;
 import com.seu.dm.dto.UserBaseDTO;
-import org.springframework.web.bind.annotation.*;
 import com.seu.dm.entities.Order;
 import com.seu.dm.entities.Seller;
 import com.seu.dm.services.OrderService;
@@ -194,8 +192,8 @@ public class SellerController {
     @SellerPermission
     public String getAllOrdersOfSeller(Model model, HttpSession httpSession){
         // Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getSellerId();
-        Seller seller = (Seller)httpSession.getAttribute("userBase");
-        Integer sellerId = seller.getId();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerId(sellerId);
         model.addAttribute("orders",orders);
         return "seller/transaction_manage";
@@ -204,8 +202,8 @@ public class SellerController {
     @RequestMapping(value = "/orders/waitdeliver")
     public String findSellerOrdersWithStatusWaitDeliver(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("userBase");
-        Integer sellerId = seller.getId();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusWaitDeliver(sellerId);
         model.addAttribute("orders",orders);
         return "redirect:/seller/orders";
@@ -214,8 +212,8 @@ public class SellerController {
     @RequestMapping(value = "/orders/alreadydeliver")
     public String findSellerOrdersWithStatusAlreadyDelever(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("userBase");
-        Integer sellerId = seller.getId();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusAlreadyDeliver(sellerId);
         model.addAttribute("orders",orders);
         return "redirect:/seller/orders";
@@ -223,8 +221,8 @@ public class SellerController {
     @RequestMapping(value = "/orders/onrejection")
     public String findSellerOrdersWithStatusOnRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("userBase");
-        Integer sellerId = seller.getId();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusOnRejection(sellerId);
         model.addAttribute("orders",orders);
         return "redirect:/seller/orders";
@@ -233,8 +231,8 @@ public class SellerController {
     @RequestMapping(value = "/orders/alreadyrejection")
     public String findSellerOrdersWithStatusAlreadyRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("userBase");
-        Integer sellerId = seller.getId();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusAlreadyRejection(sellerId);
         model.addAttribute("orders",orders);
         return "redirect:/seller/orders";
@@ -243,8 +241,8 @@ public class SellerController {
     @RequestMapping(value = "/orders/success")
     public String findSellerOrdersWithStatusSuccess(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("userBase");
-        Integer sellerId = seller.getId();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusSuccess(sellerId);
         model.addAttribute("orders",orders);
         return "redirect:/seller/orders";
