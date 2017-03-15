@@ -1,6 +1,7 @@
 package com.seu.dm.configs;
 
 import com.seu.dm.interceptors.PermissionsInterceptor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -16,6 +17,5 @@ public class WebConfigurer extends WebMvcConfigurerAdapter {
         interceptorRegistry.addInterceptor(new PermissionsInterceptor()).addPathPatterns("/**");
         super.addInterceptors(interceptorRegistry);
     }
-
 
 }

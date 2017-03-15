@@ -1,6 +1,6 @@
 package com.seu.dm.controllers;
 
-import com.seu.dm.annotations.permissions.CampusAdminPermission;
+import com.seu.dm.annotations.permissions.SellerPermission;
 import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Picture;
 import com.seu.dm.entities.Product;
@@ -13,7 +13,10 @@ import com.seu.dm.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -196,7 +199,7 @@ public class ProductController {
      * @return
      */
     @RequestMapping(value = "/addProduct")
-    @CampusAdminPermission
+    @SellerPermission
     public String addProduct(Product product, HttpSession httpSession, HttpServletRequest request,Model model)throws IOException{
         Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getId();
         product.setSellerId(sellerId);

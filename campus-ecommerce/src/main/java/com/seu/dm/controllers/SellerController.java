@@ -37,9 +37,18 @@ public class SellerController {
      * @return
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String addSeller(Seller seller,HttpServletRequest request){
+    public String addSeller(Seller seller,HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
         System.out.println("call");
+
+        String name = seller.getName();
+        if(sellerService.findSellerByName(name)!=null){
+            model.addAttribute("message","用户名已存在");
+            model.addAttribute("jumpUrl","/seller/register");
+            return "common/alert";
+        }
+
+
         sellerService.addSeller(seller);                //由service层负责添加工作
         Seller sellerFromDB = sellerService.findSellerByName(seller.getName());
         UserBaseDTO userBase = new UserBaseDTO();
