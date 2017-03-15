@@ -132,7 +132,7 @@ public class BuyerController {
         List<Order> orders = orderService.findOrdersByBuyerId(buyerId);
         model.addAttribute("orders",orders);
 
-        return "redirect:/buyer/orders";
+        return "buyer/bought_products";
     }
 
     @RequestMapping(value = "/orders/waitdeliver")
