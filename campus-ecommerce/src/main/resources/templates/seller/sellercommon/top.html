@@ -1,39 +1,12 @@
 <top>
-<!-- this is the common top begin -->
-    <div class="container-fluid" xmlns:th="http://www.w3.org/1999/xhtml">
-        <div class="top font-small">
-            <div class="col-xs-12">
-                <div class="col-xs-2 col-xs-2"></div>
-                <div class="col-xs-8 col-xs-8">
-                    当前学校：<span>东南大学</span>
-                    <select id="select_campus" style="width: 66px;height: 18px;-webkit-border-radius: 5px;-moz-border-radius: 5px;border-radius: 5px;opacity: 0.8;" >
-                        <option >九龙湖</option>
-                        <option >四牌楼</option>
-                        <option >丁家桥</option>
-                        <option >苏州</option>
-                        <option >无锡</option>
-                    </select>
-                    <div class="float-right">
-                    <span th:if="${session.userBase}==null">
-                        <a href="javascript:;" class="theme-logIn">登录</a>
-                        <a href="" th:href="@{/register}">注册</a>
-                    </span>
-                        <span th:if="${session.userBase}!=null">
-                        <span th:if="${session.userBase.role} == 'buyer'"><a href="javascript:;" th:href="@{/buyer/center}" class="theme-logIn">买家个人中心</a></span>
-                        <span th:if="${session.userBase.role} == 'seller'"><a href="javascript:;" th:href="@{/seller/center}" class="theme-logIn">卖家个人中心</a></span>
-                        <a href="" th:if="@{/logout}">注销</a>
-                    </span>
-                    </div>
-                </div>
-                <div class="col-xs-2 col-xs-2">
-                </div>
-            </div>
-        </div>
-        <div class="banner">
-            <div class="col-xs-12">
-                <div class="col-xs-2 col-xs-2"></div>
-                <div class="col-xs-8 col-xs-8">
-                    <div class="row">
+    <!-- this is the common top begin -->
+    <div class="container-fluid">
+        <div data-th-replace="common_html/common_head"></div>
+        <div class="row banner">
+            <div class="col-xs-2 col-xs-2"></div>
+            <div class="col-xs-8 col-xs-8">
+                <div class="row">
+
 
                         <div class="col-xs-3 logo"><a class="mr-15 " th:href="@{/}"><img src="/img/cute_logo.jpg" class="logo_wh"/></a></div>
                         <div class="col-xs-5 font-bold">
@@ -46,16 +19,14 @@
                             <form class="form-inline" th:action="@{/product/searchGood}">
                                 <div class="form-group">
 
-                                    <input type="text" class="form-control search" name="search" id="search" placeholder="请输入商品名\关键词\店铺名\社团名"/>
-                                </div>
-                                <button type="submit"  class="btn btn-default">搜索</button>
-                            </form>
-                        </div>
+                                <input type="text" class="form-control search" name="search" id="search" placeholder="请输入商品名\关键词\店铺名\社团名"/>
+                            </div>
+                            <button type="submit"  class="search-btn">搜索</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-<!-- this is the common top end -->
+    <!-- this is the common top end -->
 </top>
