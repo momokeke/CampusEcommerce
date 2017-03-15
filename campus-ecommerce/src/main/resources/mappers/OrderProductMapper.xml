@@ -5,9 +5,11 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="product_id" property="productId" jdbcType="INTEGER" />
     <result column="product_num" property="productNum" jdbcType="INTEGER" />
+    <result column="order_id" property="orderId" jdbcType="INTEGER" />
+    <result column="price" property="price" jdbcType="DECIMAL" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, product_id, product_num
+    id, product_id, product_num, order_id, price
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
@@ -30,10 +32,10 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.seu.dm.entities.OrderProduct" >
-    insert into order_product (id, product_id, product_num
+    insert into order_product (id, product_id, product_num, order_id, price
       )
-    values (#{id,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{productNum,jdbcType=INTEGER}
-      )
+    values (#{id,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, #{productNum,jdbcType=INTEGER},
+    #{orderId,jdbcType=INTEGER}, #{price,jdbcType=DECIMAL} )
   </insert>
   <insert id="insertSelective" parameterType="com.seu.dm.entities.OrderProduct" >
     insert into order_product
@@ -47,6 +49,12 @@
       <if test="productNum != null" >
         product_num,
       </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -57,6 +65,12 @@
       </if>
       <if test="productNum != null" >
         #{productNum,jdbcType=INTEGER},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DECIMAL},
       </if>
     </trim>
   </insert>
@@ -69,13 +83,21 @@
       <if test="productNum != null" >
         product_num = #{productNum,jdbcType=INTEGER},
       </if>
+      <if test="orderId != null" >
+       order_id = #{orderId,jdbcType=INTEGER},
+      </if>
+      <if test="price != null" >
+      price = #{price,jdbcType=DECIMAL},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.seu.dm.entities.OrderProduct" >
     update order_product
     set product_id = #{productId,jdbcType=INTEGER},
-      product_num = #{productNum,jdbcType=INTEGER}
+      product_num = #{productNum,jdbcType=INTEGER},
+      order_id = #{orderId,jdbcType=INTEGER},
+      price = #{price,jdbcType=DECIMAL}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
