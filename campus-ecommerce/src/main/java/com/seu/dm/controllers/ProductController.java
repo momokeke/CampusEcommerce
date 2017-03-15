@@ -222,6 +222,7 @@ public class ProductController {
      * @return
      */
     @RequestMapping(value = "/deleteProduct/{id}")
+    @SellerPermission
     public String deleteProduct(@PathVariable Integer id, Model model){
         int i = productService.deleteProduct(id);
         return "/";
@@ -235,6 +236,7 @@ public class ProductController {
      * @return
      */
     @RequestMapping(value = "updateProduct")
+    @SellerPermission
     public String updateProduct(Product product, Model model){
         int i = productService.updateProduct(product);
         if(i == 1) System.out.println("update success");

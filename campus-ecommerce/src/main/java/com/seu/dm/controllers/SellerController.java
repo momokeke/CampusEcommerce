@@ -74,6 +74,7 @@ public class SellerController {
     }
 
     @RequestMapping(value = "/sellerLogout")
+    @SellerPermission
     public String logoutSeller(HttpServletRequest request){
         HttpSession httpSession = request.getSession(false);
         if(httpSession == null) return "redirect:/";
@@ -87,6 +88,7 @@ public class SellerController {
      * @return
      */
     @RequestMapping(value = "/updateSellerInfo",method = RequestMethod.POST)
+    @SellerPermission
     public String updateSellerInfo(Seller seller){
         sellerService.updateSeller(seller);
         return "modify_message";
@@ -98,6 +100,7 @@ public class SellerController {
      * @return
      */
     @RequestMapping(value = "/deleteSellerInfo/{id}")
+    @CampusAdminPermission
     public String deleteSellerInfo(@PathVariable Integer id){
         sellerService.deleteSeller(id);
         return "/";
@@ -110,6 +113,7 @@ public class SellerController {
      * @return
      */
     @RequestMapping(value = "/findSellerInfoById")
+    @CampusAdminPermission
     public String findSellerInfoById(@RequestParam(value = "id") Integer id, Model model){
         Seller seller = sellerService.findSeller(id);
         model.addAttribute("seller", seller);
@@ -123,6 +127,7 @@ public class SellerController {
      * @return
      */
     @RequestMapping(value = "/findSellerInfoByName")
+    @CampusAdminPermission
     public String findSellerInfoByName(@RequestParam(value = "name") String name, Model model){
         Seller seller = sellerService.findSellerByName(name);
         System.out.println(seller);
@@ -136,6 +141,7 @@ public class SellerController {
      * @return
      */
     @RequestMapping(value = "/deleteSellerInfo",method = RequestMethod.GET)
+    @CampusAdminPermission
     public String deleteSellerInfoByName(@RequestParam(value = "name")String name){
         sellerService.deleteSellerByName(name);
         return "/";
@@ -147,6 +153,7 @@ public class SellerController {
      * @return
      */
     @RequestMapping(value = "/findCountOfAllSellers")
+    @CampusAdminPermission
     public String findCountOfAllSellers(Model model){
         int i = sellerService.selectCountOfSellers();
         model.addAttribute("countOfAllSellers",i);
@@ -170,12 +177,14 @@ public class SellerController {
     *进入买家中心页面
      */
     @RequestMapping(value = "/center")
+    @SellerPermission
     public String jumpToSellerCenter() {
         return "seller/seller_center";
     }
 
 
     @RequestMapping(value = "/shop_homepage")
+    @SellerPermission
     public String test(){
         return "shop/shop_homepage";
     }
@@ -185,57 +194,63 @@ public class SellerController {
     @SellerPermission
     public String getAllOrdersOfSeller(Model model, HttpSession httpSession){
         // Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getSellerId();
-        Seller seller = (Seller)httpSession.getAttribute("userBase");
-        Integer sellerId = seller.getId();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerId(sellerId);
         model.addAttribute("orders",orders);
         return "seller/transaction_manage";
     }
 
     @RequestMapping(value = "/orders/waitdeliver")
+    @SellerPermission
     public String findSellerOrdersWithStatusWaitDeliver(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("userBase");
-        Integer sellerId = seller.getId();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusWaitDeliver(sellerId);
         model.addAttribute("orders",orders);
         return "redirect:/seller/orders";
     }
 
     @RequestMapping(value = "/orders/alreadydeliver")
+    @SellerPermission
     public String findSellerOrdersWithStatusAlreadyDelever(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("userBase");
-        Integer sellerId = seller.getId();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusAlreadyDeliver(sellerId);
         model.addAttribute("orders",orders);
         return "redirect:/seller/orders";
     }
+
     @RequestMapping(value = "/orders/onrejection")
+    @SellerPermission
     public String findSellerOrdersWithStatusOnRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("userBase");
-        Integer sellerId = seller.getId();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusOnRejection(sellerId);
         model.addAttribute("orders",orders);
         return "redirect:/seller/orders";
     }
 
     @RequestMapping(value = "/orders/alreadyrejection")
+    @SellerPermission
     public String findSellerOrdersWithStatusAlreadyRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("userBase");
-        Integer sellerId = seller.getId();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusAlreadyRejection(sellerId);
         model.addAttribute("orders",orders);
         return "redirect:/seller/orders";
     }
 
     @RequestMapping(value = "/orders/success")
+    @SellerPermission
     public String findSellerOrdersWithStatusSuccess(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Seller seller = (Seller) httpSession.getAttribute("userBase");
-        Integer sellerId = seller.getId();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusSuccess(sellerId);
         model.addAttribute("orders",orders);
         return "redirect:/seller/orders";

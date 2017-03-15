@@ -36,23 +36,25 @@
                     <div role="tabpanel" class="tab-pane fade in active" id="home">
                         <table class="table">
                             <tr class="active text-center">
+                                <td>#</td>
                                 <td>商品</td>
                                 <td>单价</td>
                                 <td>数量</td>
-                                <td>订单状态</td>
                                 <td>买家</td>
                                 <td>实收款</td>
+                                <td>订单状态</td>
                             </tr>
                         </table>
                         <div>
                             <table class="table">
-                                <tr class="text-center">
-                                    <td style="width: 111px"><img src="#" alt="商品图片"/></td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
-                                    <td>5</td>
+                                <tr class="text-center" th:each="order,iterStatus:${orders}">
+                                    <td style="width: 111px"><img src="#" th:src="@{'/picture/'+${order.product.pictureId}}" alt="商品图片"/></td>
+                                    <td th:text="${order.product.name}">1</td>
+                                    <td th:text="${order.product.price}">2</td>
+                                    <td th:text="${order.getOrderProduct().getProductNum()}">3</td>
+                                    <td th:text="${order.buyer.name}">4</td>
+                                    <td th:text="${order.totalPrice}">4</td>
+                                    <td th:text="${order.status}">5</td>
                                 </tr>
                                 <tr class="text-center">
                                     <td style="width: 111px"><img src="#" alt="商品图片"/></td>
@@ -68,21 +70,25 @@
                     <div role="tabpanel" class="tab-pane fade" id="profile">
                         <table class="table">
                             <tr class="active text-center">
+                                <td>#</td>
                                 <td>商品</td>
                                 <td>单价</td>
                                 <td>数量</td>
                                 <td>买家</td>
                                 <td>实收款</td>
+                                <td>订单状态</td>
                             </tr>
                         </table>
                         <div>
                             <table class="table">
-                                <tr class="text-center">
-                                    <td style="width: 111px"><img src="#" alt="商品图片"/></td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
+                                <tr class="text-center" th:each="order,iterStatus:${orders}">
+                                    <td style="width: 111px"><img src="#" th:src="@{'/picture/'+${order.product.pictureId}}" alt="商品图片"/></td>
+                                    <td th:text="${order.product.name}">1</td>
+                                    <td th:text="${order.product.price}">2</td>
+                                    <td th:text="${order.getOrderProduct().getProductNum()}">3</td>
+                                    <td th:text="${order.buyer.name}">4</td>
+                                    <td th:text="${order.totalPrice}">4</td>
+                                    <td th:text="${order.status}">5</td>
                                 </tr>
                             </table>
                         </div>
@@ -90,22 +96,25 @@
                     <div role="tabpanel" class="tab-pane fade" id="messages">
                         <table class="table">
                             <tr class="active text-center">
+                                <td>#</td>
                                 <td>商品</td>
                                 <td>单价</td>
                                 <td>数量</td>
                                 <td>买家</td>
                                 <td>实收款</td>
+                                <td>订单状态</td>
                             </tr>
                         </table>
                         <div>
                             <table class="table">
                                 <tr class="text-center">
-                                    <td style="width: 111px"><img src="#" alt="商品图片"/></td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
-                                    <td>5</td>
+                                    <td style="width: 111px"><img src="#" th:src="@{'/picture/'+${order.product.pictureId}}" alt="商品图片"/></td>
+                                    <td th:text="${order.product.name}">1</td>
+                                    <td th:text="${order.product.price}">2</td>
+                                    <td th:text="${order.getOrderProduct().getProductNum()}">3</td>
+                                    <td th:text="${order.buyer.name}">4</td>
+                                    <td th:text="${order.totalPrice}">4</td>
+                                    <td th:text="${order.status}">5</td>
                                 </tr>
                             </table>
                         </div>
@@ -113,12 +122,13 @@
                     <div role="tabpanel" class="tab-pane fade" id="settings">
                         <table class="table">
                             <tr class="text-center">
-                                <td style="width: 111px"><img src="#" alt="商品图片"/></td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
+                                <td style="width: 111px"><img src="#" th:src="@{'/picture/'+${order.product.pictureId}}" alt="商品图片"/></td>
+                                <td th:text="${order.product.name}">1</td>
+                                <td th:text="${order.product.price}">2</td>
+                                <td th:text="${order.getOrderProduct().getProductNum()}">3</td>
+                                <td th:text="${order.buyer.name}">4</td>
+                                <td th:text="${order.totalPrice}">4</td>
+                                <td th:text="${order.status}">5</td>
                             </tr>
                         </table>
                     </div>

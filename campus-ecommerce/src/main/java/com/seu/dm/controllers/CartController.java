@@ -1,5 +1,6 @@
 package com.seu.dm.controllers;
 
+import com.seu.dm.annotations.permissions.BuyerPermission;
 import com.seu.dm.entities.CartProduct;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +17,7 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class CartController {
     @RequestMapping("/addCart")
+    @BuyerPermission
     public String addToCart(CartProduct cartProduct,
                           HttpServletResponse response,
                           HttpServletRequest request, Model model){
