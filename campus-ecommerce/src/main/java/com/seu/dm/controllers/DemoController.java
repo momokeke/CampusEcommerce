@@ -1,7 +1,13 @@
 package com.seu.dm.controllers;
 
+import com.alipay.api.AlipayApiException;
+import com.alipay.api.AlipayClient;
+import com.alipay.api.request.AlipayTradeWapPayRequest;
 import com.seu.dm.entities.DemoEntity;
+import com.seu.dm.helpers.alipay.constants.AlipayServiceEnvConstants;
+import com.seu.dm.helpers.alipay.factory.AlipayAPIClientFactory;
 import com.seu.dm.services.DemoService;
+import net.minidev.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
@@ -193,4 +200,44 @@ public class DemoController {
     @RequestMapping(value={"/contactUs"})
     public String jumpToContactUs(){
         return "aboutus/ContactUs";}
+
+    @RequestMapping(value = "/testAipay")
+    public void Ailipay(HttpServletRequest request,HttpServletResponse response) throws IOException {
+        AlipayClient alipayClient = AlipayAPIClientFactory.getAlipayClient();
+        AlipayTradeWapPayRequest alipayRequest = new AlipayTradeWapPayRequest();
+        System.out.println("called");
+        alipayRequest.setReturnUrl("http://139.199.222.147:8080/demo/testAliReturn");
+        alipayRequest.setNotifyUrl("http://139.199.222.147:8080/demo/testNotifyUrl");
+
+        JSONObject json = new JSONObject();
+        json.put("out_trade_no","20150320010101123140");
+        json.put("total_amount","0.88");
+        json.put("subject","test");
+        json.put("seller_id","2088102169780725");
+        json.put("product_code","QUICK_WAP_PAY");
+
+        alipayRequest.setBizContent(json.toString());
+        try {
+            String form = alipayClient.pageExecute(alipayRequest).getBody();
+            response.setContentType("text/html;charset=" + AlipayServiceEnvConstants.CHARSET);
+            response.getWriter().write(form);
+            response.getWriter().flush();
+        }catch (AlipayApiException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @RequestMapping(value = "/testAliReturn")
+    public String returnFromAlipay(HttpServletRequest request){
+        HttpSession httpSession = request.getSession();
+        System.out.println("ss");
+        return "demo/testAliReturn";
+    }
+
+    @RequestMapping(value = "/testNotifyUrl")
+    public String swss(){
+        System.out.println("swss");
+        return "demo/testNotifyUrl";
+    }
 }
