@@ -73,7 +73,7 @@ public class BuyerController {
             return "common/alert";
         }
 
-
+        buyer.setCampusId((Integer)httpSession.getAttribute("campusId"));
         //向数据库中添加买家
         int i = buyerService.addBuyer(buyer);
         Buyer buyerFromDB = buyerService.findBuyerByName(buyer.getName());
@@ -139,7 +139,7 @@ public class BuyerController {
         List<Order> orders = orderService.findOrdersByBuyerId(buyerId);
         model.addAttribute("orders",orders);
 
-        return "redirect:/buyer/orders";
+        return "buyer/bought_products";
     }
 
     @RequestMapping(value = "/orders/waitdeliver")

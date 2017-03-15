@@ -19,10 +19,10 @@
         </div>
         <form enctype="multipart/form-data" action="/product/addproduct" th:action="@{'/product/addProduct'}" method="post" name="newPro">
         <div class="col-xs-4">
-                <div><span class="text-size">商品名称:</span><input class="border-two mt-20 ml-5" type="text" value="" name="name"/></div>
+                <div><span class="text-size">商品名称:</span><input class="border-two mt-20 ml-5" type="text" value="" name="name" maxlength="10"/></div>
                 <div><span class="text-size">商品种类:</span><input class="border-two mt-20 ml-5" type="text" value="" name="category" /></div>
                 <div><span class="text-size">商品价格:</span><input class="border-two mt-20 ml-5" type="text" value="" name="price"/></div>
-                <div><span class="text-size">商品描述:</span><textarea class="border-two mt-20 ml-5 textarea-wh" name="description"></textarea></div>
+                <div><span class="text-size">商品描述:</span><textarea class="border-two mt-20 ml-5 textarea-wh" name="description" maxlength="30"></textarea></div>
                 <div><input type="file" name="picture" id="picture" multiple="multiple" class="btn-default mt-20 ml-5"/></div>
                 <div><input type="submit" class=" mt-25 ml-5 btn-success btn-lg" value="提交商品信息"/></div>
 
