@@ -105,11 +105,12 @@
       SELECT LAST_INSERT_ID()
     </selectKey>
     insert into orders (id, order_product_id, user_id, 
-      seller_id, create_time, total_price, 
+      seller_id, total_price,
       shop_id, status, pay_id, 
       comment_id, campus_id)
     values (#{id,jdbcType=INTEGER}, #{orderProductId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
-      #{sellerId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{totalPrice,jdbcType=DECIMAL}, 
+      #{sellerId,jdbcType=INTEGER}, #{totalPrice,jdbcType=DECIMAL},
+      #{sellerId,jdbcType=INTEGER}, #{totalPrice,jdbcType=DECIMAL},
       #{shopId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{payId,jdbcType=INTEGER},
       #{commentId,jdbcType=INTEGER}, #{campusId,jdbcType=INTEGER})
   </insert>

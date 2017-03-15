@@ -33,6 +33,14 @@ public class LoginController {
         return "admin/campusadmin/login";
     }
 
+    @RequestMapping(value="/out")
+    public String logout(HttpSession httpSession,Model model){
+        httpSession.removeAttribute("userBase");
+        model.addAttribute("message","退出成功");
+        model.addAttribute("jumpUrl","/campusadmin/login/");
+        return "common/alert";
+    }
+
     @RequestMapping(value="/dologin", method = RequestMethod.POST)
     public String doLogin(HttpSession httpSession,
                           @RequestParam String username,
