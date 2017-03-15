@@ -13,8 +13,10 @@ import com.seu.dm.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -36,13 +38,21 @@ public class IndexController {
     @Autowired
     private ProductService productService;
 
-    @RequestMapping(value={"/","/index.html"})
-    public String index( HttpSession httpSession, Model model){
+    @RequestMapping(value="/success")
+    @ResponseBody
+    public String test(){
+        return "success";
+    }
+
+    @RequestMapping(value={"/","/index.html","/notlogin/{role}"})
+    public String index(HttpSession httpSession, Model model, @PathVariable(required = false) String role){
+        if(role!=null){
+            model.addAttribute("showLogin",true);
+        }
         UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
         HomePage homePage = new HomePage();
-
         //homePage.setCampusId(userBase.getCampusId());
-        Integer campusId = 1;
+        Integer campusId = (Integer)httpSession.getAttribute("campusId");
         homePage.setCampusId(campusId);
         homePage.setPositionId(1);
         PageHelper.startPage(1,3);

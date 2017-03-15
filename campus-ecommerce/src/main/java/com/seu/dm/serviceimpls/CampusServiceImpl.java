@@ -26,9 +26,6 @@ public class CampusServiceImpl implements CampusService {
     @Override
     public List<Campus> findAllCampuses() {
         List<Campus> campuses = campusMapper.selectAll();
-        for (Campus campus : campuses) {
-            System.out.println(campus.getName());
-        }
         return campuses;
     }
 

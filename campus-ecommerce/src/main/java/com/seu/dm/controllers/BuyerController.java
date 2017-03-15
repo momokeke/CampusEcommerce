@@ -4,6 +4,12 @@ import com.seu.dm.dto.CartProductDTO;
 import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.*;
 import com.seu.dm.helpers.mail.MailSender;
+import com.seu.dm.entities.Product;
+import com.seu.dm.entities.Seller;
+import com.seu.dm.services.BuyerService;
+import com.seu.dm.services.OrderService;
+import com.seu.dm.services.ProductService;
+import com.seu.dm.services.SellerService;
 import com.seu.dm.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,6 +58,14 @@ public class BuyerController {
         buyer.setIsActive(false);
         HttpSession httpSession = request.getSession();
         System.out.println("call");
+
+        String name = buyer.getName();
+        if(buyerService.findBuyerByName(name)!=null){
+            model.addAttribute("message","用户名已存在");
+            model.addAttribute("jumpUrl","/buyer/register");
+            return "common/alert";
+        }
+
 
         //向数据库中添加买家
         int i = buyerService.addBuyer(buyer);
@@ -120,7 +134,6 @@ public class BuyerController {
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerId(buyerId);
         model.addAttribute("orders",orders);
-
         return "buyer/orders";
     }
 

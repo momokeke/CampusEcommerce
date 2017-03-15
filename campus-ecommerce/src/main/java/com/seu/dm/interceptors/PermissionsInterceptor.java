@@ -5,17 +5,29 @@ import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.annotations.permissions.SellerPermission;
 import com.seu.dm.annotations.permissions.SuperAdminPermission;
 import com.seu.dm.dto.UserBaseDTO;
+import com.seu.dm.entities.Campus;
 import com.seu.dm.entities.Seller;
+import com.seu.dm.serviceimpls.CampusServiceImpl;
 import com.seu.dm.services.CampusService;
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.ui.Model;
+import org.springframework.web.context.support.WebApplicationContextUtils;
+import org.springframework.web.context.support.XmlWebApplicationContext;
 import org.springframework.web.method.HandlerMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.util.List;
 
 /**
  * Created by Greeting on 2017/3/9.
@@ -23,15 +35,16 @@ import java.lang.reflect.Method;
  */
 public class PermissionsInterceptor extends HandlerInterceptorAdapter {
 
+
+
+
     @Autowired
     private CampusService campusService;
+
 
     @Override
     public boolean preHandle(HttpServletRequest request,
                              HttpServletResponse response, Object handler) throws Exception {
-
-
-
         HandlerMethod handlerMethod = (HandlerMethod) handler;
         Method method = handlerMethod.getMethod();
         //return forTesting(request,method);
@@ -48,11 +61,41 @@ public class PermissionsInterceptor extends HandlerInterceptorAdapter {
             return verifyBuyer(request,response);
         }
 
+
+
+
         return true;
+    }
+
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+        super.postHandle(request, response, handler, modelAndView);
+
+
+        if (campusService == null) {//解决service为null无法注入问题
+            System.out.println("campusService is null!!!");
+            BeanFactory factory = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
+            campusService = (CampusService) factory.getBean("campusServiceImpl");
+        }
+
+        List<Campus> campuses = campusService.findAllCampuses();
+        request.setAttribute("campuses",campuses);
+        HttpSession httpSession = request.getSession();
+        Integer campusId = (Integer)httpSession.getAttribute("campusId");
+        if(campusId == null){
+            //有时间的话就换
+            campusId = 1;
+            httpSession.setAttribute("campusId",1);
+        }
+        request.setAttribute("campusId",campusId);
+
+
+
+
 
     }
 
-    private boolean forTesting(HttpServletRequest request,Method method){
+    private boolean forTesting(HttpServletRequest request, Method method){
         if(method.getAnnotation(SuperAdminPermission.class)!=null){
             HttpSession httpSession = request.getSession();
             UserBaseDTO userBase = new UserBaseDTO();
