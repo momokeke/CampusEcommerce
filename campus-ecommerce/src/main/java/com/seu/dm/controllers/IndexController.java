@@ -3,14 +3,12 @@ package com.seu.dm.controllers;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.seu.dm.dto.UserBaseDTO;
-import com.seu.dm.entities.Buyer;
-import com.seu.dm.entities.HomePage;
-import com.seu.dm.entities.Order;
-import com.seu.dm.entities.Seller;
+import com.seu.dm.entities.*;
 import com.seu.dm.helpers.PageGenerateHelper;
 import com.seu.dm.helpers.mail.MD5Util;
 import com.seu.dm.services.BuyerService;
 import com.seu.dm.services.HomePageService;
+import com.seu.dm.services.ProductService;
 import com.seu.dm.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +33,8 @@ public class IndexController {
     private SellerService sellerService;
     @Autowired
     private HomePageService homePageService;
+    @Autowired
+    private ProductService productService;
 
     @RequestMapping(value={"/","/index.html"})
     public String index( HttpSession httpSession, Model model){
@@ -42,7 +42,8 @@ public class IndexController {
         HomePage homePage = new HomePage();
 
         //homePage.setCampusId(userBase.getCampusId());
-        homePage.setCampusId(1);
+        Integer campusId = 1;
+        homePage.setCampusId(campusId);
         homePage.setPositionId(1);
         PageHelper.startPage(1,3);
         List<HomePage> top = homePageService.findHomePage(homePage);
@@ -51,6 +52,22 @@ public class IndexController {
         List<HomePage> bottom = homePageService.findHomePage(homePage);
         model.addAttribute("top",top);
         model.addAttribute("bottom",bottom);
+
+        PageHelper.startPage(1,6);
+        List<Product> newProducts = productService.findNewProducts(campusId);
+        model.addAttribute("newProducts",newProducts);
+
+        PageHelper.startPage(1,6);
+        List<Product> cheapProducts = productService.findCheapProducts(campusId);
+        model.addAttribute("cheapProducts",cheapProducts);
+
+
+
+
+
+
+
+
         return "index";
     }
 

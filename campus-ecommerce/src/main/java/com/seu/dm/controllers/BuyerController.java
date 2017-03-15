@@ -288,7 +288,7 @@ public class BuyerController {
     @RequestMapping(value = "/bought_products")
     public String jumpToBoughtProducts(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
-        Buyer buyer = (Buyer) httpSession.getAttribute("userBase");
+        UserBaseDTO buyer = (UserBaseDTO) httpSession.getAttribute("userBase");
         Integer buyerId = buyer.getId();
         List<Order> orders = orderService.findOrdersByBuyerId(buyerId);
         model.addAttribute("orders",orders);
