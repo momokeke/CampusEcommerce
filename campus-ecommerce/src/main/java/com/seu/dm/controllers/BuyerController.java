@@ -44,7 +44,14 @@ public class BuyerController {
     @Autowired
     private OrderProductService orderProductService;
 
-
+    @RequestMapping(value="/checkregister/{name}")
+    @ResponseBody
+    public Boolean checkRegister(@PathVariable String name){
+        if(buyerService.findBuyerByName(name)!=null){
+            return false;
+        }
+        return true;
+    }
 
     /**
      * 注册用户
@@ -62,7 +69,7 @@ public class BuyerController {
         String name = buyer.getName();
         if(buyerService.findBuyerByName(name)!=null){
             model.addAttribute("message","用户名已存在");
-            model.addAttribute("jumpUrl","/buyer/register");
+            model.addAttribute("jumpUrl","/register");
             return "common/alert";
         }
 
