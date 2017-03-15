@@ -101,6 +101,9 @@
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.seu.dm.entities.Order" >
+    <selectKey resultType="java.lang.Integer" order="AFTER" keyProperty="id">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
     insert into orders (id, order_product_id, user_id, 
       seller_id, total_price,
       shop_id, status, pay_id, 

@@ -1,9 +1,8 @@
 package com.seu.dm.controllers;
 
-import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.annotations.permissions.SellerPermission;
+import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.dto.UserBaseDTO;
-import org.springframework.web.bind.annotation.*;
 import com.seu.dm.entities.Order;
 import com.seu.dm.entities.Seller;
 import com.seu.dm.services.OrderService;
@@ -190,7 +189,7 @@ public class SellerController {
     }
 
 
-    @RequestMapping(value = "/ordersmanage")
+    @RequestMapping(value = "/orders")
     @SellerPermission
     public String getAllOrdersOfSeller(Model model, HttpSession httpSession){
         // Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getSellerId();
@@ -201,7 +200,7 @@ public class SellerController {
         return "seller/transaction_manage";
     }
 
-    @RequestMapping(value = "/orders/waitdeliver")
+    @RequestMapping(value = "/ordersWaitdeliver")
     @SellerPermission
     public String findSellerOrdersWithStatusWaitDeliver(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
@@ -209,10 +208,10 @@ public class SellerController {
         Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusWaitDeliver(sellerId);
         model.addAttribute("orders",orders);
-        return "redirect:/seller/orders";
+        return "seller/transaction_managewaitdeliver";
     }
 
-    @RequestMapping(value = "/orders/alreadydeliver")
+    @RequestMapping(value = "/ordersAlreadydeliver")
     @SellerPermission
     public String findSellerOrdersWithStatusAlreadyDelever(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
@@ -220,10 +219,10 @@ public class SellerController {
         Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusAlreadyDeliver(sellerId);
         model.addAttribute("orders",orders);
-        return "redirect:/seller/orders";
+        return "seller/transaction_managealreadydeliver";
     }
 
-    @RequestMapping(value = "/orders/onrejection")
+    @RequestMapping(value = "/ordersOnrejection")
     @SellerPermission
     public String findSellerOrdersWithStatusOnRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
@@ -231,10 +230,10 @@ public class SellerController {
         Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusOnRejection(sellerId);
         model.addAttribute("orders",orders);
-        return "redirect:/seller/orders";
+        return "seller/transaction_manageonrejection";
     }
 
-    @RequestMapping(value = "/orders/alreadyrejection")
+    @RequestMapping(value = "/ordersAlreadyrejection")
     @SellerPermission
     public String findSellerOrdersWithStatusAlreadyRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
@@ -242,10 +241,10 @@ public class SellerController {
         Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusAlreadyRejection(sellerId);
         model.addAttribute("orders",orders);
-        return "redirect:/seller/orders";
+        return "seller/transaction_managealreadyrejection";
     }
 
-    @RequestMapping(value = "/orders/success")
+    @RequestMapping(value = "/ordersSuccess")
     @SellerPermission
     public String findSellerOrdersWithStatusSuccess(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
@@ -253,6 +252,6 @@ public class SellerController {
         Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusSuccess(sellerId);
         model.addAttribute("orders",orders);
-        return "redirect:/seller/orders";
+        return "seller/transaction_managesuccess";
     }
 }

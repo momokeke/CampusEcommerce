@@ -125,6 +125,9 @@ public class BuyerController {
         httpSession.removeAttribute("userBase");
         return "redirect:/";
     }
+    /*
+        *跳到买家已买到的宝贝
+         */
 
     @RequestMapping(value = "/orders")
     @BuyerPermission
@@ -134,9 +137,9 @@ public class BuyerController {
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerId(buyerId);
         model.addAttribute("orders",orders);
-
-        return "buyer/bought_products";
+        return "buyer/orders";
     }
+
 
     @RequestMapping(value = "/orders/waitdeliver")
     @BuyerPermission
@@ -146,8 +149,9 @@ public class BuyerController {
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusWaitDeliver(buyerId);
         model.addAttribute("orders",orders);
-        return "redirect:/buyer/orders";
+        return "buyer/orders";
     }
+
 
     @RequestMapping(value = "/orders/alreadydeliver")
     @BuyerPermission
@@ -157,8 +161,9 @@ public class BuyerController {
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusAlreadyDeliver(buyerId);
         model.addAttribute("orders",orders);
-        return "redirect:/buyer/orders";
+        return "buyer/orders";
     }
+
 
     @RequestMapping(value = "/orders/onrejection")
     @BuyerPermission
@@ -168,8 +173,9 @@ public class BuyerController {
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusOnRejection(buyerId);
         model.addAttribute("orders",orders);
-        return "redirect:/buyer/orders";
+        return "buyer/orders";
     }
+
 
     @RequestMapping(value = "/orders/alreadyrejection")
     @BuyerPermission
@@ -179,8 +185,9 @@ public class BuyerController {
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusAlreadyRejection(buyerId);
         model.addAttribute("orders",orders);
-        return "redirect:/buyer/orders";
+        return "buyer/orders";
     }
+
 
     @RequestMapping(value = "/orders/success")
     @BuyerPermission
@@ -190,7 +197,7 @@ public class BuyerController {
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusSuccess(buyerId);
         model.addAttribute("orders",orders);
-        return "redirect:/buyer/orders";
+        return "buyer/orders";
     }
     /*
     *跳转到买家登录
@@ -262,8 +269,16 @@ public class BuyerController {
                 order.setOrderProductId(product.getPictureId());
                 order.setStatus(1);
                 order.setSeller(seller);
+
                 orderService.addOrder(order);
                 orderProductService.addOrderProduct(op);
+                order.setOrderProductId(op.getId());
+                op.setOrderId(order.getId());
+                orderService.updateOrder(order);
+                orderProductService.updateOrderProduct(op);
+
+
+
                 model.addAttribute("order",order);
                 model.addAttribute("orderProduct",op);
 
@@ -364,6 +379,7 @@ public class BuyerController {
         return "buyer/buyer_favorite";
     }
 
+
     /*
     *跳到买家已买到的宝贝
      */
@@ -377,6 +393,7 @@ public class BuyerController {
         model.addAttribute("orders",orders);
         return "buyer/bought_products";
     }
+
     /*
       *跳到买家已买过得店铺
        */

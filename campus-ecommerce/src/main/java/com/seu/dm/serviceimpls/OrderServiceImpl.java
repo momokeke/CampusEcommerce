@@ -130,6 +130,9 @@ public class OrderServiceImpl implements OrderService {
             o.setBuyer(buyerMapper.selectByPrimaryKey(o.getUserId()));
             o.setSeller(sellerMapper.selectByPrimaryKey(o.getSellerId()));
             o.setOrderProduct(orderProductMapper.findOneOrderProductByOrderId(o.getId()));
+            System.out.println("id = "+o.getId());
+            System.out.println("productId = " + o.getOrderProduct().getProductId());
+            System.out.println("s : "+productMapper.selectByPrimaryKey(o.getOrderProduct().getProductId()));
             o.setProduct(productMapper.selectByPrimaryKey(o.getOrderProduct().getProductId()));
         }
         return orders;
