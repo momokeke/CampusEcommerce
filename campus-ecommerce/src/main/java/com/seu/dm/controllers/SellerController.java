@@ -10,10 +10,7 @@ import com.seu.dm.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -30,6 +27,15 @@ public class SellerController {
     @Autowired
     private OrderService orderService;
 
+    @RequestMapping(value="/checkregister/{name}")
+    @ResponseBody
+    public Boolean checkRegister(@PathVariable String name){
+        if(sellerService.findSellerByName(name)!=null){
+            return false;
+        }
+        return true;
+    }
+
     /**
      * 根据店铺注册信息向数据库添加卖家
      * @param seller
@@ -43,11 +49,11 @@ public class SellerController {
         String name = seller.getName();
         if(sellerService.findSellerByName(name)!=null){
             model.addAttribute("message","用户名已存在");
-            model.addAttribute("jumpUrl","/seller/register");
+            model.addAttribute("jumpUrl","/register");
             return "common/alert";
         }
 
-
+        seller.setCampusId((Integer)httpSession.getAttribute("campusId"));
         sellerService.addSeller(seller);                //由service层负责添加工作
         Seller sellerFromDB = sellerService.findSellerByName(seller.getName());
         UserBaseDTO userBase = new UserBaseDTO();

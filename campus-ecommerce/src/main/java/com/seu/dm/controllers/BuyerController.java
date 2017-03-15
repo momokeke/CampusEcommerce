@@ -45,7 +45,14 @@ public class BuyerController {
     @Autowired
     private OrderProductService orderProductService;
 
-
+    @RequestMapping(value="/checkregister/{name}")
+    @ResponseBody
+    public Boolean checkRegister(@PathVariable String name){
+        if(buyerService.findBuyerByName(name)!=null){
+            return false;
+        }
+        return true;
+    }
 
     /**
      * 注册用户
@@ -63,11 +70,11 @@ public class BuyerController {
         String name = buyer.getName();
         if(buyerService.findBuyerByName(name)!=null){
             model.addAttribute("message","用户名已存在");
-            model.addAttribute("jumpUrl","/buyer/register");
+            model.addAttribute("jumpUrl","/register");
             return "common/alert";
         }
 
-
+        buyer.setCampusId((Integer)httpSession.getAttribute("campusId"));
         //向数据库中添加买家
         int i = buyerService.addBuyer(buyer);
         Buyer buyerFromDB = buyerService.findBuyerByName(buyer.getName());
@@ -149,7 +156,7 @@ public class BuyerController {
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusWaitDeliver(buyerId);
         model.addAttribute("orders",orders);
-        return "buyer/orders";
+        return "buyer/ordersWaitdeliver";
     }
 
 
@@ -161,7 +168,7 @@ public class BuyerController {
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusAlreadyDeliver(buyerId);
         model.addAttribute("orders",orders);
-        return "buyer/orders";
+        return "buyer/ordersAlreadydeliver";
     }
 
 
@@ -173,7 +180,7 @@ public class BuyerController {
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusOnRejection(buyerId);
         model.addAttribute("orders",orders);
-        return "buyer/orders";
+        return "buyer/ordersOnrejection";
     }
 
 
@@ -185,7 +192,7 @@ public class BuyerController {
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusAlreadyRejection(buyerId);
         model.addAttribute("orders",orders);
-        return "buyer/orders";
+        return "buyer/ordersAlreadyrejection";
     }
 
 
@@ -197,7 +204,7 @@ public class BuyerController {
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusSuccess(buyerId);
         model.addAttribute("orders",orders);
-        return "buyer/orders";
+        return "buyer/ordersSuccess";
     }
     /*
     *跳转到买家登录

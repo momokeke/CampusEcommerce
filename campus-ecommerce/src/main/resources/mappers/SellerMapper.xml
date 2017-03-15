@@ -28,7 +28,7 @@
     select * from seller where campus_id = #{campusId}
   </select>
   <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select * from seller where name like #{name}
+    select * from seller where name like #{name} limit 1
   </select>
   <delete id="deleteByName" parameterType="java.lang.String">
     delete from seller where name = #{name}

@@ -110,7 +110,6 @@
       comment_id, campus_id)
     values (#{id,jdbcType=INTEGER}, #{orderProductId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
       #{sellerId,jdbcType=INTEGER}, #{totalPrice,jdbcType=DECIMAL},
-      #{sellerId,jdbcType=INTEGER}, #{totalPrice,jdbcType=DECIMAL},
       #{shopId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{payId,jdbcType=INTEGER},
       #{commentId,jdbcType=INTEGER}, #{campusId,jdbcType=INTEGER})
   </insert>
