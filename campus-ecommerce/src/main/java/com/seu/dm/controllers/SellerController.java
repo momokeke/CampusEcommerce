@@ -52,7 +52,7 @@ public class SellerController {
             return "common/alert";
         }
 
-
+        seller.setCampusId((Integer)httpSession.getAttribute("campusId"));
         sellerService.addSeller(seller);                //由service层负责添加工作
         Seller sellerFromDB = sellerService.findSellerByName(seller.getName());
         UserBaseDTO userBase = new UserBaseDTO();
