@@ -113,61 +113,145 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public List<Order> findOrdersBySellerId(Integer sellerId) {
-        return orderMapper.findOrdersBySellerId(sellerId);
+        List<Order> orders  = orderMapper.findOrdersBySellerId(sellerId);
+        for(Order o : orders){
+            o.setBuyer(buyerMapper.selectByPrimaryKey(o.getUserId()));
+            o.setSeller(sellerMapper.selectByPrimaryKey(o.getSellerId()));
+            o.setOrderProduct(orderProductMapper.findOneOrderProductByOrderId(o.getId()));
+            o.setProduct(productMapper.selectByPrimaryKey(o.getOrderProduct().getProductId()));
+        }
+        return orders;
     }
 
     @Override
     public List<Order> findOrdersByBuyerId(Integer buyerId) {
-        return orderMapper.findOrdersByBuyerId(buyerId);
+        List<Order> orders  = orderMapper.findOrdersByBuyerId(buyerId);
+        for(Order o : orders){
+            o.setBuyer(buyerMapper.selectByPrimaryKey(o.getUserId()));
+            o.setSeller(sellerMapper.selectByPrimaryKey(o.getSellerId()));
+            o.setOrderProduct(orderProductMapper.findOneOrderProductByOrderId(o.getId()));
+            o.setProduct(productMapper.selectByPrimaryKey(o.getOrderProduct().getProductId()));
+        }
+        return orders;
     }
 
     @Override
     public List<Order> findOrdersByBuyerIdWithStatusWaitDeliver(Integer buyerId) {
-        return orderMapper.findOrdersByBuyerIdWithStatusWaitDeliver(buyerId);
+        List<Order> orders  = orderMapper.findOrdersByBuyerIdWithStatusWaitDeliver(buyerId);
+        for(Order o : orders){
+            o.setBuyer(buyerMapper.selectByPrimaryKey(o.getUserId()));
+            o.setSeller(sellerMapper.selectByPrimaryKey(o.getSellerId()));
+            o.setOrderProduct(orderProductMapper.findOneOrderProductByOrderId(o.getId()));
+            o.setProduct(productMapper.selectByPrimaryKey(o.getOrderProduct().getProductId()));
+        }
+        return orders;
     }
 
     @Override
     public List<Order> findOrdersByBuyerIdWithStatusAlreadyDeliver(Integer buyerId) {
-        return orderMapper.findOrdersByBuyerIdWithStatusAlreadyDeliver(buyerId);
+        List<Order> orders  = orderMapper.findOrdersByBuyerIdWithStatusAlreadyDeliver(buyerId);
+        for(Order o : orders){
+            o.setBuyer(buyerMapper.selectByPrimaryKey(o.getUserId()));
+            o.setSeller(sellerMapper.selectByPrimaryKey(o.getSellerId()));
+            o.setOrderProduct(orderProductMapper.findOneOrderProductByOrderId(o.getId()));
+            o.setProduct(productMapper.selectByPrimaryKey(o.getOrderProduct().getProductId()));
+        }
+        return orders;
     }
 
     @Override
     public List<Order> findOrdersByBuyerIdWithStatusOnRejection(Integer buyerId) {
-        return orderMapper.findOrdersByBuyerIdWithStatusOnRejection(buyerId);
+        List<Order> orders  = orderMapper.findOrdersByBuyerIdWithStatusOnRejection(buyerId);
+        for(Order o : orders){
+            o.setBuyer(buyerMapper.selectByPrimaryKey(o.getUserId()));
+            o.setSeller(sellerMapper.selectByPrimaryKey(o.getSellerId()));
+            o.setOrderProduct(orderProductMapper.findOneOrderProductByOrderId(o.getId()));
+            o.setProduct(productMapper.selectByPrimaryKey(o.getOrderProduct().getProductId()));
+        }
+        return orders;
     }
 
     @Override
     public List<Order> findOrdersByBuyerIdWithStatusAlreadyRejection(Integer buyerId) {
-        return orderMapper.findOrdersByBuyerIdWithStatusAlreadyRejection(buyerId);
+        List<Order> orders  = orderMapper.findOrdersByBuyerIdWithStatusAlreadyRejection(buyerId);
+        for(Order o : orders){
+            o.setBuyer(buyerMapper.selectByPrimaryKey(o.getUserId()));
+            o.setSeller(sellerMapper.selectByPrimaryKey(o.getSellerId()));
+            o.setOrderProduct(orderProductMapper.findOneOrderProductByOrderId(o.getId()));
+            o.setProduct(productMapper.selectByPrimaryKey(o.getOrderProduct().getProductId()));
+        }
+        return orders;
     }
 
     @Override
     public List<Order> findOrdersByBuyerIdWithStatusSuccess(Integer buyerId) {
-        return orderMapper.findOrdersByBuyerIdWithStatusSuccess(buyerId);
+        List<Order> orders  = orderMapper.findOrdersByBuyerIdWithStatusSuccess(buyerId);
+        for(Order o : orders){
+            o.setBuyer(buyerMapper.selectByPrimaryKey(o.getUserId()));
+            o.setSeller(sellerMapper.selectByPrimaryKey(o.getSellerId()));
+            o.setOrderProduct(orderProductMapper.findOneOrderProductByOrderId(o.getId()));
+            o.setProduct(productMapper.selectByPrimaryKey(o.getOrderProduct().getProductId()));
+        }
+        return orders;
     }
 
     @Override
     public List<Order> findOrdersBySellerIdWithStatusWaitDeliver(Integer sellerId) {
-        return orderMapper.findOrdersBySellerIdWithStatusWaitDeliver(sellerId);
+        List<Order> orders  = orderMapper.findOrdersBySellerIdWithStatusWaitDeliver(sellerId);
+        for(Order o : orders){
+            o.setBuyer(buyerMapper.selectByPrimaryKey(o.getUserId()));
+            o.setSeller(sellerMapper.selectByPrimaryKey(o.getSellerId()));
+            o.setOrderProduct(orderProductMapper.findOneOrderProductByOrderId(o.getId()));
+            o.setProduct(productMapper.selectByPrimaryKey(o.getOrderProduct().getProductId()));
+        }
+        return orders;
     }
 
     @Override
     public List<Order> findOrdersBySellerIdWithStatusAlreadyDeliver(Integer sellerId) {
-        return orderMapper.findOrdersBySellerIdWithStatusAlreadyDeliver(sellerId);
+        List<Order> orders  = orderMapper.findOrdersBySellerIdWithStatusAlreadyDeliver(sellerId);
+        for(Order o : orders){
+            o.setBuyer(buyerMapper.selectByPrimaryKey(o.getUserId()));
+            o.setSeller(sellerMapper.selectByPrimaryKey(o.getSellerId()));
+            o.setOrderProduct(orderProductMapper.findOneOrderProductByOrderId(o.getId()));
+            o.setProduct(productMapper.selectByPrimaryKey(o.getOrderProduct().getProductId()));
+        }
+        return orders;
     }
 
     @Override
     public List<Order> findOrdersBySellerIdWithStatusOnRejection(Integer sellerId) {
-        return orderMapper.findOrdersBySellerIdWithStatusOnRejection(sellerId);
+        List<Order> orders  = orderMapper.findOrdersBySellerIdWithStatusOnRejection(sellerId);
+        for(Order o : orders){
+            o.setBuyer(buyerMapper.selectByPrimaryKey(o.getUserId()));
+            o.setSeller(sellerMapper.selectByPrimaryKey(o.getSellerId()));
+            o.setOrderProduct(orderProductMapper.findOneOrderProductByOrderId(o.getId()));
+            o.setProduct(productMapper.selectByPrimaryKey(o.getOrderProduct().getProductId()));
+        }
+        return orders;
     }
 
     @Override
     public List<Order> findOrdersBySellerIdWithStatusAlreadyRejection(Integer sellerId) {
-        return orderMapper.findOrdersBySellerIdWithStatusAlreadyRejection(sellerId);
+        List<Order> orders  = orderMapper.findOrdersBySellerIdWithStatusAlreadyRejection(sellerId);
+        for(Order o : orders){
+            o.setBuyer(buyerMapper.selectByPrimaryKey(o.getUserId()));
+            o.setSeller(sellerMapper.selectByPrimaryKey(o.getSellerId()));
+            o.setOrderProduct(orderProductMapper.findOneOrderProductByOrderId(o.getId()));
+            o.setProduct(productMapper.selectByPrimaryKey(o.getOrderProduct().getProductId()));
+        }
+        return orders;
     }
 
     @Override
     public List<Order> findOrdersBySellerIdWithStatusSuccess(Integer sellerId) {
-        return orderMapper.findOrdersBySellerIdWithStatusSuccess(sellerId);
+        List<Order> orders  = orderMapper.findOrdersBySellerIdWithStatusSuccess(sellerId);
+        for(Order o : orders){
+            o.setBuyer(buyerMapper.selectByPrimaryKey(o.getUserId()));
+            o.setSeller(sellerMapper.selectByPrimaryKey(o.getSellerId()));
+            o.setOrderProduct(orderProductMapper.findOneOrderProductByOrderId(o.getId()));
+            o.setProduct(productMapper.selectByPrimaryKey(o.getOrderProduct().getProductId()));
+        }
+        return orders;
     }
 }

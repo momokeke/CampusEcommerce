@@ -117,6 +117,7 @@ public class BuyerController {
         Integer buyerId = buyer.getId();
         List<Order> orders = orderService.findOrdersByBuyerId(buyerId);
         model.addAttribute("orders",orders);
+
         return "redirect:/buyer/orders";
     }
 
