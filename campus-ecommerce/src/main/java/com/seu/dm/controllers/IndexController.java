@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -35,6 +36,12 @@ public class IndexController {
     private HomePageService homePageService;
     @Autowired
     private ProductService productService;
+
+    @RequestMapping(value="/success")
+    @ResponseBody
+    public String test(){
+        return "success";
+    }
 
     @RequestMapping(value={"/","/index.html"})
     public String index( HttpSession httpSession, Model model){

@@ -11,6 +11,7 @@ import com.seu.dm.services.BuyerService;
 import com.seu.dm.services.OrderService;
 import com.seu.dm.services.ProductService;
 import com.seu.dm.services.SellerService;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
