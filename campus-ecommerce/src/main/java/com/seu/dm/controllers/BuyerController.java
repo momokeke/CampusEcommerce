@@ -59,6 +59,14 @@ public class BuyerController {
         HttpSession httpSession = request.getSession();
         System.out.println("call");
 
+        String name = buyer.getName();
+        if(buyerService.findBuyerByName(name)!=null){
+            model.addAttribute("message","用户名已存在");
+            model.addAttribute("jumpUrl","/buyer/register");
+            return "common/alert";
+        }
+
+
         //向数据库中添加买家
         int i = buyerService.addBuyer(buyer);
         Buyer buyerFromDB = buyerService.findBuyerByName(buyer.getName());
