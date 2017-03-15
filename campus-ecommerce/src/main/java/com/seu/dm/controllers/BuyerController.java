@@ -2,15 +2,9 @@ package com.seu.dm.controllers;
 
 import com.seu.dm.dto.CartProductDTO;
 import com.seu.dm.dto.UserBaseDTO;
-import com.seu.dm.entities.Buyer;
-import com.seu.dm.entities.Order;
+import com.seu.dm.entities.*;
 import com.seu.dm.helpers.mail.MailSender;
-import com.seu.dm.entities.Product;
-import com.seu.dm.entities.Seller;
-import com.seu.dm.services.BuyerService;
-import com.seu.dm.services.OrderService;
-import com.seu.dm.services.ProductService;
-import com.seu.dm.services.SellerService;
+import com.seu.dm.services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -40,6 +35,11 @@ public class BuyerController {
     private ProductService productService;
     @Autowired
     private SellerService sellerService;
+    @Autowired
+    private OrderProductService orderProductService;
+
+
+
     /**
      * 注册用户
      * @param buyer
@@ -202,6 +202,54 @@ public class BuyerController {
 //        return "buyer/noProductsInCart";
 //    }
 
+    /*
+    **生成订单
+    * *并移除session中的cart回到买家中心
+     */
+    @RequestMapping(value = "/order")
+    public String addOrder(HttpSession httpSession,Model model){
+
+        Map<Integer,Integer> cartMap = (Map<Integer,Integer>)httpSession.getAttribute("cart");
+        if(httpSession.getAttribute("cart") == null || httpSession.getAttribute("cart") == undefined){
+            model.addAttribute("message","购物车为空不能下单");
+            model.addAttribute("jumpUrl","/buyer/center");
+            return "common/alert";
+        }
+        else{
+            Order order = new Order();
+            OrderProduct op =new OrderProduct();
+
+            UserBaseDTO userBase = (UserBaseDTO) httpSession.getAttribute("userBase");
+            Integer buyerId = userBase.getId();
+
+            for(Map.Entry<Integer,Integer> entry : cartMap.entrySet()){
+                Integer productid = (Integer) entry.getKey();
+                Integer num = (Integer) entry.getValue();
+                Product product=productService.findProduct(productid);
+                Seller seller=sellerService.findSeller(product.getSellerId());
+                op.setProductId(productid);
+                op.setPrice(product.getPrice());
+                System.out.println(op.getPrice());
+                op.setProductNum(num);
+                order.setUserId(buyerId);
+                order.setSellerId(seller.getId());
+                order.setShopId(seller.getId());
+                order.setTotalPrice(product.getPrice().multiply(new BigDecimal(num)));
+                order.setOrderProductId(product.getPictureId());
+                order.setStatus(1);
+                order.setSeller(seller);
+                orderService.addOrder(order);
+                orderProductService.addOrderProduct(op);
+                model.addAttribute("order",order);
+                model.addAttribute("orderProduct",op);
+
+            }
+            httpSession.removeAttribute("cart");
+            return "redirect:/buyer/center";
+        }
+
+    }
+
     /**
      *跳到买家购物车
     */
@@ -214,7 +262,6 @@ public class BuyerController {
         }
         else {
             Map<Integer,Integer> cartMap = (Map<Integer,Integer>)httpSession.getAttribute("cart");
-
             List<CartProductDTO> cartProducts = new ArrayList<>();
             //遍历cartMap，遍历出来的key是productid，value是这个商品的数量
             //根据id调用Service获得商品的信息，在for里面new一个CartProduct，在CartProduct取好所有数据填好，放进list
@@ -240,6 +287,10 @@ public class BuyerController {
 
     }
 
+
+    /*
+    **购物车内的商品改变数量
+     */
     @RequestMapping(value = "/shopping_cart_change")
     @ResponseBody
     public Object changeShoppingCart(@RequestParam Integer id, @RequestParam Integer newNum, HttpSession httpSession){
@@ -247,7 +298,9 @@ public class BuyerController {
         cartMap.put(id,newNum);
         return "ok";
     }
-
+    /*
+    **购物车内的商品删除
+     */
     @RequestMapping(value = "/shopping_cart/remove/{id}")
     public String removeProductFromCart(@PathVariable Integer id, HttpSession httpSession, Model model){
         Map<Integer,Integer> cartMap = (Map<Integer,Integer>)httpSession.getAttribute("cart");
