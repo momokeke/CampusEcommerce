@@ -9,6 +9,16 @@ public class OrderProduct {
 
     private Integer productNum;
 
+    private Integer orderId;
+
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
+    }
+
     public BigDecimal getPrice() {
         return price;
     }
