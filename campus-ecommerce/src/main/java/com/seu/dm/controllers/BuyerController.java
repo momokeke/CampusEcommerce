@@ -131,7 +131,7 @@ public class BuyerController {
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusWaitDeliver(buyerId);
         model.addAttribute("orders",orders);
-        return "buyer/orders";
+        return "buyer/ordersWaitdeliver";
     }
 
     @RequestMapping(value = "/ordersAlreadydeliver")
@@ -141,7 +141,7 @@ public class BuyerController {
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusAlreadyDeliver(buyerId);
         model.addAttribute("orders",orders);
-        return "buyer/orders";
+        return "buyer/ordersAlreadydeliver";
     }
 
     @RequestMapping(value = "/ordersOnrejection")
@@ -151,7 +151,7 @@ public class BuyerController {
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusOnRejection(buyerId);
         model.addAttribute("orders",orders);
-        return "buyer/orders";
+        return "buyer/ordersOnrejection";
     }
 
     @RequestMapping(value = "/ordersAlreadyrejection")
@@ -161,7 +161,7 @@ public class BuyerController {
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusAlreadyRejection(buyerId);
         model.addAttribute("orders",orders);
-        return "buyer/orders";
+        return "buyer/ordersAlreadyrejection";
     }
 
     @RequestMapping(value = "/ordersSuccess")
@@ -171,7 +171,7 @@ public class BuyerController {
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusSuccess(buyerId);
         model.addAttribute("orders",orders);
-        return "buyer/orders";
+        return "buyer/ordersSuccess";
     }
     /*
     *跳转到买家登录
