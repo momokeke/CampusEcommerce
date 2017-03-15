@@ -7,17 +7,17 @@
             <div class="col-xs-8 col-xs-8">
                 <div class="row">
 
-                    <div class="col-xs-3 logo"><img src="/img/cute_logo.jpg" class="logo_wh"/></div>
-                    <div class="col-xs-5 font-bold">
-                        <a class="mr-15" href="index.html" th:href="@{/}">首页</a>
-                        <a class="mr-15" href="#">二手</a>
-                        <a class="mr-15" href="#">促销</a>
-                        <a class="mr-15" href="#">秒杀</a>
 
-                    </div>
-                    <div class="col-xs-4">
-                        <form class="form-inline" th:action="@{/product/searchGood}">
-                            <div class="form-group">
+                        <div class="col-xs-3 logo"><a class="mr-15 " th:href="@{/}"><img src="/img/cute_logo.jpg" class="logo_wh"/></a></div>
+                        <div class="col-xs-5 font-bold">
+                            <a class="active" href="/index.html" th:href="@{/}">首页</a>
+                            <a href="#">二手</a>
+                            <a href="#">促销</a>
+                            <a href="#">秒杀</a>
+                        </div>
+                        <div class="col-xs-4">
+                            <form class="form-inline" th:action="@{/product/searchGood}">
+                                <div class="form-group">
 
                                 <input type="text" class="form-control search" name="search" id="search" placeholder="请输入商品名\关键词\店铺名\社团名"/>
                             </div>

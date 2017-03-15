@@ -39,4 +39,9 @@ public interface ProductService {
     Integer unshelfProduct(Integer productId);
 
     List<Product> findProductsByNameAndScreenByPrice(String name,Double minPrice,Double maxPrice);
+
+    List<Product> findNewProducts(Integer campusId);
+
+    List<Product> findCheapProducts(Integer campusId);
+
 }

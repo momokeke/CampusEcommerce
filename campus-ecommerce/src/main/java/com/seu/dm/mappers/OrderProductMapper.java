@@ -24,4 +24,6 @@ public interface OrderProductMapper {
     OrderProduct findOrderProductByProductId(Integer id);
 
     OrderProduct findOneOrderProductByOrderId(Integer id);
-}
+
+    List<OrderProduct> findOrderProductsByOrderId(Integer orderId);
+ }

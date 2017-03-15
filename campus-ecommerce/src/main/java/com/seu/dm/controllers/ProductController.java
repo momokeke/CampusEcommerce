@@ -1,18 +1,22 @@
 package com.seu.dm.controllers;
 
-import com.seu.dm.annotations.permissions.CampusAdminPermission;
+import com.seu.dm.annotations.permissions.SellerPermission;
 import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Picture;
 import com.seu.dm.entities.Product;
 import com.seu.dm.entities.Seller;
 import com.seu.dm.helpers.FileUploadHelper;
+import com.seu.dm.services.CampusService;
 import com.seu.dm.services.PictureService;
 import com.seu.dm.services.ProductService;
 import com.seu.dm.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -32,6 +36,8 @@ public class ProductController {
     private SellerService sellerService;
     @Autowired
     private PictureService pictureService;
+    @Autowired
+    private CampusService campusService;
 //    @RequestMapping(value = "/login",method = RequestMethod.POST)
 //    public String addProduct(@RequestBody Product product, Model model){
 //
@@ -96,8 +102,10 @@ public class ProductController {
         System.out.println(productId);
         Product product = productService.findProduct(productId);
         Seller seller = sellerService.findSeller(product.getSellerId());
+        String campus = campusService.findCampus(seller.getCampusId()).getName();
         model.addAttribute("product",product);
         model.addAttribute("seller",seller);
+        model.addAttribute("campus",campus);
         return "product/product_details";
     }
     /**
@@ -109,7 +117,12 @@ public class ProductController {
     @RequestMapping(value = "/search/{id}")
     public String findProduct(@PathVariable Integer id,Model model){
         Product product =productService.findProduct(id);
+        Seller seller = sellerService.findSeller(product.getSellerId());
+        Integer campusId = seller.getCampusId();
+        System.out.println("campusId"+campusId);
+        String campus = campusService.findCampus(campusId).getName();
         model.addAttribute("product",product);
+        model.addAttribute("campus",campus);
         System.out.println("OK");
         return "productDetails";
     }
@@ -186,7 +199,7 @@ public class ProductController {
      * @return
      */
     @RequestMapping(value = "/addProduct")
-    @CampusAdminPermission
+    @SellerPermission
     public String addProduct(Product product, HttpSession httpSession, HttpServletRequest request,Model model)throws IOException{
         Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getId();
         product.setSellerId(sellerId);
