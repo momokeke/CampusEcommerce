@@ -2,111 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7342eae2-7139-4a04-bae3-9c9d0e345a59" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_classic_1_1_9.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ch_qos_logback_logback_core_1_1_9.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_core_2_8_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_databind_2_8_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_jsqlparser_jsqlparser_0_9_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_github_pagehelper_pagehelper_5_0_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_jayway_jsonpath_json_path_2_2_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_vaadin_external_google_android_json_0_0_20131108_vaadin1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_beanutils_commons_beanutils_1_9_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_collections_commons_collections_3_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_fileupload_commons_fileupload_1_2_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_lang_commons_lang_2_5.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_activation_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_mail_mail_1_4_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_validation_validation_api_1_1_0_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_12.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_5_1_40.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_accessors_smart_1_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_minidev_json_smart_2_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_ezmorph_ezmorph_1_0_6.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sf_json_lib_json_lib_2_4.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_sourceforge_nekohtml_nekohtml_1_9_22.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__nz_net_ultraq_thymeleaf_thymeleaf_layout_dialect_1_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__ognl_ognl_3_0_8.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_8_5_11.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_8_5_11.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_8_5_11.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_jdbc_8_5_11.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_juli_8_5_11.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_8_9.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_assertj_assertj_core_2_6_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_codehaus_groovy_groovy_2_4_7.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_library_1_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_validator_5_3_4_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_21_0_GA.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_0_Final.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_1_10_19.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_3_4_2.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_mybatis_spring_1_3_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_autoconfigure_1_2_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mybatis_spring_boot_mybatis_spring_boot_starter_1_2_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_2_1.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_0_3.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_skyscreamer_jsonassert_1_4_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jcl_over_slf4j_1_7_22.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_jul_to_slf4j_1_7_22.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_log4j_over_slf4j_1_7_22.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_22.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_1_5_1_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_autoconfigure_1_5_1_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_1_5_1_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_1_5_1_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_jdbc_1_5_1_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_logging_1_5_1_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_1_5_1_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_thymeleaf_1_5_1_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_1_5_1_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_5_1_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_1_5_1_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_test_autoconfigure_1_5_1_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_4_3_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_4_3_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_4_3_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_4_3_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_4_3_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jdbc_4_3_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_test_4_3_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_tx_4_3_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_4_3_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_4_3_6_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_2_1_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring4_2_1_5_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_unbescape_unbescape_1_1_0_RELEASE.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_yaml_snakeyaml_1_17.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xerces_xercesImpl_2_11_0.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__xml_apis_xml_apis_1_4_01.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/static/img/qr_code.png" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/static/img/qr_code.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/controllers/BuyerController.java" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/controllers/BuyerController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/controllers/ProductController.java" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/controllers/ProductController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/controllers/SellerController.java" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/controllers/SellerController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/mappers/BuyerMapper.xml" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/mappers/BuyerMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/mappers/SellerMapper.xml" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/mappers/SellerMapper.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/static/css/common.css" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/static/css/common.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/static/js/register.js" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/static/js/register.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/bought_products.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/bought_products.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/bought_shops.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/bought_shops.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/buyer_center.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/buyer_center.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/buyer_favorite.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/buyer_favorite.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/buyer_pay.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/buyer_pay.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/buyer_setting.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/buyer_setting.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/comment_management.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/comment_management.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/foot_print.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/foot_print.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/shopping_cart.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/shopping_cart.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/index.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/mappers/OrdersMapper.xml" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/mappers/OrdersMapper.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/product/product_details.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/product/product_details.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/product/product_list.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/product/product_list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/seller/sellercommon/bottom.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/seller/sellercommon/bottom.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/shop/shop_homepage.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/shop/shop_homepage.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/shop/shop_product_classification.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/shop/shop_product_classification.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/register.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/register.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/seller/new_products.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/seller/new_products.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/seller/seller_center.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/seller/seller_center.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/seller/sellercommon/left.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/seller/sellercommon/left.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/seller/sellercommon/sellerhead.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/seller/sellercommon/sellerhead.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/seller/sellercommon/top.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/seller/sellercommon/top.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/seller/transaction_manage.html" afterPath="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/seller/transaction_manage.html" />
     </list>
     <ignored path="$PROJECT_DIR$/campus-ecommerce/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -125,14 +33,46 @@
       <file leaf-file-name="product_details.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/product/product_details.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1031">
-              <caret line="66" column="74" lean-forward="true" selection-start-line="66" selection-start-column="74" selection-end-line="66" selection-end-column="74" />
+            <state relative-caret-position="-3937">
+              <caret line="71" column="22" lean-forward="true" selection-start-line="71" selection-start-column="22" selection-end-line="71" selection-end-column="22" />
+              <folding>
+                <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BuyerController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/controllers/BuyerController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="75" column="73" lean-forward="false" selection-start-line="75" selection-start-column="73" selection-end-line="75" selection-end-column="73" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SellerController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/controllers/SellerController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="297">
+              <caret line="59" column="74" lean-forward="true" selection-start-line="59" selection-start-column="74" selection-end-line="59" selection-end-column="74" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="register.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/register.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="83" column="52" lean-forward="false" selection-start-line="83" selection-start-column="52" selection-end-line="83" selection-end-column="52" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/index.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="195">
@@ -183,8 +123,6 @@
         <option value="$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/serviceimpls/BuyerServiceImpl.java" />
         <option value="$PROJECT_DIR$/campus-ecommerce/src/main/resources/mappers/BuyerMapper.xml" />
         <option value="$PROJECT_DIR$/campus-ecommerce/src/main/resources/mappers/SellerMapper.xml" />
-        <option value="$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/controllers/SellerController.java" />
-        <option value="$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/controllers/BuyerController.java" />
         <option value="$PROJECT_DIR$/campus-ecommerce/src/main/resources/static/js/register.js" />
         <option value="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/shop/shop_homepage.html" />
         <option value="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/shop/shop_product_classification.html" />
@@ -199,9 +137,12 @@
         <option value="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/comment_management.html" />
         <option value="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/foot_print.html" />
         <option value="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/buyer/shopping_cart.html" />
-        <option value="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/product/product_details.html" />
         <option value="$PROJECT_DIR$/campus-ecommerce/src/main/resources/static/css/common.css" />
         <option value="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/index.html" />
+        <option value="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/product/product_details.html" />
+        <option value="$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/controllers/BuyerController.java" />
+        <option value="$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/controllers/SellerController.java" />
+        <option value="$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/register.html" />
       </list>
     </option>
   </component>
@@ -487,18 +428,6 @@
               <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="static" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -519,6 +448,14 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dm" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -549,6 +486,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="dm" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -978,12 +919,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1489569713289</updated>
-      <workItem from="1489569714681" duration="8560000" />
+      <workItem from="1489569714681" duration="9897000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8560000" />
+    <option name="totallyTimeSpent" value="9897000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1053,14 +994,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/controllers/BuyerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="47" column="17" lean-forward="true" selection-start-line="47" selection-start-column="17" selection-end-line="47" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/resources/static/js/register.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
@@ -1123,14 +1056,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/controllers/SellerController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="33" column="4" lean-forward="false" selection-start-line="33" selection-start-column="4" selection-end-line="40" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/helpers/alipay/factory/AlipayAPIClientFactory.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1160,14 +1085,6 @@
     <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/resources/static/img/qr_code.png">
       <provider selected="true" editor-type-id="images">
         <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2128">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/shop/shop_homepage.html">
@@ -1298,14 +1215,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/product/product_details.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1031">
-          <caret line="66" column="74" lean-forward="true" selection-start-line="66" selection-start-column="74" selection-end-line="66" selection-end-column="74" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/resources/static/css/common.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -1321,6 +1230,40 @@
           <folding>
             <element signature="n#style#0;n#img#0;n#div#0;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/product/product_details.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3937">
+          <caret line="71" column="22" lean-forward="true" selection-start-line="71" selection-start-column="22" selection-end-line="71" selection-end-column="22" />
+          <folding>
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/controllers/BuyerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="75" column="73" lean-forward="false" selection-start-line="75" selection-start-column="73" selection-end-line="75" selection-end-column="73" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/java/com/seu/dm/controllers/SellerController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="297">
+          <caret line="59" column="74" lean-forward="true" selection-start-line="59" selection-start-column="74" selection-end-line="59" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/campus-ecommerce/src/main/resources/templates/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="83" column="52" lean-forward="false" selection-start-line="83" selection-start-column="52" selection-end-line="83" selection-end-column="52" />
+          <folding />
         </state>
       </provider>
     </entry>
