@@ -53,7 +53,8 @@
 }
 
 .products-show{
-    background-image:url("../img/3d_background.jpg");
+    /*background-image:url("../img/3d_background.jpg");*/
+    background-color: #def7dd;
 }
 .bk_img{
     opacity: 0.6;
