@@ -38,10 +38,10 @@
                     <a class="mr-15 glyphicon glyphicon-cog" href="buyer_setting.html" th:href="@{/buyer/buyer_setting}">设置</a>
                 </div>
                 <div class="col-xs-4 col-sm-4">
-                    <form class="form-inline">
+                    <form class="form-inline" th:action="@{/product/searchGood}">
                         <div class="form-group">
 
-                            <input type="text" class="form-control search" id="search" placeholder="请输入商品名\关键词"/>
+                            <input type="text" class="form-control search" id="search" name="search" placeholder="请输入商品名\关键词"/>
 
                         </div>
                         <button type="submit" class="search-btn">搜索</button>
@@ -74,7 +74,7 @@
                     <tr id="product1" th:each="cartProduct : ${cartProducts}">
                         <td class="cart_td_1"><span th:text="${cartProduct.shopName}">店铺</span></td>
                         <td class="cart_td_2"><img th:src="@{'/picture/'+${cartProduct.pictureId}}" src="/img/cart1.jpg" class="td_img" alt="shopping"/></td>
-                        <td class="cart_td_3"><a th:text="${cartProduct.name}" href="#">大鞋子</a><br />
+                        <td class="cart_td_3"><a th:text="${cartProduct.name}" href="#" th:href="@{/product/product_detail/}"+${cartProduct.id}}>大鞋子</a><br />
                         </td>
                         <td class="cart_td_4" th:text="${cartProduct.price}">56.50</td>
                         <td class="cart_td_5">

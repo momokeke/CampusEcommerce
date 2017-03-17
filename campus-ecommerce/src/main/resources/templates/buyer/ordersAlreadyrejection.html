@@ -38,9 +38,9 @@
                 </div>
                 <div class="col-xs-4 col-sm-4">
                     <form class="form-inline">
-                        <div class="form-group">
+                        <div class="form-group" th:action="@{/product/searchGood}">
 
-                            <input type="text" class="form-control search" id="search" placeholder="请输入商品名\关键词\店铺名\社团名"/>
+                            <input type="text" class="form-control search" id="search" name="search" placeholder="请输入商品名\关键词\店铺名\社团名"/>
 
                         </div>
                         <button type="submit" class="search-btn">搜索</button>
@@ -95,7 +95,7 @@
                             <img alt="图片" style="width: 50px;height: 50px;" class="order_item_img" th:src="@{'/picture/'+${order.getProduct().getPictureId()}}"/><br/>
                         </div>
                         <div class="col-xs-2">
-                            <a href="#"><span class="font-small"  th:text="${order.product.name}">商品名称</span></a>
+                            <a href="#" th:href="@{'/product/product_detail/'+${order.product.id}}"><span class="font-small"  th:text="${order.product.name}">商品名称</span></a>
                         </div>
                         <div class="col-xs-1">
                             <span class="font-small" th:text="${order.product.price}">单价</span>
