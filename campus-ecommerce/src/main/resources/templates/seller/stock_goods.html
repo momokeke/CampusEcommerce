@@ -22,13 +22,13 @@
             <table class="table table-striped">
                 <tr th:each="product : ${products}">
                     <td>
-                        <form action="#" method="post">
+                        <form action="#" th:action="@{'/seller/updateproduct/'+${product.id}}" method="post">
                             <img class="sold-pro-img mb-5 mt-20 mr-50 from-group" th:src="'/picture/'+${product.pictureId}" src="#" alt="商品1"/>
-                            <span class="mt-20 from-group">库存数量：</span><input type="text" class="border-3 mr-50 mt-5 from-group"/>
                             <div class="mt-20" style="display:inline">
+                                <span class="mt-20 from-group">库存数量：<span th:text="${product.inventory}">0</span></span>&nbsp;&nbsp;
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary mr-50" data-toggle="modal" data-target="#myModal">
-                                    修改价格
+                                    修改
                                 </button>
 
                                 <!-- Modal modify begin-->
@@ -37,10 +37,13 @@
                                         <div class="modal-content ">
                                             <div class="modal-header ">
                                                 <button type="button" class="close " data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <span class="modal-title " id="myModalLabel">修改商品价格</span>
+
                                             </div>
                                             <div class="modal-body ">
-                                                <input type="text" value="$"/>
+                                                <span class="mt-20 from-group">库存数量：</span>
+                                                <input type="text" name="inventory" class="border-3 mr-50 mt-5 from-group"/><br/>
+                                                <span class="modal-title " id="myModalLabel">修改商品价格</span>
+                                                <input type="text" name="price" value=""/>
                                             </div>
                                             <div class="modal-footer ">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -50,43 +53,17 @@
                                     </div>
                                 </div>
                                 <!--modify end-->
-                                <span class="font-small" th:if="${order.status} == '5'"  th:text="已完成">交易状态</span>
-                                <button th:if="${product.isShelf} == 1"  onclick="this.disabled=this.disabled?false:true" class="btn btn-primary mr-50">下架商品</button>
-                                <button th:if="${product.isShelf} == 0"  onclick="this.disabled=this.disabled?false:true" class="btn btn-primary mr-50">上架商品</button>
+                                <button th:if="${product.isShelf}" th:onclick="@{'this.disabled=this.disabled?false:true;if(disabled) jump('+${product.id}+')'}" class="btn btn-primary mr-50">下架商品</button>
+                                <button th:if="!${product.isShelf}" th:onclick="@{'this.disabled=this.disabled?false:true;if(disabled) jump1('+${product.id}+')'}" class="btn btn-primary mr-50">上架商品</button>
                             </div>
                         </form>
                     </td>
                 </tr>
             </table>
         </div>
-
-        <div class="row clearfix">
-            <div class="col-xs-12 column text-center">
-                <ul class="pagination">
-                    <li>
-                        <a rel="nofollow" href="#">上一页</a>
-                    </li>
-                    <li>
-                        <a rel="nofollow" href="#">1</a>
-                    </li>
-                    <li>
-                        <a rel="nofollow" href="#">2</a>
-                    </li>
-                    <li>
-                        <a rel="nofollow" href="#">3</a>
-                    </li>
-                    <li>
-                        <a rel="nofollow" href="#">4</a>
-                    </li>
-                    <li>
-                        <a rel="nofollow" href="#">5</a>
-                    </li>
-                    <li>
-                        <a rel="nofollow" href="#">下一页</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <!--page begin-->
+        <nav data-th-replace="common/pager"></nav>
+        <!--page end -->
     </div>
     <div class="col-xs-1"></div>
 </div>
@@ -106,6 +83,12 @@
             $('#myInput').focus()
         })
     });
+    function jump(productId){
+        location.href = "/seller/unshelfproduct/"+productId;
+    }
+    function jump1(productId){
+        location.href = "/seller/shelfproduct/"+productId;
+    }
 </script>
 
 </body>

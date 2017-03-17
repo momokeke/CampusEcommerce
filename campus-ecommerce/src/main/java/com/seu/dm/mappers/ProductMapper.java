@@ -40,4 +40,6 @@ public interface ProductMapper {
     List<Product> getCheapProductsByCampusId(Integer campusId);
 
     Product findProductByName(String name);
+
+    List<Product> getProductByKeyword(String keyword);
 }

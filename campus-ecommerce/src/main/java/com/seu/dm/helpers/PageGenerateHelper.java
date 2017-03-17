@@ -26,7 +26,6 @@ public class PageGenerateHelper {
             parameters += key + "=" + value[0] + '&';
         }
         String baseUrl = request.getRequestURL().toString() + parameters;
-        System.out.println(baseUrl);
         List<String> pageList = new LinkedList<>();
         for(int i = pageInfo.getNavigateFirstPage(); i <= pageInfo.getNavigateLastPage(); ++i){
             pageList.add(parameters+"pageNum="+i);

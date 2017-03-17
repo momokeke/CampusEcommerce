@@ -157,6 +157,14 @@ public class ProductController {
         return "productDetails";
     }
 
+    @RequestMapping(value = "search/{keyword}")
+    public String searchProductsByKeyword(@PathVariable String keyword,HttpSession httpSession,Model model){
+        List<Product> products = productService.findProductsByKeyword(keyword);
+        model.addAttribute("entities",products);
+        httpSession.setAttribute("name",keyword);
+        return "product/product_list";
+    }
+
     /**
      * 根据标签返回对应的商品列表
      * @param category

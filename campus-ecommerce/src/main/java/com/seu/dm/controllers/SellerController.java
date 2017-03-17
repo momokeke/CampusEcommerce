@@ -1,11 +1,14 @@
 package com.seu.dm.controllers;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.seu.dm.annotations.permissions.SellerPermission;
 import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Order;
 import com.seu.dm.entities.Product;
 import com.seu.dm.entities.Seller;
+import com.seu.dm.helpers.PageGenerateHelper;
 import com.seu.dm.services.OrderService;
 import com.seu.dm.services.ProductService;
 import com.seu.dm.services.SellerService;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -200,7 +204,29 @@ public class SellerController {
 
     @RequestMapping(value = "/stock")
     @SellerPermission
-    public String manageInventory(HttpServletRequest request,Model model){
+    public String manageInventory(@RequestParam(required = false,defaultValue = "1") Integer pageNum,
+                                  HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        Integer sellerId = userBase.getId();
+        PageHelper.startPage(pageNum,10);
+        List<Product> products = productService.findProductsBySellerId(sellerId);
+        PageInfo pageInfo = new PageInfo(products);
+        PageGenerateHelper.generatePage(request,model,pageInfo);
+        model.addAttribute("products",products);
+        return "/seller/stock_goods";
+    }
+
+    @RequestMapping(value = "/updateproduct/{id}")
+    @SellerPermission
+    public String updateProductInfo(@PathVariable Integer id,
+                                    @RequestParam(value = "inventory")Integer inventory,
+                                    @RequestParam(value = "price")Double price,
+                                    HttpServletRequest request,Model model){
+        Product product = productService.findProduct(id);
+        product.setInventory(inventory);
+        product.setPrice(BigDecimal.valueOf(price));
+        productService.updateProduct(product);
         HttpSession httpSession = request.getSession();
         UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
         Integer sellerId = userBase.getId();
@@ -208,6 +234,21 @@ public class SellerController {
         model.addAttribute("products",products);
         return "/seller/stock_goods";
     }
+
+    @RequestMapping(value = "/unshelfproduct/{id}")
+    @SellerPermission
+    public String unshelfproduct(@PathVariable Integer id,HttpServletRequest request,Model model){
+        Product product = productService.findProduct(id);
+        product.setIsShelf(false);
+        productService.updateProduct(product);
+        HttpSession httpSession = request.getSession();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        Integer sellerId = userBase.getId();
+        List<Product> products = productService.findProductsBySellerId(sellerId);
+        model.addAttribute("products",products);
+        return "/seller/stock_goods";
+    }
+
 
     @RequestMapping(value = "/orders")
     @SellerPermission

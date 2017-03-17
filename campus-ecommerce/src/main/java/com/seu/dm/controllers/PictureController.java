@@ -26,6 +26,7 @@ public class PictureController {
     @RequestMapping("/picture/{id}")
     public void picture(@PathVariable Integer id, HttpServletResponse response) throws IOException{
         Picture picture = pictureService.getPictureById(id);
+        response.setHeader("Cache-Control","max-age=86400");
         response.setContentType("image/jpeg");
         OutputStream stream = response.getOutputStream();
         stream.write(picture.getBinaryFile());
