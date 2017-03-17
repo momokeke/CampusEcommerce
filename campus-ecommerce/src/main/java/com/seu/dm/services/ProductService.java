@@ -46,4 +46,6 @@ public interface ProductService {
 
     List<Product> findCheapProducts(Integer campusId);
 
+    List<Product> findProductsByKeyword(String keyword);
+
 }
