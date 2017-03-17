@@ -1,5 +1,6 @@
 package com.seu.dm.controllers;
 
+import com.seu.dm.annotations.permissions.BuyerPermission;
 import com.seu.dm.dto.CartProductDTO;
 import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.*;
@@ -44,7 +45,14 @@ public class BuyerController {
     @Autowired
     private OrderProductService orderProductService;
 
-
+    @RequestMapping(value="/checkregister/{name}")
+    @ResponseBody
+    public Boolean checkRegister(@PathVariable String name){
+        if(buyerService.findBuyerByName(name)!=null){
+            return false;
+        }
+        return true;
+    }
 
     /**
      * 注册用户
@@ -62,11 +70,11 @@ public class BuyerController {
         String name = buyer.getName();
         if(buyerService.findBuyerByName(name)!=null){
             model.addAttribute("message","用户名已存在");
-            model.addAttribute("jumpUrl","/buyer/register");
+            model.addAttribute("jumpUrl","/register");
             return "common/alert";
         }
 
-
+        buyer.setCampusId((Integer)httpSession.getAttribute("campusId"));
         //向数据库中添加买家
         int i = buyerService.addBuyer(buyer);
         Buyer buyerFromDB = buyerService.findBuyerByName(buyer.getName());
@@ -117,6 +125,7 @@ public class BuyerController {
      * @return
      */
     @RequestMapping(value = "/buyerLogout")
+    @BuyerPermission
     public String logoutBuyer(HttpServletRequest request){
         HttpSession httpSession = request.getSession(false);
         if(httpSession == null) return "redirect:/";
@@ -128,6 +137,7 @@ public class BuyerController {
          */
 
     @RequestMapping(value = "/orders")
+    @BuyerPermission
     public String findBuyerOrders(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
         UserBaseDTO userBase = (UserBaseDTO) httpSession.getAttribute("userBase");
@@ -137,54 +147,64 @@ public class BuyerController {
         return "buyer/orders";
     }
 
-    @RequestMapping(value = "/ordersWaitdeliver")
+
+    @RequestMapping(value = "/orders/waitdeliver")
+    @BuyerPermission
     public String findBuyerOrdersWithStatusWaitDeliver(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
         UserBaseDTO userBase = (UserBaseDTO) httpSession.getAttribute("userBase");
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusWaitDeliver(buyerId);
         model.addAttribute("orders",orders);
-        return "buyer/orders";
+        return "buyer/ordersWaitdeliver";
     }
 
-    @RequestMapping(value = "/ordersAlreadydeliver")
+
+    @RequestMapping(value = "/orders/alreadydeliver")
+    @BuyerPermission
     public String findBuyerOrdersWithStatusAlreadyDeliver(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
         UserBaseDTO userBase = (UserBaseDTO) httpSession.getAttribute("userBase");
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusAlreadyDeliver(buyerId);
         model.addAttribute("orders",orders);
-        return "buyer/orders";
+        return "buyer/ordersAlreadydeliver";
     }
 
-    @RequestMapping(value = "/ordersOnrejection")
+
+    @RequestMapping(value = "/orders/onrejection")
+    @BuyerPermission
     public String findBuyerOrdersWithStatusOnRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
         UserBaseDTO userBase = (UserBaseDTO) httpSession.getAttribute("userBase");
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusOnRejection(buyerId);
         model.addAttribute("orders",orders);
-        return "buyer/orders";
+        return "buyer/ordersOnrejection";
     }
 
-    @RequestMapping(value = "/ordersAlreadyrejection")
+
+    @RequestMapping(value = "/orders/alreadyrejection")
+    @BuyerPermission
     public String findBuyerOrdersWithStatusAlreadyRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
         UserBaseDTO userBase = (UserBaseDTO) httpSession.getAttribute("userBase");
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusAlreadyRejection(buyerId);
         model.addAttribute("orders",orders);
-        return "buyer/orders";
+        return "buyer/ordersAlreadyrejection";
     }
 
-    @RequestMapping(value = "/ordersSuccess")
+
+    @RequestMapping(value = "/orders/success")
+    @BuyerPermission
     public String findBuyerOrdersWithStatusSuccess(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
         UserBaseDTO userBase = (UserBaseDTO) httpSession.getAttribute("userBase");
         Integer buyerId = userBase.getId();
         List<Order> orders = orderService.findOrdersByBuyerIdWithStatusSuccess(buyerId);
         model.addAttribute("orders",orders);
-        return "buyer/orders";
+        return "buyer/ordersSuccess";
     }
     /*
     *跳转到买家登录
@@ -206,6 +226,7 @@ public class BuyerController {
     *跳到买家中心
      */
     @RequestMapping(value = "/center")
+    @BuyerPermission
     public String jumpToBuyerCenter(){
         return "buyer/buyer_center";
     }
@@ -223,6 +244,7 @@ public class BuyerController {
     * *并移除session中的cart回到买家中心
      */
     @RequestMapping(value = "/order")
+    @BuyerPermission
     public String addOrder(HttpSession httpSession,Model model){
 
         Map<Integer,Integer> cartMap = (Map<Integer,Integer>)httpSession.getAttribute("cart");
@@ -278,6 +300,7 @@ public class BuyerController {
      *跳到买家购物车
     */
     @RequestMapping(value = "/shopping_cart")
+    @BuyerPermission
     public String jumpToBuyerShoppingCart(HttpSession httpSession,Model model){
         if(httpSession.getAttribute("cart") == null || httpSession.getAttribute("cart") == undefined){
             model.addAttribute("message","购物车为空！");
@@ -316,6 +339,7 @@ public class BuyerController {
     **购物车内的商品改变数量
      */
     @RequestMapping(value = "/shopping_cart_change")
+    @BuyerPermission
     @ResponseBody
     public Object changeShoppingCart(@RequestParam Integer id, @RequestParam Integer newNum, HttpSession httpSession){
         Map<Integer,Integer> cartMap = (Map<Integer,Integer>)httpSession.getAttribute("cart");
@@ -326,6 +350,7 @@ public class BuyerController {
     **购物车内的商品删除
      */
     @RequestMapping(value = "/shopping_cart/remove/{id}")
+    @BuyerPermission
     public String removeProductFromCart(@PathVariable Integer id, HttpSession httpSession, Model model){
         Map<Integer,Integer> cartMap = (Map<Integer,Integer>)httpSession.getAttribute("cart");
         cartMap.remove(id);
@@ -338,6 +363,7 @@ public class BuyerController {
      */
 
     @RequestMapping(value = "/shopping_cart/add/{id}")
+    @BuyerPermission
     public String addProductFromCart( @PathVariable Integer id, HttpSession httpSession, Model model){
         HashMap<Integer,Integer> cartMap = null;
         if(httpSession.getAttribute("cart") == null){
@@ -355,36 +381,59 @@ public class BuyerController {
     *跳到买家收藏夹
      */
     @RequestMapping(value = "/buyer_favorite")
+    @BuyerPermission
     public String jumpToBuyerFavorite(){
         return "buyer/buyer_favorite";
     }
 
 
     /*
+    *跳到买家已买到的宝贝
+     */
+    @RequestMapping(value = "/bought_products")
+    @BuyerPermission
+    public String jumpToBoughtProducts(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        UserBaseDTO buyer = (UserBaseDTO) httpSession.getAttribute("userBase");
+        Integer buyerId = buyer.getId();
+        List<Order> orders = orderService.findOrdersByBuyerId(buyerId);
+        model.addAttribute("orders",orders);
+        return "buyer/bought_products";
+    }
+
+    /*
       *跳到买家已买过得店铺
        */
     @RequestMapping(value = "/bought_shops")
+    @BuyerPermission
     public String jumpToBoughtShops(){
         return "buyer/bought_shops";
     }
+
     /*
       *跳到买家评价管理页面
        */
     @RequestMapping(value = "/comment_management")
+    @BuyerPermission
     public String jumpToCommentManagement(){
         return "buyer/comment_management";
     }
+
     /*
       *跳到买家我的足迹
        */
     @RequestMapping(value = "/foot_print")
+    @BuyerPermission
     public String jumpToFootPrint(){
         return "buyer/foot_print";
     }
+
     /*
           *跳到买家我的设置
            */
+
     @RequestMapping(value = "/buyer_setting")
+    @BuyerPermission
     public String jumpToBuyerSetting(){
         return "buyer/buyer_setting";
     }

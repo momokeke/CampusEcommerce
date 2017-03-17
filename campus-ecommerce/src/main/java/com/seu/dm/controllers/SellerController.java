@@ -1,6 +1,7 @@
 package com.seu.dm.controllers;
 
 import com.seu.dm.annotations.permissions.SellerPermission;
+import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Order;
 import com.seu.dm.entities.Seller;
@@ -9,10 +10,7 @@ import com.seu.dm.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -29,6 +27,15 @@ public class SellerController {
     @Autowired
     private OrderService orderService;
 
+    @RequestMapping(value="/checkregister/{name}")
+    @ResponseBody
+    public Boolean checkRegister(@PathVariable String name){
+        if(sellerService.findSellerByName(name)!=null){
+            return false;
+        }
+        return true;
+    }
+
     /**
      * 根据店铺注册信息向数据库添加卖家
      * @param seller
@@ -42,11 +49,11 @@ public class SellerController {
         String name = seller.getName();
         if(sellerService.findSellerByName(name)!=null){
             model.addAttribute("message","用户名已存在");
-            model.addAttribute("jumpUrl","/seller/register");
+            model.addAttribute("jumpUrl","/register");
             return "common/alert";
         }
 
-
+        seller.setCampusId((Integer)httpSession.getAttribute("campusId"));
         sellerService.addSeller(seller);                //由service层负责添加工作
         Seller sellerFromDB = sellerService.findSellerByName(seller.getName());
         UserBaseDTO userBase = new UserBaseDTO();
@@ -72,6 +79,7 @@ public class SellerController {
     }
 
     @RequestMapping(value = "/sellerLogout")
+    @SellerPermission
     public String logoutSeller(HttpServletRequest request){
         HttpSession httpSession = request.getSession(false);
         if(httpSession == null) return "redirect:/";
@@ -85,6 +93,7 @@ public class SellerController {
      * @return
      */
     @RequestMapping(value = "/updateSellerInfo",method = RequestMethod.POST)
+    @SellerPermission
     public String updateSellerInfo(Seller seller){
         sellerService.updateSeller(seller);
         return "modify_message";
@@ -96,6 +105,7 @@ public class SellerController {
      * @return
      */
     @RequestMapping(value = "/deleteSellerInfo/{id}")
+    @CampusAdminPermission
     public String deleteSellerInfo(@PathVariable Integer id){
         sellerService.deleteSeller(id);
         return "/";
@@ -108,6 +118,7 @@ public class SellerController {
      * @return
      */
     @RequestMapping(value = "/findSellerInfoById")
+    @CampusAdminPermission
     public String findSellerInfoById(@RequestParam(value = "id") Integer id, Model model){
         Seller seller = sellerService.findSeller(id);
         model.addAttribute("seller", seller);
@@ -121,6 +132,7 @@ public class SellerController {
      * @return
      */
     @RequestMapping(value = "/findSellerInfoByName")
+    @CampusAdminPermission
     public String findSellerInfoByName(@RequestParam(value = "name") String name, Model model){
         Seller seller = sellerService.findSellerByName(name);
         System.out.println(seller);
@@ -134,6 +146,7 @@ public class SellerController {
      * @return
      */
     @RequestMapping(value = "/deleteSellerInfo",method = RequestMethod.GET)
+    @CampusAdminPermission
     public String deleteSellerInfoByName(@RequestParam(value = "name")String name){
         sellerService.deleteSellerByName(name);
         return "/";
@@ -145,6 +158,7 @@ public class SellerController {
      * @return
      */
     @RequestMapping(value = "/findCountOfAllSellers")
+    @CampusAdminPermission
     public String findCountOfAllSellers(Model model){
         int i = sellerService.selectCountOfSellers();
         model.addAttribute("countOfAllSellers",i);
@@ -168,18 +182,20 @@ public class SellerController {
     *进入买家中心页面
      */
     @RequestMapping(value = "/center")
+    @SellerPermission
     public String jumpToSellerCenter() {
         return "seller/seller_center";
     }
 
 
     @RequestMapping(value = "/shop_homepage")
+    @SellerPermission
     public String test(){
         return "shop/shop_homepage";
     }
 
 
-    @RequestMapping(value = "/ordersmanage")
+    @RequestMapping(value = "/orders")
     @SellerPermission
     public String getAllOrdersOfSeller(Model model, HttpSession httpSession){
         // Integer sellerId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getSellerId();
@@ -190,52 +206,58 @@ public class SellerController {
         return "seller/transaction_manage";
     }
 
-    @RequestMapping(value = "/orders/waitdeliver")
+    @RequestMapping(value = "/ordersWaitdeliver")
+    @SellerPermission
     public String findSellerOrdersWithStatusWaitDeliver(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
         UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
         Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusWaitDeliver(sellerId);
         model.addAttribute("orders",orders);
-        return "redirect:/seller/orders";
+        return "seller/transaction_managewaitdeliver";
     }
 
-    @RequestMapping(value = "/orders/alreadydeliver")
+    @RequestMapping(value = "/ordersAlreadydeliver")
+    @SellerPermission
     public String findSellerOrdersWithStatusAlreadyDelever(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
         UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
         Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusAlreadyDeliver(sellerId);
         model.addAttribute("orders",orders);
-        return "redirect:/seller/orders";
+        return "seller/transaction_managealreadydeliver";
     }
-    @RequestMapping(value = "/orders/onrejection")
+
+    @RequestMapping(value = "/ordersOnrejection")
+    @SellerPermission
     public String findSellerOrdersWithStatusOnRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
         UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
         Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusOnRejection(sellerId);
         model.addAttribute("orders",orders);
-        return "redirect:/seller/orders";
+        return "seller/transaction_manageonrejection";
     }
 
-    @RequestMapping(value = "/orders/alreadyrejection")
+    @RequestMapping(value = "/ordersAlreadyrejection")
+    @SellerPermission
     public String findSellerOrdersWithStatusAlreadyRejection(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
         UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
         Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusAlreadyRejection(sellerId);
         model.addAttribute("orders",orders);
-        return "redirect:/seller/orders";
+        return "seller/transaction_managealreadyrejection";
     }
 
-    @RequestMapping(value = "/orders/success")
+    @RequestMapping(value = "/ordersSuccess")
+    @SellerPermission
     public String findSellerOrdersWithStatusSuccess(HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
         UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
         Integer sellerId = userBase.getId();
         List<Order> orders = orderService.findOrdersBySellerIdWithStatusSuccess(sellerId);
         model.addAttribute("orders",orders);
-        return "redirect:/seller/orders";
+        return "seller/transaction_managesuccess";
     }
 }

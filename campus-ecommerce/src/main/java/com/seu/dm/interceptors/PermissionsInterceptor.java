@@ -73,7 +73,6 @@ public class PermissionsInterceptor extends HandlerInterceptorAdapter {
 
 
         if (campusService == null) {//解决service为null无法注入问题
-            System.out.println("campusService is null!!!");
             BeanFactory factory = WebApplicationContextUtils.getRequiredWebApplicationContext(request.getServletContext());
             campusService = (CampusService) factory.getBean("campusServiceImpl");
         }
@@ -153,10 +152,10 @@ public class PermissionsInterceptor extends HandlerInterceptorAdapter {
         HttpSession httpSession = request.getSession();
         UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
         if(userBase == null){
-            response.sendRedirect("/seller/login/");
+            response.sendRedirect("/notlogin/xxx");
             return false;
         }else if(!"seller".equals(userBase.getRole())){
-            response.sendRedirect("/seller/login/");
+            response.sendRedirect("/notlogin/xxx");
             return false;
         }
         return true;
@@ -166,10 +165,10 @@ public class PermissionsInterceptor extends HandlerInterceptorAdapter {
         HttpSession httpSession = request.getSession();
         UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
         if(userBase == null){
-            response.sendRedirect("/buyer/login/");
+            response.sendRedirect("/notlogin/xxx");
             return false;
         }else if(!"buyer".equals(userBase.getRole())){
-            response.sendRedirect("/buyer/login/");
+            response.sendRedirect("/notlogin/xxx");
             return false;
         }
         return true;

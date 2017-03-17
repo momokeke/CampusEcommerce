@@ -18,110 +18,51 @@
             <hr/>
         </div>
 
+
         <!--this is the order manage begin-->
         <div>
 
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#home" th:href="@{/seller/ordersmanage}" aria-controls="home" role="tab" data-toggle="tab">全部订单</a></li>
-                <li role="presentation"><a href="#profile" th:href="@{/seller/orders/success}" aria-controls="profile" role="tab" data-toggle="tab">已签收订单</a></li>
-                <li role="presentation"><a href="#messages" th:href="@{/seller/orders/alreadydeliver}" aria-controls="messages" role="tab" data-toggle="tab">未签收订单</a></li>
-                <li role="presentation"><a href="#messages" th:href="@{/seller/orders/onrejection}" aria-controls="messages" role="tab" data-toggle="tab">退货中订单</a></li>
-                <li role="presentation"><a href="#messages" th:href="@{/seller/orders/alreadyrejection}" aria-controls="messages" role="tab" data-toggle="tab">已退货订单</a></li>
-                <li role="presentation"><a href="#settings" th:href="@{/seller/orders/waitdeliver}" aria-controls="settings" role="tab" data-toggle="tab">待发货订单</a></li>
-            </ul>
-
-            <!-- Tab panes -->
-            <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane fade in active" id="home">
-                        <table class="table">
-                            <tr class="active text-center">
-                                <td>商品</td>
-                                <td>单价</td>
-                                <td>数量</td>
-                                <td>订单状态</td>
-                                <td>买家</td>
-                                <td>实收款</td>
-                            </tr>
-                        </table>
-                        <div>
-                            <table class="table">
-                                <tr class="text-center">
-                                    <td style="width: 111px"><img src="#" alt="商品图片"/></td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
-                                    <td>5</td>
-                                </tr>
-                                <tr class="text-center">
-                                    <td style="width: 111px"><img src="#" alt="商品图片"/></td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
-                                    <td>5</td>
-                                </tr>
-                            </table>
+            <div class="row mt-10">
+                <ul class="font-bold list-inline">
+                    <li><a th:href="@{/seller/orders}" class="font-big">所有订单</a></li>
+                    <li><a th:href="@{/seller/ordersWaitdeliver}" class="font-big ">待发货</a></li>
+                    <li><a th:href="@{/seller/ordersAlreadydeliver}" class="font-big ">已发货</a></li>
+                    <li><a th:href="@{/seller/ordersOnrejection}" class="font-big ">退款中</a></li>
+                    <li><a th:href="@{/seller/ordersAlreadyrejection}" class="font-big ">已退款</a></li>
+                    <li><a th:href="@{/seller/ordersSuccess}" class="font-big ">成功</a></li>
+                </ul>
+            </div>
+            <div class="row mt-20">
+                <div id="alreadydeliver" class="tab-pane fade in active">
+                    <div class="row mt-20  bk-grey border-one" style="height: 30px;">
+                        <div class="col-xs-2">#</div>
+                        <div class="col-xs-2">商品</div>
+                        <div class="col-xs-1">单价</div>
+                        <div class="col-xs-1">数量</div>
+                        <div class="col-xs-2">买家</div>
+                        <div class="col-xs-1">实收款</div>
+                        <div class="col-xs-2">订单状态</div>
+                    </div>
+                    <div class="row mt-20 bk-blue border-one" th:each="order : ${orders}">
+                        <div class="col-xs-2">
+                        <img alt="图片" style="width: 50px;height: 50px;" class="order_item_img" th:src="@{'/picture/'+${order.getProduct().getPictureId()}}"/><br/>
+                        </div>
+                        <div class="col-xs-2">
+                        <a href="#"><span class="font-small"  th:text="${order.product.name}">商品</span></a>
+                        </div>
+                        <div class="col-xs-1" th:text="${order.product.price}">单价</div>
+                        <div class="col-xs-1" th:text="${order.getOrderProduct().getProductNum()}">数量</div>
+                        <div class="col-xs-2">
+                            <span class="font-small" th:text="${order.buyer.name}">买家</span>
+                        </div>
+                        <div class="col-xs-1">
+                        <strong>￥</strong><span class="font-small" th:text="${order.totalPrice}">实收款</span>
+                        </div>
+                        <div class="col-xs-2">
+                            <span class="font-small" th:text="${order.status}">订单状态</span>
                         </div>
                     </div>
-                    <div role="tabpanel" class="tab-pane fade" id="profile">
-                        <table class="table">
-                            <tr class="active text-center">
-                                <td>商品</td>
-                                <td>单价</td>
-                                <td>数量</td>
-                                <td>买家</td>
-                                <td>实收款</td>
-                            </tr>
-                        </table>
-                        <div>
-                            <table class="table">
-                                <tr class="text-center">
-                                    <td style="width: 111px"><img src="#" alt="商品图片"/></td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="messages">
-                        <table class="table">
-                            <tr class="active text-center">
-                                <td>商品</td>
-                                <td>单价</td>
-                                <td>数量</td>
-                                <td>买家</td>
-                                <td>实收款</td>
-                            </tr>
-                        </table>
-                        <div>
-                            <table class="table">
-                                <tr class="text-center">
-                                    <td style="width: 111px"><img src="#" alt="商品图片"/></td>
-                                    <td>1</td>
-                                    <td>2</td>
-                                    <td>3</td>
-                                    <td>4</td>
-                                    <td>5</td>
-                                </tr>
-                            </table>
-                        </div>
-                    </div>
-                    <div role="tabpanel" class="tab-pane fade" id="settings">
-                        <table class="table">
-                            <tr class="text-center">
-                                <td style="width: 111px"><img src="#" alt="商品图片"/></td>
-                                <td>1</td>
-                                <td>2</td>
-                                <td>3</td>
-                                <td>4</td>
-                                <td>5</td>
-                            </tr>
-                        </table>
-                    </div>
+                </div>
             </div>
 
             <div class="row clearfix">

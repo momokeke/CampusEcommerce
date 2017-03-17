@@ -53,6 +53,9 @@ public class IndexController {
         HomePage homePage = new HomePage();
         //homePage.setCampusId(userBase.getCampusId());
         Integer campusId = (Integer)httpSession.getAttribute("campusId");
+        if(campusId == null){
+            campusId = 1;
+        }
         homePage.setCampusId(campusId);
         homePage.setPositionId(1);
         PageHelper.startPage(1,3);

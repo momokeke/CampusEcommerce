@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<head data-th-replace="seller/sellercommon/sellerhead"></head>
+<body>
+<!-- this is the common top begin -->
+<top data-th-replace="seller/sellercommon/top"></top>
+<!-- this is the common top end -->
+
+
+
+<div class="container-fluid">
+    <left data-th-replace="seller/sellercommon/left"></left>
+    <div class="col-xs-6 row border-one border-radius mt-40 ml-30">
+        <div class="mt-20">
+            <a href="#">卖家中心</a>
+            <span>&gt;</span>
+            <a href="#">交易管理</a>
+            <hr/>
+        </div>
+
+
+        <!--this is the order manage begin-->
+        <div>
+
+            <div class="row mt-10">
+                <ul class="font-bold list-inline">
+                    <li><a th:href="@{/seller/orders}" class="font-big">所有订单</a></li>
+                    <li><a th:href="@{/seller/ordersWaitdeliver}" class="font-big ">待发货</a></li>
+                    <li><a th:href="@{/seller/ordersAlreadydeliver}" class="font-big ">已发货</a></li>
+                    <li><a th:href="@{/seller/ordersOnrejection}" class="font-big ">退款中</a></li>
+                    <li><a th:href="@{/seller/ordersAlreadyrejection}" class="font-big ">已退款</a></li>
+                    <li><a th:href="@{/seller/ordersSuccess}" class="font-big ">成功</a></li>
+                </ul>
+            </div>
+            <div class="row mt-20">
+                <div id="alreadydeliver" class="tab-pane fade in active">
+                    <div class="row mt-20  bk-grey border-one" style="height: 30px;">
+                        <div class="col-xs-2">#</div>
+                        <div class="col-xs-2">商品</div>
+                        <div class="col-xs-1">单价</div>
+                        <div class="col-xs-1">数量</div>
+                        <div class="col-xs-2">买家</div>
+                        <div class="col-xs-1">实收款</div>
+                        <div class="col-xs-2">订单状态</div>
+                    </div>
+                    <div class="row mt-20 bk-blue border-one" th:each="order : ${orders}">
+                        <div class="col-xs-2">
+                            <img alt="图片" style="width: 50px;height: 50px;" class="order_item_img" th:src="@{'/picture/'+${order.getProduct().getPictureId()}}"/><br/>
+                        </div>
+                        <div class="col-xs-2">
+                            <a href="#"><span class="font-small"  th:text="${order.product.name}">商品</span></a>
+                        </div>
+                        <div class="col-xs-1" th:text="${order.product.price}">单价</div>
+                        <div class="col-xs-1" th:text="${order.getOrderProduct().getProductNum()}">数量</div>
+                        <div class="col-xs-2">
+                            <span class="font-small" th:text="${order.buyer.name}">买家</span>
+                        </div>
+                        <div class="col-xs-1">
+                            <strong>￥</strong><span class="font-small" th:text="${order.totalPrice}">实收款</span>
+                        </div>
+                        <div class="col-xs-2">
+                            <span class="font-small" th:text="${order.status}">订单状态</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row clearfix">
+                <div class="col-xs-12 column text-center">
+                    <ul class="pagination">
+                        <li>
+                            <a rel="nofollow" href="#">上一页</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="#">1</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="#">2</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="#">3</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="#">4</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="#">5</a>
+                        </li>
+                        <li>
+                            <a rel="nofollow" href="#">下一页</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!--this is the order manage end-->
+
+    </div>
+    <div class="col-xs-1"></div>
+</div>
+
+
+<!--This is the common footer Begin-->
+<bottom data-th-replace="seller/sellercommon/bottom"></bottom>
+
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="../js/common/jquery-3.1.1.min.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="../bootstrap/dist/js/bootstrap.min.js"></script>
+
+
+</body>
+</html>
