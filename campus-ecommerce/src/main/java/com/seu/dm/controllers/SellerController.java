@@ -1,11 +1,14 @@
 package com.seu.dm.controllers;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.seu.dm.annotations.permissions.SellerPermission;
 import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Order;
 import com.seu.dm.entities.Product;
 import com.seu.dm.entities.Seller;
+import com.seu.dm.helpers.PageGenerateHelper;
 import com.seu.dm.services.OrderService;
 import com.seu.dm.services.ProductService;
 import com.seu.dm.services.SellerService;
@@ -200,11 +203,15 @@ public class SellerController {
 
     @RequestMapping(value = "/stock")
     @SellerPermission
-    public String manageInventory(HttpServletRequest request,Model model){
+    public String manageInventory(@RequestParam(required = false,defaultValue = "1") Integer pageNum,
+                                  HttpServletRequest request,Model model){
         HttpSession httpSession = request.getSession();
         UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
         Integer sellerId = userBase.getId();
+        PageHelper.startPage(pageNum,10);
         List<Product> products = productService.findProductsBySellerId(sellerId);
+        PageInfo pageInfo = new PageInfo(products);
+        PageGenerateHelper.generatePage(request,model,pageInfo);
         model.addAttribute("products",products);
         return "/seller/stock_goods";
     }
