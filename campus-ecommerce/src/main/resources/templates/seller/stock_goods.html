@@ -50,7 +50,9 @@
                                     </div>
                                 </div>
                                 <!--modify end-->
-                                <button onclick="this.disabled=this.disabled?false:true" class="btn btn-primary mr-50">下架商品</button>
+                                <span class="font-small" th:if="${order.status} == '5'"  th:text="已完成">交易状态</span>
+                                <button th:if="${product.isShelf} == 1"  onclick="this.disabled=this.disabled?false:true" class="btn btn-primary mr-50">下架商品</button>
+                                <button th:if="${product.isShelf} == 0"  onclick="this.disabled=this.disabled?false:true" class="btn btn-primary mr-50">上架商品</button>
                             </div>
                         </form>
                     </td>
