@@ -79,7 +79,7 @@
                     <th:block th:if="${iterStatus.count} eq 1">
                     <div class="item active">
                         <a th:href="${one.pictureUrl}">
-                        <img alt="" th:src="@{'/picture/'+${one.pictureId}}" src="http://images.huanqiu.com/sarons/2013/11/6e4fe63f9b455d1dfc94569ada25d790.jpg" />
+                        <img style="width: 640px;height: 240px;" alt="" th:src="@{'/picture/'+${one.pictureId}}" src="http://images.huanqiu.com/sarons/2013/11/6e4fe63f9b455d1dfc94569ada25d790.jpg" />
                         </a>
                         <div class="carousel-caption">
                             <h4 th:text="${one.title}">
@@ -93,7 +93,7 @@
                     </th:block>
                     <th:block th:if="${iterStatus.count} neq 1">
                         <div class="item">
-                            <img alt="" th:src="@{'/picture/'+${one.pictureId}}" src="http://images.huanqiu.com/sarons/2013/11/6e4fe63f9b455d1dfc94569ada25d790.jpg" />
+                            <img style="width: 640px;height: 240px;" alt="" th:src="@{'/picture/'+${one.pictureId}}" src="http://images.huanqiu.com/sarons/2013/11/6e4fe63f9b455d1dfc94569ada25d790.jpg" />
                             <div class="carousel-caption">
                                 <h4 th:text="${one.title}">
                                     焦点图二
