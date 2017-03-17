@@ -72,6 +72,9 @@
     delete from product
     where id = #{id,jdbcType=INTEGER}
   </delete>
+  <select id="findProductByName" parameterType="java.lang.String" resultMap="ResultMapWithBLOBs">
+    select * from product where name like #{name}
+  </select>
   <insert id="insert" parameterType="com.seu.dm.entities.Product">
     insert into product (id, name, price, 
       seller_id, year, keywords, 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.w3.org/1999/xhtml">
 <head data-th-replace="seller/sellercommon/sellerhead"></head>
 <body>
 <!-- this is the common top begin -->
@@ -59,7 +59,11 @@
                         <strong>￥</strong><span class="font-small" th:text="${order.totalPrice}">实收款</span>
                         </div>
                         <div class="col-xs-2">
-                            <span class="font-small" th:text="${order.status}">订单状态</span>
+                            <span class="font-small" th:if="${order.status} == '1'"  th:text="待发货">交易状态</span>
+                            <span class="font-small" th:if="${order.status} == '2'"  th:text="已发货">交易状态</span>
+                            <span class="font-small" th:if="${order.status} == '3'"  th:text="退货中">交易状态</span>
+                            <span class="font-small" th:if="${order.status} == '4'"  th:text="已退货">交易状态</span>
+                            <span class="font-small" th:if="${order.status} == '5'"  th:text="已完成">交易状态</span>
                         </div>
                     </div>
                 </div>

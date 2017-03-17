@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns="http://www.w3.org/1999/html">
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/html" xmlns:th="http://www.w3.org/1999/xhtml">
 <head data-th-replace="seller/sellercommon/sellerhead"></head>
 <body>
 <!-- this is the common top begin -->
@@ -19,304 +19,47 @@
             <hr/>
         </div>
         <div class="mt-20 ml-80">
-            <table>
-                <tr>
+            <table class="table table-striped">
+                <tr th:each="product : ${products}">
                     <td>
                         <form action="#" method="post">
-                            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/><br/>
-                            <span class="mt-5">库存数量：</span><input type="text" class="border-3 mr-20 mt-5"/><br/>
-                            <div class="mt-5">
+                            <img class="sold-pro-img mb-5 mt-20 mr-50 from-group" th:src="'/picture/'+${product.pictureId}" src="#" alt="商品1"/>
+                            <span class="mt-20 from-group">库存数量：</span><input type="text" class="border-3 mr-50 mt-5 from-group"/>
+                            <div class="mt-20" style="display:inline">
                                 <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                                <button type="button" class="btn btn-primary mr-50" data-toggle="modal" data-target="#myModal">
                                     修改价格
                                 </button>
 
-                                <!-- Modal -->
+                                <!-- Modal modify begin-->
                                 <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                                    <div class="modal-dialog modal-sm" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">修改商品价格</h4>
+                                    <div class="modal-dialog modal-sm " role="document">
+                                        <div class="modal-content ">
+                                            <div class="modal-header ">
+                                                <button type="button" class="close " data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                                <span class="modal-title " id="myModalLabel">修改商品价格</span>
                                             </div>
-                                            <div class="modal-body">
+                                            <div class="modal-body ">
                                                 <input type="text" value="$"/>
                                             </div>
-                                            <div class="modal-footer">
+                                            <div class="modal-footer ">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                                                 <button type="submit" class="btn btn-primary">保存修改</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button onclick="this.disabled=this.disabled?false:true">下架商品</button>
-                            </div>
-                        </form>
-                    </td>
-
-                    <td>
-                        <form action="#" method="post">
-                            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/><br/>
-                            <span class="mt-5">库存数量：</span><input type="text" class="border-3 mr-20 mt-5"/><br/>
-                            <div class="mt-5">
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                    修改价格
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                                    <div class="modal-dialog modal-sm" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">修改商品价格</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <input type="text" value="$"/>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                                <button type="submit" class="btn btn-primary">保存修改</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="button" value="下架商品" class="mr-20 delete"/>
-                            </div>
-                        </form>
-                    </td>
-
-                    <td>
-                        <form action="#" method="post">
-                            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/><br/>
-                            <span class="mt-5">库存数量：</span><input type="text" class="border-3 mr-20 mt-5"/><br/>
-                            <div class="mt-5">
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                    修改价格
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                                    <div class="modal-dialog modal-sm" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">修改商品价格</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <input type="text" value="$"/>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                                <button type="submit" class="btn btn-primary">保存修改</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="button" value="下架商品" class="mr-20 delete"/>
-                            </div>
-                        </form>
-                    </td>
-
-                    <td>
-                        <form action="#" method="post">
-                            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/><br/>
-                            <span class="mt-5">库存数量：</span><input type="text" class="border-3 mr-20 mt-5"/><br/>
-                            <div class="mt-5">
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                    修改价格
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                                    <div class="modal-dialog modal-sm" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">修改商品价格</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <input type="text" value="$"/>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                                <button type="submit" class="btn btn-primary">保存修改</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="button" value="下架商品" class="mr-20 delete"/>
-                            </div>
-                        </form>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        <form action="#" method="post" >
-                            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/><br/>
-                            <span class="mt-5">库存数量：</span><input type="text" class="border-3 mr-20 mt-5"/><br/>
-                            <div class="mt-5">
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                    修改价格
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                                    <div class="modal-dialog modal-sm" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">修改商品价格</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <input type="text" value="$"/>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                                <button type="submit" class="btn btn-primary">保存修改</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="button" value="下架商品" class="mr-20 delete"/>
-                            </div>
-                        </form>
-                    </td>
-
-                    <td>
-                        <form action="#" method="post">
-                            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/><br/>
-                            <span class="mt-5">库存数量：</span><input type="text" class="border-3 mr-20 mt-5"/><br/>
-                            <div class="mt-5">
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                    修改价格
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                                    <div class="modal-dialog modal-sm" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">修改商品价格</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <input type="text" value="$"/>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                                <button type="submit" class="btn btn-primary">保存修改</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="button" value="下架商品" class="mr-20 delete"/>
-                            </div>
-                        </form>
-                    </td>
-
-                    <td>
-                        <form action="#" method="post">
-                            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/><br/>
-                            <span class="mt-5">库存数量：</span><input type="text" class="border-3 mr-20 mt-5"/><br/>
-                            <div class="mt-5">
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                    修改价格
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                                    <div class="modal-dialog modal-sm" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">修改商品价格</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <input type="text" value="$"/>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                                <button type="submit" class="btn btn-primary">保存修改</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="button" value="下架商品" class="mr-20 delete"/>
-                            </div>
-                        </form>
-                    </td>
-
-                    <td>
-                        <form action="#" method="post">
-                            <img class="sold-pro-img mt-20 mr-20" src="#" alt="商品1"/><br/>
-                            <span class="mt-5">库存数量：</span><input type="text" class="border-3 mr-20 mt-5"/><br/>
-                            <div class="mt-5">
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-                                    修改价格
-                                </button>
-
-                                <!-- Modal -->
-                                <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
-                                    <div class="modal-dialog modal-sm" role="document">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <h4 class="modal-title" id="myModalLabel">修改商品价格</h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <input type="text" value="$"/>
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                                <button type="submit" class="btn btn-primary">保存修改</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <input type="button" value="下架商品" class="mr-20 delete"/>
+                                <!--modify end-->
+                                <button onclick="this.disabled=this.disabled?false:true" class="btn btn-primary mr-50">下架商品</button>
                             </div>
                         </form>
                     </td>
                 </tr>
             </table>
         </div>
-
-        <div class="row clearfix">
-            <div class="col-xs-12 column text-center">
-                <ul class="pagination">
-                    <li>
-                        <a rel="nofollow" href="#">上一页</a>
-                    </li>
-                    <li>
-                        <a rel="nofollow" href="#">1</a>
-                    </li>
-                    <li>
-                        <a rel="nofollow" href="#">2</a>
-                    </li>
-                    <li>
-                        <a rel="nofollow" href="#">3</a>
-                    </li>
-                    <li>
-                        <a rel="nofollow" href="#">4</a>
-                    </li>
-                    <li>
-                        <a rel="nofollow" href="#">5</a>
-                    </li>
-                    <li>
-                        <a rel="nofollow" href="#">下一页</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+        <!--page begin-->
+        <nav data-th-replace="common/pager"></nav>
+        <!--page end -->
     </div>
     <div class="col-xs-1"></div>
 </div>

@@ -198,4 +198,8 @@ public class ProductServiceImpl implements ProductService{
         return productMapper.getCheapProductsByCampusId(campusId);
     }
 
+    @Override
+    public Product findProductByName(String name) {
+        return productMapper.findProductByName(name);
+    }
 }
