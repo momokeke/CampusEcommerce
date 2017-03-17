@@ -1,10 +1,13 @@
 package com.seu.dm.controllers.campusadmin;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Product;
 import com.seu.dm.entities.SchoolAdmin;
 import com.seu.dm.entities.Seller;
+import com.seu.dm.helpers.PageGenerateHelper;
 import com.seu.dm.services.ProductService;
 import com.seu.dm.services.SchoolAdminService;
 import com.seu.dm.services.SellerService;
@@ -36,12 +39,16 @@ public class ShopManageController {
 
     @RequestMapping("/")
     @CampusAdminPermission
-    public String index(HttpSession httpSession,Model model){
+    public String index(HttpServletRequest request,
+                        @RequestParam(required = false,defaultValue = "1") Integer pageNum,
+                        HttpSession httpSession,Model model){
+
         Integer schoolAdminId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getId();
         SchoolAdmin schoolAdmin = schoolAdminService.findAdmin(schoolAdminId);
-//        if(schoolAdmin == null) System.out.println("s");
+        PageHelper.startPage(pageNum,10);
         List<Seller> sellers = sellerService.findAllSellers(schoolAdmin.getCampusId());
-
+        PageInfo pageInfo = new PageInfo(sellers);
+        PageGenerateHelper.generatePage(request,model,pageInfo);
         model.addAttribute("sellers",sellers);
         return "admin/campusadmin/shop/manage";
     }

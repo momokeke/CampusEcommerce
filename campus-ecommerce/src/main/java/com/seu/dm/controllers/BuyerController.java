@@ -74,7 +74,9 @@ public class BuyerController {
             return "common/alert";
         }
 
-        buyer.setCampusId((Integer)httpSession.getAttribute("campusId"));
+        Integer campusId = (Integer)httpSession.getAttribute("campusId");
+        System.out.println(campusId);
+        buyer.setCampusId(campusId);
         //向数据库中添加买家
         int i = buyerService.addBuyer(buyer);
         Buyer buyerFromDB = buyerService.findBuyerByName(buyer.getName());

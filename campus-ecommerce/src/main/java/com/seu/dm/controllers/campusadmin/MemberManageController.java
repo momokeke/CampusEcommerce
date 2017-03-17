@@ -1,18 +1,24 @@
 package com.seu.dm.controllers.campusadmin;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Buyer;
+import com.seu.dm.entities.Order;
 import com.seu.dm.entities.SchoolAdmin;
 import com.seu.dm.entities.Seller;
+import com.seu.dm.helpers.PageGenerateHelper;
 import com.seu.dm.services.BuyerService;
 import com.seu.dm.services.SchoolAdminService;
 import com.seu.dm.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -34,7 +40,9 @@ public class MemberManageController {
 
     @RequestMapping("/")
     @CampusAdminPermission
-    public String index(HttpSession httpSession,Model model){
+    public String index(
+            @RequestParam(required = false,defaultValue = "1") Integer pageNum,
+            HttpSession httpSession,Model model){
         Integer schoolAdminId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getId();
         SchoolAdmin schoolAdmin = schoolAdminService.findAdmin(schoolAdminId);
         Integer campusId = schoolAdmin.getCampusId();
@@ -45,6 +53,42 @@ public class MemberManageController {
         model.addAttribute("sellers",sellers);
         return "admin/campusadmin/member/manage";
 
+    }
+
+    @RequestMapping("/buyer")
+    @CampusAdminPermission
+    public String buyer(
+            HttpServletRequest request,
+            @RequestParam(required = false,defaultValue = "1") Integer pageNum,
+            HttpSession httpSession,Model model){
+        Integer schoolAdminId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getId();
+        SchoolAdmin schoolAdmin = schoolAdminService.findAdmin(schoolAdminId);
+        Integer campusId = schoolAdmin.getCampusId();
+        PageHelper.startPage(pageNum,10);
+        List<Buyer> buyers = buyerService.findBuyersByCampusId(campusId);
+        PageInfo pageInfo = new PageInfo(buyers);
+        PageGenerateHelper.generatePage(request,model,pageInfo);
+        model.addAttribute("schoolAdmin",schoolAdmin);
+        model.addAttribute("buyers",buyers);
+        return "admin/campusadmin/member/buyer";
+    }
+
+    @RequestMapping("/seller")
+    @CampusAdminPermission
+    public String seller(
+            HttpServletRequest request,
+            @RequestParam(required = false,defaultValue = "1") Integer pageNum,
+            HttpSession httpSession,Model model){
+        Integer schoolAdminId = ((UserBaseDTO)httpSession.getAttribute("userBase")).getId();
+        SchoolAdmin schoolAdmin = schoolAdminService.findAdmin(schoolAdminId);
+        Integer campusId = schoolAdmin.getCampusId();
+        PageHelper.startPage(pageNum,10);
+        List<Seller> sellers = sellerService.findAllSellers(campusId);
+        PageInfo pageInfo = new PageInfo(sellers);
+        PageGenerateHelper.generatePage(request,model,pageInfo);
+        model.addAttribute("schoolAdmin",schoolAdmin);
+        model.addAttribute("sellers",sellers);
+        return "admin/campusadmin/member/seller";
     }
 
 //    @RequestMapping("/{id}")
