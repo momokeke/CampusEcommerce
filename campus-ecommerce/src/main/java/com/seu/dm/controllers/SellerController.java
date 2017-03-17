@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -215,6 +216,39 @@ public class SellerController {
         model.addAttribute("products",products);
         return "/seller/stock_goods";
     }
+
+    @RequestMapping(value = "/updateproduct/{id}")
+    @SellerPermission
+    public String updateProductInfo(@PathVariable Integer id,
+                                    @RequestParam(value = "inventory")Integer inventory,
+                                    @RequestParam(value = "price")Double price,
+                                    HttpServletRequest request,Model model){
+        Product product = productService.findProduct(id);
+        product.setInventory(inventory);
+        product.setPrice(BigDecimal.valueOf(price));
+        productService.updateProduct(product);
+        HttpSession httpSession = request.getSession();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        Integer sellerId = userBase.getId();
+        List<Product> products = productService.findProductsBySellerId(sellerId);
+        model.addAttribute("products",products);
+        return "/seller/stock_goods";
+    }
+
+    @RequestMapping(value = "/unshelfproduct/{id}")
+    @SellerPermission
+    public String unshelfproduct(@PathVariable Integer id,HttpServletRequest request,Model model){
+        Product product = productService.findProduct(id);
+        product.setIsShelf(false);
+        productService.updateProduct(product);
+        HttpSession httpSession = request.getSession();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        Integer sellerId = userBase.getId();
+        List<Product> products = productService.findProductsBySellerId(sellerId);
+        model.addAttribute("products",products);
+        return "/seller/stock_goods";
+    }
+
 
     @RequestMapping(value = "/orders")
     @SellerPermission

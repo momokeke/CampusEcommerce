@@ -22,13 +22,13 @@
             <table class="table table-striped">
                 <tr th:each="product : ${products}">
                     <td>
-                        <form action="#" method="post">
+                        <form action="#" th:action="@{'/seller/updateproduct/'+${product.id}}" method="post">
                             <img class="sold-pro-img mb-5 mt-20 mr-50 from-group" th:src="'/picture/'+${product.pictureId}" src="#" alt="商品1"/>
-                            <span class="mt-20 from-group">库存数量：</span><input type="text" class="border-3 mr-50 mt-5 from-group"/>
                             <div class="mt-20" style="display:inline">
+                                <span class="mt-20 from-group">库存数量：<span th:text="${product.inventory}">0</span></span>&nbsp;&nbsp;
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary mr-50" data-toggle="modal" data-target="#myModal">
-                                    修改价格
+                                    修改
                                 </button>
 
                                 <!-- Modal modify begin-->
@@ -37,10 +37,13 @@
                                         <div class="modal-content ">
                                             <div class="modal-header ">
                                                 <button type="button" class="close " data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                                <span class="modal-title " id="myModalLabel">修改商品价格</span>
+
                                             </div>
                                             <div class="modal-body ">
-                                                <input type="text" value="$"/>
+                                                <span class="mt-20 from-group">库存数量：</span>
+                                                <input type="text" name="inventory" class="border-3 mr-50 mt-5 from-group"/><br/>
+                                                <span class="modal-title " id="myModalLabel">修改商品价格</span>
+                                                <input type="text" name="price" value=""/>
                                             </div>
                                             <div class="modal-footer ">
                                                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
@@ -50,7 +53,7 @@
                                     </div>
                                 </div>
                                 <!--modify end-->
-                                <button onclick="this.disabled=this.disabled?false:true" class="btn btn-primary mr-50">下架商品</button>
+                                <button th:onclick="@{'this.disabled=this.disabled?false:true;if(disabled) jump('+${product.id}+')'}" class="btn btn-primary mr-50">下架商品</button>
                             </div>
                         </form>
                     </td>
@@ -79,6 +82,9 @@
             $('#myInput').focus()
         })
     });
+    function jump(productId){
+        location.href = "/seller/unshelfproduct/"+productId;
+    }
 </script>
 
 </body>

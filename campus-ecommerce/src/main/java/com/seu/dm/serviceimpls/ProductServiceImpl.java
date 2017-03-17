@@ -202,4 +202,9 @@ public class ProductServiceImpl implements ProductService{
     public Product findProductByName(String name) {
         return productMapper.findProductByName(name);
     }
+
+    @Override
+    public List<Product> findProductsByKeyword(String keyword) {
+        return productMapper.getProductByKeyword(keyword);
+    }
 }
