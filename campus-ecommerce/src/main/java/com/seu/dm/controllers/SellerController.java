@@ -4,8 +4,10 @@ import com.seu.dm.annotations.permissions.SellerPermission;
 import com.seu.dm.annotations.permissions.CampusAdminPermission;
 import com.seu.dm.dto.UserBaseDTO;
 import com.seu.dm.entities.Order;
+import com.seu.dm.entities.Product;
 import com.seu.dm.entities.Seller;
 import com.seu.dm.services.OrderService;
+import com.seu.dm.services.ProductService;
 import com.seu.dm.services.SellerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,8 @@ public class SellerController {
     private SellerService sellerService;
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private ProductService productService;
 
     @RequestMapping(value="/checkregister/{name}")
     @ResponseBody
@@ -194,6 +198,16 @@ public class SellerController {
         return "shop/shop_homepage";
     }
 
+    @RequestMapping(value = "/stock")
+    @SellerPermission
+    public String manageInventory(HttpServletRequest request,Model model){
+        HttpSession httpSession = request.getSession();
+        UserBaseDTO userBase = (UserBaseDTO)httpSession.getAttribute("userBase");
+        Integer sellerId = userBase.getId();
+        List<Product> products = productService.findProductsBySellerId(sellerId);
+        model.addAttribute("products",products);
+        return "/seller/stock_goods";
+    }
 
     @RequestMapping(value = "/orders")
     @SellerPermission

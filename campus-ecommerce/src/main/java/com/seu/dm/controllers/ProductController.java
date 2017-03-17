@@ -144,6 +144,19 @@ public class ProductController {
         return "productDetails";
     }
 
+    @RequestMapping(value = "/search/{name}")
+    public String searchProductByName(@PathVariable String name,Model model){
+        Product product =productService.findProductByName(name);
+        Seller seller = sellerService.findSeller(product.getSellerId());
+        Integer campusId = seller.getCampusId();
+        System.out.println("campusId"+campusId);
+        String campus = campusService.findCampus(campusId).getName();
+        model.addAttribute("product",product);
+        model.addAttribute("campus",campus);
+        System.out.println("OK");
+        return "productDetails";
+    }
+
     /**
      * 根据标签返回对应的商品列表
      * @param category
